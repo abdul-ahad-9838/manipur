@@ -27,6 +27,11 @@ export async function POST(request) {
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://miu.edu.in';
 
+    // Split payment — full amount goes to Edtech Innovate Pvt. Ltd
+    const splitPayments = JSON.stringify({
+      'Edtech Innovate Pvt. Ltd': parseFloat(amount).toFixed(2),
+    });
+
     const payload = {
       key,
       txnid,
@@ -39,6 +44,7 @@ export async function POST(request) {
       furl: `${baseUrl}/payonline/failed`,
       hash,
       udf1: '', udf2: '', udf3: '', udf4: '', udf5: '',
+      split_payments: splitPayments,
     };
 
     return NextResponse.json({ success: true, payload });
