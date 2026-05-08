@@ -177,7 +177,7 @@ const Navbar = () => {
     { label: 'CPIO', href: '/student-life/cpio' },
     { label: 'Grievance Cell', href: '/student-life/grievance-cell' },
     { label: 'Equal Opportunity Cell', href: '/student-life/equal-opportunity-cell' },
-    { label: 'Research & Development Cell', href: '/student-life/research-development-cell' },
+
     { label: 'Ombudsperson', href: '/student-life/ombudsperson' },
     { label: 'Project Development Cell', href: '/student-life/project-development-cell' },
     { label: 'SEDG Cell', href: '/student-life/sedg-cell' },
@@ -190,6 +190,7 @@ const Navbar = () => {
     { label: 'Research Overview', href: '/research/overview' },
     { label: 'Publications', href: '/research/publications' },
     { label: 'Research Projects', href: '/research/projects' },
+    { label: 'R&D Cell', href: '/research/development-cell' },
   ].filter(item => isPageActive(item.href));
 
   return (
@@ -298,6 +299,7 @@ const Navbar = () => {
                   {isPageActive('/research/overview') && <li><Link href="/research/overview">Research Overview</Link></li>}
                   {isPageActive('/research/publications') && <li><Link href="/research/publications">Publications</Link></li>}
                   {isPageActive('/research/projects') && <li><Link href="/research/projects">Research Projects</Link></li>}
+                  <li><Link href="/research/development-cell">R&amp;D Cell</Link></li>
                 </ul>
               </li>
 
@@ -334,7 +336,7 @@ const Navbar = () => {
                   {isPageActive('/student-life/cpio') && <li><Link href="/student-life/cpio">CPIO</Link></li>}
                   {isPageActive('/student-life/grievance-cell') && <li><Link href="/student-life/grievance-cell">Grievance Cell</Link></li>}
                   {isPageActive('/student-life/equal-opportunity-cell') && <li><Link href="/student-life/equal-opportunity-cell">Equal Opportunity Cell</Link></li>}
-                  {isPageActive('/student-life/research-development-cell') && <li><Link href="/student-life/research-development-cell">Research & Development Cell</Link></li>}
+
                   {isPageActive('/student-life/ombudsperson') && <li><Link href="/student-life/ombudsperson">Ombudsperson</Link></li>}
                   {isPageActive('/student-life/project-development-cell') && <li><Link href="/student-life/project-development-cell">Project Development Cell</Link></li>}
                   {isPageActive('/student-life/sedg-cell') && <li><Link href="/student-life/sedg-cell">SEDG Cell</Link></li>}

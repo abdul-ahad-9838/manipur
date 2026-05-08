@@ -100,3 +100,101 @@
     text-align: center;
   }
 }
+
+/* ── RDC Page Styles ── */
+.rdc-list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rdc-list li {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.75;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: none;
+}
+
+.rdc-bullet-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rdc-bullet-list li {
+  font-size: 0.93rem;
+  color: #555;
+  line-height: 1.7;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: none;
+  padding-left: 18px;
+  position: relative;
+}
+
+.rdc-bullet-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--lpu-orange);
+  font-weight: 900;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.rdc-table-wrap {
+  overflow-x: auto;
+}
+
+.rdc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.rdc-table th {
+  background: var(--lpu-black);
+  color: white;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rdc-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  color: #444;
+  line-height: 1.6;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.rdc-table tr:nth-child(even) td {
+  background: #f8f9fa;
+}
+
+.rdc-table tr:hover td {
+  background: #fff3e0;
+}
+
+.rdc-note {
+  margin-top: 20px;
+  background: #fff8e1;
+  border-left: 4px solid var(--lpu-orange);
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-size: 0.93rem;
+  color: #555;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: none;
+}
