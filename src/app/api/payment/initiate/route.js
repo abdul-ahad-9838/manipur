@@ -21,25 +21,30 @@ export async function POST(request) {
     // Generate unique transaction ID
     const txnid = 'MIU' + Date.now() + Math.random().toString(36).substring(2, 7).toUpperCase();
 
-    // Build hash: key|txnid|amount|productinfo|firstname|email|||||||||||salt
-    const hashString = `${key}|${txnid}|${amount}|${purpose}|${name.trim()}|${email.trim()}|||||||||||${salt}`;
+    // Format amount to 2 decimal places — must be identical in hash and payload
+    const formattedAmount = parseFloat(amount).toFixed(2);
+    const productinfo    = purpose.trim();
+    const firstname      = name.trim();
+    const emailTrimmed   = email.trim();
+
+    // Build hash exactly: key|txnid|amount|productinfo|firstname|email|||||||||||salt
+    const hashString = `${key}|${txnid}|${formattedAmount}|${productinfo}|${firstname}|${emailTrimmed}|||||||||||${salt}`;
     const hash = crypto.createHash('sha512').update(hashString).digest('hex');
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://miu.edu.in';
 
     // Split payment — full amount goes to Edtech Innovate Pvt. Ltd
-    // Format matches PHP: json_encode(array("Edtech Innovate Pvt. Ltd" => $amount))
     const splitPayments = JSON.stringify({
-      'Edtech Innovate Pvt. Ltd': parseFloat(parseFloat(amount).toFixed(2)),
+      'Edtech Innovate Pvt. Ltd': parseFloat(formattedAmount),
     });
 
     const payload = {
       key,
       txnid,
-      amount: parseFloat(amount).toFixed(2),
-      productinfo: purpose,
-      firstname: name.trim(),
-      email: email.trim(),
+      amount: formattedAmount,
+      productinfo,
+      firstname,
+      email: emailTrimmed,
       phone: phone.trim(),
       surl: `${baseUrl}/payonline/success`,
       furl: `${baseUrl}/payonline/failed`,
