@@ -28,8 +28,9 @@ export async function POST(request) {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://miu.edu.in';
 
     // Split payment — full amount goes to Edtech Innovate Pvt. Ltd
+    // Format matches PHP: json_encode(array("Edtech Innovate Pvt. Ltd" => $amount))
     const splitPayments = JSON.stringify({
-      'Edtech Innovate Pvt. Ltd': parseFloat(amount).toFixed(2),
+      'Edtech Innovate Pvt. Ltd': parseFloat(parseFloat(amount).toFixed(2)),
     });
 
     const payload = {
