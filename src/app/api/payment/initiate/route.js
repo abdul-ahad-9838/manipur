@@ -53,6 +53,7 @@ export async function POST(request) {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params.toString(),
+      signal: AbortSignal.timeout(15000), // 15s timeout
     });
 
     const ebData = await ebRes.json();
@@ -67,6 +68,10 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Payment initiate error:', error);
-    return NextResponse.json({ message: 'Server error' }, { status: 500 });
+    const isTimeout = error?.cause?.code === 'ETIMEDOUT' || error?.name === 'TimeoutError';
+    return NextResponse.json(
+      { message: isTimeout ? 'Payment gateway unreachable. Please try again or contact support.' : 'Server error' },
+      { status: 500 }
+    );
   }
 }
