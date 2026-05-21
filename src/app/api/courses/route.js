@@ -12,7 +12,7 @@ export async function GET() {
       .sort({ order: 1, createdAt: -1 })
       .lean();
     return NextResponse.json(courses, {
-      headers: { 'Cache-Control': 's-maxage=60, stale-while-revalidate=300' }
+      headers: { 'Cache-Control': 'no-store' }
     });
   } catch (error) {
     console.error('Get courses error:', error);

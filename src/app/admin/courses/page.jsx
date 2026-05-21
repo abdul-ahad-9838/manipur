@@ -38,6 +38,7 @@ export default function CoursesManager() {
   const [filterSchool, setFilterSchool] = useState('All Schools');
   const { user, loading: authLoading } = useContext(AuthContext);
   const router = useRouter();
+  const submittingRef = React.useRef(false);
 
   useEffect(() => {
     if (!authLoading && !user) router.push('/admin/login');
@@ -80,6 +81,8 @@ export default function CoursesManager() {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (submittingRef.current) return; // prevent double submit
+    submittingRef.current = true;
     setSaving(true); setMsg('');
     try {
       const payload = {
@@ -98,6 +101,7 @@ export default function CoursesManager() {
       fetchCourses();
     } catch { setMsg('❌ Error saving program.'); }
     setSaving(false);
+    submittingRef.current = false;
     setTimeout(() => setMsg(''), 4000);
   };
 
