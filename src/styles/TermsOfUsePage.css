@@ -244,6 +244,9 @@
   border-radius: 16px;
   text-align: center;
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .terms-contact-box h3 {
