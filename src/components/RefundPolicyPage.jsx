@@ -1,36 +1,41 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import '@/styles/RefundPolicyPage.css';
+import React from "react";
+import Link from "next/link";
+import "@/styles/RefundPolicyPage.css";
 
 export default function RefundPolicyPage() {
   const refundCategories = [
     {
       sno: 1,
-      percentage: '100%',
-      timing: '15 days or more before the formally notified last day of admission'
+      percentage: "100%",
+      timing:
+        "15 days or more before the formally notified last day of admission",
     },
     {
       sno: 2,
-      percentage: '90%',
-      timing: 'Less than 15 days before the formally notified last date of admission'
+      percentage: "90%",
+      timing:
+        "Less than 15 days before the formally notified last date of admission",
     },
     {
       sno: 3,
-      percentage: '80%',
-      timing: '15 days or less after the formally notified last date of admission'
+      percentage: "80%",
+      timing:
+        "15 days or less after the formally notified last date of admission",
     },
     {
       sno: 4,
-      percentage: '50%',
-      timing: '30 days or less, but more than 15 days after formally notified last date of admission'
+      percentage: "50%",
+      timing:
+        "30 days or less, but more than 15 days after formally notified last date of admission",
     },
     {
       sno: 5,
-      percentage: '0%',
-      timing: 'More than 30 days after formally notified last date of admission'
-    }
+      percentage: "0%",
+      timing:
+        "More than 30 days after formally notified last date of admission",
+    },
   ];
 
   return (
@@ -46,7 +51,8 @@ export default function RefundPolicyPage() {
           <span className="refund-badge">ADMISSIONS</span>
           <h1>Refund Policy</h1>
           <p className="refund-hero-subtitle">
-            Transparent and fair guidelines for fee refunds in case of admission withdrawal.
+            Transparent and fair guidelines for fee refunds in case of admission
+            withdrawal.
           </p>
         </div>
       </div>
@@ -54,27 +60,30 @@ export default function RefundPolicyPage() {
       {/* Body */}
       <div className="refund-body">
         <div className="container">
-          
           <div className="refund-content-card">
-            <div className="refund-last-updated">
+            {/* <div className="refund-last-updated">
               <span className="update-icon">📅</span>
               <span>Last Updated: {new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            </div>
+            </div> */}
 
             {/* Policy Overview */}
             <div className="refund-overview">
               <div className="overview-icon">📋</div>
               <h2>Policy Overview</h2>
               <p>
-                This policy outlines the guidelines and procedures for fee refunds in case of admission withdrawal. 
-                It ensures transparency, consistency, and fairness in handling refund requests while aligning with 
-                institutional norms and regulatory expectations.
+                This policy outlines the guidelines and procedures for fee
+                refunds in case of admission withdrawal. It ensures
+                transparency, consistency, and fairness in handling refund
+                requests while aligning with institutional norms and regulatory
+                expectations.
               </p>
               <p>
-                The refund amount is determined based on the timing of the withdrawal request relative to the officially 
-                notified admission schedule. All refund requests must be submitted in writing through the prescribed process. 
-                Approved refunds are processed within a defined timeframe, subject to verification of documents and clearance 
-                of any outstanding dues.
+                The refund amount is determined based on the timing of the
+                withdrawal request relative to the officially notified admission
+                schedule. All refund requests must be submitted in writing
+                through the prescribed process. Approved refunds are processed
+                within a defined timeframe, subject to verification of documents
+                and clearance of any outstanding dues.
               </p>
             </div>
 
@@ -82,7 +91,8 @@ export default function RefundPolicyPage() {
             <div className="refund-categories-section">
               <h2>Refund Categories</h2>
               <p className="section-intro">
-                The following refund percentages shall apply based on the timing of the notice of withdrawal:
+                The following refund percentages shall apply based on the timing
+                of the notice of withdrawal:
               </p>
 
               <div className="refund-table-wrapper">
@@ -96,10 +106,17 @@ export default function RefundPolicyPage() {
                   </thead>
                   <tbody>
                     {refundCategories.map((category) => (
-                      <tr key={category.sno} className={category.percentage === '100%' ? 'highlight-row' : ''}>
+                      <tr
+                        key={category.sno}
+                        className={
+                          category.percentage === "100%" ? "highlight-row" : ""
+                        }
+                      >
                         <td className="sno-cell">{category.sno}</td>
                         <td className="percentage-cell">
-                          <span className="percentage-badge">{category.percentage}</span>
+                          <span className="percentage-badge">
+                            {category.percentage}
+                          </span>
                         </td>
                         <td className="timing-cell">{category.timing}</td>
                       </tr>
@@ -112,13 +129,14 @@ export default function RefundPolicyPage() {
             {/* Key Considerations */}
             <div className="key-considerations">
               <h2>Key Considerations</h2>
-              
+
               <div className="consideration-grid">
                 <div className="consideration-card">
                   <div className="consideration-icon">🚫</div>
                   <h3>Non-Refundable Fees</h3>
                   <p>
-                    Application, entrance, and prospectus fees are generally non-refundable under any circumstances.
+                    Application, entrance, and prospectus fees are generally
+                    non-refundable under any circumstances.
                   </p>
                 </div>
 
@@ -126,7 +144,8 @@ export default function RefundPolicyPage() {
                   <div className="consideration-icon">⚠️</div>
                   <h3>Disciplinary Action</h3>
                   <p>
-                    If admission is cancelled due to misconduct or submission of false documents, fees are usually forfeited.
+                    If admission is cancelled due to misconduct or submission of
+                    false documents, fees are usually forfeited.
                   </p>
                 </div>
 
@@ -134,7 +153,8 @@ export default function RefundPolicyPage() {
                   <div className="consideration-icon">⏱️</div>
                   <h3>Processing Timeframe</h3>
                   <p>
-                    Refunds are generally processed within 15 days of receiving a written application with all required documents.
+                    Refunds are generally processed within 15 days of receiving
+                    a written application with all required documents.
                   </p>
                 </div>
               </div>
@@ -145,11 +165,26 @@ export default function RefundPolicyPage() {
               <div className="notes-icon">💡</div>
               <h3>Important Notes</h3>
               <ul className="notes-list">
-                <li>All refund requests must be submitted in writing through the official channels</li>
-                <li>Refund processing is subject to verification of documents and clearance of outstanding dues</li>
-                <li>The refund percentage is calculated on the total fee paid, excluding non-refundable components</li>
-                <li>The date of receipt of the withdrawal notice determines the applicable refund percentage</li>
-                <li>Refunds will be processed to the original payment source or as per university guidelines</li>
+                <li>
+                  All refund requests must be submitted in writing through the
+                  official channels
+                </li>
+                <li>
+                  Refund processing is subject to verification of documents and
+                  clearance of outstanding dues
+                </li>
+                <li>
+                  The refund percentage is calculated on the total fee paid,
+                  excluding non-refundable components
+                </li>
+                <li>
+                  The date of receipt of the withdrawal notice determines the
+                  applicable refund percentage
+                </li>
+                <li>
+                  Refunds will be processed to the original payment source or as
+                  per university guidelines
+                </li>
               </ul>
             </div>
 
@@ -160,19 +195,28 @@ export default function RefundPolicyPage() {
                 <div className="step-card">
                   <div className="step-number">1</div>
                   <h4>Submit Written Request</h4>
-                  <p>Submit a formal written application for withdrawal and refund to the Admissions Office</p>
+                  <p>
+                    Submit a formal written application for withdrawal and
+                    refund to the Admissions Office
+                  </p>
                 </div>
                 <div className="step-arrow">→</div>
                 <div className="step-card">
                   <div className="step-number">2</div>
                   <h4>Document Verification</h4>
-                  <p>University verifies submitted documents and checks for any outstanding dues</p>
+                  <p>
+                    University verifies submitted documents and checks for any
+                    outstanding dues
+                  </p>
                 </div>
                 <div className="step-arrow">→</div>
                 <div className="step-card">
                   <div className="step-number">3</div>
                   <h4>Approval & Processing</h4>
-                  <p>Once approved, refund is processed within 15 days to the original payment source</p>
+                  <p>
+                    Once approved, refund is processed within 15 days to the
+                    original payment source
+                  </p>
                 </div>
               </div>
             </div>
@@ -181,7 +225,8 @@ export default function RefundPolicyPage() {
             <div className="refund-contact-box">
               <h3>Need Help with Refund?</h3>
               <p>
-                For refund-related queries or to submit a refund request, please contact our Admissions Office:
+                For refund-related queries or to submit a refund request, please
+                contact our Admissions Office:
               </p>
               <div className="contact-details">
                 <div className="contact-item">
@@ -194,14 +239,16 @@ export default function RefundPolicyPage() {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Quick Links */}
           <div className="refund-quick-links">
             <h3>Related Information</h3>
             <div className="quick-links-grid">
-              <Link href="/admissions/fee-structure" className="quick-link-card">
+              <Link
+                href="/admissions/fee-structure"
+                className="quick-link-card"
+              >
                 <span className="link-icon">💰</span>
                 <h4>Fee Structure</h4>
                 <p>View detailed fee information</p>
@@ -218,7 +265,6 @@ export default function RefundPolicyPage() {
               </Link>
             </div>
           </div>
-
         </div>
       </div>
     </div>
