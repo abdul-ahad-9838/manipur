@@ -40,9 +40,17 @@
 }
 
 @keyframes singleRotate {
-  0% { transform: rotate(0deg); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: rotate(360deg); opacity: 1; }
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
 }
 
 .splash-miu-blocks {
@@ -68,8 +76,14 @@
 }
 
 @keyframes slideUpFade {
-  0% { transform: translateY(20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Page fade in */
@@ -78,8 +92,12 @@
 }
 
 @keyframes pageFadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Page transitions */
@@ -88,8 +106,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Global Mobile Overrides */
@@ -124,7 +146,11 @@
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.65) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
 }
 
 .page-hero-content {
@@ -137,16 +163,23 @@
   align-items: center;
   gap: 8px;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255, 255, 255, 0.65);
   margin-bottom: 14px;
   font-family: var(--font-body);
   font-weight: 400;
   text-transform: none;
 }
 
-.page-hero-breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
-.page-hero-breadcrumb a:hover { color: white; }
-.page-hero-breadcrumb span { color: rgba(255,255,255,0.4); }
+.page-hero-breadcrumb a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+}
+.page-hero-breadcrumb a:hover {
+  color: white;
+}
+.page-hero-breadcrumb span {
+  color: rgba(255, 255, 255, 0.4);
+}
 
 .page-hero-content h1 {
   color: white;
@@ -155,7 +188,7 @@
 }
 
 .page-hero-content p {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 1.05rem;
   max-width: 600px;
   font-family: var(--font-body);
@@ -175,7 +208,12 @@
 }
 
 /* Headings - no uppercase, proper spacing */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-transform: none !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;

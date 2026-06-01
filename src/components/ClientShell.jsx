@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { AuthProvider } from "@/context/AuthContext";
-import { EnquiryProvider, useEnquiry } from "@/context/EnquiryContext";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
 import AdminTopBar from "@/components/AdminTopBar";
 import EnquiryPopup from "@/components/EnquiryPopup";
+import Footer from "@/components/Footer";
+import MobileBottomNav from "@/components/MobileBottomNav";
+import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import AdvisoryPopup from "@/components/AdvisoryPopup";
+import { AuthProvider } from "@/context/AuthContext";
+import { EnquiryProvider } from "@/context/EnquiryContext";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function ClientShell({ children }) {
   const [mounted, setMounted] = useState(false);
@@ -32,9 +32,16 @@ export default function ClientShell({ children }) {
         <AdminTopBar />
         <div className="app-container">
           {mounted && showSplash && (
-            <div className={`splash-screen ${fadeSplash ? "fade-out" : ""}`}>
+            <div className={`splash-screen s${fadeSplash ? "fade-out" : ""}`}>
               <div className="splash-content">
-                <img src="/emblem.png" alt="MIU Logo" className="splash-logo" />
+                {/* <img src="/emblem.png" alt="MIU Logo" className="splash-logo" /> */}
+                <Image
+                  src="/emblem.png"
+                  alt="MIU Logo"
+                  className="splash-logo"
+                  width={200}
+                  height={200}
+                />
                 <div className="splash-miu-blocks">
                   <span>M</span>
                   <span>I</span>

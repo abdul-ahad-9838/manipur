@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEnquiry } from "@/context/EnquiryContext";
 import "@/styles/Navbar.css";
+import Image from "next/image";
 
 const DEFAULT_SCHOOLS = [
   { name: "School Of Commerce", slug: "school-of-commerce" },
@@ -125,7 +126,6 @@ const Navbar = () => {
       .then((r) => r.json())
       .then((data) => {
         if (data?.content?.schools?.length) {
-          console.log(data?.content?.schools);
           const dbSchools = data.content.schools.map((s) => ({
             ...s,
             externalUrl:
@@ -330,7 +330,14 @@ const Navbar = () => {
               />
             ) : (
               <>
-                <img src="/emblem.png" alt="MIU Crest" className="abs-emblem" />
+                {/* <img src="/emblem.png" alt="MIU Crest" className="abs-emblem" /> */}
+                <Image
+                  src="/emblem.png"
+                  alt="MIU Crest"
+                  className="abs-emblem"
+                  width={50}
+                  height={50}
+                />
                 <div className="abs-miu-blocks">
                   <span>M</span>
                   <span>I</span>
