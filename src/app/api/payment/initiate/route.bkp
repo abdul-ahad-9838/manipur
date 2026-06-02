@@ -1,0 +1,79 @@
+import { NextResponse } from 'next/server';
+import crypto from 'crypto';
+
+export async function POST(request) {
+  try {
+    const body = await request.json();
+    const { name, email, phone, amount, purpose } = body;
+
+    if (!name || !email || !phone || !amount || !purpose) {
+      return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
+    }
+
+    const key  = process.env.EASEBUZZ_KEY;
+    const salt = process.env.EASEBUZZ_SALT;
+
+    if (!key || !salt) {
+      return NextResponse.json({ message: 'Payment gateway not configured' }, { status: 500 });
+    }
+
+    const txnid          = 'MIU' + Date.now() + Math.random().toString(36).substring(2, 7).toUpperCase();
+    const formattedAmount = parseFloat(amount).toFixed(2);
+    const productinfo    = purpose.trim();
+    const firstname      = name.trim();
+    const emailTrimmed   = email.trim();
+
+    // Hash: key|txnid|amount|productinfo|firstname|email|||||||||||salt
+    const hashString = `${key}|${txnid}|${formattedAmount}|${productinfo}|${firstname}|${emailTrimmed}|||||||||||${salt}`;
+    const hash = crypto.createHash('sha512').update(hashString).digest('hex');
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://miu.edu.in';
+
+    const splitPayments = JSON.stringify({
+      'Edtech Innovate Pvt. Ltd': parseFloat(formattedAmount),
+    });
+
+    // Step 1: Call Easebuzz initiateLink to get payment token
+    const params = new URLSearchParams({
+      key,
+      txnid,
+      amount: formattedAmount,
+      productinfo,
+      firstname,
+      email: emailTrimmed,
+      phone: phone.trim(),
+      surl: `${baseUrl}/payonline/success`,
+      furl: `${baseUrl}/payonline/failed`,
+      hash,
+      udf1: '', udf2: '', udf3: '', udf4: '', udf5: '',
+      split_payments: splitPayments,
+    });
+
+    const ebRes = await fetch('https://pay.easebuzz.in/payment/initiateLink', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString(),
+      signal: AbortSignal.timeout(15000), // 15s timeout
+    });
+
+    const ebData = await ebRes.json();
+
+
+
+    if (ebData.status !== 1) {
+      return NextResponse.json({ message: ebData.error_desc || 'Payment initiation failed' }, { status: 400 });
+    }
+
+    // Step 2: Return the redirect URL to the frontend
+    const redirectUrl = `https://pay.easebuzz.in/pay/${ebData.data}`;
+    return NextResponse.json({ success: true, redirectUrl });
+
+  } catch (error) {
+    console.error('Payment initiate error:', error);
+    const isTimeout = error?.cause?.code === 'ETIMEDOUT' || error?.name === 'TimeoutError';
+    return NextResponse.json(
+      { message: isTimeout ? 'Payment gateway unreachable. Please try again or contact support.' : 'Server error' },
+      { status: 500 }
+    );
+  }
+}

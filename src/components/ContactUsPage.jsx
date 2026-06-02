@@ -70,9 +70,9 @@ export default function ContactUsPage() {
         </svg>
       ),
       title: 'WhatsApp',
-      primary: '+91 9319771500',
+      primary: '+91 9319727766',
       secondary: 'Chat with us instantly',
-      link: 'https://wa.me/919319771500',
+      link: 'https://wa.me/919319727766',
       color: '#25D366',
       bgColor: '#E8F5E9'
     },
