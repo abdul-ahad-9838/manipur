@@ -1,18 +1,18 @@
 .ecosystem-section-container {
   background-color: #0b1120;
-  position: relative;
+  /* position: relative; */
   width: 100%;
   padding: 0;
 }
 
 /* Sticky Header */
 .ecosystem-fixed-header {
-  position: sticky;
-  top: 90px;
-  z-index: 999;
+  /* position: sticky; */
+  /* top: 90px; */
+  /* z-index: 999; */
   background-color: #000;
   padding: 40px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .ecosystem-header-content {
@@ -56,13 +56,13 @@
 
 /* Sticky Card Container */
 .ecosystem-card {
-  position: sticky;
-  top: 190px;
-  height: 100vh;
-  width: 100%;
+  /* position: sticky; */
+  /* top: 190px; */
+  /* height: 100vh; */
+  /* width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; */
+  /* justify-content: center; */
 }
 
 /* Card Inner Content */
@@ -177,7 +177,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #000 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.4) 100%);
 }
 
 /* ─── Responsive ───────────────────────────────────────────── */
@@ -246,6 +245,10 @@
   .ecosystem-header-content .hero-main-title {
     font-size: 1.4rem;
     line-height: 1.4;
+  }
+  .card-inner {
+    height: auto !important;
+    flex-direction: column !important ;
   }
 
   .card-content {

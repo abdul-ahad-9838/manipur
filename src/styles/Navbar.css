@@ -368,6 +368,7 @@
 .abs-emblem {
   width: 75px;
   height: 75px;
+  padding: 5px;
   object-fit: contain;
   transition: all 0.3s ease;
 }

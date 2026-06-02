@@ -1,34 +1,69 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import API from '@/lib/api';
-import '@/styles/Accreditations.css';
+import React, { useState, useEffect } from "react";
+import API from "@/lib/api";
+import "@/styles/Accreditations.css";
+import Image from "next/image";
 
 const DEFAULT_RECOGNITIONS = [
-  { name: 'All India Council for Technical Education', short: 'AICTE', logo: '', desc: 'Statutory body under Ministry of Education, Govt. of India', color: '#1a3a6b' },
-  { name: 'Association of Indian Universities',        short: 'AIU',   logo: '', desc: 'Premier body of universities in India since 1925',           color: '#8b1a1a' },
-  { name: 'University Grants Commission',              short: 'UGC',   logo: '', desc: 'Recognized under Section 2(f) & 22 of UGC Act, 1956',        color: '#1a5c1a' },
+  {
+    name: "All India Council for Technical Education",
+    short: "AICTE",
+    logo: "",
+    desc: "Statutory body under Ministry of Education, Govt. of India",
+    color: "#1a3a6b",
+  },
+  {
+    name: "Association of Indian Universities",
+    short: "AIU",
+    logo: "",
+    desc: "Premier body of universities in India since 1925",
+    color: "#8b1a1a",
+  },
+  {
+    name: "University Grants Commission",
+    short: "UGC",
+    logo: "",
+    desc: "Recognized under Section 2(f) & 22 of UGC Act, 1956",
+    color: "#1a5c1a",
+  },
 ];
 
 const Accreditations = () => {
   const [recognitions, setRecognitions] = useState(DEFAULT_RECOGNITIONS);
-  const [header, setHeader] = useState({ badge: 'AFFILIATIONS & ACCREDITATION', title: 'Recognized by Leading Education Bodies', desc: 'MIU holds prestigious recognitions from top national councils. These affiliations validate our commitment to academic excellence, quality education, and adherence to global university standards, ensuring your degree is valued worldwide.' });
+  const [header, setHeader] = useState({
+    badge: "AFFILIATIONS & ACCREDITATION",
+    title: "Recognized by Leading Education Bodies",
+    desc: "MIU holds prestigious recognitions from top national councils. These affiliations validate our commitment to academic excellence, quality education, and adherence to global university standards, ensuring your degree is valued worldwide.",
+  });
 
   useEffect(() => {
-    API.get('/settings/recognitions')
+    API.get("/settings/recognitions")
       .then(({ data }) => {
         if (data?.content?.items?.length) setRecognitions(data.content.items);
-        if (data?.content?.header) setHeader(prev => ({ ...prev, ...data.content.header }));
+        if (data?.content?.header)
+          setHeader((prev) => ({ ...prev, ...data.content.header }));
       })
       .catch(() => {});
   }, []);
   return (
     <section className="accreditations-section">
-
       {/* Header */}
       <div className="acc-header-block container">
         <div className="acc-header-left">
-          <span style={{ display: 'inline-block', color: 'var(--lpu-orange)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px' }}>{header.badge}</span>
+          <span
+            style={{
+              display: "inline-block",
+              color: "var(--lpu-orange)",
+              fontWeight: "700",
+              fontSize: "0.85rem",
+              textTransform: "uppercase",
+              letterSpacing: "2px",
+              marginBottom: "10px",
+            }}
+          >
+            {header.badge}
+          </span>
           <h2 className="acc-main-title">{header.title}</h2>
         </div>
         <div className="acc-header-right">
@@ -39,26 +74,44 @@ const Accreditations = () => {
       {/* Static Cards */}
       <div className="acc-cards-row container">
         {recognitions.map((item, i) => (
-          <div key={i} className="acc-card" style={{ borderTopColor: item.color }}>
+          <div
+            key={i}
+            className="acc-card"
+            style={{ borderTopColor: item.color }}
+          >
             <div className="acc-card-logo-box">
               {item.logo ? (
-                <img src={item.logo} alt={item.short} className="acc-card-logo" onError={e => e.target.style.display='none'} />
+                <div className="acc-logo-wrapper">
+                  <Image
+                    src={item.logo}
+                    alt={item.name}
+                    fill
+                    className="acc-logo-img"
+                  />
+                </div>
               ) : (
-                <div className="acc-logo-badge" style={{ background: item.color }}>
+                <div
+                  className="acc-logo-badge"
+                  style={{ background: item.color }}
+                >
                   <span>{item.short}</span>
                 </div>
               )}
             </div>
-            <div className="acc-card-divider" style={{ background: item.color }} />
+            <div
+              className="acc-card-divider"
+              style={{ background: item.color }}
+            />
             <div className="acc-card-body">
-              <span className="acc-card-short" style={{ color: item.color }}>{item.short}</span>
+              <span className="acc-card-short" style={{ color: item.color }}>
+                {item.short}
+              </span>
               <p className="acc-card-name">{item.name}</p>
               <p className="acc-card-desc">{item.desc}</p>
             </div>
           </div>
         ))}
       </div>
-
     </section>
   );
 };

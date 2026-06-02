@@ -1,13 +1,14 @@
-import React from "react";
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
-import Programs from "@/components/Programs";
-import Accreditations from "@/components/Accreditations";
-import Spotlight from "@/components/Spotlight";
-import CampusLife from "@/components/CampusLife";
-import Placements from "@/components/Placements";
-import Ecosystem from "@/components/Ecosystem";
-import NewsSlider from "@/components/NewsSlider";
 import StructuredData from "@/components/StructuredData";
+
+const Programs = dynamic(() => import("@/components/Programs"));
+const Accreditations = dynamic(() => import("@/components/Accreditations"));
+const Spotlight = dynamic(() => import("@/components/Spotlight"));
+const CampusLife = dynamic(() => import("@/components/CampusLife"));
+const Placements = dynamic(() => import("@/components/Placements"));
+const Ecosystem = dynamic(() => import("@/components/Ecosystem"));
+const NewsSlider = dynamic(() => import("@/components/NewsSlider"));
 
 export const metadata = {
   title: "Manipur International University | MIU Imphal — UGC Recognised",
@@ -30,18 +31,20 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <StructuredData />
-        <Hero />
-        <Accreditations />
-        <Spotlight />
-        <Programs />
-        <CampusLife />
-        <Placements />
-        <Ecosystem />
-        <NewsSlider />
-      </main>
-    </>
+    <main>
+      <StructuredData />
+
+      {/* Above the fold */}
+      <Hero />
+
+      {/* Lazy loaded */}
+      <Accreditations />
+      <Spotlight />
+      <Programs />
+      <CampusLife />
+      <Placements />
+      <Ecosystem />
+      <NewsSlider />
+    </main>
   );
 }
