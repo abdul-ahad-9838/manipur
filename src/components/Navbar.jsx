@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEnquiry } from "@/context/EnquiryContext";
 import "@/styles/Navbar.css";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DEFAULT_SCHOOLS = [
   { name: "School Of Commerce", slug: "school-of-commerce" },
@@ -98,10 +97,10 @@ const MobileSubAccordion = ({ label, subItems, onClose }) => {
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
   const [schools, setSchools] = useState(DEFAULT_SCHOOLS);
   const [activePages, setActivePages] = useState(new Set());
-  const { openEnquiry } = useEnquiry();
+  // const { openEnquiry } = useEnquiry();
   const pathname = usePathname();
   const isLandingPage = pathname === "/";
 
@@ -154,12 +153,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 1024);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
+  // useEffect(() => {
+  //   const check = () => setIsMobile(window.innerWidth <= 1024);
+  //   check();
+  //   window.addEventListener("resize", check);
+  //   return () => window.removeEventListener("resize", check);
+  // }, []);
 
   // Lock scroll when menu is open
   useEffect(() => {
@@ -407,11 +406,11 @@ const Navbar = () => {
                           Vice Chancellor
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href="/about/leadership/pro-vice-chancellor">
                           Pro Vice Chancellor
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link href="/about/leadership/registrar">
                           Registrar
@@ -422,11 +421,11 @@ const Navbar = () => {
                           Director of Admissions
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href="/about/leadership/controller-of-examinations">
                           Controller of Examinations
                         </Link>
-                      </li>
+                      </li> */}
                     </ul>
                   </li>
                   {isPageActive("/about/affiliations-accreditation") && (

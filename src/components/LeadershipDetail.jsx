@@ -359,6 +359,8 @@ export default function LeadershipDetail({ slug }) {
   const [leader, setLeader] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // console.log(leader);
+
   useEffect(() => {
     const fetchLeader = async () => {
       try {
