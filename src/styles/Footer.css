@@ -117,6 +117,23 @@
   color: white;
 }
 
+/* Youtube - Red */
+.social-icon:nth-child(5) {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.1),
+    rgba(255, 0, 0, 0.1),
+    rgba(255, 0, 0, 0.1)
+  );
+  border-color: rgba(255, 0, 0, 0.3);
+}
+
+.social-icon:nth-child(5):hover {
+  background: linear-gradient(45deg, #ff0000, #ff0000, #ff0000);
+  border-color: #ff0000;
+  color: white;
+}
+
 .footer-heading {
   color: white;
   font-family: var(--font-heading);

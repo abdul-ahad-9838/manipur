@@ -31,7 +31,6 @@ const Hero = () => {
   useEffect(() => {
     API.get("/settings/hero")
       .then(({ data }) => {
-        console.log("Hero data:", data);
         if (data?.content) setHeroData(data.content);
       })
       .catch(() => {});

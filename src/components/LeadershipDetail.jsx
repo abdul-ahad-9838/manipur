@@ -359,8 +359,6 @@ export default function LeadershipDetail({ slug }) {
   const [leader, setLeader] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // console.log(leader);
-
   useEffect(() => {
     const fetchLeader = async () => {
       try {
@@ -368,7 +366,7 @@ export default function LeadershipDetail({ slug }) {
 
         const res = await API(`/about/${slug}`);
 
-        console.log(res);
+        console.log("Leader data:", res);
 
         if (!res.status === 200) {
           throw new Error("Failed to fetch leader");
@@ -379,8 +377,8 @@ export default function LeadershipDetail({ slug }) {
         console.error("Error fetching leader:", error);
 
         // fallback to local data
-        const defaultLeader = LEADERS_DATA.find((l) => l.slug === slug);
-        setLeader(defaultLeader || null);
+        // const defaultLeader = LEADERS_DATA.find((l) => l.slug === slug);
+        // setLeader(defaultLeader || null);
       } finally {
         setLoading(false);
       }
@@ -492,7 +490,6 @@ export default function LeadershipDetail({ slug }) {
                     alignItems: "center",
                   }}
                 >
-                  {console.log(leader)}
                   {leader.name && (
                     <p
                       style={{
