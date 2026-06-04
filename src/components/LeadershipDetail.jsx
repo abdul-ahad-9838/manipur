@@ -366,8 +366,6 @@ export default function LeadershipDetail({ slug }) {
 
         const res = await API(`/about/${slug}`);
 
-        console.log("Leader data:", res);
-
         if (!res.status === 200) {
           throw new Error("Failed to fetch leader");
         }

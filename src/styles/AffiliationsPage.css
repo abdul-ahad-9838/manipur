@@ -153,6 +153,10 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   border-top: 5px solid var(--card-color, var(--lpu-orange));
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  jsustify-content: space-between;
+  gap: 20px;
 }
 
 .aff-card:hover {
@@ -222,6 +226,17 @@
   font-weight: 700;
   color: var(--lpu-black);
   line-height: 1.4;
+}
+
+.aff-card-btn {
+  margin-top: auto;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .aff-card-desc {
@@ -298,6 +313,7 @@
   font-family: var(--font-body);
   font-weight: 400;
   text-transform: none;
+  text-align: justify !important;
 }
 
 /* CTA */

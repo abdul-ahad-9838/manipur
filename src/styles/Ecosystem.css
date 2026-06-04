@@ -128,6 +128,7 @@
   line-height: 1.6;
   margin-bottom: 40px;
   max-width: 500px;
+  text-align: justify;
 }
 
 .btn-explore {
@@ -262,6 +263,7 @@
   .card-content p {
     font-size: 0.95rem;
     margin-bottom: 25px;
+    text-align: justify;
   }
 
   .card-image-box {

@@ -12,8 +12,8 @@ const DEFAULT_RECOGNITIONS = [
     logo: "",
     desc: "Statutory body under Ministry of Education, Govt. of India",
     color: "#1a3a6b",
-    details:
-      "AICTE approval ensures that our technical programs meet national standards and are recognized across India.",
+    // details:
+    //   "AICTE approval ensures that our technical programs meet national standards and are recognized across India.",
   },
   {
     name: "Association of Indian Universities",
@@ -21,8 +21,8 @@ const DEFAULT_RECOGNITIONS = [
     logo: "",
     desc: "Premier body of universities in India since 1925",
     color: "#8b1a1a",
-    details:
-      "AIU membership facilitates academic collaboration and recognition of our degrees nationwide.",
+    // details:
+    //   "AIU membership facilitates academic collaboration and recognition of our degrees nationwide.",
   },
   {
     name: "University Grants Commission",
@@ -30,8 +30,8 @@ const DEFAULT_RECOGNITIONS = [
     logo: "",
     desc: "Recognized under Section 2(f) & 22 of UGC Act, 1956",
     color: "#1a5c1a",
-    details:
-      "UGC recognition validates MIU as a legitimate degree-granting institution whose qualifications are recognized across India and internationally.",
+    // details:
+    //   "UGC recognition validates MIU as a legitimate degree-granting institution whose qualifications are recognized across India and internationally.",
   },
 ];
 
@@ -105,38 +105,54 @@ export default function AffiliationsAccreditationPage() {
                   className="aff-card"
                   style={{ "--card-color": item.color }}
                 >
-                  <div className="aff-card-header">
-                    <div className="aff-card-logo-box">
-                      {item.logo ? (
-                        <img
-                          src={item.logo}
-                          alt={item.short}
-                          className="aff-card-logo"
-                          onError={(e) => (e.target.style.display = "none")}
-                        />
-                      ) : (
-                        <div
-                          className="aff-logo-badge"
-                          style={{ background: item.color }}
-                        >
-                          <span>{item.short}</span>
-                        </div>
+                  <div>
+                    <div className="aff-card-header">
+                      <div className="aff-card-logo-box">
+                        {item.logo ? (
+                          <img
+                            src={item.logo}
+                            alt={item.short}
+                            className="aff-card-logo"
+                            onError={(e) => (e.target.style.display = "none")}
+                          />
+                        ) : (
+                          <div
+                            className="aff-logo-badge"
+                            style={{ background: item.color }}
+                          >
+                            <span>{item.short}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="aff-card-body">
+                      <h3
+                        className="aff-card-short"
+                        style={{ color: item.color }}
+                      >
+                        {item.short}
+                      </h3>
+                      <p className="aff-card-name">{item.name}</p>
+                      <p className="aff-card-desc">{item.desc}</p>
+                      {item.details && (
+                        <p className="aff-card-details">{item.details}</p>
                       )}
                     </div>
                   </div>
-                  <div className="aff-card-body">
-                    <h3
-                      className="aff-card-short"
-                      style={{ color: item.color }}
+                  {item.short !== "AICTE" ? (
+                    <button
+                      className="aff-card-btn"
+                      style={{ background: item.color }}
                     >
-                      {item.short}
-                    </h3>
-                    <p className="aff-card-name">{item.name}</p>
-                    <p className="aff-card-desc">{item.desc}</p>
-                    {item.details && (
-                      <p className="aff-card-details">{item.details}</p>
-                    )}
-                  </div>
+                      View Details
+                    </button>
+                  ) : (
+                    <p className="aff-card-details">
+                      A university is exempt from AICTE approval because it is
+                      regulated by the UGC, while AICTE approval is primarily
+                      required for technical colleges and institutions.
+                    </p>
+                  )}
                 </div>
               ))}
             </div>

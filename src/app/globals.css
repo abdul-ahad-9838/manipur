@@ -28,7 +28,8 @@ body {
 }
 
 /* Prevent horizontal overflow globally */
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100vw;
 }
@@ -41,10 +42,16 @@ html, body {
 * {
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  text-align: justify !important;
 }
 
 /* Headings - proper alignment and spacing */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   word-spacing: normal !important;
   letter-spacing: normal !important;
   text-transform: none !important;
@@ -110,7 +117,8 @@ a {
 }
 
 /* Lists - proper spacing */
-ul, ol {
+ul,
+ol {
   word-spacing: normal !important;
   letter-spacing: normal !important;
   line-height: 1.7 !important;
@@ -158,7 +166,9 @@ div {
 }
 
 /* Badges and labels - allow uppercase but fix spacing */
-.badge, .section-badge, [class*="badge"] {
+.badge,
+.section-badge,
+[class*="badge"] {
   letter-spacing: 1px !important;
   word-spacing: normal !important;
   text-transform: uppercase !important;
@@ -227,7 +237,9 @@ div {
 }
 
 /* Buttons - allow uppercase but fix spacing */
-button, .btn, [class*="btn"] {
+button,
+.btn,
+[class*="btn"] {
   letter-spacing: 0.5px !important;
   word-spacing: normal !important;
   text-transform: uppercase !important;
@@ -263,6 +275,11 @@ nav a,
 .text-center,
 [class*="center"] {
   text-align: center !important;
+}
+
+.text-justify,
+[class*="justify"] {
+  text-align: justify !important;
 }
 
 /* Prevent awkward text wrapping */

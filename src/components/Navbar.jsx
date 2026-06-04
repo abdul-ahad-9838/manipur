@@ -7,28 +7,29 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const DEFAULT_SCHOOLS = [
-  { name: "School Of Commerce", slug: "school-of-commerce" },
+  { label: "School Of Commerce", slug: "school-of-commerce" },
   {
-    name: "School Of Information Technology",
+    label: "School Of Information Technology",
     slug: "school-of-information-technology",
   },
-  { name: "School Of Engineering", slug: "school-of-engineering" },
-  { name: "School Of Management", slug: "school-of-management" },
-  { name: "School Of Science", slug: "school-of-science" },
+  { label: "School Of Engineering", slug: "school-of-engineering" },
+  { label: "School Of Management", slug: "school-of-management" },
+  { label: "School Of Science", slug: "school-of-science" },
   {
-    name: "School Of Vocational Studies",
+    label: "School Of Vocational Studies",
     slug: "school-of-vocational-studies",
     externalUrl: "https://vocational.miu.edu.in/",
   },
-  { name: "School Of Humanities", slug: "school-of-humanities" },
+  { label: "School Of Humanities", slug: "school-of-humanities" },
   {
-    name: "School Of Allied Health Science",
+    label: "School Of Allied Health Science",
     slug: "school-of-allied-health-science",
   },
 ];
 
-const MobileAccordion = ({ label, href, items, onClose }) => {
+const MobileAccordion = ({ label, items, onClose }) => {
   const [open, setOpen] = useState(false);
+
   return (
     <li className="mobile-accordion">
       <div
@@ -48,13 +49,13 @@ const MobileAccordion = ({ label, href, items, onClose }) => {
             <li key={i}>
               {item.subItems ? (
                 <MobileSubAccordion
-                  label={item.label}
+                  label={item.label} // ✅ was item.label
                   subItems={item.subItems}
                   onClose={onClose}
                 />
               ) : (
                 <Link href={item.href} onClick={onClose}>
-                  {item.label}
+                  {item.label} {/* ✅ was item.label */}
                 </Link>
               )}
             </li>
@@ -65,26 +66,28 @@ const MobileAccordion = ({ label, href, items, onClose }) => {
   );
 };
 
-const MobileSubAccordion = ({ label, subItems, onClose }) => {
+const MobileSubAccordion = ({ label, subItems = [], onClose }) => {
   const [open, setOpen] = useState(false);
+
   return (
     <div className="mobile-sub-accordion">
       <div
-        className="mobile-accordion-header"
         onClick={() => setOpen((o) => !o)}
-        // style={{ paddingLeft: "20px" }}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
       >
-        <span className="mobile-accordion-label">{label}</span>
-        <span className={`mobile-accordion-arrow ${open ? "open" : ""}`}>
-          ›
-        </span>
+        <span className="mobile-accordion-sub-label">{label}</span>
+        <span className="mobile-accordion-arrow">›</span>
       </div>
       {open && (
         <ul className="mobile-accordion-list">
           {subItems.map((item, i) => (
             <li key={i}>
               <Link href={item.href} onClick={onClose}>
-                {item.label}
+                {item.label} {/* ✅ already correct */}
               </Link>
             </li>
           ))}
@@ -179,34 +182,51 @@ const Navbar = () => {
 
   // Filter menu items based on active status
   const aboutItems = [
-    { label: "Overview", href: "/about" },
-    { label: "Governing Body", href: "/about/governance" },
-    { label: "Academic Council", href: "/about/academic-council" },
-    { label: "IQAC", href: "/about/iqac" },
-    { label: "Chancellor", href: "/about/leadership/chancellor" },
-    { label: "Vice Chancellor", href: "/about/leadership/vice-chancellor" },
     {
-      label: "Pro Vice Chancellor",
-      href: "/about/leadership/pro-vice-chancellor",
+      label: "about",
+      // href: "/about",
+      subItems: [
+        { label: "Overview", href: "/about" },
+        { label: "Governing Body", href: "/about/governance" },
+        { label: "Academic Council", href: "/about/academic-council" },
+        { label: "IQAC", href: "/about/iqac" },
+        {
+          label: "leadership",
+          // href: "/about/leadership",
+          subItems: [
+            { label: "Chancellor", href: "/about/leadership/chancellor" },
+            {
+              label: "Vice Chancellor",
+              href: "/about/leadership/vice-chancellor",
+            },
+            {
+              label: "Pro Vice Chancellor",
+              href: "/about/leadership/pro-vice-chancellor",
+            },
+            { label: "Registrar", href: "/about/leadership/registrar" },
+            {
+              label: "Director of Admissions",
+              href: "/about/leadership/director-admissions",
+            },
+            {
+              label: "Controller of Examinations",
+              href: "/about/leadership/controller-of-examinations",
+            },
+          ],
+        },
+        {
+          label: "Affiliations & Accreditation",
+          href: "/about/affiliations-accreditation",
+        },
+        {
+          label: "Public Self Disclosure",
+          href: "/about/public-self-disclosure",
+        },
+        { label: "UGC Performa", href: "/about/ugc-performance" },
+      ],
     },
-    { label: "Registrar", href: "/about/leadership/registrar" },
-    {
-      label: "Director of Admissions",
-      href: "/about/leadership/director-admissions",
-    },
-    {
-      label: "Controller of Examinations",
-      href: "/about/leadership/controller-of-examinations",
-    },
-    {
-      label: "Affiliations & Accreditation",
-      href: "/about/affiliations-accreditation",
-    },
-    { label: "Public Self Disclosure", href: "/about/public-self-disclosure" },
-    { label: "UGC Performa", href: "/about/ugc-performance" },
-  ].filter((item) => isPageActive(item.href));
-
-  const academicsItems = [].filter((item) => isPageActive(item.href));
+  ];
+  // const academicsItems = [].filter((item) => isPageActive(item.href));
 
   const admissionsItems = [
     { label: "Admission Process", href: "/admissions/process" },
@@ -217,8 +237,7 @@ const Navbar = () => {
     { label: "Reservation Roster", href: "/reservation-roster" },
     { label: "Refund Policy", href: "/refund-policy" },
     { label: "Privacy Policy", href: "/privacy-policy" },
-  ].filter((item) => isPageActive(item.href));
-
+  ];
   const studentLifeItems = [
     { label: "Sports", href: "/student-life/sports" },
     { label: "Hostel", href: "/student-life/hostel" },
@@ -245,15 +264,13 @@ const Navbar = () => {
       href: "/student-life/constituent-colleges",
     },
     { label: "Health Facilities", href: "/student-life/health-facilities" },
-  ].filter((item) => isPageActive(item.href));
-
-  const researchItems = [
-    { label: "Research Overview", href: "/research/overview" },
-    { label: "Publications", href: "/research/publications" },
-    { label: "Research Projects", href: "/research/projects" },
-    { label: "R&D Cell", href: "/research/development-cell" },
-  ].filter((item) => isPageActive(item.href));
-
+  ];
+  // const researchItems = [
+  //   { label: "Research Overview", href: "/research/overview" },
+  //   { label: "Publications", href: "/research/publications" },
+  //   { label: "Research Projects", href: "/research/projects" },
+  //   { label: "R&D Cell", href: "/research/development-cell" },
+  // ];
   return (
     <header
       className={`lpu-header ${!isLandingPage ? "other-page-header" : ""}`}
@@ -263,6 +280,9 @@ const Navbar = () => {
           <div className="strip-left"></div>
           <div className="strip-right">
             <ul className="top-links">
+              <li>
+                <Link href="/blogs">BLOGS</Link>
+              </li>
               <li>
                 <Link href="/news-events">HAPPENINGS</Link>
               </li>
@@ -416,16 +436,16 @@ const Navbar = () => {
                           Registrar
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href="/about/leadership/director-admissions">
                           Director of Admissions
                         </Link>
-                      </li>
-                      {/* <li>
+                      </li> */}
+                      <li>
                         <Link href="/about/leadership/controller-of-examinations">
                           Controller of Examinations
                         </Link>
-                      </li> */}
+                      </li>
                     </ul>
                   </li>
                   {isPageActive("/about/affiliations-accreditation") && (
@@ -681,9 +701,8 @@ const Navbar = () => {
 
             <MobileAccordion
               label="ABOUT US"
-              href="/about"
               onClose={() => setIsMenuOpen(false)}
-              items={aboutItems}
+              items={aboutItems[0].subItems}
             />
 
             <MobileAccordion

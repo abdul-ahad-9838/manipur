@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
+// import Stats from "@/components/Stats";
 
+const Stats = dynamic(() => import("@/components/Stats"));
 const Programs = dynamic(() => import("@/components/Programs"));
 const Accreditations = dynamic(() => import("@/components/Accreditations"));
 const Spotlight = dynamic(() => import("@/components/Spotlight"));
@@ -40,7 +42,8 @@ export default function Home() {
       {/* Lazy loaded */}
       <Accreditations />
       <Spotlight />
-      <Programs />
+      <Stats />
+      {/* <Programs /> */}
       <CampusLife />
       <Placements />
       <Ecosystem />

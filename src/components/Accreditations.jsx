@@ -46,6 +46,7 @@ const Accreditations = () => {
       })
       .catch(() => {});
   }, []);
+
   return (
     <section className="accreditations-section">
       {/* Header */}
@@ -73,44 +74,46 @@ const Accreditations = () => {
 
       {/* Static Cards */}
       <div className="acc-cards-row container">
-        {recognitions.map((item, i) => (
-          <div
-            key={i}
-            className="acc-card"
-            style={{ borderTopColor: item.color }}
-          >
-            <div className="acc-card-logo-box">
-              {item.logo ? (
-                <div className="acc-logo-wrapper">
-                  <Image
-                    src={item.logo}
-                    alt={item.name}
-                    fill
-                    className="acc-logo-img"
-                  />
-                </div>
-              ) : (
-                <div
-                  className="acc-logo-badge"
-                  style={{ background: item.color }}
-                >
-                  <span>{item.short}</span>
-                </div>
-              )}
-            </div>
+        {recognitions
+          .filter((item) => item.short != "AICTE")
+          .map((item, i) => (
             <div
-              className="acc-card-divider"
-              style={{ background: item.color }}
-            />
-            <div className="acc-card-body">
-              <span className="acc-card-short" style={{ color: item.color }}>
-                {item.short}
-              </span>
-              <p className="acc-card-name">{item.name}</p>
-              <p className="acc-card-desc">{item.desc}</p>
+              key={i}
+              className="acc-card"
+              style={{ borderTopColor: item.color }}
+            >
+              <div className="acc-card-logo-box">
+                {item.logo ? (
+                  <div className="acc-logo-wrapper">
+                    <Image
+                      src={item.logo}
+                      alt={item.name}
+                      fill
+                      className="acc-logo-img"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="acc-logo-badge"
+                    style={{ background: item.color }}
+                  >
+                    <span>{item.short}</span>
+                  </div>
+                )}
+              </div>
+              <div
+                className="acc-card-divider"
+                style={{ background: item.color }}
+              />
+              <div className="acc-card-body">
+                <span className="acc-card-short" style={{ color: item.color }}>
+                  {item.short}
+                </span>
+                <p className="acc-card-name">{item.name}</p>
+                <p className="acc-card-desc">{item.desc}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </section>
   );

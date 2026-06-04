@@ -1406,7 +1406,6 @@ export default function ContentManager() {
   }, [user]);
 
   const save = async (type, content) => {
-    console.log(content);
     setSaving(true);
     setMsg("");
     try {

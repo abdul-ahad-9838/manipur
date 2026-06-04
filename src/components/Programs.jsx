@@ -133,14 +133,14 @@ const Programs = () => {
                       rel="noopener noreferrer"
                       className="program-read-more"
                     >
-                      Read More →
+                      Read More
                     </a>
                   ) : (
                     <Link
                       href={`/schools/${school.slug}`}
                       className="program-read-more"
                     >
-                      Read More →
+                      Read More
                     </Link>
                   )}
                 </div>
