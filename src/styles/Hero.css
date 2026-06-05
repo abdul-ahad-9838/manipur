@@ -164,6 +164,10 @@
   .hero-typography {
     max-width: 100%;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-main-title {
@@ -177,7 +181,6 @@
     font-size: 0.95rem;
     margin-bottom: 20px;
     max-width: 100%;
-    text-align: left;
   }
 
   .hero-buttons {

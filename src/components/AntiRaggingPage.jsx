@@ -1,15 +1,30 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import '@/styles/AntiRaggingPage.css';
+import React from "react";
+import Link from "next/link";
+import "@/styles/AntiRaggingPage.css";
 
 export default function AntiRaggingPage() {
   const helplines = [
-    { icon: '📞', title: 'UGC Anti-Ragging Helpline', desc: '1800-180-5522 (Toll Free, 24×7)', color: 'red' },
-    { icon: '📞', title: 'MIU Anti-Ragging Helpline', desc: '+91 9319727766', color: 'orange' },
-    { icon: '✉️', title: 'Email', desc: 'admission@miu.edu.in', color: 'blue' },
-    { icon: '🌐', title: 'Online Portal', desc: 'www.antiragging.in', color: 'green' },
+    {
+      icon: "📞",
+      title: "UGC Anti-Ragging Helpline",
+      desc: "1800-180-5522 (Toll Free, 24×7)",
+      color: "red",
+    },
+    {
+      icon: "📞",
+      title: "MIU Anti-Ragging Helpline",
+      desc: "+91 9319727766",
+      color: "orange",
+    },
+    { icon: "✉️", title: "Email", desc: "support@miu.edu.in", color: "blue" },
+    {
+      icon: "🌐",
+      title: "Online Portal",
+      desc: "www.antiragging.in",
+      color: "green",
+    },
   ];
 
   return (
@@ -36,22 +51,36 @@ export default function AntiRaggingPage() {
           <div className="ar-commitment-card">
             <span className="ar-commitment-icon">🛡️</span>
             <h2>Our Commitment</h2>
-            <p>Manipur International University is firmly committed to providing a ragging-free campus. Ragging in any form — physical, verbal, psychological, or cyber — is strictly prohibited.</p>
+            <p>
+              Manipur International University is firmly committed to providing
+              a ragging-free campus. Ragging in any form — physical, verbal,
+              psychological, or cyber — is strictly prohibited.
+            </p>
           </div>
 
           <div className="ar-consequences-card">
             <span className="ar-consequences-icon">⚠️</span>
             <h2>Consequences</h2>
-            <p>Students found guilty of ragging face severe consequences including suspension, expulsion, withholding of results, and criminal prosecution as per the law.</p>
+            <p>
+              Students found guilty of ragging face severe consequences
+              including suspension, expulsion, withholding of results, and
+              criminal prosecution as per the law.
+            </p>
           </div>
 
           <div className="ar-report-section">
             <h2 className="ar-section-title">Report Ragging</h2>
-            <p className="ar-section-subtitle">If you witness or experience ragging, report immediately through any of these channels:</p>
-            
+            <p className="ar-section-subtitle">
+              If you witness or experience ragging, report immediately through
+              any of these channels:
+            </p>
+
             <div className="ar-helplines-grid">
               {helplines.map((helpline, idx) => (
-                <div key={idx} className={`ar-helpline-card ar-${helpline.color}`}>
+                <div
+                  key={idx}
+                  className={`ar-helpline-card ar-${helpline.color}`}
+                >
                   <div className="ar-helpline-icon-wrapper">
                     <span className="ar-helpline-icon">{helpline.icon}</span>
                   </div>

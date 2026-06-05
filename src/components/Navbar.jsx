@@ -259,10 +259,10 @@ const Navbar = () => {
     },
     { label: "SEDG Cell", href: "/student-life/sedg-cell" },
     { label: "Awards", href: "/student-life/awards" },
-    {
-      label: "Constituent Colleges",
-      href: "/student-life/constituent-colleges",
-    },
+    // {
+    //   label: "Constituent Colleges",
+    //   href: "/student-life/constituent-colleges",
+    // },
     { label: "Health Facilities", href: "/student-life/health-facilities" },
   ];
   // const researchItems = [
@@ -641,13 +641,13 @@ const Navbar = () => {
                       <Link href="/student-life/awards">Awards</Link>
                     </li>
                   )}
-                  {isPageActive("/student-life/constituent-colleges") && (
+                  {/* {isPageActive("/student-life/constituent-colleges") && (
                     <li>
                       <Link href="/student-life/constituent-colleges">
                         Constituent Colleges
                       </Link>
                     </li>
-                  )}
+                  )} */}
                   {isPageActive("/student-life/health-facilities") && (
                     <li>
                       <Link href="/student-life/health-facilities">
