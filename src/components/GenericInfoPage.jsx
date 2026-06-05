@@ -39,7 +39,6 @@ export default function GenericInfoPage({
 
       {/* Body */}
       <div className="generic-body">
-        {console.log(sections)}
         <div className="container">
           <div className="generic-content-card">
             {sections.map((section, index) => (
