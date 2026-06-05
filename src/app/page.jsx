@@ -40,7 +40,7 @@ export default function Home() {
       <Hero />
 
       {/* Lazy loaded */}
-      <Accreditations />
+      {/* <Accreditations /> */}
       <Spotlight />
       <Stats />
       {/* <Programs /> */}

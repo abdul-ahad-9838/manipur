@@ -10,6 +10,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { EnquiryProvider } from "@/context/EnquiryContext";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import StudentLoginButton from "./StudentLoginButton";
 
 export default function ClientShell({ children }) {
   const [mounted, setMounted] = useState(false);
@@ -53,6 +54,7 @@ export default function ClientShell({ children }) {
           {/* <AdvisoryPopup /> */}
           <Navbar />
           <WhatsAppButton />
+          <StudentLoginButton />
           <EnquiryPopup />
           <main>{children}</main>
           <Footer />

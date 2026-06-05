@@ -754,8 +754,8 @@ const Navbar = () => {
             <Link href="/news-events" onClick={() => setIsMenuOpen(false)}>
               HAPPENINGS
             </Link>
-            <Link href="/blog" onClick={() => setIsMenuOpen(false)}>
-              BLOG
+            <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
+              BLOGS
             </Link>
             <a
               href="https://student.miu.edu.in"
