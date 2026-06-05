@@ -264,7 +264,7 @@
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  text-align: left;
+  /* text-align: left; */
 }
 
 .hostel-feature-icon {

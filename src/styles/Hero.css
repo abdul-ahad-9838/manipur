@@ -163,7 +163,7 @@
 
   .hero-typography {
     max-width: 100%;
-    text-align: left;
+    /* text-align: left; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -174,7 +174,7 @@
     font-size: 2.8rem;
     line-height: 1;
     margin-bottom: 15px;
-    text-align: left;
+    /* text-align: left; */
   }
 
   .hero-subtext {

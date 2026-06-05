@@ -6,28 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const DEFAULT_SCHOOLS = [
-  { label: "School Of Commerce", slug: "school-of-commerce" },
-  {
-    label: "School Of Information Technology",
-    slug: "school-of-information-technology",
-  },
-  { label: "School Of Engineering", slug: "school-of-engineering" },
-  { label: "School Of Management", slug: "school-of-management" },
-  { label: "School Of Science", slug: "school-of-science" },
-  {
-    label: "School Of Vocational Studies",
-    slug: "school-of-vocational-studies",
-    externalUrl: "https://vocational.miu.edu.in/",
-  },
-  { label: "School Of Humanities", slug: "school-of-humanities" },
-  {
-    label: "School Of Allied Health Science",
-    slug: "school-of-allied-health-science",
-  },
-];
-
-const MobileAccordion = ({ label, items, onClose }) => {
+const MobileAccordion = ({ label, items = [], onClose }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -43,19 +22,20 @@ const MobileAccordion = ({ label, items, onClose }) => {
           </span>
         </div>
       </div>
+
       {open && (
         <ul className="mobile-accordion-list">
           {items.map((item, i) => (
             <li key={i}>
               {item.subItems ? (
                 <MobileSubAccordion
-                  label={item.label} // ✅ was item.label
+                  label={item.label}
                   subItems={item.subItems}
                   onClose={onClose}
                 />
               ) : (
                 <Link href={item.href} onClick={onClose}>
-                  {item.label} {/* ✅ was item.label */}
+                  {item.label}
                 </Link>
               )}
             </li>
@@ -77,18 +57,33 @@ const MobileSubAccordion = ({ label, subItems = [], onClose }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          cursor: "pointer",
         }}
       >
         <span className="mobile-accordion-sub-label">{label}</span>
-        <span className="mobile-accordion-arrow">›</span>
+        <span
+          className={`mobile-accordion-arrow`}
+          style={{ color: "var(--lpu-orange )" }}
+        >
+          ›
+        </span>
       </div>
+
       {open && (
         <ul className="mobile-accordion-list">
           {subItems.map((item, i) => (
             <li key={i}>
-              <Link href={item.href} onClick={onClose}>
-                {item.label} {/* ✅ already correct */}
-              </Link>
+              {item.subItems ? (
+                <MobileSubAccordion
+                  label={item.label}
+                  subItems={item.subItems}
+                  onClose={onClose}
+                />
+              ) : (
+                <Link href={item.href} onClick={onClose}>
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -97,52 +92,35 @@ const MobileSubAccordion = ({ label, subItems = [], onClose }) => {
   );
 };
 
+const renderMenuItem = (item) => {
+  if (item.subItems) {
+    return (
+      <li key={item.label} className="has-submenu">
+        <button className="nav-dropdown-btn nav-submenu-btn">
+          {item.label}
+          <span className="submenu-arrow">›</span>
+        </button>
+
+        <ul className="submenu">
+          {item.subItems.map((subItem) => renderMenuItem(subItem))}
+        </ul>
+      </li>
+    );
+  }
+
+  return (
+    <li key={item.href}>
+      <Link href={item.href}>{item.label}</Link>
+    </li>
+  );
+};
+
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const [isMobile, setIsMobile] = useState(false);
-  const [schools, setSchools] = useState(DEFAULT_SCHOOLS);
-  const [activePages, setActivePages] = useState(new Set());
-  // const { openEnquiry } = useEnquiry();
+
   const pathname = usePathname();
   const isLandingPage = pathname === "/";
-
-  // Load active pages from DB
-  useEffect(() => {
-    fetch("/api/pages")
-      .then((r) => r.json())
-      .then((data) => {
-        const activePaths = new Set(
-          data
-            .filter((page) => page.isActive !== false)
-            .map((page) => page.path),
-        );
-        setActivePages(activePaths);
-      })
-      .catch(() => {});
-  }, []);
-
-  // Load schools from DB
-  useEffect(() => {
-    fetch("/api/settings/schools-section")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data?.content?.schools?.length) {
-          const dbSchools = data.content.schools.map((s) => ({
-            ...s,
-            externalUrl:
-              s.slug === "school-of-vocational-studies"
-                ? "https://vocational.miu.edu.in/"
-                : s.externalUrl || null,
-          }));
-          // Merge: add any DEFAULT_SCHOOLS entries not already in DB list
-          const dbSlugs = new Set(dbSchools.map((s) => s.slug));
-          const missing = DEFAULT_SCHOOLS.filter((s) => !dbSlugs.has(s.slug));
-          setSchools([...dbSchools, ...missing]);
-        }
-      })
-      .catch(() => {});
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -156,13 +134,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // useEffect(() => {
-  //   const check = () => setIsMobile(window.innerWidth <= 1024);
-  //   check();
-  //   window.addEventListener("resize", check);
-  //   return () => window.removeEventListener("resize", check);
-  // }, []);
-
   // Lock scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
@@ -172,46 +143,65 @@ const Navbar = () => {
     }
   }, [isMenuOpen]);
 
-  // Helper function to check if page is active (show all if no pages loaded yet)
-  const isPageActive = (path) => {
-    // Always show the affiliations page
-    if (path === "/about/affiliations-accreditation") return true;
-    if (activePages.size === 0) return true; // Show all if not loaded yet
-    return activePages.has(path);
-  };
-
   // Filter menu items based on active status
-  const aboutItems = [
+  const navbarItems = [
+    { label: "Home", href: "/" },
     {
-      label: "about",
-      // href: "/about",
+      label: "about us",
       subItems: [
         { label: "Overview", href: "/about" },
         { label: "Governing Body", href: "/about/governance" },
         { label: "Academic Council", href: "/about/academic-council" },
         { label: "IQAC", href: "/about/iqac" },
         {
-          label: "leadership",
-          // href: "/about/leadership",
+          label: "Leadership",
           subItems: [
             { label: "Chancellor", href: "/about/leadership/chancellor" },
             {
               label: "Vice Chancellor",
               href: "/about/leadership/vice-chancellor",
             },
-            {
-              label: "Pro Vice Chancellor",
-              href: "/about/leadership/pro-vice-chancellor",
-            },
             { label: "Registrar", href: "/about/leadership/registrar" },
-            {
-              label: "Director of Admissions",
-              href: "/about/leadership/director-admissions",
-            },
             {
               label: "Controller of Examinations",
               href: "/about/leadership/controller-of-examinations",
             },
+          ],
+        },
+        {
+          label: "Committees",
+          subItems: [
+            // { label: "Sports", href: "/student-life/sports" },
+            // { label: "Hostel", href: "/student-life/hostel" },
+            // { label: "NCC/NSS", href: "/student-life/ncc-nss" },
+            {
+              label: "Internal Complaints Committee",
+              href: "/student-life/icc",
+            },
+            // { label: "Anti-Ragging Cell", href: "/student-life/anti-ragging" },
+            // {
+            //   label: "Incubation Center",
+            //   href: "/student-life/incubation-center",
+            // },
+            // { label: "CPIO", href: "/student-life/cpio" },
+            // { label: "Grievance Cell", href: "/student-life/grievance-cell" },
+            {
+              label: "Equal Opportunity Cell",
+              href: "/student-life/equal-opportunity-cell",
+            },
+
+            { label: "Ombudsperson", href: "/student-life/ombudsperson" },
+            {
+              label: "Project Development Cell",
+              href: "/student-life/project-development-cell",
+            },
+            { label: "SEDG Cell", href: "/student-life/sedg-cell" },
+            // { label: "Awards", href: "/student-life/awards" },
+
+            // {
+            //   label: "Health Facilities",
+            //   href: "/student-life/health-facilities",
+            // },
           ],
         },
         {
@@ -222,55 +212,111 @@ const Navbar = () => {
           label: "Public Self Disclosure",
           href: "/about/public-self-disclosure",
         },
-        { label: "UGC Performa", href: "/about/ugc-performance" },
       ],
     },
-  ];
-  // const academicsItems = [].filter((item) => isPageActive(item.href));
-
-  const admissionsItems = [
-    { label: "Admission Process", href: "/admissions/process" },
-    { label: "Fee Structure", href: "/admissions/fee-structure" },
-    { label: "Rules for Admission", href: "/admissions/rules" },
-    { label: "Academic Calendar", href: "/academics/academic-calendar" },
-    { label: "Brochure Download", href: "/academics/brochure" },
-    { label: "Reservation Roster", href: "/reservation-roster" },
-    { label: "Refund Policy", href: "/refund-policy" },
-    { label: "Privacy Policy", href: "/privacy-policy" },
-  ];
-  const studentLifeItems = [
-    { label: "Sports", href: "/student-life/sports" },
-    { label: "Hostel", href: "/student-life/hostel" },
-    { label: "NCC/NSS", href: "/student-life/ncc-nss" },
-    { label: "Internal Complaints Committee", href: "/student-life/icc" },
-    { label: "Anti-Ragging Cell", href: "/student-life/anti-ragging" },
-    { label: "Incubation Center", href: "/student-life/incubation-center" },
-    { label: "CPIO", href: "/student-life/cpio" },
-    { label: "Grievance Cell", href: "/student-life/grievance-cell" },
     {
-      label: "Equal Opportunity Cell",
-      href: "/student-life/equal-opportunity-cell",
+      label: "schools",
+      subItems: [
+        {
+          label: "School of Commerce",
+          href: "/schools/school-of-commerce",
+        },
+        {
+          label: "School of Information Technology",
+          href: "/schools/school-of-information-technology",
+        },
+        {
+          label: "School of Engineering",
+          href: "/schools/school-of-engineering",
+        },
+        {
+          label: "School of Management",
+          href: "/schools/school-of-management",
+        },
+        {
+          label: "School of Science",
+          href: "/schools/school-of-science",
+        },
+        {
+          label: "School of Vocational Studies",
+          href: "/schools/school-of-vocational-studies",
+        },
+        {
+          label: "School of Humanities",
+          href: "/schools/school-of-humanities",
+        },
+        {
+          label: "School of Fire & Safety",
+          href: "/schools/school-of-fire-&-safety",
+        },
+        {
+          label: "School Of Allied Health Science",
+          href: "/schools/school-of-allied-health-science",
+        },
+      ],
     },
-
-    { label: "Ombudsperson", href: "/student-life/ombudsperson" },
     {
-      label: "Project Development Cell",
-      href: "/student-life/project-development-cell",
+      label: "research",
+      subItems: [
+        { label: "Overview", href: "/research/overview" },
+        {
+          label: "Degree Awarded",
+          href: "/research/degree-awarded",
+        },
+        { label: "Development Cell", href: "/research/development-cell" },
+        { label: "Projects", href: "/research/projects" },
+        { label: "Publications", href: "/research/publications" },
+      ],
     },
-    { label: "SEDG Cell", href: "/student-life/sedg-cell" },
-    { label: "Awards", href: "/student-life/awards" },
-    // {
-    //   label: "Constituent Colleges",
-    //   href: "/student-life/constituent-colleges",
-    // },
-    { label: "Health Facilities", href: "/student-life/health-facilities" },
+    {
+      label: "examination",
+      subItems: [{ label: "Results", href: "/examination/results" }],
+    },
+    {
+      label: "admissions",
+      subItems: [
+        { label: "Admission Process", href: "/admissions/process" },
+        { label: "Fee Structure", href: "/admissions/fee-structure" },
+        { label: "Rules for Admission", href: "/admissions/rules" },
+        { label: "Academic Calendar", href: "/academics/academic-calendar" },
+        { label: "Brochure Download", href: "/academics/brochure" },
+        { label: "Reservation Roster", href: "/reservation-roster" },
+        { label: "Refund Policy", href: "/refund-policy" },
+        { label: "Privacy Policy", href: "/privacy-policy" },
+      ],
+    },
+    {
+      label: "student life",
+      subItems: [
+        { label: "Sports Facilities", href: "/student-life/sports" },
+        { label: "Hostel", href: "/student-life/hostel" },
+        // { label: "NCC/NSS", href: "/student-life/ncc-nss" },
+        // { label: "Internal Complaints Committee", href: "/student-life/icc" },
+        { label: "Anti-Ragging Cell", href: "/student-life/anti-ragging" },
+        // { label: "Incubation Center", href: "/student-life/incubation-center" },
+        // { label: "CPIO", href: "/student-life/cpio" },
+        { label: "Grievance Cell", href: "/student-life/grievance-cell" },
+        // {
+        //   label: "Equal Opportunity Cell",
+        //   href: "/student-life/equal-opportunity-cell",
+        // },
+
+        // { label: "Ombudsperson", href: "/student-life/ombudsperson" },
+        // {
+        //   label: "Project Development Cell",
+        //   href: "/student-life/project-development-cell",
+        // },
+        // { label: "SEDG Cell", href: "/student-life/sedg-cell" },
+        { label: "Awards", href: "/student-life/awards" },
+
+        { label: "Health Facilities", href: "/student-life/health-facilities" },
+      ],
+    },
+    {
+      label: "contact us",
+      href: "/contact",
+    },
   ];
-  // const researchItems = [
-  //   { label: "Research Overview", href: "/research/overview" },
-  //   { label: "Publications", href: "/research/publications" },
-  //   { label: "Research Projects", href: "/research/projects" },
-  //   { label: "R&D Cell", href: "/research/development-cell" },
-  // ];
   return (
     <header
       className={`lpu-header ${!isLandingPage ? "other-page-header" : ""}`}
@@ -373,294 +419,26 @@ const Navbar = () => {
 
           <nav className="desktop-nav">
             <ul>
-              <li>
-                <Link href="/">HOME</Link>
-              </li>
+              {navbarItems.map((item) => (
+                <li key={item.label} className="has-dropdown">
+                  {item.subItems ? (
+                    <>
+                      <button className="nav-dropdown-btn">
+                        {item.label}
+                        <span className="dropdown-plus">+</span>
+                      </button>
 
-              <li className="has-dropdown">
-                <button className="nav-dropdown-btn">
-                  ABOUT US <span className="dropdown-plus">+</span>
-                </button>
-                <ul className="dropdown-menu">
-                  {isPageActive("/about") && (
-                    <li>
-                      <Link href="/about">Overview</Link>
-                    </li>
+                      <ul className="dropdown-menu">
+                        {item.subItems.map((subItem) => {
+                          return renderMenuItem(subItem);
+                        })}
+                      </ul>
+                    </>
+                  ) : (
+                    <Link href={item.href}>{item.label}</Link>
                   )}
-                  <li className="has-submenu">
-                    <button className="nav-dropdown-btn nav-submenu-btn">
-                      Governance <span className="submenu-arrow">›</span>
-                    </button>
-                    <ul className="submenu">
-                      {isPageActive("/about/governance") && (
-                        <li>
-                          <Link href="/about/governance">Governing Body</Link>
-                        </li>
-                      )}
-                      {isPageActive("/about/academic-council") && (
-                        <li>
-                          <Link href="/about/academic-council">
-                            Academic Council
-                          </Link>
-                        </li>
-                      )}
-                      {isPageActive("/about/iqac") && (
-                        <li>
-                          <Link href="/about/iqac">IQAC</Link>
-                        </li>
-                      )}
-                    </ul>
-                  </li>
-                  <li className="has-submenu">
-                    <button className="nav-dropdown-btn nav-submenu-btn">
-                      Leadership Team <span className="submenu-arrow">›</span>
-                    </button>
-                    <ul className="submenu">
-                      <li>
-                        <Link href="/about/leadership/chancellor">
-                          Chancellor
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/about/leadership/vice-chancellor">
-                          Vice Chancellor
-                        </Link>
-                      </li>
-                      {/* <li>
-                        <Link href="/about/leadership/pro-vice-chancellor">
-                          Pro Vice Chancellor
-                        </Link>
-                      </li> */}
-                      <li>
-                        <Link href="/about/leadership/registrar">
-                          Registrar
-                        </Link>
-                      </li>
-                      {/* <li>
-                        <Link href="/about/leadership/director-admissions">
-                          Director of Admissions
-                        </Link>
-                      </li> */}
-                      <li>
-                        <Link href="/about/leadership/controller-of-examinations">
-                          Controller of Examinations
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                  {isPageActive("/about/affiliations-accreditation") && (
-                    <li>
-                      <Link href="/about/affiliations-accreditation">
-                        Affiliations & Accreditation
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/about/public-self-disclosure") && (
-                    <li>
-                      <Link href="/about/public-self-disclosure">
-                        Public Self Disclosure
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/about/ugc-performance") && (
-                    <li>
-                      <Link href="/about/ugc-performance">UGC Performa</Link>
-                    </li>
-                  )}
-                </ul>
-              </li>
-
-              <li className="has-dropdown">
-                <button className="nav-dropdown-btn">
-                  SCHOOLS <span className="dropdown-plus">+</span>
-                </button>
-                <ul className="dropdown-menu">
-                  {schools.map((s, i) => (
-                    <li key={i}>
-                      {s.externalUrl ? (
-                        <a
-                          href={s.externalUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {s.name}
-                        </a>
-                      ) : (
-                        <Link href={`/schools/${s.slug}`}>{s.name}</Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-
-              <li>
-                <Link href="/research/development-cell" className="nav-link">
-                  RESEARCH
-                </Link>
-              </li>
-
-              <li className="has-dropdown">
-                <button className="nav-dropdown-btn">
-                  EXAMINATION <span className="dropdown-plus">+</span>
-                </button>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link href="/examination/results">Results</Link>
-                  </li>
-                </ul>
-              </li>
-
-              <li className="has-dropdown">
-                <button className="nav-dropdown-btn">
-                  ADMISSIONS <span className="dropdown-plus">+</span>
-                </button>
-                <ul className="dropdown-menu">
-                  {isPageActive("/admissions/process") && (
-                    <li>
-                      <Link href="/admissions/process">Admission Process</Link>
-                    </li>
-                  )}
-                  {isPageActive("/admissions/fee-structure") && (
-                    <li>
-                      <Link href="/admissions/fee-structure">
-                        Fee Structure
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/admissions/rules") && (
-                    <li>
-                      <Link href="/admissions/rules">Rules for Admission</Link>
-                    </li>
-                  )}
-                  {isPageActive("/academics/academic-calendar") && (
-                    <li>
-                      <Link href="/academics/academic-calendar">
-                        Academic Calendar
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/academics/brochure") && (
-                    <li>
-                      <Link href="/academics/brochure">Brochure Download</Link>
-                    </li>
-                  )}
-                  <li>
-                    <Link href="/reservation-roster">Reservation Roster</Link>
-                  </li>
-                  <li>
-                    <Link href="/refund-policy">Refund Policy</Link>
-                  </li>
-                  <li>
-                    <Link href="/privacy-policy">Privacy Policy</Link>
-                  </li>
-                </ul>
-              </li>
-
-              <li className="has-dropdown">
-                <button className="nav-dropdown-btn">
-                  STUDENT LIFE <span className="dropdown-plus">+</span>
-                </button>
-                <ul className="dropdown-menu">
-                  {isPageActive("/student-life/sports") && (
-                    <li>
-                      <Link href="/student-life/sports">Sports</Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/hostel") && (
-                    <li>
-                      <Link href="/student-life/hostel">Hostel</Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/ncc-nss") && (
-                    <li>
-                      <Link href="/student-life/ncc-nss">NCC/NSS</Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/icc") && (
-                    <li>
-                      <Link href="/student-life/icc">
-                        Internal Complaints Committee
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/anti-ragging") && (
-                    <li>
-                      <Link href="/student-life/anti-ragging">
-                        Anti-Ragging Cell
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/incubation-center") && (
-                    <li>
-                      <Link href="/student-life/incubation-center">
-                        Incubation Center
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/cpio") && (
-                    <li>
-                      <Link href="/student-life/cpio">CPIO</Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/grievance-cell") && (
-                    <li>
-                      <Link href="/student-life/grievance-cell">
-                        Grievance Cell
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/equal-opportunity-cell") && (
-                    <li>
-                      <Link href="/student-life/equal-opportunity-cell">
-                        Equal Opportunity Cell
-                      </Link>
-                    </li>
-                  )}
-
-                  {isPageActive("/student-life/ombudsperson") && (
-                    <li>
-                      <Link href="/student-life/ombudsperson">
-                        Ombudsperson
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/project-development-cell") && (
-                    <li>
-                      <Link href="/student-life/project-development-cell">
-                        Project Development Cell
-                      </Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/sedg-cell") && (
-                    <li>
-                      <Link href="/student-life/sedg-cell">SEDG Cell</Link>
-                    </li>
-                  )}
-                  {isPageActive("/student-life/awards") && (
-                    <li>
-                      <Link href="/student-life/awards">Awards</Link>
-                    </li>
-                  )}
-                  {/* {isPageActive("/student-life/constituent-colleges") && (
-                    <li>
-                      <Link href="/student-life/constituent-colleges">
-                        Constituent Colleges
-                      </Link>
-                    </li>
-                  )} */}
-                  {isPageActive("/student-life/health-facilities") && (
-                    <li>
-                      <Link href="/student-life/health-facilities">
-                        Health Facilities
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </li>
-
-              <li>
-                <Link href="/contact">CONTACT US</Link>
-              </li>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -693,62 +471,22 @@ const Navbar = () => {
         </button>
         <div className="mobile-menu-content">
           <ul className="mobile-main-links">
-            <li>
-              <Link href="/" onClick={() => setIsMenuOpen(false)}>
-                HOME
-              </Link>
-            </li>
-
-            <MobileAccordion
-              label="ABOUT US"
-              onClose={() => setIsMenuOpen(false)}
-              items={aboutItems[0].subItems}
-            />
-
-            <MobileAccordion
-              label="SCHOOLS"
-              href="/information-cell"
-              onClose={() => setIsMenuOpen(false)}
-              items={schools.map((s) => ({
-                label: s.name,
-                href: s.externalUrl || `/schools/${s.slug}`,
-              }))}
-            />
-
-            <a
-              href="/research/development-cell"
-              className="mobile-direct-link"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              RESEARCH
-            </a>
-
-            <MobileAccordion
-              label="EXAMINATION"
-              href="#"
-              onClose={() => setIsMenuOpen(false)}
-              items={[{ label: "Results", href: "/examination/results" }]}
-            />
-
-            <MobileAccordion
-              label="ADMISSIONS"
-              href="/admissions"
-              onClose={() => setIsMenuOpen(false)}
-              items={admissionsItems}
-            />
-
-            <MobileAccordion
-              label="STUDENT LIFE"
-              href="/information-cell"
-              onClose={() => setIsMenuOpen(false)}
-              items={studentLifeItems}
-            />
-
-            <li>
-              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                CONTACT US
-              </Link>
-            </li>
+            {navbarItems.map((item, index) =>
+              item.subItems ? (
+                <MobileAccordion
+                  key={index}
+                  label={item.label}
+                  items={item.subItems}
+                  onClose={() => setIsMenuOpen(false)}
+                />
+              ) : (
+                <li key={index}>
+                  <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
+                    {item.label.toUpperCase()}
+                  </Link>
+                </li>
+              ),
+            )}
           </ul>
           <div className="mobile-utility-links">
             <Link href="/news-events" onClick={() => setIsMenuOpen(false)}>

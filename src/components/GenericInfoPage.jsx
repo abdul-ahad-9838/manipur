@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import '@/styles/GenericInfoPage.css';
+import React from "react";
+import Link from "next/link";
+import "@/styles/GenericInfoPage.css";
 
-export default function GenericInfoPage({ 
+export default function GenericInfoPage({
   badge = "STUDENT LIFE",
   title,
   subtitle,
   breadcrumb = [],
   sections = [],
-  contactInfo = null
+  contactInfo = null,
 }) {
   return (
     <div className="generic-info-page">
@@ -39,20 +39,21 @@ export default function GenericInfoPage({
 
       {/* Body */}
       <div className="generic-body">
+        {console.log(sections)}
         <div className="container">
-          
           <div className="generic-content-card">
             {sections.map((section, index) => (
               <div key={index} className="generic-section">
-                {section.icon && <div className="section-icon">{section.icon}</div>}
+                {section.icon && (
+                  <div className="section-icon">{section.icon}</div>
+                )}
                 {section.title && <h2>{section.title}</h2>}
-                {section.content && (
-                  typeof section.content === 'string' ? (
+                {section.content &&
+                  (typeof section.content === "string" ? (
                     <p dangerouslySetInnerHTML={{ __html: section.content }} />
                   ) : (
                     section.content
-                  )
-                )}
+                  ))}
                 {section.list && (
                   <ul className="generic-list">
                     {section.list.map((item, i) => (
@@ -64,9 +65,15 @@ export default function GenericInfoPage({
                   <div className="generic-cards-grid">
                     {section.cards.map((card, i) => (
                       <div key={i} className="generic-card">
-                        {card.icon && <div className="card-icon">{card.icon}</div>}
+                        {card.icon && (
+                          <div className="card-icon">{card.icon}</div>
+                        )}
                         {card.title && <h3>{card.title}</h3>}
-                        {card.content && <p>{card.content}</p>}
+                        {card.content && (
+                          <p
+                            dangerouslySetInnerHTML={{ __html: card.content }}
+                          />
+                        )}
                       </div>
                     ))}
                   </div>
@@ -77,26 +84,29 @@ export default function GenericInfoPage({
             {/* Contact Section */}
             {contactInfo && (
               <div className="generic-contact-box">
-                <h3>{contactInfo.title || 'Contact Information'}</h3>
+                <h3>{contactInfo.title || "Contact Information"}</h3>
                 {contactInfo.description && <p>{contactInfo.description}</p>}
                 <div className="contact-details">
                   {contactInfo.email && (
                     <div className="contact-item">
                       <span className="contact-icon">📧</span>
-                      <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                      <a href={`mailto:${contactInfo.email}`}>
+                        {contactInfo.email}
+                      </a>
                     </div>
                   )}
                   {contactInfo.phone && (
                     <div className="contact-item">
                       <span className="contact-icon">📞</span>
-                      <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
+                      <a href={`tel:${contactInfo.phone}`}>
+                        {contactInfo.phone}
+                      </a>
                     </div>
                   )}
                 </div>
               </div>
             )}
           </div>
-
         </div>
       </div>
     </div>

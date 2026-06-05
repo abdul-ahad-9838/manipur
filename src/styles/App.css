@@ -223,7 +223,7 @@ h6 {
 
 /* Paragraphs - left aligned, proper spacing */
 p {
-  text-align: left !important;
+  text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   text-transform: none !important;
@@ -238,7 +238,7 @@ p {
 [class*="section-header"],
 [class*="section-title"],
 [class*="section-subtitle"] {
-  text-align: center !important;
+  text-align: justify !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -248,7 +248,7 @@ p {
 .section-header *,
 .section-title,
 .section-subtitle {
-  text-align: center !important;
+  text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   text-transform: none !important;
@@ -260,7 +260,7 @@ p {
 [class*="hero-header"],
 [class*="hero"] .section-title,
 [class*="hero"] .section-subtitle {
-  text-align: center !important;
+  text-align: justify !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -269,7 +269,7 @@ p {
 [class*="hero"] h1,
 [class*="hero"] h2,
 [class*="hero"] p {
-  text-align: center !important;
+  text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
 }
@@ -292,7 +292,7 @@ p {
 [class*="description"],
 [class*="text"],
 [class*="content"] p {
-  text-align: left !important;
+  text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   text-transform: none !important;
@@ -325,7 +325,7 @@ button,
 [class*="placement"] .section-header,
 [class*="campus"] .section-header,
 [class*="program"] .section-header {
-  text-align: center !important;
+  text-align: justify !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;

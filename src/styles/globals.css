@@ -6,12 +6,12 @@
   --lpu-dark-gray: #333333;
   --lpu-light-gray: #f5f5f5;
   --lpu-white: #ffffff;
-  
-  --font-body: 'Roboto', sans-serif;
-  --font-heading: 'Oswald', sans-serif; /* Tall, bold and impactful like LPU */
 
-  --shadow: 0 4px 6px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+  --font-body: "Roboto", sans-serif;
+  --font-heading: "Oswald", sans-serif; /* Tall, bold and impactful like LPU */
+
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -33,13 +33,18 @@ body {
 }
 
 p {
-  text-align: left;
   word-spacing: normal;
   letter-spacing: normal;
   line-height: 1.7;
+  text-align: justify !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   text-transform: none;
   font-weight: 700;
@@ -195,7 +200,7 @@ img {
   text-transform: uppercase;
   font-size: 14px;
   border: 1px solid white;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
   cursor: pointer;
 }
@@ -212,7 +217,9 @@ img {
 .section-title,
 .section-subtitle,
 .section-badge,
-[class*="-title"]:not([class*="card"]):not([class*="program"]):not([class*="job"]),
+[class*="-title"]:not([class*="card"]):not([class*="program"]):not(
+    [class*="job"]
+  ),
 [class*="-subtitle"],
 [class*="-badge"] {
   text-align: center !important;
@@ -235,7 +242,10 @@ img {
 }
 
 /* Fix paragraph spacing */
-p, .section-subtitle, [class*="subtitle"], [class*="desc"] {
+p,
+.section-subtitle,
+[class*="subtitle"],
+[class*="desc"] {
   word-spacing: normal !important;
   letter-spacing: normal !important;
   text-transform: none !important;
@@ -244,7 +254,12 @@ p, .section-subtitle, [class*="subtitle"], [class*="desc"] {
 }
 
 /* Fix heading spacing */
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .section-title,
 [class*="-title"] {
   word-spacing: normal !important;
@@ -304,8 +319,12 @@ button,
 }
 
 @keyframes advisoryFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .advisory-modal {
@@ -323,8 +342,14 @@ button,
 }
 
 @keyframes advisorySlideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .advisory-close {

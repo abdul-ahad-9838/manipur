@@ -23,7 +23,7 @@
 }
 
 .leadership-title h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -61,7 +61,7 @@
 }
 
 .leadership-image-box::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -20px;
   left: -20px;
@@ -113,7 +113,7 @@
   line-height: 1.8;
   color: #444;
   margin-bottom: 30px;
-  text-align: left;
+  /* text-align: left; */
   word-spacing: normal;
   letter-spacing: normal;
 }
@@ -156,7 +156,8 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .leadership-card, .leadership-card.reverse {
+  .leadership-card,
+  .leadership-card.reverse {
     flex-direction: column;
     gap: 40px;
     text-align: center;

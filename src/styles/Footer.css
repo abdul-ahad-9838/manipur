@@ -134,6 +134,40 @@
   color: white;
 }
 
+/* Pinterest */
+.social-icon:nth-child(6) {
+  background: linear-gradient(
+    45deg,
+    rgba(230, 0, 35, 0.1),
+    rgba(230, 0, 35, 0.1),
+    rgba(230, 0, 35, 0.1)
+  );
+  border-color: rgba(230, 0, 35, 0.3);
+}
+
+.social-icon:nth-child(6):hover {
+  background: linear-gradient(45deg, #e60023, #e60023, #e60023);
+  border-color: #e60023;
+  color: white;
+}
+
+/* Tumblr */
+.social-icon:nth-child(7) {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 25, 53, 0.1),
+    rgba(0, 25, 53, 0.1),
+    rgba(0, 25, 53, 0.1)
+  );
+  border-color: rgb(0, 66, 142);
+}
+
+.social-icon:nth-child(7):hover {
+  background: linear-gradient(45deg, #003d82, #013e83, #0052b0);
+  border-color: #001935;
+  color: white;
+}
+
 .footer-heading {
   color: white;
   font-family: var(--font-heading);
