@@ -9,6 +9,7 @@ const TextEditor = dynamic(() => import("@/components/TextEditor"), {
   ssr: false,
 });
 import ImageUploader from "@/components/ImageUploader";
+import SeoForm from "@/components/SeoForm";
 
 const CATEGORIES = [
   "General",
@@ -28,6 +29,23 @@ const emptyForm = {
   coverImage: "",
   category: "General",
   author: "MIU Staff",
+
+  seo: {
+    title: "",
+    description: "",
+    keywords: [],
+
+    canonicalUrl: "",
+
+    ogTitle: "",
+    ogDescription: "",
+    ogImage: "",
+
+    twitterTitle: "",
+    twitterDescription: "",
+    twitterImage: "",
+  },
+
   published: false,
 };
 
@@ -75,11 +93,15 @@ export default function AdminBlogs() {
 
   const handleTitleChange = (e) => {
     const title = e.target.value;
-    setForm((prev) => ({
-      ...prev,
-      title,
-      slug: editId ? prev.slug : autoSlug(title),
-    }));
+    setForm((prev) => {
+      const newTitle = title;
+
+      return {
+        ...prev,
+        title: newTitle,
+        slug: editId ? prev.slug : autoSlug(newTitle),
+      };
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -105,15 +127,21 @@ export default function AdminBlogs() {
   };
 
   const handleEdit = (blog) => {
+    console.log(blog);
     setForm({
-      title: blog.title,
-      slug: blog.slug,
-      excerpt: blog.excerpt,
-      content: blog.content,
-      coverImage: blog.coverImage || "",
-      category: blog.category,
-      author: blog.author,
-      published: blog.published,
+      ...blog,
+      seo: {
+        title: blog?.seo?.title || "",
+        description: blog?.seo?.description || "",
+        keywords: blog?.seo?.keywords || [],
+        canonicalUrl: blog?.seo?.canonicalUrl || "",
+        ogTitle: blog?.seo?.ogTitle || "",
+        ogDescription: blog?.seo?.ogDescription || "",
+        ogImage: blog?.seo?.ogImage || "",
+        twitterTitle: blog?.seo?.twitterTitle || "",
+        twitterDescription: blog?.seo?.twitterDescription || "",
+        twitterImage: blog?.seo?.twitterImage || "",
+      },
     });
     setEditId(blog._id);
     setShowForm(true);
@@ -302,6 +330,14 @@ export default function AdminBlogs() {
                 }
               />
             </div>
+
+            {/* seo title, description and keywords goes here */}
+            <SeoForm
+              form={form}
+              setForm={setForm}
+              labelStyle={labelStyle}
+              inputStyle={inputStyle}
+            />
 
             <div
               style={{

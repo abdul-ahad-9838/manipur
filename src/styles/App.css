@@ -267,7 +267,12 @@ p {
 }
 
 [class*="hero"] h1,
-[class*="hero"] h2,
+[class*="hero"] h2 {
+  text-align: center !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+}
+
 [class*="hero"] p {
   text-align: justify !important;
   word-spacing: normal !important;
