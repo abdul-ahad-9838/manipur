@@ -594,7 +594,7 @@ export default function SchoolPage() {
         ]);
 
         const dbSchools = detailsRes.data?.content || {};
-        const schoolsList = sectionsRes.data?.content?.schools || {};
+        // const schoolsList = sectionsRes.data?.content?.schools || {};
 
         // Normalize slug alias
         const resolvedSlug =

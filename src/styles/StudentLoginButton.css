@@ -1,27 +1,27 @@
-.student-login-wrapper {
+/* .student-login-wrapper {
   display: none;
-}
+} */
 
 /* Show only on mobile */
-@media (max-width: 768px) {
-  .student-login-wrapper {
-    display: block;
-    position: fixed;
-    right: -60px;
-    top: 70%;
-    transform: translateY(-50%);
-    z-index: 1000;
-  }
-
-  .student-login-button {
-    transform: rotate(-90deg);
-    transform-origin: center;
-    padding: 10px 20px;
-    background-color: var(--lpu-orange, #ff6b00);
-    color: white;
-    border: none;
-    border-radius: 8px 8px 0 0;
-    cursor: pointer;
-    font-weight: 600;
-  }
+/* @media (max-width: 768px) { */
+.student-login-wrapper {
+  display: block;
+  position: fixed;
+  right: -60px;
+  top: 70%;
+  transform: translateY(-50%);
+  z-index: 1000;
 }
+
+.student-login-button {
+  transform: rotate(-90deg);
+  transform-origin: center;
+  padding: 10px 20px;
+  background-color: var(--lpu-orange, #ff6b00);
+  color: white;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+/* } */

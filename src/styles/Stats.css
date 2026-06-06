@@ -60,7 +60,7 @@
   }
 
   /* remove last row border-bottom */
-  .stat-card:nth-last-child(-n + 2) {
+  .stat-card:nth-last-child(-n + 1) {
     border-bottom: none;
   }
 }

@@ -804,7 +804,7 @@
   color: white;
   font-weight: 600;
   font-size: 13.5px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   transition: 0.3s;
   letter-spacing: 0.2px;
 }
@@ -821,7 +821,7 @@
   color: white;
   font-weight: 600;
   font-size: 13.5px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   transition: 0.3s;
   letter-spacing: 0.2px;
   background: transparent;
@@ -975,20 +975,19 @@
   font-size: 1.4rem;
   font-weight: 800;
   font-family: var(--font-heading);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .mobile-accordion-sub-label {
-  color: white;
-  font-size: 1rem;
+  color: #bbb;
+  font-size: 0.9rem;
   font-weight: 600;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
+  text-transform: none !important;
 }
 
 .mobile-accordion-arrow {
   color: #aaa;
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 600;
   transition: transform 0.25s ease;
   padding-left: 10px;

@@ -305,7 +305,7 @@ button,
 .section-badge,
 [class*="badge"]:not([class*="card"]),
 [class*="label"]:not([class*="card"]) {
-  text-transform: uppercase !important;
+  /* text-transform: uppercase !important; */
   letter-spacing: 0.5px !important;
   word-spacing: normal !important;
 }
