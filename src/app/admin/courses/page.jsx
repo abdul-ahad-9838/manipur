@@ -10,8 +10,9 @@ import SeoForm from "@/components/SeoForm";
 
 const DEFAULT_SCHOOLS = [
   "School Of Commerce",
-  "School Of Information Technology",
-  "School Of Engineering",
+  // "School Of Information Technology",
+  // "School Of Engineering",
+  "School of Engineering and Information Technology",
   "School Of Management",
   "School Of Science",
   "School Of Vocational Studies",
