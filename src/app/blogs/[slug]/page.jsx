@@ -9,9 +9,7 @@ async function getBlog(slug) {
 
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
 
-  const res = await fetch(`${protocol}://${host}/api/blogs/${slug}`, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(`${protocol}://${host}/api/blogs/${slug}`);
 
   if (!res.ok) return null;
 

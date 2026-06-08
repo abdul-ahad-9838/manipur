@@ -340,13 +340,23 @@ export default function CoursesManager() {
       </div>
     );
 
-  // Group courses by school and sort by order
   const coursesBySchool = courses.reduce((acc, course) => {
     const school = course.school || "Uncategorized";
-    if (!acc[school]) acc[school] = [];
-    acc[school].push(course);
+
+    const existingKey = Object.keys(acc).find(
+      (key) => key.toLowerCase() === school.toLowerCase(),
+    );
+
+    const key = existingKey || school;
+
+    if (!acc[key]) acc[key] = [];
+
+    acc[key].push(course);
+
     return acc;
   }, {});
+
+  console.log(coursesBySchool);
 
   // Also ensure all schools from DB appear even with 0 courses
   // Normalize to title case to match course school field format
@@ -812,7 +822,6 @@ export default function CoursesManager() {
             No programs yet. Click "+ Add Program" to create one.
           </div>
         )}
-
         {schoolsToShow.map((school) => {
           const schoolCourses = coursesBySchool[school] || [];
           const isExpanded = expandedSchools[school];

@@ -579,6 +579,7 @@ export default function AcademicCouncilPage() {
             <span>›</span>
             <Link href="/about">About Us</Link>
             <span>›</span>
+
             <Link href="/about/governance">Governance</Link>
             <span>›</span>
             <span>Academic Council</span>

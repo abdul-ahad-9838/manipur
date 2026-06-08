@@ -593,7 +593,6 @@ export default function SchoolPage() {
         ]);
 
         const dbSchools = detailsRes.data?.content || {};
-        // const schoolsList = sectionsRes.data?.content?.schools || {};
 
         // Normalize slug alias
         const resolvedSlug =
@@ -667,6 +666,9 @@ export default function SchoolPage() {
           ],
           "school-of-commerce": ["school of commerce"],
           "school-of-engineering": ["school of engineering"],
+          "school-of-engineering-and-information-technology": [
+            "school of engineering and information technology",
+          ],
           "school-of-management": ["school of management"],
           "school-of-science": ["school of science"],
           "school-of-vocational-studies": ["school of vocational studies"],

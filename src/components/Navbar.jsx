@@ -208,8 +208,8 @@ export const navbarItems = [
         href: "/schools/school-of-information-technology",
       },
       {
-        label: "School of Engineering",
-        href: "/schools/school-of-engineering",
+        label: "School of Engineering and Information Technology",
+        href: "/schools/school-of-engineering-and-information-technology",
       },
       {
         label: "School of Management",

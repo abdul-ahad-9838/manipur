@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import "@/styles/LeadershipMessages.css";
-import { defaultLeadership } from "./LeadershipMessages";
 import API from "@/lib/api";
 import { navbarItems } from "@/components/Navbar";
 
@@ -11,7 +10,7 @@ export default function LeadershipDetail({ slug }) {
   const [leader, setLeader] = useState(null);
   const [loading, setLoading] = useState(true);
   const LEADERS_DATA = navbarItems
-    .find((item) => item.label === "about us")
+    .find((item) => item.label === "About Us")
     ?.subItems?.find((item) => item.label === "Leadership")?.subItems;
 
   useEffect(() => {
@@ -304,7 +303,7 @@ export default function LeadershipDetail({ slug }) {
                 justifyContent: "center",
               }}
             >
-              {LEADERS_DATA.filter((l) => l.slug !== slug).map((l) => (
+              {LEADERS_DATA.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href || l.slug}

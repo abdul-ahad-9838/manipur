@@ -1,20 +1,37 @@
-"use client";
+// app/blogs/page.jsx
 
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import API from "@/lib/api";
 import "@/styles/Blog.css";
+import { headers } from "next/headers";
 
-export default function BlogPage() {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+async function getBlogs() {
+  const headersList = await headers();
 
-  useEffect(() => {
-    API.get("/blogs")
-      .then(({ data }) => setBlogs(data))
-      .catch(() => setBlogs([]))
-      .finally(() => setLoading(false));
-  }, []);
+  const host = headersList?.get("host");
+
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+  const res = await fetch(`${protocol}://${host}/api/blogs`, {
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) return null;
+
+  return res.json();
+}
+
+// async function getBlogs() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blogs`, {
+//     next: { revalidate: 60 },
+//   });
+
+//   if (!res.ok) return [];
+
+//   return res.json();
+// }
+
+export default async function BlogPage() {
+  const blogs = await getBlogs();
 
   return (
     <div className="blog-page">
@@ -30,9 +47,7 @@ export default function BlogPage() {
       </div>
 
       <div className="container blog-container">
-        {loading && <p className="blog-loading">Loading posts...</p>}
-
-        {!loading && blogs.length === 0 && (
+        {blogs.length === 0 && (
           <div className="blog-empty">
             <p>No blog posts yet. Check back soon.</p>
           </div>
@@ -47,27 +62,24 @@ export default function BlogPage() {
             >
               <div className="blog-card-img">
                 {blog.coverImage ? (
-                  <img
-                    src={blog.coverImage}
-                    alt={blog.title}
-                    onError={(e) => {
-                      e.target.style.display = "none";
-                      e.target.parentNode.classList.add("blog-img-fallback");
-                    }}
-                  />
-                ) : null}
-                {!blog.coverImage && (
+                  <img src={blog.coverImage} alt={blog.title} />
+                ) : (
                   <div className="blog-img-placeholder">
                     <span>📰</span>
                   </div>
                 )}
               </div>
+
               <div className="blog-card-body">
                 <span className="blog-category">{blog.category}</span>
+
                 <h2 className="blog-card-title">{blog.title}</h2>
+
                 <p className="blog-card-excerpt">{blog.excerpt}</p>
+
                 <div className="blog-card-meta">
                   <span>{blog.author}</span>
+
                   <span>
                     {new Date(blog.createdAt).toLocaleDateString("en-IN", {
                       day: "numeric",
