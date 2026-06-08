@@ -127,7 +127,6 @@ export default function AdminBlogs() {
   };
 
   const handleEdit = (blog) => {
-    console.log(blog);
     setForm({
       ...blog,
       seo: {

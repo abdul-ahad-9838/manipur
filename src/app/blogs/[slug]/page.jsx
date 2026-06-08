@@ -66,8 +66,6 @@ export default async function BlogPage({ params }) {
 
   const blog = await getBlog(slug);
 
-  console.log("blog:", blog);
-
   if (!blog)
     return (
       <div className="blog-detail-loading">

@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEnquiry } from "@/context/EnquiryContext";
 import API from "@/lib/api";
 import "@/styles/SchoolPage.css";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const SCHOOLS = {
   "school-of-commerce": {
@@ -579,7 +578,7 @@ SCHOOLS["school-of-information-technology"] =
 export default function SchoolPage() {
   const params = useParams();
   const slug = decodeURIComponent(params.slug || "");
-  const { openEnquiry } = useEnquiry();
+  // const { openEnquiry } = useEnquiry();
   const [apiCourses, setApiCourses] = useState([]);
   const [schoolData, setSchoolData] = useState(null);
   const [loading, setLoading] = useState(true);

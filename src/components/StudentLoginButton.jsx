@@ -1,5 +1,3 @@
-import Link from "next/link";
-import React from "react";
 import "@/styles/StudentLoginButton.css"; // Import the CSS file for styling
 
 const StudentLoginButton = () => {

@@ -5,12 +5,12 @@ const SeoForm = ({ form, setForm, labelStyle, inputStyle }) => {
     <>
       {/* TITLE */}
       <div style={{ marginBottom: "20px" }}>
-        <label style={labelStyle}>Metadata Title</label>
+        <label style={labelStyle}>Meta Title</label>
         <input
           value={form?.seo?.title || ""}
           type="text"
           name="title"
-          placeholder="Metadata title"
+          placeholder="Meta title"
           onChange={(e) =>
             setForm((prev) => ({
               ...prev,
@@ -23,11 +23,11 @@ const SeoForm = ({ form, setForm, labelStyle, inputStyle }) => {
 
       {/* DESCRIPTION */}
       <div style={{ marginBottom: "20px" }}>
-        <label style={labelStyle}>Metadata Description</label>
+        <label style={labelStyle}>Meta Description</label>
         <textarea
           value={form?.seo?.description || ""}
           name="description"
-          placeholder="Metadata description"
+          placeholder="Meta description"
           onChange={(e) =>
             setForm((prev) => ({
               ...prev,
@@ -40,7 +40,7 @@ const SeoForm = ({ form, setForm, labelStyle, inputStyle }) => {
 
       {/* KEYWORDS */}
       <div style={{ marginBottom: "20px" }}>
-        <label style={labelStyle}>Metadata Keywords</label>
+        <label style={labelStyle}>Meta Keywords</label>
         <div
           onClick={() => document.getElementById("keyword-input").focus()}
           style={{
