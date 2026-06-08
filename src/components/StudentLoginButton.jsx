@@ -5,9 +5,13 @@ import "@/styles/StudentLoginButton.css"; // Import the CSS file for styling
 const StudentLoginButton = () => {
   return (
     <div className="student-login-wrapper">
-      <Link href="/student-login">
+      <a
+        href="https://student.miu.edu.in/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <button className="student-login-button">Student Login</button>
-      </Link>
+      </a>
     </div>
   );
 };
