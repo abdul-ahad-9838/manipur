@@ -19,8 +19,14 @@ const DEFAULTS = {
   copyright: "Manipur International University. All Rights Reserved.",
 };
 
+import { navbarItems } from "./Navbar";
+
 const Footer = () => {
   const [d, setD] = useState(DEFAULTS);
+
+  const schools = navbarItems.filter((item) => item.label == "Schools")[0]
+    .subItems;
+
   useEffect(() => {
     API.get("/settings/footer")
       .then(({ data }) => {
@@ -93,34 +99,11 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Schools &amp; Institutes</h4>
             <ul className="footer-links">
-              <li>
-                <Link href="/schools/school-of-commerce">
-                  School of Commerce
-                </Link>
-              </li>
-              <li>
-                <Link href="/schools/school-of-computer-application">
-                  School of Information Technology
-                </Link>
-              </li>
-              <li>
-                <Link href="/schools/school-of-engineering">
-                  School of Engineering
-                </Link>
-              </li>
-              <li>
-                <Link href="/schools/school-of-management">
-                  School of Management
-                </Link>
-              </li>
-              <li>
-                <Link href="/schools/school-of-science">School of Science</Link>
-              </li>
-              <li>
-                <Link href="/schools/school-of-humanities">
-                  School of Humanities
-                </Link>
-              </li>
+              {schools.map((school) => (
+                <li key={school.href}>
+                  <Link href={`/schools/${school.href}`}>{school.label}</Link>
+                </li>
+              ))}
               <li>
                 <a
                   href="https://vocational.miu.edu.in/"
@@ -145,13 +128,6 @@ const Footer = () => {
               <li>
                 <span>✉️</span> {d.email}
               </li>
-              {/* <li>
-                <span>🕒</span> Office Hours: 9:30 AM - 4:00 PM
-                <br />
-                <span style={{ marginLeft: "28px", display: "inline-block" }}>
-                  Monday to Saturday
-                </span>
-              </li> */}
               <div className="social-links">
                 <a
                   href={d.facebook}

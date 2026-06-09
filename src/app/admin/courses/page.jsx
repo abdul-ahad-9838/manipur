@@ -361,8 +361,6 @@ export default function CoursesManager() {
     return acc;
   }, {});
 
-  console.log(coursesBySchool);
-
   // Also ensure all schools from DB appear even with 0 courses
   // Normalize to title case to match course school field format
   schools.forEach((s) => {

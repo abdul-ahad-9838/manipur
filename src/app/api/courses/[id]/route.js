@@ -5,7 +5,6 @@ import { protect } from "@/lib/auth";
 
 export async function GET(request, { params }) {
   try {
-    console.log(await params);
     await dbConnect();
     const { id } = await params;
     // Support lookup by _id or slug

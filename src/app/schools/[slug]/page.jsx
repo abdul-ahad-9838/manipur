@@ -805,8 +805,6 @@ export default function SchoolPage() {
           return matchNames.some((n) => cSchool === n) && c.isActive !== false;
         });
 
-        console.log(matchNames);
-
         filtered.sort((a, b) => (a.order || 0) - (b.order || 0));
         setApiCourses(filtered);
       })
