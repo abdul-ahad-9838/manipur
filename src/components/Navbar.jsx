@@ -231,6 +231,10 @@ export const navbarItems = [
         label: "School of Library and Information Science",
         href: "/schools/school-of-library-and-information-science",
       },
+      {
+        label: "School of Journalism & Mass Communication",
+        href: "/schools/school-of-journalism-&-mass-communication",
+      },
     ],
   },
   {

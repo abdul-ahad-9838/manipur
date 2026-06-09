@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
+import dynamic from "next/dynamic";
 // import Stats from "@/components/Stats";
 
 const Stats = dynamic(() => import("@/components/Stats"));

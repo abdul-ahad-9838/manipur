@@ -80,12 +80,12 @@ export default async function BlogPage({ params }) {
 
   return (
     <div className="blog-detail-page">
-      {blog.coverImage && (
+      {/* {blog.coverImage && (
         <div className="blog-detail-cover">
           <img src={blog.coverImage} alt={blog.title} />
           <div className="blog-detail-cover-overlay" />
         </div>
-      )}
+      )} */}
 
       <div className="container blog-detail-container">
         <Link href="/blogs" className="blog-back-link">
@@ -107,6 +107,12 @@ export default async function BlogPage({ params }) {
             </span>
           </div>
         </div>
+
+        {blog.coverImage && (
+          <div className="blog-detail-image">
+            <img src={blog.coverImage} alt={blog.title} />
+          </div>
+        )}
 
         <div
           className="blog-detail-content"

@@ -24,6 +24,8 @@ export async function generateMetadata({ params }) {
 
   const course = await getCourse(slug);
 
+  console.log(course);
+
   if (!course) {
     return {
       title: "Course Not Found",

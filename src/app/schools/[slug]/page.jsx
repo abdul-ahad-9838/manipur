@@ -679,8 +679,8 @@ const SCHOOLS = {
 };
 
 // Alias so both old and new slugs work
-SCHOOLS["school-of-information-technology"] =
-  SCHOOLS["school-of-computer-application"];
+// SCHOOLS["school-of-information-technology"] =
+//   SCHOOLS["school-of-computer-application"];
 
 export default function SchoolPage() {
   const params = useParams();
@@ -782,6 +782,9 @@ export default function SchoolPage() {
           ],
           "school-of-library-and-information-science": [
             "school of library and information science",
+          ],
+          "school-of-journalism-&-mass-communication": [
+            "school of journalism & mass communication",
           ],
           "school-of-fire-&-safety": ["school of fire & safety"],
           // "school-of-management": ["school of management"],

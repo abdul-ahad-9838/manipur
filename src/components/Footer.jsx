@@ -101,18 +101,9 @@ const Footer = () => {
             <ul className="footer-links">
               {schools.map((school) => (
                 <li key={school.href}>
-                  <Link href={`/schools/${school.href}`}>{school.label}</Link>
+                  <Link href={school.href}>{school.label}</Link>
                 </li>
               ))}
-              {/* <li>
-                <a
-                  href="https://vocational.miu.edu.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  School of Vocational Studies
-                </a>
-              </li> */}
             </ul>
           </div>
 

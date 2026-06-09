@@ -143,7 +143,7 @@ const SeoForm = ({ form, setForm, labelStyle, inputStyle }) => {
           value={form?.seo?.canonicalUrl || ""}
           type="text"
           name="canonicalUrl"
-          placeholder="https://example.com/blog/my-post"
+          placeholder="https://example.com/blogs/my-post"
           onChange={(e) =>
             setForm((prev) => ({
               ...prev,
