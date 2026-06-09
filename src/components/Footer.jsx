@@ -104,7 +104,7 @@ const Footer = () => {
                   <Link href={`/schools/${school.href}`}>{school.label}</Link>
                 </li>
               ))}
-              <li>
+              {/* <li>
                 <a
                   href="https://vocational.miu.edu.in/"
                   target="_blank"
@@ -112,7 +112,7 @@ const Footer = () => {
                 >
                   School of Vocational Studies
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
