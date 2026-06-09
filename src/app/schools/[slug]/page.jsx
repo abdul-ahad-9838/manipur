@@ -607,6 +607,8 @@ export default function SchoolPage() {
           SCHOOLS[resolvedSlug] ||
           SCHOOLS[slug];
 
+        // console.log(sectionsRes);
+
         // 2. If not found, build from schools-section list (for dynamically added schools)
         if (!school) {
           const found = (sectionsRes.data?.content?.schools || []).find(
@@ -664,8 +666,10 @@ export default function SchoolPage() {
             "school of computer application",
             "school of information technology",
           ],
-          "school-of-commerce": ["school of commerce"],
-          "school-of-engineering": ["school of engineering"],
+          "school-of-commerce-and-management": [
+            "school of commerce and management",
+          ],
+          // "school-of-engineering": ["school of engineering"],
           "school-of-engineering-and-information-technology": [
             "school of engineering and information technology",
           ],

@@ -199,21 +199,21 @@ export const navbarItems = [
   {
     label: "Schools",
     subItems: [
-      {
-        label: "School of Commerce",
-        href: "/schools/school-of-commerce",
-      },
-      {
-        label: "School of Information Technology",
-        href: "/schools/school-of-information-technology",
-      },
+      // {
+      //   label: "School of Commerce",
+      //   href: "/schools/school-of-commerce",
+      // },
+      // {
+      //   label: "School of Information Technology",
+      //   href: "/schools/school-of-information-technology",
+      // },
       {
         label: "School of Engineering and Information Technology",
         href: "/schools/school-of-engineering-and-information-technology",
       },
       {
-        label: "School of Management",
-        href: "/schools/school-of-management",
+        label: "School of Commerce and Management",
+        href: "/schools/school-of-commerce-and-management",
       },
       {
         label: "School of Science",
@@ -495,7 +495,7 @@ const Navbar = () => {
               ) : (
                 <li key={index}>
                   <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
-                    {item.label.toUpperCase()}
+                    {item.label}
                   </Link>
                 </li>
               ),
