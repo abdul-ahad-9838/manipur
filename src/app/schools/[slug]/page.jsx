@@ -13,7 +13,7 @@ const SCHOOLS = {
     color: "#1a3a6b",
     tagline: "Building Future Business Leaders",
     about:
-      "The School of Commerce at Manipur International University offers a comprehensive range of programs designed to equip students with strong foundations in business, finance, accounting, and entrepreneurship. Our curriculum blends theoretical knowledge with practical industry exposure, preparing graduates for dynamic roles in the corporate world and beyond.",
+      "The School of Commerce at Manipur International University offers a comprehensive range of programs designed to equip students with strong foundations in business, finance, accounting, and entrepreneurship.",
     vision:
       "To be a centre of excellence in commerce education, fostering innovation, ethical business practices, and entrepreneurial thinking.",
     mission:
@@ -21,25 +21,21 @@ const SCHOOLS = {
     highlights: [
       {
         icon: "🎓",
-        image: "https://picsum.photos/seed/commerce1/400/220",
         title: "Industry-Aligned Curriculum",
         desc: "Programs designed in consultation with industry experts to meet current market demands.",
       },
       {
         icon: "💼",
-        image: "https://picsum.photos/seed/commerce2/400/220",
         title: "Placement Support",
         desc: "Dedicated placement cell with strong industry connections for career opportunities.",
       },
       {
         icon: "🔬",
-        image: "https://picsum.photos/seed/commerce3/400/220",
         title: "Research Focus",
         desc: "Encourages research in commerce, finance, and business management.",
       },
       {
         icon: "🌐",
-        image: "https://picsum.photos/seed/commerce4/400/220",
         title: "Global Exposure",
         desc: "International collaborations and exchange programs for global perspective.",
       },
@@ -79,172 +75,73 @@ const SCHOOLS = {
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200",
   },
-  // 'school-of-computer-application': {
-  //   name: 'School of Information Technology',
-  //   icon: '💻',
-  //   color: '#1a5c1a',
-  //   tagline: 'Empowering Digital Innovators',
-  //   about: 'The School of Information Technology at MIU is dedicated to producing skilled IT professionals and software developers ready for the digital age. Our programs cover cutting-edge technologies including artificial intelligence, machine learning, web development, and cybersecurity, ensuring students are equipped for the rapidly evolving tech landscape.',
-  //   vision: 'To be a premier institution for computer science education, producing innovative technologists who drive digital transformation.',
-  //   mission: 'To deliver high-quality computer application education that combines theoretical foundations with hands-on technical skills for real-world problem solving.',
-  //   highlights: [
-  //     { icon: '🖥️', image: 'https://picsum.photos/seed/it1/400/220', title: 'State-of-the-Art Labs', desc: 'Modern computer labs with latest hardware and software infrastructure.' },
-  //     { icon: '🤖', image: 'https://picsum.photos/seed/it2/400/220', title: 'AI & ML Focus', desc: 'Specialized tracks in Artificial Intelligence and Machine Learning.' },
-  //     { icon: '🔐', image: 'https://picsum.photos/seed/it3/400/220', title: 'Cybersecurity', desc: 'Dedicated cybersecurity curriculum for the growing digital security sector.' },
-  //     { icon: '🚀', image: 'https://picsum.photos/seed/it4/400/220', title: 'Startup Incubation', desc: 'Support for student startups through our incubation center.' },
-  //   ],
-  //   programs: [
-  //     { title: 'BCA (Bachelor of Computer Application)', duration: '3 Years', eligibility: '10+2', icon: '💻' },
-  //     { title: 'MCA (Master of Computer Application)', duration: '2 Years', eligibility: 'BCA/B.Sc', icon: '🖥️' },
-  //     { title: 'B.Sc Computer Science', duration: '3 Years', eligibility: '10+2 (PCM)', icon: '🔬' },
-  //     { title: 'M.Sc Computer Science', duration: '2 Years', eligibility: 'B.Sc CS', icon: '🤖' },
-  //     { title: 'PG Diploma in AI & ML', duration: '1 Year', eligibility: 'Graduation', icon: '🧠' },
-  //   ],
-  //   image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200',
-  // },
-  "school-of-engineering": {
-    name: "School of Engineering",
-    icon: "⚙️",
-    color: "#8b1a1a",
-    tagline: "Engineering the Future",
+  "school-of-computer-application": {
+    name: "School of Information Technology",
+    icon: "💻",
+    color: "#1a5c1a",
+    tagline: "Empowering Digital Innovators",
     about:
-      "The School of Engineering at MIU provides rigorous technical education across multiple engineering disciplines. With state-of-the-art laboratories, experienced faculty, and strong industry partnerships, we prepare engineers who can tackle complex real-world challenges with creativity, precision, and ethical responsibility.",
+      "The School of Computer Application at MIU is dedicated to producing skilled IT professionals and software developers ready for the digital age.",
     vision:
-      "To be a leading engineering school that produces technically proficient, innovative, and socially responsible engineers.",
+      "To be a premier institution for computer science education, producing innovative technologists who drive digital transformation.",
     mission:
-      "To provide excellence in engineering education through a blend of theoretical knowledge, practical skills, and research that addresses societal needs.",
+      "To deliver high-quality computer application education that combines theoretical foundations with hands-on technical skills for real-world problem solving.",
     highlights: [
       {
-        icon: "🔧",
-        image: "https://picsum.photos/seed/eng1/400/220",
-        title: "Advanced Laboratories",
-        desc: "Fully equipped labs for hands-on learning across all engineering disciplines.",
+        icon: "🖥️",
+        title: "State-of-the-Art Labs",
+        desc: "Modern computer labs with latest hardware and software infrastructure.",
       },
       {
-        icon: "🏭",
-        image: "https://picsum.photos/seed/eng2/400/220",
-        title: "Industry Partnerships",
-        desc: "Strong ties with leading engineering firms for internships and placements.",
+        icon: "🤖",
+        title: "AI & ML Focus",
+        desc: "Specialized tracks in Artificial Intelligence and Machine Learning.",
       },
       {
-        icon: "📐",
-        image: "https://picsum.photos/seed/eng3/400/220",
-        title: "Project-Based Learning",
-        desc: "Emphasis on real-world projects and problem-solving from day one.",
+        icon: "🔐",
+        title: "Cybersecurity",
+        desc: "Dedicated cybersecurity curriculum for the growing digital security sector.",
       },
       {
-        icon: "🌱",
-        image: "https://picsum.photos/seed/eng4/400/220",
-        title: "Sustainable Engineering",
-        desc: "Focus on green technologies and sustainable engineering practices.",
+        icon: "🚀",
+        title: "Startup Incubation",
+        desc: "Support for student startups through our incubation center.",
       },
     ],
     programs: [
       {
-        title: "B.Tech Civil Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "🏗️",
-      },
-      {
-        title: "B.Tech Mechanical Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "⚙️",
-      },
-      {
-        title: "B.Tech Electrical Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "⚡",
-      },
-      {
-        title: "B.Tech Computer Science & Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
+        title: "BCA (Bachelor of Computer Application)",
+        duration: "3 Years",
+        eligibility: "10+2",
         icon: "💻",
       },
       {
-        title: "M.Tech (Various Specializations)",
+        title: "MCA (Master of Computer Application)",
         duration: "2 Years",
-        eligibility: "B.Tech",
+        eligibility: "BCA/B.Sc",
+        icon: "🖥️",
+      },
+      {
+        title: "B.Sc Computer Science",
+        duration: "3 Years",
+        eligibility: "10+2 (PCM)",
         icon: "🔬",
       },
-    ],
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
-  },
-  "school-of-management": {
-    name: "School of Management",
-    icon: "🏢",
-    color: "#5c1a5c",
-    tagline: "Developing Tomorrow's Leaders",
-    about:
-      "The School of Management at MIU is committed to developing strategic thinkers, effective managers, and visionary leaders. Our management programs integrate global business perspectives with local market insights, preparing students for leadership roles in diverse organizational settings across industries.",
-    vision:
-      "To be a globally recognized management school that nurtures ethical, innovative, and effective business leaders.",
-    mission:
-      "To provide transformative management education that develops critical thinking, leadership skills, and entrepreneurial mindset for sustainable business success.",
-    highlights: [
       {
-        icon: "📋",
-        image: "https://picsum.photos/seed/mgmt1/400/220",
-        title: "Case Study Method",
-        desc: "Learning through real business cases from global and Indian companies.",
-      },
-      {
-        icon: "🤝",
-        image: "https://picsum.photos/seed/mgmt2/400/220",
-        title: "Industry Mentorship",
-        desc: "One-on-one mentorship from senior industry professionals.",
-      },
-      {
-        icon: "🌍",
-        image: "https://picsum.photos/seed/mgmt3/400/220",
-        title: "Global Curriculum",
-        desc: "International business curriculum aligned with global management standards.",
-      },
-      {
-        icon: "📊",
-        image: "https://picsum.photos/seed/mgmt4/400/220",
-        title: "Analytics Focus",
-        desc: "Data-driven decision making and business analytics integrated throughout.",
-      },
-    ],
-    programs: [
-      {
-        title: "BBA (Bachelor of Business Administration)",
-        duration: "3 Years",
-        eligibility: "10+2",
-        icon: "📋",
-      },
-      {
-        title: "MBA (Master of Business Administration)",
+        title: "M.Sc Computer Science",
         duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "🏢",
+        eligibility: "B.Sc CS",
+        icon: "🤖",
       },
       {
-        title: "MBA (Human Resource Management)",
-        duration: "2 Years",
+        title: "PG Diploma in AI & ML",
+        duration: "1 Year",
         eligibility: "Graduation",
-        icon: "👥",
-      },
-      {
-        title: "MBA (Marketing Management)",
-        duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "📣",
-      },
-      {
-        title: "MBA (Finance)",
-        duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "💰",
+        icon: "🧠",
       },
     ],
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
   },
   "school-of-science": {
     name: "School of Science",
@@ -252,7 +149,7 @@ const SCHOOLS = {
     color: "#1a4a5c",
     tagline: "Discovering the World Through Science",
     about:
-      "The School of Science at MIU fosters scientific inquiry, research excellence, and innovation across core and applied science disciplines. Our programs provide students with a strong foundation in scientific principles while encouraging curiosity, critical thinking, and a passion for discovery that drives meaningful contributions to society.",
+      "The School of Science at MIU fosters scientific inquiry, research excellence, and innovation across core and applied science disciplines.",
     vision:
       "To be a centre of scientific excellence that advances knowledge and produces researchers and scientists who address global challenges.",
     mission:
@@ -260,25 +157,21 @@ const SCHOOLS = {
     highlights: [
       {
         icon: "🧪",
-        image: "https://picsum.photos/seed/sci1/400/220",
         title: "Research Laboratories",
         desc: "Well-equipped research labs for practical scientific exploration.",
       },
       {
         icon: "🌿",
-        image: "https://picsum.photos/seed/sci2/400/220",
         title: "Biodiversity Research",
         desc: "Unique focus on Northeast India's rich biodiversity and ecology.",
       },
       {
         icon: "🔭",
-        image: "https://picsum.photos/seed/sci3/400/220",
         title: "Interdisciplinary Approach",
         desc: "Programs that bridge multiple scientific disciplines for holistic understanding.",
       },
       {
         icon: "📰",
-        image: "https://picsum.photos/seed/sci4/400/220",
         title: "Publication Support",
         desc: "Encouragement and support for student research publications.",
       },
@@ -330,7 +223,7 @@ const SCHOOLS = {
     color: "#5c4a1a",
     tagline: "Skills for the Real World",
     about:
-      "The School of Vocational Studies at MIU bridges the gap between education and employment by offering skill-based programs aligned with industry needs. Our vocational courses are designed to provide practical, hands-on training that makes graduates job-ready from day one, contributing to the skilled workforce development of Northeast India.",
+      "The School of Vocational Studies at MIU bridges the gap between education and employment by offering skill-based programs aligned with industry needs.",
     vision:
       "To be the leading vocational education institution in Northeast India, producing skilled professionals who drive economic growth.",
     mission:
@@ -338,25 +231,21 @@ const SCHOOLS = {
     highlights: [
       {
         icon: "🛠️",
-        image: "https://picsum.photos/seed/voc1/400/220",
         title: "Hands-On Training",
         desc: "Practical skill development through workshops, labs, and industry visits.",
       },
       {
         icon: "📜",
-        image: "https://picsum.photos/seed/voc2/400/220",
         title: "Industry Certifications",
         desc: "Programs aligned with national and international skill certification standards.",
       },
       {
         icon: "🤝",
-        image: "https://picsum.photos/seed/voc3/400/220",
         title: "Industry Tie-Ups",
         desc: "Direct partnerships with industries for apprenticeships and placements.",
       },
       {
         icon: "🚀",
-        image: "https://picsum.photos/seed/voc4/400/220",
         title: "Entrepreneurship",
         desc: "Support for self-employment and entrepreneurship ventures.",
       },
@@ -402,7 +291,7 @@ const SCHOOLS = {
     color: "#6b1a3a",
     tagline: "Exploring Human Culture and Expression",
     about:
-      "The School of Humanities at MIU offers comprehensive programs in literature, languages, philosophy, history, and cultural studies. Our curriculum emphasizes critical thinking, cultural awareness, and communication skills that are essential for understanding human society and preparing students for diverse career paths in education, media, public service, and cultural organizations.",
+      "The School of Humanities at MIU offers comprehensive programs in literature, languages, philosophy, history, and cultural studies.",
     vision:
       "To be a center of excellence in humanities education that fosters critical thinking, cultural understanding, and humanistic values.",
     mission:
@@ -410,25 +299,21 @@ const SCHOOLS = {
     highlights: [
       {
         icon: "📖",
-        image: "https://picsum.photos/seed/hum1/400/220",
         title: "Rich Literary Tradition",
         desc: "Comprehensive study of classical and contemporary literature from diverse cultures.",
       },
       {
         icon: "🌍",
-        image: "https://picsum.photos/seed/hum2/400/220",
         title: "Cultural Studies",
         desc: "Deep exploration of regional and global cultural traditions and practices.",
       },
       {
         icon: "🎭",
-        image: "https://picsum.photos/seed/hum3/400/220",
         title: "Creative Expression",
         desc: "Opportunities for creative writing, drama, and artistic expression.",
       },
       {
         icon: "🔍",
-        image: "https://picsum.photos/seed/hum4/400/220",
         title: "Research Excellence",
         desc: "Strong emphasis on humanities research and scholarly publications.",
       },
@@ -482,25 +367,21 @@ const SCHOOLS = {
     highlights: [
       {
         icon: "🩺",
-        image: "https://picsum.photos/seed/ahs1/400/220",
         title: "Clinical Training",
         desc: "Hands-on clinical exposure in hospitals and healthcare facilities from the first year.",
       },
       {
         icon: "🔬",
-        image: "https://picsum.photos/seed/ahs2/400/220",
         title: "Modern Laboratories",
         desc: "State-of-the-art labs for anatomy, physiology, microbiology, and diagnostic sciences.",
       },
       {
         icon: "🤝",
-        image: "https://picsum.photos/seed/ahs3/400/220",
         title: "Hospital Tie-Ups",
         desc: "Strong partnerships with leading hospitals and diagnostic centres for internships and placements.",
       },
       {
         icon: "📋",
-        image: "https://picsum.photos/seed/ahs4/400/220",
         title: "Industry-Aligned Curriculum",
         desc: "Programs designed in line with national health sector skill standards and regulatory guidelines.",
       },
@@ -546,30 +427,256 @@ const SCHOOLS = {
     image:
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200",
   },
-};
-
-const OTHER_SCHOOLS = [
-  { name: "School of Commerce", slug: "school-of-commerce", icon: "📊" },
-  {
+  "school-of-information-technology": {
     name: "School of Information Technology",
-    slug: "school-of-computer-application",
-    icon: "💻",
+    icon: "🏫",
+    color: "#1a3a6b",
+    tagline: "Empowering Digital Innovators",
+    about:
+      "The School of Computer Application at MIU is dedicated to producing skilled IT professionals and software developers ready for the digital age.",
+    vision:
+      "To be a premier institution for computer science education, producing innovative technologists who drive digital transformation.",
+    mission:
+      "To deliver high-quality computer application education that combines theoretical foundations with hands-on technical skills for real-world problem solving.",
+    highlights: [
+      {
+        icon: "🖥️",
+        title: "State-of-the-Art Labs",
+        desc: "Modern computer labs with latest hardware and software infrastructure.",
+      },
+      {
+        icon: "🤖",
+        title: "AI & ML Focus",
+        desc: "Specialized tracks in Artificial Intelligence and Machine Learning.",
+      },
+      {
+        icon: "🔐",
+        title: "Cybersecurity",
+        desc: "Dedicated cybersecurity curriculum for the growing digital security sector.",
+      },
+      {
+        icon: "🚀",
+        title: "Startup Incubation",
+        desc: "Support for student startups through our incubation center.",
+      },
+    ],
+    programs: [
+      {
+        title: "BCA (Bachelor of Computer Application)",
+        duration: "3 Years",
+        eligibility: "10+2",
+        icon: "💻",
+      },
+      {
+        title: "MCA (Master of Computer Application)",
+        duration: "2 Years",
+        eligibility: "BCA/B.Sc",
+        icon: "💻",
+      },
+      {
+        title: "B.Sc Computer Science",
+        duration: "3 Years",
+        eligibility: "10+2 (PCM)",
+        icon: "🔬",
+      },
+      {
+        title: "M.Sc Computer Science",
+        duration: "2 Years",
+        eligibility: "B.Sc CS",
+        icon: "🤖",
+      },
+      {
+        title: "PG Diploma in AI & ML",
+        duration: "1 Years",
+        eligibility: "Graduation",
+        icon: "🧠",
+      },
+    ],
+    image:
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600",
   },
-  { name: "School of Engineering", slug: "school-of-engineering", icon: "⚙️" },
-  { name: "School of Management", slug: "school-of-management", icon: "🏢" },
-  { name: "School of Science", slug: "school-of-science", icon: "🔬" },
-  {
-    name: "School of Vocational Studies",
-    slug: "school-of-vocational-studies",
-    icon: "🛠️",
+  "school-of-fire-&-safety": {
+    name: "School of Fire & Safety",
+    icon: "🏫",
+    color: "#1a3a6b",
+    tagline: "",
+    about: "",
+    vision: "",
+    mission: "",
+    highlights: [],
+    programs: [],
+    image: "",
   },
-  { name: "School of Humanities", slug: "school-of-humanities", icon: "📚" },
-  {
-    name: "School of Allied Health Science",
-    slug: "school-of-allied-health-science",
-    icon: "🏥",
+  "School of Engineering (Banaras)": {
+    name: "School of Engineering (Banaras)",
+    icon: "🏫",
+    color: "#1a3a6b",
+    tagline: "",
+    about: "",
+    vision: "",
+    mission: "",
+    highlights: [
+      {
+        icon: "🛠️",
+        title: "Advanced Laboratories",
+        desc: "Fully equipped labs for hands-on learning across all engineering disciplines.",
+      },
+      {
+        icon: "🎓",
+        title: "Project-Based Learning",
+        desc: "Emphasis on real-world projects and problem-solving from day one.",
+      },
+      {
+        icon: "🌱",
+        title: "Sustainable Engineering",
+        desc: "Focus on green technologies and sustainable engineering practices.",
+      },
+      {
+        icon: "🏭",
+        title: "Industry Partnerships",
+        desc: "Strong ties with leading engineering firms for internships and placements.",
+      },
+    ],
+    programs: [],
+    image: "",
   },
-];
+  "school-of-engineering-and-information-technology": {
+    name: "School of Engineering and Information Technology",
+    icon: "⚙️",
+    color: "#8b1a1a",
+    tagline: "Engineering the Future",
+    about:
+      "The School of Engineering at MIU provides rigorous technical education across multiple engineering disciplines.",
+    vision:
+      "To be a leading engineering school that produces technically proficient, innovative, and socially responsible engineers.",
+    mission:
+      "To provide excellence in engineering education through a blend of theoretical knowledge, practical skills, and research that addresses societal needs.",
+    highlights: [
+      {
+        icon: "🔧",
+        title: "Advanced Laboratories",
+        desc: "Fully equipped labs for hands-on learning across all engineering disciplines.",
+      },
+      {
+        icon: "🏭",
+        title: "Industry Partnerships",
+        desc: "Strong ties with leading engineering firms for internships and placements.",
+      },
+      {
+        icon: "📐",
+        title: "Project-Based Learning",
+        desc: "Emphasis on real-world projects and problem-solving from day one.",
+      },
+      {
+        icon: "🌱",
+        title: "Sustainable Engineering",
+        desc: "Focus on green technologies and sustainable engineering practices.",
+      },
+    ],
+    programs: [
+      {
+        title: "B.Tech Civil Engineering",
+        duration: "4 Years",
+        eligibility: "10+2 (PCM)",
+        icon: "🏗️",
+      },
+      {
+        title: "B.Tech Mechanical Engineering",
+        duration: "4 Years",
+        eligibility: "10+2 (PCM)",
+        icon: "⚙️",
+      },
+      {
+        title: "B.Tech Electrical Engineering",
+        duration: "4 Years",
+        eligibility: "10+2 (PCM)",
+        icon: "⚡",
+      },
+      {
+        title: "B.Tech Computer Science & Engineering",
+        duration: "4 Years",
+        eligibility: "10+2 (PCM)",
+        icon: "💻",
+      },
+      {
+        title: "M.Tech (Various Specializations)",
+        duration: "2 Years",
+        eligibility: "B.Tech",
+        icon: "🔬",
+      },
+    ],
+    image:
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
+  },
+  "school-of-commerce-and-management": {
+    name: "School of Management and Commerce",
+    icon: "🏢",
+    color: "#5c1a5c",
+    tagline: "Developing Tomorrow's Leaders",
+    about:
+      "The School of Management at MIU is committed to developing strategic thinkers, effective managers, and visionary leaders.",
+    vision:
+      "To be a globally recognized management school that nurtures ethical, innovative, and effective business leaders.",
+    mission:
+      "To provide transformative management education that develops critical thinking, leadership skills, and entrepreneurial mindset for sustainable business success.",
+    highlights: [
+      {
+        icon: "📋",
+        title: "Case Study Method",
+        desc: "Learning through real business cases from global and Indian companies.",
+      },
+      {
+        icon: "🤝",
+        title: "Industry Mentorship",
+        desc: "One-on-one mentorship from senior industry professionals.",
+      },
+      {
+        icon: "🌍",
+        title: "Global Curriculum",
+        desc: "International business curriculum aligned with global management standards.",
+      },
+      {
+        icon: "📊",
+        title: "Analytics Focus",
+        desc: "Data-driven decision making and business analytics integrated throughout.",
+      },
+    ],
+    programs: [
+      {
+        title: "BBA (Bachelor of Business Administration)",
+        duration: "3 Years",
+        eligibility: "10+2",
+        icon: "📋",
+      },
+      {
+        title: "MBA (Master of Business Administration)",
+        duration: "2 Years",
+        eligibility: "Graduation",
+        icon: "🏢",
+      },
+      {
+        title: "MBA (Human Resource Management)",
+        duration: "2 Years",
+        eligibility: "Graduation",
+        icon: "👥",
+      },
+      {
+        title: "MBA (Marketing Management)",
+        duration: "2 Years",
+        eligibility: "Graduation",
+        icon: "📣",
+      },
+      {
+        title: "MBA (Finance)",
+        duration: "2 Years",
+        eligibility: "Graduation",
+        icon: "💰",
+      },
+    ],
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
+  },
+};
 
 // Alias so both old and new slugs work
 SCHOOLS["school-of-information-technology"] =
@@ -673,6 +780,7 @@ export default function SchoolPage() {
           "school-of-engineering-and-information-technology": [
             "school of engineering and information technology",
           ],
+          "school-of-fire-&-safety": ["school of fire & safety"],
           "school-of-management": ["school of management"],
           "school-of-science": ["school of science"],
           "school-of-vocational-studies": ["school of vocational studies"],
@@ -685,12 +793,15 @@ export default function SchoolPage() {
         const matchNames =
           slugToDBNames[slug] ||
           (schoolData ? [schoolData.name.toLowerCase()] : []);
+
         if (!matchNames.length) return;
 
         const filtered = data.filter((c) => {
           const cSchool = (c.school || "").toLowerCase().trim();
           return matchNames.some((n) => cSchool === n) && c.isActive !== false;
         });
+
+        console.log(matchNames);
 
         filtered.sort((a, b) => (a.order || 0) - (b.order || 0));
         setApiCourses(filtered);
@@ -1038,7 +1149,7 @@ export default function SchoolPage() {
       </section>
 
       {/* Other Schools */}
-      <section className="sp-section sp-section-alt">
+      {/* <section className="sp-section sp-section-alt">
         <div className="container">
           <h2
             className="sp-section-title"
@@ -1059,7 +1170,7 @@ export default function SchoolPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
