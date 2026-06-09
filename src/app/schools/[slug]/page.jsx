@@ -7,74 +7,74 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const SCHOOLS = {
-  "school-of-commerce": {
-    name: "School of Commerce",
-    icon: "📊",
-    color: "#1a3a6b",
-    tagline: "Building Future Business Leaders",
-    about:
-      "The School of Commerce at Manipur International University offers a comprehensive range of programs designed to equip students with strong foundations in business, finance, accounting, and entrepreneurship.",
-    vision:
-      "To be a centre of excellence in commerce education, fostering innovation, ethical business practices, and entrepreneurial thinking.",
-    mission:
-      "To provide quality education in commerce and business studies that empowers students with knowledge, skills, and values to succeed in a competitive global economy.",
-    highlights: [
-      {
-        icon: "🎓",
-        title: "Industry-Aligned Curriculum",
-        desc: "Programs designed in consultation with industry experts to meet current market demands.",
-      },
-      {
-        icon: "💼",
-        title: "Placement Support",
-        desc: "Dedicated placement cell with strong industry connections for career opportunities.",
-      },
-      {
-        icon: "🔬",
-        title: "Research Focus",
-        desc: "Encourages research in commerce, finance, and business management.",
-      },
-      {
-        icon: "🌐",
-        title: "Global Exposure",
-        desc: "International collaborations and exchange programs for global perspective.",
-      },
-    ],
-    programs: [
-      {
-        title: "B.Com (Bachelor of Commerce)",
-        duration: "3 Years",
-        eligibility: "10+2",
-        icon: "📈",
-      },
-      {
-        title: "B.Com (Hons)",
-        duration: "3 Years",
-        eligibility: "10+2",
-        icon: "📊",
-      },
-      {
-        title: "M.Com (Master of Commerce)",
-        duration: "2 Years",
-        eligibility: "B.Com",
-        icon: "💹",
-      },
-      {
-        title: "BBA (Bachelor of Business Administration)",
-        duration: "3 Years",
-        eligibility: "10+2",
-        icon: "🏢",
-      },
-      {
-        title: "MBA (Master of Business Administration)",
-        duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "👔",
-      },
-    ],
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200",
-  },
+  // "school-of-commerce": {
+  //   name: "School of Commerce",
+  //   icon: "📊",
+  //   color: "#1a3a6b",
+  //   tagline: "Building Future Business Leaders",
+  //   about:
+  //     "The School of Commerce at Manipur International University offers a comprehensive range of programs designed to equip students with strong foundations in business, finance, accounting, and entrepreneurship.",
+  //   vision:
+  //     "To be a centre of excellence in commerce education, fostering innovation, ethical business practices, and entrepreneurial thinking.",
+  //   mission:
+  //     "To provide quality education in commerce and business studies that empowers students with knowledge, skills, and values to succeed in a competitive global economy.",
+  //   highlights: [
+  //     {
+  //       icon: "🎓",
+  //       title: "Industry-Aligned Curriculum",
+  //       desc: "Programs designed in consultation with industry experts to meet current market demands.",
+  //     },
+  //     {
+  //       icon: "💼",
+  //       title: "Placement Support",
+  //       desc: "Dedicated placement cell with strong industry connections for career opportunities.",
+  //     },
+  //     {
+  //       icon: "🔬",
+  //       title: "Research Focus",
+  //       desc: "Encourages research in commerce, finance, and business management.",
+  //     },
+  //     {
+  //       icon: "🌐",
+  //       title: "Global Exposure",
+  //       desc: "International collaborations and exchange programs for global perspective.",
+  //     },
+  //   ],
+  //   programs: [
+  //     {
+  //       title: "B.Com (Bachelor of Commerce)",
+  //       duration: "3 Years",
+  //       eligibility: "10+2",
+  //       icon: "📈",
+  //     },
+  //     {
+  //       title: "B.Com (Hons)",
+  //       duration: "3 Years",
+  //       eligibility: "10+2",
+  //       icon: "📊",
+  //     },
+  //     {
+  //       title: "M.Com (Master of Commerce)",
+  //       duration: "2 Years",
+  //       eligibility: "B.Com",
+  //       icon: "💹",
+  //     },
+  //     {
+  //       title: "BBA (Bachelor of Business Administration)",
+  //       duration: "3 Years",
+  //       eligibility: "10+2",
+  //       icon: "🏢",
+  //     },
+  //     {
+  //       title: "MBA (Master of Business Administration)",
+  //       duration: "2 Years",
+  //       eligibility: "Graduation",
+  //       icon: "👔",
+  //     },
+  //   ],
+  //   image:
+  //     "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200",
+  // },
   "school-of-computer-application": {
     name: "School of Information Technology",
     icon: "💻",
@@ -353,7 +353,7 @@ const SCHOOLS = {
     image:
       "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80&w=1200",
   },
-  "school-of-allied-health-science": {
+  "school-of-paramedical-sciences": {
     name: "School of Allied Health Science",
     icon: "🏥",
     color: "#0d6e6e",
@@ -786,14 +786,13 @@ export default function SchoolPage() {
           "school-of-fire-&-safety": ["school of fire & safety"],
           // "school-of-management": ["school of management"],
           "school-of-science": ["school of science"],
+          "school-of-paramedical-sciences": ["school of paramedical sciences"],
           "school-of-vocational-studies": ["school of vocational studies"],
           "school-of-humanities": ["school of humanities"],
           "school-of-allied-health-science": [
             "school of allied health science",
           ],
         };
-
-        console.log(data);
 
         const matchNames =
           slugToDBNames[slug] ||

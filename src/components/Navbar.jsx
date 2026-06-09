@@ -224,8 +224,8 @@ export const navbarItems = [
         href: "/schools/school-of-fire-&-safety",
       },
       {
-        label: "School Of Allied Health Science",
-        href: "/schools/school-of-allied-health-science",
+        label: "School of Paramedical Sciences",
+        href: "/schools/school-of-paramedical-sciences",
       },
       {
         label: "School of Library and Information Science",
