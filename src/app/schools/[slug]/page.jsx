@@ -769,10 +769,10 @@ export default function SchoolPage() {
             "school of computer application",
             "school of information technology",
           ],
-          "school-of-information-technology": [
-            "school of computer application",
-            "school of information technology",
-          ],
+          // "school-of-information-technology": [
+          //   "school of computer application",
+          //   "school of information technology",
+          // ],
           "school-of-commerce-and-management": [
             "school of commerce and management",
           ],
@@ -780,8 +780,11 @@ export default function SchoolPage() {
           "school-of-engineering-and-information-technology": [
             "school of engineering and information technology",
           ],
+          "school-of-library-and-information-science": [
+            "school of library and information science",
+          ],
           "school-of-fire-&-safety": ["school of fire & safety"],
-          "school-of-management": ["school of management"],
+          // "school-of-management": ["school of management"],
           "school-of-science": ["school of science"],
           "school-of-vocational-studies": ["school of vocational studies"],
           "school-of-humanities": ["school of humanities"],
@@ -789,6 +792,8 @@ export default function SchoolPage() {
             "school of allied health science",
           ],
         };
+
+        console.log(data);
 
         const matchNames =
           slugToDBNames[slug] ||

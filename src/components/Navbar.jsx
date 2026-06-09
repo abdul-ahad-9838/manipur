@@ -199,14 +199,6 @@ export const navbarItems = [
   {
     label: "Schools",
     subItems: [
-      // {
-      //   label: "School of Commerce",
-      //   href: "/schools/school-of-commerce",
-      // },
-      // {
-      //   label: "School of Information Technology",
-      //   href: "/schools/school-of-information-technology",
-      // },
       {
         label: "School of Engineering and Information Technology",
         href: "/schools/school-of-engineering-and-information-technology",
@@ -234,6 +226,10 @@ export const navbarItems = [
       {
         label: "School Of Allied Health Science",
         href: "/schools/school-of-allied-health-science",
+      },
+      {
+        label: "School of Library and Information Science",
+        href: "/schools/school-of-library-and-information-science",
       },
     ],
   },
