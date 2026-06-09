@@ -12,7 +12,7 @@ const DEFAULT_SCHOOLS = [
   "School Of Commerce",
   // "School Of Information Technology",
   // "School Of Engineering",
-  "School of Engineering and Information Technology",
+  "School Of Engineering And Information Technology",
   "School Of Management",
   "School Of Science",
   "School Of Vocational Studies",
@@ -100,16 +100,19 @@ export default function CoursesManager() {
       API.get("/settings/schools-section")
         .then(({ data }) => {
           const list = data?.content?.schools;
+          console.log("list", list);
           if (list?.length) {
             // Convert "School of Fire & Safety" → "School Of Fire & Safety" (title case first word)
             const dbNames = list.map((s) =>
               s.name.replace(/\b\w/g, (c) => c.toUpperCase()),
             );
+
             const dbNamesSet = new Set(dbNames.map((n) => n.toLowerCase()));
             // Merge: append any DEFAULT_SCHOOLS not already in DB list
             const missing = DEFAULT_SCHOOLS.filter(
               (s) => !dbNamesSet.has(s.toLowerCase()),
             );
+
             setSchools([...dbNames, ...missing]);
           }
         })
@@ -356,8 +359,6 @@ export default function CoursesManager() {
 
     return acc;
   }, {});
-
-  console.log(coursesBySchool);
 
   // Also ensure all schools from DB appear even with 0 courses
   // Normalize to title case to match course school field format
