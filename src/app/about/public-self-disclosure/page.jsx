@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import "@/styles/AcademicCouncil.css";
 import "@/styles/IQAC.css";
+import "@/styles/SimplePage.css";
 
 const SECTIONS = [
   {
@@ -158,19 +159,26 @@ export default function PublicSelfDisclosurePage() {
   return (
     <div className="ac-page">
       {/* Hero */}
-      <div className="ac-hero">
+      <div className="simple-hero">
         <div className="container">
-          <nav className="ac-breadcrumb">
-            <Link href="/">Home</Link>
-            <span>›</span>
-            <Link href="/about">About Us</Link>
-            <span>›</span>
+          <nav className="simple-breadcrumb">
+            <span>
+              <Link href="/">Home</Link>
+            </span>
+            <span className="bc-sep">›</span>
+            <span>
+              <Link href="/about">About Us</Link>
+            </span>
+            <span className="bc-sep">›</span>
             <span>Public Self Disclosure</span>
           </nav>
-          <span className="section-badge">TRANSPARENCY</span>
-          <h1>Public Self-Disclosure</h1>
-          <p>
-            Manipur International University — Committed to Transparency &
+
+          <span className="simple-badge">TRANSPARENCY</span>
+
+          <h1 className="simple-title">Public Self-Disclosure</h1>
+
+          <p className="simple-subtitle">
+            Manipur International University — Committed to Transparency &amp;
             Accountability
           </p>
         </div>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import API from "@/lib/api";
 import "@/styles/AcademicCouncil.css";
+// import "@/styles/SimplePage.css";
 
 const DEFAULT_DATA = {
   title: "Academic Council",
@@ -572,21 +573,28 @@ export default function AcademicCouncilPage() {
   return (
     <div className="ac-page">
       {/* Hero */}
-      <div className="ac-hero">
+      <div className="simple-hero">
         <div className="container">
-          <nav className="ac-breadcrumb">
-            <Link href="/">Home</Link>
+          <nav className="simple-breadcrumb">
+            <span>
+              <Link href="/">Home</Link>
+            </span>
             <span>›</span>
-            <Link href="/about">About Us</Link>
+            <span>
+              <Link href="/about">About Us</Link>
+            </span>
             <span>›</span>
 
-            <Link href="/about/governance">Governance</Link>
+            <span>
+              <Link href="/about/governance">Governance</Link>
+            </span>
             <span>›</span>
             <span>Academic Council</span>
           </nav>
-          <span className="section-badge">GOVERNANCE</span>
-          <h1>{data.title}</h1>
-          <p>{data.subtitle}</p>
+
+          <span className="simple-badge">GOVERNANCE</span>
+          <h1 className="simple-title">{data.title}</h1>
+          <p className="simple-subtitle">{data.subtitle}</p>
         </div>
       </div>
 

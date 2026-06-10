@@ -339,3 +339,59 @@ button,
 /* ========================================
    END COMPREHENSIVE TEXT SPACING
    ======================================== */
+.simple-hero {
+  background: linear-gradient(135deg, var(--lpu-black) 0%, #1a2a4a 100%);
+  padding: clamp(100px, 15vw, 160px) 0 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.simple-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #aaa;
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.simple-breadcrumb a {
+  color: var(--lpu-orange);
+  text-decoration: none;
+}
+.bc-sep {
+  color: #666;
+}
+
+.simple-badge {
+  display: inline-block;
+  color: var(--lpu-orange);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.simple-hero h1 {
+  color: white !important;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 12px;
+}
+
+.simple-subtitle {
+  color: #aaa;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: none;
+  max-width: 650px;
+  line-height: 1.7;
+  margin: 0 auto;
+}
