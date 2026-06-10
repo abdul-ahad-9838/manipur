@@ -10,9 +10,7 @@ async function getCourse(slug) {
   const host = headersList.get("host");
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
 
-  const res = await fetch(`${protocol}://${host}/api/courses/${slug}`, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(`${protocol}://${host}/api/courses/${slug}`);
 
   if (!res.ok) return null;
 
@@ -23,8 +21,6 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
 
   const course = await getCourse(slug);
-
-  console.log(course);
 
   if (!course) {
     return {

@@ -7,8 +7,10 @@ import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
 import ImageUploader from "@/components/ImageUploader";
 import SeoForm from "@/components/SeoForm";
-import TextEditor from "@/components/TextEditor";
-
+import dynamic from "next/dynamic";
+const TextEditor = dynamic(() => import("@/components/TextEditor"), {
+  ssr: false,
+});
 const DEFAULT_SCHOOLS = [
   "School Of Commerce",
   // "School Of Information Technology",
@@ -21,6 +23,7 @@ const DEFAULT_SCHOOLS = [
   "School Of Allied Health Science",
   "School Of Fire & Safety",
   "School Of Library And Information Science",
+  "School Of Journalism & Mass Communication",
 ];
 
 const EMPTY = {
@@ -362,6 +365,8 @@ export default function CoursesManager() {
     return acc;
   }, {});
 
+  console.log(coursesBySchool);
+
   // Also ensure all schools from DB appear even with 0 courses
   // Normalize to title case to match course school field format
   schools.forEach((s) => {
@@ -668,22 +673,19 @@ export default function CoursesManager() {
             </div>
             <div style={{ marginBottom: "16px" }}>
               <label style={lbl}>Full Overview</label>
-              <TextEditor
-                value={form.overview}
-                onChange={(data) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    overview: data,
-                  }))
-                }
-              />
-              {/* <textarea
+              <textarea
                 name="overview"
                 value={form.overview}
                 onChange={handleChange}
                 style={ta}
                 placeholder="Detailed program overview..."
-              /> */}
+              />
+              <TextEditor
+                value={form.overview}
+                onChange={(value) =>
+                  setForm((prev) => ({ ...prev, overview: value }))
+                }
+              />
             </div>
             <div style={{ marginBottom: "16px" }}>
               <label style={lbl}>Highlight (e.g. 64 LPA Package)</label>
@@ -715,28 +717,13 @@ export default function CoursesManager() {
               />
             </div>
             <div style={{ marginBottom: "16px" }}>
-              <label style={lbl}>Syllabus</label>
+              <label style={lbl}>Syllabus (text or HTML)</label>
               <TextEditor
                 value={form.syllabus}
-                onChange={(data) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    syllabus: data,
-                  }))
+                onChange={(value) =>
+                  setForm((prev) => ({ ...prev, syllabus: value }))
                 }
               />
-              {/* <textarea
-                name="syllabus"
-                value={form.syllabus}
-                onChange={handleChange}
-                style={{
-                  ...ta,
-                  minHeight: "150px",
-                  fontFamily: "monospace",
-                  fontSize: "0.88rem",
-                }}
-                placeholder="Semester 1: ..."
-              /> */}
             </div>
             <div style={{ marginBottom: "24px" }}>
               <label style={lbl}>Affiliation</label>

@@ -1152,30 +1152,6 @@ export default function SchoolPage() {
           </div>
         </div>
       </section>
-
-      {/* Other Schools */}
-      {/* <section className="sp-section sp-section-alt">
-        <div className="container">
-          <h2
-            className="sp-section-title"
-            style={{ textAlign: "center", marginBottom: "30px" }}
-          >
-            Explore Other Schools
-          </h2>
-          <div className="sp-other-schools">
-            {OTHER_SCHOOLS.filter((s) => s.slug !== slug).map((s) => (
-              <Link
-                key={s.slug}
-                href={`/schools/${s.slug}`}
-                className="sp-other-card"
-              >
-                <span>{s.icon}</span>
-                <span>{s.name}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 }

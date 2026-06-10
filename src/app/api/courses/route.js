@@ -8,9 +8,6 @@ export async function GET() {
     await dbConnect();
     // Only fetch fields needed for listing — exclude heavy fields like syllabus/objectives
     const courses = await Course.find({})
-      .select(
-        "title specialisation icon description school category order isActive slug coverImage cardImage duration eligibility fee seats mode affiliation highlight seo",
-      )
       .sort({ order: 1, createdAt: -1 })
       .lean();
     return NextResponse.json(courses, {
