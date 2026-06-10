@@ -71,7 +71,7 @@ export default function AdminFAQ() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this FAQ?")) return;
-    await API.delete(`/faq/${id}`);
+    await API.delete(`/faqs/${id}`);
     fetchFaqs();
   };
 

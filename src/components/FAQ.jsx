@@ -24,7 +24,7 @@ const FAQ = async () => {
 
   if (!faqs) return null;
 
-  const filteredFaqs = faqs.filter((faq) => faq.published);
+  const filteredFaqs = faqs?.filter((faq) => faq?.published);
 
   return (
     <div className="faq-wrapper">

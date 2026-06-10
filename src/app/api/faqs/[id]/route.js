@@ -41,9 +41,13 @@ export async function PUT(req, { params }) {
 
 export async function DELETE(req, { params }) {
   try {
+    console.log("call delete");
     await dbConnect();
+    const { id } = await params;
 
-    await Faq.findByIdAndDelete(params.id);
+    console.log(id);
+
+    await Faq.findByIdAndDelete(id);
 
     return NextResponse.json({
       success: true,
