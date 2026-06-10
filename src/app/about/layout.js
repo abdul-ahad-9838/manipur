@@ -69,7 +69,7 @@ export default function AboutLayout({ children }) {
         />
       </head>
       <body>
-        <main style={{ marginTop: "50px" }}>{children}</main>
+        <main style={{ marginTop: "125px" }}>{children}</main>
       </body>
     </html>
   );
