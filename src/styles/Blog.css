@@ -239,6 +239,12 @@
   text-transform: none;
 }
 
+.blog-detail-content a {
+  color: blue;
+  text-decoration: underline;
+  transition: gap 0.2s;
+}
+
 .blog-detail-content p {
   margin-bottom: 1.2rem;
 }
