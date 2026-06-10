@@ -245,7 +245,7 @@ export default async function CourseDetail({ params }) {
                 </li>
               )}
 
-              {course.affiliation && (
+              {/* {course.affiliation && (
                 <li>
                   <span>Affiliation</span>
                   <strong>{course.affiliation}</strong>
@@ -257,7 +257,7 @@ export default async function CourseDetail({ params }) {
                   <span>School</span>
                   <strong>{course.school}</strong>
                 </li>
-              )}
+              )} */}
             </ul>
 
             <a

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
 import ImageUploader from "@/components/ImageUploader";
 import SeoForm from "@/components/SeoForm";
+import TextEditor from "@/components/TextEditor";
 
 const DEFAULT_SCHOOLS = [
   "School Of Commerce",
@@ -667,13 +668,22 @@ export default function CoursesManager() {
             </div>
             <div style={{ marginBottom: "16px" }}>
               <label style={lbl}>Full Overview</label>
-              <textarea
+              <TextEditor
+                value={form.overview}
+                onChange={(data) =>
+                  setForm((prev) => ({
+                    ...prev,
+                    overview: data,
+                  }))
+                }
+              />
+              {/* <textarea
                 name="overview"
                 value={form.overview}
                 onChange={handleChange}
                 style={ta}
                 placeholder="Detailed program overview..."
-              />
+              /> */}
             </div>
             <div style={{ marginBottom: "16px" }}>
               <label style={lbl}>Highlight (e.g. 64 LPA Package)</label>
@@ -705,8 +715,17 @@ export default function CoursesManager() {
               />
             </div>
             <div style={{ marginBottom: "16px" }}>
-              <label style={lbl}>Syllabus (text or HTML)</label>
-              <textarea
+              <label style={lbl}>Syllabus</label>
+              <TextEditor
+                value={form.syllabus}
+                onChange={(data) =>
+                  setForm((prev) => ({
+                    ...prev,
+                    syllabus: data,
+                  }))
+                }
+              />
+              {/* <textarea
                 name="syllabus"
                 value={form.syllabus}
                 onChange={handleChange}
@@ -717,7 +736,7 @@ export default function CoursesManager() {
                   fontSize: "0.88rem",
                 }}
                 placeholder="Semester 1: ..."
-              />
+              /> */}
             </div>
             <div style={{ marginBottom: "24px" }}>
               <label style={lbl}>Affiliation</label>
