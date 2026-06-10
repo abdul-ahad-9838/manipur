@@ -20,7 +20,7 @@ export default function AdminFAQ() {
 
   const fetchFaqs = async () => {
     try {
-      const { data } = await API.get("/faq");
+      const { data } = await API.get("/faqs");
       setFaqs(data);
     } catch {
       setFaqs([]);
@@ -45,10 +45,10 @@ export default function AdminFAQ() {
     setMsg("");
     try {
       if (editId) {
-        await API.put(`/faq/${editId}`, form);
+        await API.put(`/faqs/${editId}`, form);
         setMsg("FAQ updated.");
       } else {
-        await API.post("/faq", form);
+        await API.post("/faqs", form);
         setMsg("FAQ created.");
       }
       setForm(emptyForm);

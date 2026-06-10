@@ -1,11 +1,10 @@
+import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
 // import Stats from "@/components/Stats";
 
 const Stats = dynamic(() => import("@/components/Stats"));
-const Programs = dynamic(() => import("@/components/Programs"));
-const Accreditations = dynamic(() => import("@/components/Accreditations"));
 const Spotlight = dynamic(() => import("@/components/Spotlight"));
 const CampusLife = dynamic(() => import("@/components/CampusLife"));
 const Placements = dynamic(() => import("@/components/Placements"));
@@ -48,6 +47,7 @@ export default function Home() {
       <Placements />
       <Ecosystem />
       <NewsSlider />
+      <FAQ />
     </main>
   );
 }
