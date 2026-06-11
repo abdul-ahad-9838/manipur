@@ -1,9 +1,7 @@
-"use client";
+// CampusLife.jsx (Server Component)
 
-import React, { useState, useEffect } from "react";
-import API from "@/lib/api";
-import "@/styles/CampusLife.css";
-import Image from "next/image";
+import { headers } from "next/headers";
+import CampusLifeClient from "./CampusLifeClient";
 
 const DEFAULT_TABS = [
   {
@@ -28,88 +26,37 @@ const DEFAULT_TABS = [
   },
 ];
 
-const CampusLife = () => {
-  const [campusData, setCampusData] = useState(DEFAULT_TABS);
-  const [activeTab, setActiveTab] = useState(DEFAULT_TABS[0]);
-  const [content, setContent] = useState({
-    title: "A Campus Built For You",
+async function getCampus() {
+  try {
+    const headersList = await headers();
+
+    const host = headersList.get("host");
+    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+    const res = await fetch(`${protocol}://${host}/api/settings/campus`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) return null;
+
+    return res.json();
+  } catch {
+    return null;
+  }
+}
+
+export default async function CampusLife() {
+  const data = await getCampus();
+
+  const tabs =
+    data?.content?.tabs?.length > 0 ? data.content.tabs : DEFAULT_TABS;
+
+  const content = {
+    title: data?.content?.title || "A Campus Built For You",
     subtitle:
+      data?.content?.subtitle ||
       "Experience world-class infrastructure spread over a massive, eco-friendly campus designed to inspire creativity and innovation.",
-  });
+  };
 
-  useEffect(() => {
-    API.get("/settings/campus")
-      .then(({ data }) => {
-        if (data?.content) {
-          if (data.content.tabs?.length) {
-            setCampusData(data.content.tabs);
-            setActiveTab(data.content.tabs[0]);
-          }
-          setContent((prev) => ({ ...prev, ...data.content }));
-        }
-      })
-      .catch(() => {});
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTab((cur) => {
-        const idx = campusData.findIndex((t) => t.id === cur.id);
-        return campusData[(idx + 1) % campusData.length];
-      });
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [campusData]);
-
-  return (
-    <section id="campus" className="campus-section section-padding">
-      <div className="container">
-        <div className="campus-header">
-          <div>
-            <span className="section-badge">Life At MIU</span>
-            <h2 className="section-title">{content.title}</h2>
-            <p className="section-subtitle campus-sub">{content.subtitle}</p>
-          </div>
-        </div>
-
-        <div className="campus-interactive">
-          <div className="campus-tabs">
-            {campusData.map((tab) => (
-              <button
-                key={tab.id}
-                className={`campus-tab ${activeTab.id === tab.id ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab.name}
-              </button>
-            ))}
-          </div>
-          <div className="campus-gallery">
-            <div className="gallery-glass">
-              {/* <img
-                src={activeTab.img}
-                alt={activeTab.name}
-                className="gallery-image fade-in-image"
-                key={activeTab.id}
-              /> */}
-              <Image
-                src={activeTab.img}
-                alt={activeTab.name}
-                className="gallery-image fade-in-image"
-                key={`${activeTab.id}-next`}
-                width={800}
-                height={500}
-              />
-              <div className="gallery-glass-info">
-                <h3>{activeTab.name}</h3>
-                <p>State-Of-The-Art Facilities</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default CampusLife;
+  return <CampusLifeClient tabs={tabs} content={content} />;
+}

@@ -1,8 +1,8 @@
-"use client";
+// Ecosystem.jsx (Server Component)
 
-import React, { useState, useEffect } from "react";
-import API from "@/lib/api";
+import { headers } from "next/headers";
 import "@/styles/Ecosystem.css";
+import React from "react";
 
 const DEFAULT_CARDS = [
   {
@@ -52,20 +52,33 @@ const DEFAULT_CARDS = [
   },
 ];
 
-const Ecosystem = () => {
-  const [cards, setCards] = useState(DEFAULT_CARDS);
+async function getEcosystem() {
+  try {
+    const headersList = await headers();
 
-  useEffect(() => {
-    API.get("/settings/ecosystem")
-      .then(({ data }) => {
-        if (data?.content?.cards?.length) setCards(data.content.cards);
-      })
-      .catch(() => {});
-  }, []);
+    const host = headersList.get("host");
+    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+    const res = await fetch(`${protocol}://${host}/api/settings/ecosystem`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) return null;
+
+    return res.json();
+  } catch {
+    return null;
+  }
+}
+
+export default async function Ecosystem() {
+  const data = await getEcosystem();
+
+  const cards =
+    data?.content?.cards?.length > 0 ? data.content.cards : DEFAULT_CARDS;
 
   return (
     <section className="ecosystem-section-container">
-      {/* Sticky Header */}
       <div className="ecosystem-fixed-header">
         <div className="container">
           <div className="ecosystem-header-content">
@@ -79,7 +92,6 @@ const Ecosystem = () => {
         </div>
       </div>
 
-      {/* All Cards */}
       {cards.map((card, index) => (
         <React.Fragment key={card.id}>
           <div className="ecosystem-card">
@@ -91,8 +103,11 @@ const Ecosystem = () => {
             >
               <div className="card-content">
                 <span className="card-meta">MIU ECOSYSTEM {card.id}</span>
+
                 <span className="card-label">{card.label}</span>
+
                 <h2>{card.title}</h2>
+
                 <p>{card.description}</p>
 
                 <div className="card-actions">
@@ -116,13 +131,8 @@ const Ecosystem = () => {
               </div>
             </div>
           </div>
-          {/* <div className="ecosystem-clearance"></div> */}
         </React.Fragment>
       ))}
-
-      {/* <div className="ecosystem-clearance"></div> */}
     </section>
   );
-};
-
-export default Ecosystem;
+}

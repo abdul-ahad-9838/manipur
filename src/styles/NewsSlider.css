@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  border-right: 2px solid rgba(0,0,0,0.2);
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .ns-ticker-track {
@@ -49,8 +49,12 @@
 }
 
 @keyframes nsTicker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .ns-ticker-item {
@@ -104,7 +108,7 @@
 }
 
 .ns-sub {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 0.95rem;
   font-family: var(--font-body);
   font-weight: 400;
@@ -122,7 +126,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
   background: transparent;
   color: white;
   font-size: 1.6rem;
@@ -143,7 +147,7 @@
 .ns-counter {
   font-size: 0.85rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-heading);
   min-width: 52px;
   text-align: center;
@@ -162,12 +166,18 @@
   background: #1a1a1a;
   border-radius: 16px;
   overflow: hidden;
-  animation: nsFeatIn 0.55s cubic-bezier(0.22,1,0.36,1) both;
+  animation: nsFeatIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes nsFeatIn {
-  from { opacity: 0; transform: scale(0.97) translateY(16px); }
-  to   { opacity: 1; transform: scale(1)    translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .ns-feat-img-wrap {
@@ -185,14 +195,22 @@
 }
 
 @keyframes nsZoom {
-  from { transform: scale(1); }
-  to   { transform: scale(1.06); }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
 }
 
 .ns-feat-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.1) 60%
+  );
 }
 
 .ns-feat-cat {
@@ -221,7 +239,7 @@
 
 .ns-ring-bg {
   fill: none;
-  stroke: rgba(255,255,255,0.15);
+  stroke: rgba(255, 255, 255, 0.15);
   stroke-width: 3;
 }
 
@@ -239,7 +257,7 @@
 
 .ns-feat-date {
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
   display: block;
   margin-bottom: 10px;
   font-family: var(--font-body);
@@ -257,7 +275,7 @@
 
 .ns-feat-excerpt {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   line-height: 1.7;
   margin-bottom: 20px;
   font-family: var(--font-body);
@@ -279,11 +297,19 @@
   font-size: 0.88rem;
   text-decoration: none;
   border-bottom: 1.5px solid transparent;
-  transition: border-color 0.2s, gap 0.2s;
+  transition:
+    border-color 0.2s,
+    gap 0.2s;
 }
 
-.ns-feat-link:hover { border-color: var(--lpu-orange); gap: 14px; }
-.ns-feat-link.muted { opacity: 0.3; cursor: default; }
+.ns-feat-link:hover {
+  border-color: var(--lpu-orange);
+  gap: 14px;
+}
+.ns-feat-link.muted {
+  opacity: 0.3;
+  cursor: default;
+}
 
 /* ── Side stack ── */
 .ns-side {
@@ -299,17 +325,26 @@
   padding: 14px;
   border-radius: 12px;
   cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   background: #161616;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
   animation: nsSideIn 0.4s ease both;
   position: relative;
   overflow: hidden;
 }
 
 @keyframes nsSideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .ns-side-card:hover {
@@ -352,7 +387,9 @@
   animation: none;
 }
 
-.ns-side-card:hover .ns-side-img img { transform: scale(1.1); }
+.ns-side-card:hover .ns-side-img img {
+  transform: scale(1.1);
+}
 
 .ns-side-body {
   flex: 1;
@@ -384,7 +421,7 @@
 
 .ns-side-date {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
   font-family: var(--font-body);
   text-transform: none;
   font-weight: 400;
@@ -393,7 +430,7 @@
 .ns-side-num {
   font-size: 1.8rem;
   font-weight: 900;
-  color: rgba(255,255,255,0.05);
+  color: rgba(255, 255, 255, 0.05);
   font-family: var(--font-heading);
   flex-shrink: 0;
   line-height: 1;
@@ -412,7 +449,7 @@
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
@@ -426,14 +463,30 @@
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-  .ns-magazine { grid-template-columns: 1fr; }
-  .ns-side { flex-direction: row; flex-wrap: wrap; }
-  .ns-side-card { flex: 1 1 calc(50% - 4px); }
+  .ns-magazine {
+    grid-template-columns: 1fr;
+  }
+  .ns-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .ns-side-card {
+    flex: 1 1 calc(50% - 4px);
+  }
 }
 
 @media (max-width: 600px) {
-  .ns-feat-img-wrap { height: 240px; }
-  .ns-side-card { flex: 1 1 100%; }
-  .ns-header { flex-direction: column; align-items: flex-start; }
-  .ns-controls { width: 100%; }
+  .ns-feat-img-wrap {
+    height: 240px;
+  }
+  .ns-side-card {
+    flex: 1 1 100%;
+  }
+  .ns-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ns-controls {
+    width: 100%;
+  }
 }

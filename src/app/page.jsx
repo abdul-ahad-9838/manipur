@@ -2,7 +2,6 @@ import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
-// import Stats from "@/components/Stats";
 
 const Stats = dynamic(() => import("@/components/Stats"));
 const Spotlight = dynamic(() => import("@/components/Spotlight"));
@@ -30,7 +29,7 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <StructuredData />

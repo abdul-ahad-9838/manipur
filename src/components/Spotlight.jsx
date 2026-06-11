@@ -1,9 +1,25 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import API from "@/lib/api";
 import "@/styles/Spotlight.css";
+import { headers } from "next/headers";
 import Image from "next/image";
+
+async function getSpotlight() {
+  try {
+    const headersList = await headers();
+
+    const host = headersList.get("host");
+    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+    const res = await fetch(`${protocol}://${host}/api/settings/spotlight`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) return null;
+
+    return res.json();
+  } catch {
+    return null;
+  }
+}
 
 const defaultRow1 = [
   {
@@ -71,18 +87,14 @@ const defaultRow2 = [
   },
 ];
 
-const Spotlight = () => {
-  const [row1Images, setRow1Images] = useState(defaultRow1);
-  const [row2Images, setRow2Images] = useState(defaultRow2);
+export default async function Spotlight() {
+  const spotlight = await getSpotlight();
 
-  useEffect(() => {
-    API.get("/settings/spotlight")
-      .then(({ data }) => {
-        if (data?.content?.row1?.length) setRow1Images(data.content.row1);
-        if (data?.content?.row2?.length) setRow2Images(data.content.row2);
-      })
-      .catch(() => {});
-  }, []);
+  const row1Images =
+    spotlight?.content?.row1?.length > 0 ? spotlight.content.row1 : defaultRow1;
+
+  const row2Images =
+    spotlight?.content?.row2?.length > 0 ? spotlight.content.row2 : defaultRow2;
   return (
     <section className="spotlight-section">
       <div className="container">
@@ -92,9 +104,11 @@ const Spotlight = () => {
               <span className="pulse-dot"></span>
               <span className="spotlight-badge">HAPPENING NOW</span>
             </div>
+
             <h2 className="spotlight-title">
               MIU <span className="highlight-text">Spotlight</span>
             </h2>
+
             <p className="spotlight-subtitle">
               Relive the most magnificent moments, electrifying concerts, and
               mega events that define the vibrant campus life at Manipur
@@ -105,7 +119,6 @@ const Spotlight = () => {
       </div>
 
       <div className="spotlight-marquee-container">
-        {/* First Row: Moves left */}
         <div className="marquee-row">
           <div className="marquee-content marquee-left">
             {[...row1Images, ...row1Images, ...row1Images].map((img, index) => (
@@ -126,7 +139,6 @@ const Spotlight = () => {
           </div>
         </div>
 
-        {/* Second Row: Moves right */}
         <div className="marquee-row">
           <div className="marquee-content marquee-right">
             {[...row2Images, ...row2Images, ...row2Images].map((img, index) => (
@@ -149,6 +161,4 @@ const Spotlight = () => {
       </div>
     </section>
   );
-};
-
-export default Spotlight;
+}

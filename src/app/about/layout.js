@@ -1,5 +1,4 @@
 import "@/styles/App.css";
-import "@/styles/globals.css";
 
 export default function AboutLayout({ children }) {
   return (

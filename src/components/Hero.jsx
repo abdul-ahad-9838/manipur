@@ -17,34 +17,12 @@ const Hero = () => {
     images: [],
   });
 
-  // const [pageContent, setPageContent] = useState({
-  //   stat1Value: "2019",
-  //   stat1Label: "Year Established",
-  //   stat2Value: "100+",
-  //   stat2Label: "Receive Multiyear Fellowships",
-  //   stat3Value: "50+",
-  //   stat3Label: "Academic Programs",
-  //   stat4Value: "10",
-  //   stat4Label: "Research Centers",
-  // });
-
   useEffect(() => {
     API.get("/settings/hero")
       .then(({ data }) => {
         if (data?.content) setHeroData(data.content);
       })
       .catch(() => {});
-
-    // API.get("/settings/page-home")
-    //   .then(({ data }) => {
-    //     if (data?.content) {
-    //       setPageContent((prev) => ({
-    //         ...prev,
-    //         ...data.content,
-    //       }));
-    //     }
-    //   })
-    //   .catch(() => {});
   }, []);
 
   const { title, subtitle, images } = heroData;
@@ -113,28 +91,6 @@ const Hero = () => {
               Admissions 2026
             </a>
           </div>
-
-          {/* <div className="hero-trust-badges">
-            <div className="trust-item">
-              <span className="big-num">{pageContent.stat1Value}</span>
-              <span className="small-txt">{pageContent.stat1Label}</span>
-            </div>
-
-            <div className="trust-item">
-              <span className="big-num">{pageContent.stat2Value}</span>
-              <span className="small-txt">{pageContent.stat2Label}</span>
-            </div>
-
-            <div className="trust-item">
-              <span className="big-num">{pageContent.stat3Value}</span>
-              <span className="small-txt">{pageContent.stat3Label}</span>
-            </div>
-
-            <div className="trust-item">
-              <span className="big-num">{pageContent.stat4Value}</span>
-              <span className="small-txt">{pageContent.stat4Label}</span>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>
