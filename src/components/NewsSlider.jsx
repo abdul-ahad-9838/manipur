@@ -1,28 +1,17 @@
 "use client";
 
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import API from "@/lib/api";
 import "@/styles/NewsSlider.css";
 
-const INTERVAL = 5000;
+const INTERVAL = 5; // seconds (CSS friendly)
 
 export default function NewsSlider({ fallback = [] }) {
   const [posts, setPosts] = useState(fallback);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [pct, setPct] = useState(0);
 
-  const rafRef = useRef(null);
-  const startRef = useRef(null);
-
-  // Fetch
   useEffect(() => {
     API.get("/blogs")
       .then(({ data }) => {
@@ -33,53 +22,25 @@ export default function NewsSlider({ fallback = [] }) {
 
   const total = posts.length;
 
-  const goTo = useCallback((i) => {
-    setActive(i);
-    setPct(0);
-    startRef.current = null;
-  }, []);
-
   const goNext = useCallback(() => {
     setActive((p) => (p + 1) % total);
-    setPct(0);
-    startRef.current = null;
   }, [total]);
 
   const goPrev = useCallback(() => {
     setActive((p) => (p - 1 + total) % total);
-    setPct(0);
-    startRef.current = null;
   }, [total]);
 
-  // Auto slider
-  useEffect(() => {
-    if (paused || total === 0) return;
-
-    const tick = (t) => {
-      if (!startRef.current) startRef.current = t;
-
-      const progress = ((t - startRef.current) / INTERVAL) * 100;
-      const clamped = Math.min(progress, 100);
-
-      setPct(clamped);
-
-      if (clamped >= 100) {
-        goNext();
-        return;
-      }
-
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [active, paused, goNext, total]);
+  const goTo = useCallback((i) => {
+    setActive(i);
+  }, []);
 
   const featured = posts[active];
-  const side = useMemo(
-    () => posts.filter((_, i) => i !== active).slice(0, 4),
-    [posts, active],
-  );
+
+  const side = useMemo(() => {
+    return posts.filter((_, i) => i !== active).slice(0, 4);
+  }, [posts, active]);
+
+  const tickerItems = useMemo(() => posts.concat(posts), [posts]);
 
   if (!featured) return null;
 
@@ -92,9 +53,10 @@ export default function NewsSlider({ fallback = [] }) {
       {/* Ticker */}
       <div className="ns-ticker">
         <span className="ns-ticker-label">LIVE</span>
+
         <div className="ns-ticker-track">
           <div className="ns-ticker-inner">
-            {posts.concat(posts).map((p, i) => (
+            {tickerItems.map((p, i) => (
               <span key={i} className="ns-ticker-item">
                 <span className="ns-ticker-cat">{p.category}</span>
                 {p.title}
@@ -138,7 +100,7 @@ export default function NewsSlider({ fallback = [] }) {
         <div className="ns-magazine">
           {/* Featured */}
           <div className="ns-featured">
-            <div className="ns-feat-img-wrap">
+            <div className={`ns-feat-img-wrap ${paused ? "paused" : ""}`}>
               <img
                 src={featured.coverImage}
                 alt={featured.title}
@@ -147,16 +109,16 @@ export default function NewsSlider({ fallback = [] }) {
 
               <span className="ns-feat-cat">{featured.category}</span>
 
-              {/* progress */}
+              {/* PURE CSS RING */}
               <svg className="ns-ring" viewBox="0 0 44 44">
                 <circle cx="22" cy="22" r="18" className="ns-ring-bg" />
+
                 <circle
                   cx="22"
                   cy="22"
                   r="18"
-                  className="ns-ring-fill"
-                  strokeDasharray={2 * Math.PI * 18}
-                  strokeDashoffset={2 * Math.PI * 18 * (1 - pct / 100)}
+                  className={`ns-ring-fill ${paused ? "paused" : ""}`}
+                  onAnimationEnd={goNext}
                 />
               </svg>
             </div>
@@ -173,7 +135,7 @@ export default function NewsSlider({ fallback = [] }) {
 
           {/* Side */}
           <div className="ns-side">
-            {side.map((p, i) => {
+            {side.map((p) => {
               const realIdx = posts.indexOf(p);
 
               return (
@@ -182,7 +144,11 @@ export default function NewsSlider({ fallback = [] }) {
                   className="ns-side-card"
                   onClick={() => goTo(realIdx)}
                 >
-                  <img src={p.coverImage} className="ns-side-img" />
+                  <img
+                    src={p.coverImage}
+                    className="ns-side-img"
+                    alt={p.title}
+                  />
 
                   <div className="ns-side-body">
                     <span className="ns-side-cat">{p.category}</span>
