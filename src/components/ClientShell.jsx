@@ -10,49 +10,58 @@ import Footer from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { EnquiryProvider } from "@/context/EnquiryContext";
 
+// ── Lazy client-only components ──────────────────────────────────────────────
+// Each gets a no-op fallback so the shell never blocks on these chunks.
 const EnquiryPopup = dynamic(() => import("@/components/EnquiryPopup"), {
   ssr: false,
+  loading: () => null,
 });
 
 const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton"), {
   ssr: false,
+  loading: () => null,
 });
 
+// Skeleton prevents layout shift on mobile while the chunk loads.
 const MobileBottomNav = dynamic(() => import("@/components/MobileBottomNav"), {
   ssr: false,
+  loading: () => <div style={{ height: 64 }} aria-hidden />,
 });
 
 const StudentLoginButton = dynamic(() => import("./StudentLoginButton"), {
   ssr: false,
+  loading: () => null,
 });
 
-export default function ClientShell({ children }) {
-  const [showSplash, setShowSplash] = useState(false);
-  const [fadeSplash, setFadeSplash] = useState(false);
+function useSplash() {
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return false;
+    if (sessionStorage.getItem("miu-splash-seen")) return false;
+    sessionStorage.setItem("miu-splash-seen", "true");
+    return true;
+  });
+
+  const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (!visible) return;
 
-    const splashSeen = sessionStorage.getItem("miu-splash-seen");
-
-    if (splashSeen) return;
-
-    sessionStorage.setItem("miu-splash-seen", "true");
-    setShowSplash(true);
-
-    const fadeTimer = setTimeout(() => {
-      setFadeSplash(true);
-    }, 800);
-
-    const removeTimer = setTimeout(() => {
-      setShowSplash(false);
-    }, 1100);
+    // Start CSS fade at 800 ms; let the 500 ms transition finish, then unmount.
+    const fade = setTimeout(() => setFading(true), 800);
+    const remove = setTimeout(() => setVisible(false), 1300); // 800 + 500 ms transition
 
     return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(removeTimer);
+      clearTimeout(fade);
+      clearTimeout(remove);
     };
-  }, []);
+  }, [visible]);
+
+  return { visible, fading };
+}
+
+// ── Shell ────────────────────────────────────────────────────────────────────
+export default function ClientShell({ children }) {
+  const { visible: showSplash, fading: fadeSplash } = useSplash();
 
   return (
     <AuthProvider>
@@ -61,18 +70,18 @@ export default function ClientShell({ children }) {
 
         <div className="app-container">
           {showSplash && (
-            <div className={`splash-screen ${fadeSplash ? "fade-out" : ""}`}>
+            <div className={`splash-screen${fadeSplash ? " fade-out" : ""}`}>
               <div className="splash-content">
                 <Image
                   src="/emblem.png"
                   alt="MIU Logo"
                   className="splash-logo"
-                  width={200}
-                  height={200}
+                  width={150}
+                  height={150}
                   priority
                 />
 
-                <div className="splash-miu-blocks">
+                <div className="splash-miu-blocks" aria-hidden>
                   <span>M</span>
                   <span>I</span>
                   <span>U</span>
@@ -87,6 +96,7 @@ export default function ClientShell({ children }) {
 
           <Footer />
 
+          {/* Deferred, non-critical UI — rendered after main content */}
           <WhatsAppButton />
           <StudentLoginButton />
           <EnquiryPopup />

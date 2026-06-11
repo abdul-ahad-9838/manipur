@@ -1,8 +1,9 @@
-// Ecosystem.jsx (Server Component)
+"use client";
 
-import { headers } from "next/headers";
+import React, { useState, useEffect } from "react";
+import API from "@/lib/api";
 import "@/styles/Ecosystem.css";
-import React from "react";
+import Image from "next/image";
 
 const DEFAULT_CARDS = [
   {
@@ -52,33 +53,20 @@ const DEFAULT_CARDS = [
   },
 ];
 
-async function getEcosystem() {
-  try {
-    const headersList = await headers();
+const Ecosystem = () => {
+  const [cards, setCards] = useState(DEFAULT_CARDS);
 
-    const host = headersList.get("host");
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-
-    const res = await fetch(`${protocol}://${host}/api/settings/ecosystem`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) return null;
-
-    return res.json();
-  } catch {
-    return null;
-  }
-}
-
-export default async function Ecosystem() {
-  const data = await getEcosystem();
-
-  const cards =
-    data?.content?.cards?.length > 0 ? data.content.cards : DEFAULT_CARDS;
+  useEffect(() => {
+    API.get("/settings/ecosystem")
+      .then(({ data }) => {
+        if (data?.content?.cards?.length) setCards(data.content.cards);
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <section className="ecosystem-section-container">
+      {/* Sticky Header */}
       <div className="ecosystem-fixed-header">
         <div className="container">
           <div className="ecosystem-header-content">
@@ -92,6 +80,7 @@ export default async function Ecosystem() {
         </div>
       </div>
 
+      {/* All Cards */}
       {cards.map((card, index) => (
         <React.Fragment key={card.id}>
           <div className="ecosystem-card">
@@ -103,11 +92,8 @@ export default async function Ecosystem() {
             >
               <div className="card-content">
                 <span className="card-meta">MIU ECOSYSTEM {card.id}</span>
-
                 <span className="card-label">{card.label}</span>
-
                 <h2>{card.title}</h2>
-
                 <p>{card.description}</p>
 
                 <div className="card-actions">
@@ -118,7 +104,12 @@ export default async function Ecosystem() {
               </div>
 
               <div className="card-image-box">
-                <img src={card.image} alt={card.title} />
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  width={500}
+                  height={500}
+                />
 
                 <div
                   className="image-vignette"
@@ -131,8 +122,13 @@ export default async function Ecosystem() {
               </div>
             </div>
           </div>
+          {/* <div className="ecosystem-clearance"></div> */}
         </React.Fragment>
       ))}
+
+      {/* <div className="ecosystem-clearance"></div> */}
     </section>
   );
-}
+};
+
+export default Ecosystem;

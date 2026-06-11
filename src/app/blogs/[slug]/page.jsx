@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import Link from "next/link";
 import "@/styles/Blog.css";
+import Image from "next/image";
 
 async function getBlog(slug) {
   const headersList = await headers();
@@ -80,13 +81,6 @@ export default async function BlogPage({ params }) {
 
   return (
     <div className="blog-detail-page">
-      {/* {blog.coverImage && (
-        <div className="blog-detail-cover">
-          <img src={blog.coverImage} alt={blog.title} />
-          <div className="blog-detail-cover-overlay" />
-        </div>
-      )} */}
-
       <div className="container blog-detail-container">
         <Link href="/blogs" className="blog-back-link">
           ← Back to Blog
@@ -110,7 +104,12 @@ export default async function BlogPage({ params }) {
 
         {blog.coverImage && (
           <div className="blog-detail-image">
-            <img src={blog.coverImage} alt={blog.title} />
+            <Image
+              src={blog.coverImage}
+              alt={blog.title}
+              width={800}
+              height={400}
+            />
           </div>
         )}
 

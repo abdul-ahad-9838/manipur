@@ -3,6 +3,7 @@
 import Link from "next/link";
 import "@/styles/Blog.css";
 import { headers } from "next/headers";
+import Image from "next/image";
 
 async function getBlogs() {
   const headersList = await headers();
@@ -62,7 +63,12 @@ export default async function BlogPage() {
             >
               <div className="blog-card-img">
                 {blog.coverImage ? (
-                  <img src={blog.coverImage} alt={blog.title} />
+                  <Image
+                    src={blog.coverImage}
+                    alt={blog.title}
+                    width={400}
+                    height={300}
+                  />
                 ) : (
                   <div className="blog-img-placeholder">
                     <span>📰</span>

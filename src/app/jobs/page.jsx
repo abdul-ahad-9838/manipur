@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import "@/styles/Jobs.css";
+import Image from "next/image";
 
 const JOBS = [
   {
@@ -347,7 +348,7 @@ function JobCard({ job, onApply }) {
   return (
     <div className={`job-card ${expanded ? "expanded" : ""}`}>
       <div className="job-card-img">
-        <img src={job.image} alt={job.title} />
+        <Image src={job.image} alt={job.title} width={500} height={500} />
         <div className="job-card-img-overlay" />
         <span className="job-type-badge">{job.type}</span>
       </div>
