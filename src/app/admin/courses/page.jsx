@@ -158,9 +158,9 @@ export default function CoursesManager() {
       const payload = {
         ...form,
         objectives: form.objectives
-          ? form.objectives.split("\n").filter(Boolean)
+          ? form.objectives?.split("\n").filter(Boolean)
           : [],
-        careerProspects: form.careerProspects
+        careerProspects: form?.careerProspects
           ? form.careerProspects.split("\n").filter(Boolean)
           : [],
       };
@@ -186,6 +186,8 @@ export default function CoursesManager() {
   const handleEdit = (course) => {
     setForm({
       ...course,
+      objectives: course?.objectives?.join("\n"),
+      careerProspects: course?.careerProspects?.join("\n"),
       seo: {
         title: course?.seo?.title || "",
         description: course?.seo?.description || "",
@@ -364,8 +366,6 @@ export default function CoursesManager() {
 
     return acc;
   }, {});
-
-  console.log(coursesBySchool);
 
   // Also ensure all schools from DB appear even with 0 courses
   // Normalize to title case to match course school field format
