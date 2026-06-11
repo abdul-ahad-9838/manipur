@@ -673,13 +673,6 @@ export default function CoursesManager() {
             </div>
             <div style={{ marginBottom: "16px" }}>
               <label style={lbl}>Full Overview</label>
-              <textarea
-                name="overview"
-                value={form.overview}
-                onChange={handleChange}
-                style={ta}
-                placeholder="Detailed program overview..."
-              />
               <TextEditor
                 value={form.overview}
                 onChange={(value) =>
