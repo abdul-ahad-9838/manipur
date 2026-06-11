@@ -1,48 +1,22 @@
-@import "tailwindcss";
-
-/* ==========================================================================
-   1. ROOT VARIABLES & THEMING
-   ========================================================================== */
+/* ========================================
+   DESIGN TOKENS & RESET
+   ======================================== */
 :root {
-  /* Exact MIU Color Scheme based on Logo */
-  --lpu-orange: #e8b919; /* MIU Golden Yellow */
+  --lpu-orange: #e8b919;
   --lpu-orange-dark: #cca112;
   --lpu-black: #111111;
   --lpu-dark-gray: #333333;
   --lpu-light-gray: #f5f5f5;
   --lpu-white: #ffffff;
-
-  /* Typography */
-  --font-body: "Roboto", Arial, Helvetica, sans-serif;
-  --font-heading: "Oswald", sans-serif; /* Tall, bold and impactful like LPU */
-
-  /* Shadows */
+  --font-body: "Roboto", sans-serif;
+  --font-heading: "Oswald", sans-serif;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
-
-  /* Tailwind Compatibility Tokens */
-  --background: #fff;
-  --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-/* ==========================================================================
-   2. GLOBAL RESET & VIEWPORT FIXES
-   ========================================================================== */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -51,41 +25,47 @@
   hyphens: none !important;
 }
 
-span,
-div,
-a,
-ul,
-ol,
-li {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-}
-
-html,
-body {
+html {
   overflow-x: hidden;
-  max-width: 100vw;
 }
 
 body {
   font-family: var(--font-body);
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--lpu-white);
+  color: var(--lpu-dark-gray);
   line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
-/* Prevent layout overflows and thrashed structures */
-[class*="grid"],
-[class*="-grid"],
-[class*="row"],
-[class*="-row"],
-[class*="card"],
-[class*="-card"] {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--lpu-black);
+  text-transform: none !important;
+  line-height: 1.3 !important;
+}
+
+p {
+  text-align: justify !important;
+  line-height: 1.7 !important;
+  text-transform: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
 }
 
 img {
@@ -94,92 +74,14 @@ img {
   display: block;
 }
 
-/* ==========================================================================
-   3. TYPOGRAPHY & TEXT ELEMENTS
-   ========================================================================== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  color: var(--lpu-black);
-  text-transform: none !important;
-  font-weight: 700 !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  hyphens: none !important;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-  margin-bottom: 0.5em !important;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem) !important;
-  line-height: 1.2 !important;
-}
-
-h2 {
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem) !important;
-  line-height: 1.3 !important;
-}
-
-h3 {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem) !important;
-  line-height: 1.4 !important;
-  margin-bottom: 0.4em !important;
-}
-
-h4 {
-  font-size: clamp(1rem, 2vw, 1.4rem) !important;
-  line-height: 1.4 !important;
-}
-
-h5 {
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important;
-  line-height: 1.5 !important;
-}
-
-h6 {
-  font-size: clamp(0.85rem, 1.2vw, 1rem) !important;
-  line-height: 1.5 !important;
-}
-
-p {
-  text-align: justify !important;
-  line-height: 1.7 !important;
-  margin-bottom: 1em !important;
-  word-break: normal !important;
-  overflow-wrap: break-word !important;
-}
-
-a {
-  text-decoration: none !important;
-  color: inherit;
-}
-
-ul,
-ol {
-  list-style: none;
-  line-height: 1.7 !important;
-  margin-bottom: 1em !important;
-}
-
-li {
-  line-height: 1.7 !important;
-  margin-bottom: 0.5em !important;
-}
-
-/* ==========================================================================
-   4. LAYOUT CONTAINERS & RESPONSIVENESS
-   ========================================================================== */
+/* ========================================
+   LAYOUT
+   ======================================== */
 .container {
   width: 100%;
   max-width: 1350px;
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box;
 }
 
 @media (max-width: 1400px) {
@@ -187,39 +89,50 @@ li {
     max-width: 1200px;
   }
 }
-
 @media (max-width: 1200px) {
   .container {
     max-width: 100%;
     padding: 0 30px;
   }
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px !important;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+}
 
-/* ==========================================================================
-   5. COMPONENT & COMPONENT MODIFIERS
-   ========================================================================== */
-/* Buttons */
-button,
-.btn,
-[class*="btn"] {
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn {
   display: inline-block;
   padding: 12px 30px;
   font-family: var(--font-body);
   font-weight: 700;
-  text-transform: uppercase !important;
+  text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 0.5px !important;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
-  word-spacing: normal !important;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .btn-orange {
   background-color: var(--lpu-orange);
   color: var(--lpu-white);
 }
-
 .btn-orange:hover {
   background-color: var(--lpu-black);
   color: var(--lpu-white);
@@ -229,13 +142,166 @@ button,
   background-color: var(--lpu-black);
   color: var(--lpu-white);
 }
-
 .btn-black:hover {
   background-color: var(--lpu-orange);
   color: var(--lpu-white);
 }
 
-/* Sticky Action Ribbon */
+/* ========================================
+   SECTION HEADERS
+   ======================================== */
+.section-header,
+[class*="section-header"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.section-header *,
+.section-title,
+.section-subtitle,
+.section-badge,
+[class*="section-title"],
+[class*="section-subtitle"],
+[class*="section-badge"],
+[class*="-badge"],
+[class*="-subtitle"] {
+  text-align: center !important;
+}
+
+/* ========================================
+   CARD CONTENT
+   ======================================== */
+[class*="card"] h3,
+[class*="card"] h4,
+[class*="card-title"],
+[class*="card-name"],
+[class*="program-title"],
+[class*="job-title"] {
+  text-transform: none !important;
+  line-height: 1.4 !important;
+}
+
+/* ========================================
+   HERO SECTIONS
+   ======================================== */
+[class*="hero"] h1,
+[class*="hero"] h2 {
+  text-align: center !important;
+}
+
+[class*="hero"] p {
+  text-align: justify !important;
+}
+
+/* Shared page hero banner */
+.page-hero-banner {
+  position: relative;
+  padding: clamp(100px, 15vw, 160px) 0 60px;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.page-hero-breadcrumb a {
+  color: rgba(255, 255, 255, 0.65);
+}
+.page-hero-breadcrumb a:hover {
+  color: white;
+}
+.page-hero-breadcrumb span {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.page-hero-content h1 {
+  color: white;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 10px;
+}
+.page-hero-content p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05rem;
+  max-width: 600px;
+}
+
+/* Simple hero */
+.simple-hero {
+  background: linear-gradient(135deg, var(--lpu-black) 0%, #1a2a4a 100%);
+  padding: clamp(100px, 15vw, 160px) 0 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.simple-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #aaa;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.simple-breadcrumb a {
+  color: var(--lpu-orange);
+}
+.bc-sep {
+  color: #666;
+}
+
+.simple-badge {
+  display: block;
+  color: var(--lpu-orange);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 2px !important;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.simple-hero h1 {
+  color: white !important;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 12px;
+}
+
+.simple-subtitle {
+  color: #aaa;
+  font-size: 1rem;
+  max-width: 650px;
+  line-height: 1.7 !important;
+  margin: 0 auto;
+}
+
+/* ========================================
+   STICKY RIBBON
+   ======================================== */
 .sticky-ribbon {
   position: fixed;
   right: -5px;
@@ -259,112 +325,111 @@ button,
   font-size: 14px;
   border: 1px solid white;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-  transition: 0.2s;
+  transition: background 0.2s;
   cursor: pointer;
 }
-
 .sticky-button:hover {
   background: var(--lpu-black);
 }
 
-/* Section Header Alignment Configurations */
-.section-header,
-.section-title,
-.section-subtitle,
-[class*="section-header"],
-[class*="section-title"],
-[class*="section-subtitle"] {
-  text-align: center !important; /* Forces layout symmetry on clean blocks */
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  hyphens: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
+/* ========================================
+   SPLASH SCREEN
+   ======================================== */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--lpu-black);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease-out;
+}
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.section-header * {
-  text-align: center !important;
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
 
-/* Description / Text blocks */
-[class*="desc"],
-[class*="description"],
-[class*="text"],
-[class*="content"] p {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-transform: none !important;
-  line-height: 1.7 !important;
-  hyphens: none !important;
-  text-align: justify !important;
+.splash-logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 50%;
+  animation: singleRotate 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes singleRotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
 }
 
-/* Badges & Labels */
-.badge,
-.section-badge,
-[class*="badge"] {
-  letter-spacing: 1px !important;
-  text-transform: uppercase !important;
-  word-spacing: normal !important;
+.splash-miu-blocks {
+  display: flex;
+  gap: 15px;
+  opacity: 0;
+  animation: slideUpFade 0.6s ease-out 0.3s forwards;
+}
+.splash-miu-blocks span {
+  width: 60px;
+  height: 60px;
+  background-color: var(--lpu-orange);
+  color: var(--lpu-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 38px;
+  font-weight: 900;
+  border-radius: 4px;
 }
 
-[class*="meta-label"],
-[class*="label"]:not([class*="card-label"]) {
-  letter-spacing: 0.5px !important;
-  text-transform: uppercase !important;
-  word-spacing: normal !important;
+@keyframes slideUpFade {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-[class*="meta-val"],
-[class*="meta-value"] {
-  text-transform: none !important;
-  line-height: 1.5 !important;
+/* ========================================
+   PAGE TRANSITIONS
+   ======================================== */
+.app-container.page-fade-in,
+.page-fade-in {
+  animation: pageFadeIn 0.8s ease forwards;
+}
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Hero Elements */
-[class*="hero"] h1 {
-  letter-spacing: -0.5px !important;
-  line-height: 1.1 !important;
-}
-[class*="hero"] h2 {
-  text-align: center !important;
-  letter-spacing: -0.5px !important;
-  line-height: 1.1 !important;
-}
-
-[class*="hero"] p {
-  text-align: justify !important;
-  line-height: 1.7 !important;
-}
-
-[class*="hero"],
-[class*="dark"],
-.bg-dark {
-  color: #fff !important;
-}
-
-/* Card Specific Rule Exceptions */
-[class*="card"] h3,
-[class*="card"] h4,
-[class*="card-title"],
-[class*="card-name"],
-[class*="program-title"],
-[class*="job-title"] {
-  text-transform: none !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  line-height: 1.4 !important;
-}
-
-/* Navigation Typography overrides */
-nav a,
-[class*="nav"] a {
-  letter-spacing: 0.3px !important;
-}
-
-/* Advisory Popup */
+/* ========================================
+   ADVISORY POPUP
+   ======================================== */
 .advisory-overlay {
   position: fixed;
   inset: 0;
@@ -375,6 +440,14 @@ nav a,
   z-index: 9999;
   padding: 1rem;
   animation: advisoryFadeIn 0.3s ease;
+}
+@keyframes advisoryFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .advisory-modal {
@@ -387,8 +460,18 @@ nav a,
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  animation: advisorySlideUp 0.35s ease;
   overflow: hidden;
+  animation: advisorySlideUp 0.35s ease;
+}
+@keyframes advisorySlideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .advisory-close {
@@ -410,7 +493,6 @@ nav a,
   z-index: 1;
   transition: background 0.2s;
 }
-
 .advisory-close:hover {
   background: rgba(0, 0, 0, 0.8);
 }
@@ -419,7 +501,6 @@ nav a,
   overflow-y: auto;
   flex: 1;
 }
-
 .advisory-image-wrapper img {
   display: block;
   width: 100%;
@@ -445,162 +526,35 @@ nav a,
   cursor: pointer;
   transition: background 0.2s;
 }
-
 .advisory-btn:hover {
   background: #14305a;
 }
 
-/* ==========================================================================
-   6. APP SPECIFIC LAYOUT & SPLASH SCREEN
-   ========================================================================== */
-.app-container {
-  width: 100%;
-  min-height: 100vh;
-}
-
-.splash-screen {
-  position: fixed;
-  inset: 0;
-  background: var(--lpu-black, #111);
-  z-index: 99999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.5s ease-out;
-}
-
-.splash-screen.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.splash-logo {
-  width: 150px;
-  height: 150px;
-  animation: singleRotate 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.page-fade-in {
-  animation: fadeIn 0.8s ease forwards;
-}
-
-.page-hero-banner {
-  position: relative;
-  padding: clamp(100px, 15vw, 160px) 0 60px;
-  min-height: 280px;
-  display: flex;
-  align-items: flex-end;
-}
-
-.page-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.65)
-  );
-}
-
-/* ==========================================================================
-   7. UTILITIES
-   ========================================================================== */
+/* ========================================
+   UTILITY
+   ======================================== */
 .text-center,
-[class*="center"] {
+.text-center * {
   text-align: center !important;
 }
 
-.text-center *:not(.btn):not(button) {
-  text-align: center !important;
+.section-padding {
+  padding: 80px 0;
 }
 
-.text-justify {
-  text-align: justify !important;
-}
-
-.no-wrap {
-  white-space: nowrap !important;
-}
-
-.wrap-text {
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-}
-
-/* ==========================================================================
-   8. KEYFRAMES & GLOBAL SYSTEM ANIMATIONS
-   ========================================================================== */
-@keyframes advisoryFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes advisorySlideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes singleRotate {
-  0% {
-    transform: rotate(0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(360deg);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* ==========================================================================
-   9. MOBILE BREAKPOINTS RE-EVALUATION (ACCORDING TO FINAL OVERRIDES)
-   ========================================================================== */
+/* ========================================
+   MOBILE OVERRIDES
+   ======================================== */
 @media (max-width: 768px) {
   .sticky-ribbon {
     display: none !important;
   }
-
   .app-container {
     padding-bottom: 100px;
   }
-
-  .container {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-
   .section-padding {
     padding: 50px 0 !important;
   }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 15px;
-  }
-
   .advisory-modal {
     max-height: 95vh;
   }
