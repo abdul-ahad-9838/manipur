@@ -128,7 +128,7 @@ export default function NewsSlider({ fallback = [] }) {
               ›
             </button>
 
-            <Link href="/blog" className="btn btn-orange">
+            <Link href="/blogs" className="btn btn-orange">
               All
             </Link>
           </div>
@@ -165,7 +165,7 @@ export default function NewsSlider({ fallback = [] }) {
               <h3 className="ns-feat-title">{featured.title}</h3>
               <p className="ns-feat-excerpt">{featured.excerpt}</p>
 
-              <Link href="/blog" className="ns-feat-link">
+              <Link href={`/blogs/${featured.slug}`} className="btn-explore">
                 Read More →
               </Link>
             </div>

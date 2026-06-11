@@ -2828,10 +2828,15 @@ export default function ContentManager() {
               ["address", "Address", "textarea"],
               ["phone", "Phone Number", "text"],
               ["email", "Email Address", "text"],
+
               ["facebook", "Facebook URL", "text"],
               ["twitter", "Twitter/X URL", "text"],
               ["linkedin", "LinkedIn URL", "text"],
               ["instagram", "Instagram URL", "text"],
+              ["youtube", "Youtube URL", "text"],
+              ["pinterest", "Pinterest URL", "text"],
+              ["tumblr", "Tumblr URL", "text"],
+
               ["copyright", "Copyright Text", "text"],
             ].map(([key, label, type]) => (
               <div key={key} style={{ marginBottom: "16px" }}>

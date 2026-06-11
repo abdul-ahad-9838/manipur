@@ -189,7 +189,7 @@ const Footer = () => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.youtube.com/@officialmiuindia"
+                  href={d.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon"
@@ -205,9 +205,8 @@ const Footer = () => {
                     <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.7-.8-2.1-.9C15.9 4.8 12 4.8 12 4.8h0s-3.9 0-6.9.3c-.4.1-1.3.1-2.1.9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5C2 14.4 2.2 16 2.2 16s.2 1.4.8 2c.8.8 1.9.8 2.4.9 1.7.2 6.6.3 6.6.3s3.9 0 6.9-.3c.4-.1 1.3-.1 2.1-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22 9.6 21.8 8 21.8 8zM10 15.5v-7l6 3.5-6 3.5z" />
                   </svg>
                 </a>
-                {/* https://in.pinterest.com/manipurinternationaluniversity/ */}
                 <a
-                  href="https://in.pinterest.com/manipurinternationaluniversity/"
+                  href={d.pinterest}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon"
@@ -224,7 +223,7 @@ const Footer = () => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.tumblr.com/manipurinternationaluniversity"
+                  href={d.tumblr}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon"
