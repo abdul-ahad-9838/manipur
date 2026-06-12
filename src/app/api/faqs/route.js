@@ -6,10 +6,7 @@ export async function GET() {
   try {
     await dbConnect();
 
-    const faqs = await Faq.find().sort({
-      order: 1,
-      createdAt: -1,
-    });
+    const faqs = await Faq.find();
 
     return NextResponse.json(faqs);
   } catch (error) {
