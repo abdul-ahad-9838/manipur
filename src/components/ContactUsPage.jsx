@@ -26,6 +26,7 @@ export default function ContactUsPage() {
       .catch(() => {});
   }, []);
 
+  console.log(pc);
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -113,9 +114,9 @@ export default function ContactUsPage() {
         </svg>
       ),
       title: "WhatsApp",
-      primary: "+91 9319727766",
+      primary: "+91 9319771500",
       secondary: "",
-      link: "https://wa.me/919319727766",
+      link: "https://wa.me/919319771500",
       color: "#25D366",
       bgColor: "#E8F5E9",
     },

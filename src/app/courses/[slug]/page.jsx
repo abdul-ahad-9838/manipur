@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import Link from "next/link";
 import "@/styles/CourseDetail.css";
+import BannerSection from "@/components/BannerSection";
 
 async function getCourse(slug) {
   const headersList = await headers();
@@ -79,7 +80,7 @@ export default async function CourseDetail({ params }) {
             display: "inline-block",
           }}
         >
-          ← All Programs
+          ← Go Back
         </Link>
       </div>
     );
@@ -91,7 +92,7 @@ export default async function CourseDetail({ params }) {
   return (
     <div className="cd-page">
       {/* Hero */}
-      <div
+      {/* <div
         className="cd-hero"
         style={{
           backgroundImage: course.coverImage
@@ -142,7 +143,9 @@ export default async function CourseDetail({ params }) {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <BannerSection data={course} url="https://admission.miu.edu.in" />
 
       <div className="container cd-body">
         <div className="cd-main">

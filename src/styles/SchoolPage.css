@@ -2,70 +2,6 @@
   min-height: 100vh;
 }
 
-/* Hero */
-.school-hero {
-  position: relative;
-  min-height: 480px;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 60px;
-}
-
-.school-hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.4);
-}
-
-.school-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%);
-}
-
-.school-hero-content {
-  position: relative;
-  z-index: 1;
-  padding-top: clamp(100px, 15vw, 160px);
-}
-
-.school-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: #aaa;
-  margin-bottom: 20px;
-  font-family: var(--font-body);
-  font-weight: 400;
-  text-transform: none;
-  flex-wrap: wrap;
-}
-
-.school-breadcrumb a { color: #ccc; text-decoration: none; }
-.school-breadcrumb a:hover { color: var(--lpu-orange); }
-
-.school-hero-icon {
-  font-size: 3rem;
-  margin-bottom: 12px;
-}
-
-.school-hero-content h1 {
-  color: white;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 10px;
-}
-
-.school-hero-tagline {
-  color: #ccc;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-family: var(--font-body);
-  font-weight: 400;
-  text-transform: none;
-}
-
 /* Sections */
 .sp-section {
   padding: 80px 0;
@@ -118,7 +54,7 @@
   background: white;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border-top: 3px solid var(--lpu-orange);
 }
 
@@ -163,14 +99,16 @@
   background: white;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border-top: 3px solid var(--hcolor, var(--lpu-orange));
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
-.sp-highlight-card:hover { transform: translateY(-5px); }
+.sp-highlight-card:hover {
+  transform: translateY(-5px);
+}
 
 .sp-highlight-image {
   width: 100%;
@@ -239,16 +177,18 @@
   background: white;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   height: 100%;
 }
 
 .sp-program-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .sp-program-link {
@@ -437,7 +377,7 @@
 }
 
 .sp-cta-inner p {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-family: var(--font-body);
   font-weight: 400;
   text-transform: none;
@@ -461,7 +401,7 @@
   background: white;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   text-decoration: none;
   color: var(--lpu-black);
   display: flex;
@@ -476,11 +416,13 @@
 .sp-other-card:hover {
   border-color: var(--lpu-orange);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   color: var(--lpu-orange);
 }
 
-.sp-other-card span:first-child { font-size: 1.5rem; }
+.sp-other-card span:first-child {
+  font-size: 1.5rem;
+}
 
 /* Mobile */
 @media (max-width: 900px) {
@@ -505,7 +447,9 @@
     padding-bottom: 40px;
   }
 
-  .sp-section { padding: 50px 0; }
+  .sp-section {
+    padding: 50px 0;
+  }
 
   .sp-programs-grid {
     grid-template-columns: 1fr;
@@ -522,11 +466,22 @@
 }
 
 @media (max-width: 480px) {
-  .school-hero-icon { font-size: 2rem; }
-  .sp-other-schools { grid-template-columns: 1fr; }
-  .sp-cta-btns .btn { width: 100%; text-align: center; }
-  .sp-program-card { padding: 0; }
-  .sp-program-icon { font-size: 1.5rem; }
+  .school-hero-icon {
+    font-size: 2rem;
+  }
+  .sp-other-schools {
+    grid-template-columns: 1fr;
+  }
+  .sp-cta-btns .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .sp-program-card {
+    padding: 0;
+  }
+  .sp-program-icon {
+    font-size: 1.5rem;
+  }
 }
 
 /* Program Categories */
@@ -548,7 +503,7 @@
 }
 
 .sp-category-title::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
   background: #e0e0e0;

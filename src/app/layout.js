@@ -1,6 +1,6 @@
 import React from "react";
 import ClientShell from "@/components/ClientShell";
-import "@/styles/globals.css";
+// import "@/styles/globals.css";
 import "@/styles/App.css";
 
 export const metadata = {
@@ -60,6 +60,7 @@ export const metadata = {
     google: "XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns",
   },
 };
+export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }) {
   return (

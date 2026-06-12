@@ -10,6 +10,8 @@ const emptyForm = {
   published: true,
 };
 
+export const dynamic = "force-dynamic";
+
 export default function AdminFAQ() {
   const [faqs, setFaqs] = useState([]);
   const [form, setForm] = useState(emptyForm);
@@ -54,7 +56,7 @@ export default function AdminFAQ() {
       setForm(emptyForm);
       setEditId(null);
       setShowForm(false);
-      fetchFaqs();
+      await fetchFaqs();
     } catch (err) {
       setMsg(err.response?.data?.message || "Error saving FAQ.");
     }

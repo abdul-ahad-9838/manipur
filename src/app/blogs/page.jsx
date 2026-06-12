@@ -12,24 +12,12 @@ async function getBlogs() {
 
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
 
-  const res = await fetch(`${protocol}://${host}/api/blogs`, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(`${protocol}://${host}/api/blogs`);
 
   if (!res.ok) return null;
 
   return res.json();
 }
-
-// async function getBlogs() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blogs`, {
-//     next: { revalidate: 60 },
-//   });
-
-//   if (!res.ok) return [];
-
-//   return res.json();
-// }
 
 export default async function BlogPage() {
   const blogs = await getBlogs();

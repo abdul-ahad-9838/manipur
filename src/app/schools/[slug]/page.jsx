@@ -1,5 +1,6 @@
 "use client";
 
+import BannerSection from "@/components/BannerSection";
 import API from "@/lib/api";
 import "@/styles/SchoolPage.css";
 import Link from "next/link";
@@ -678,10 +679,6 @@ const SCHOOLS = {
   },
 };
 
-// Alias so both old and new slugs work
-// SCHOOLS["school-of-information-technology"] =
-//   SCHOOLS["school-of-computer-application"];
-
 export default function SchoolPage() {
   const params = useParams();
   const slug = decodeURIComponent(params.slug || "");
@@ -851,7 +848,7 @@ export default function SchoolPage() {
   return (
     <div className="school-page">
       {/* Hero */}
-      <div
+      {/* <div
         className="school-hero"
         style={{ "--school-color": schoolData.color }}
       >
@@ -879,7 +876,8 @@ export default function SchoolPage() {
             Apply Now
           </a>
         </div>
-      </div>
+      </div> */}
+      <BannerSection data={schoolData} url="https://admission.miu.edu.in" />
 
       {/* Highlights */}
       <section className="sp-section sp-section-alt">

@@ -363,6 +363,8 @@
   top: 0;
   left: 0;
   gap: 4px; /* Reduced from 8px to move emblem and MIU blocks closer */
+  height: 64px;
+  width: auto;
 }
 
 .abs-emblem {

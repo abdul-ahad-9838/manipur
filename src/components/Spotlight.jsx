@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import API from "@/lib/api";
 import "@/styles/Spotlight.css";
+import "@/styles/App.css";
 import Image from "next/image";
 
 const defaultRow1 = [
@@ -87,7 +88,7 @@ const Spotlight = () => {
     <section className="spotlight-section">
       <div className="container">
         <div className="spotlight-header-container">
-          <div className="spotlight-header-content">
+          <div className="spotlight-head">
             <div className="spotlight-badge-pulse">
               <span className="pulse-dot"></span>
               <span className="spotlight-badge">HAPPENING NOW</span>
