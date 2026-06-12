@@ -216,8 +216,8 @@ export const navbarItems = [
         href: "/schools/school-of-vocational-studies",
       },
       {
-        label: "School of Humanities",
-        href: "/schools/school-of-humanities",
+        label: "School of Arts and Humanities",
+        href: "/schools/school-of-arts-and-humanities",
       },
       {
         label: "School of Fire & Safety",

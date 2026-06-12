@@ -183,7 +183,7 @@ img {
 
 .btn-orange {
   background-color: var(--lpu-orange);
-  color: var(--lpu-white);
+  color: var(--lpu-white) !important;
 }
 .btn-orange:hover {
   background-color: var(--lpu-black);

@@ -789,6 +789,7 @@ export default function SchoolPage() {
           "school-of-paramedical-sciences": ["school of paramedical sciences"],
           "school-of-vocational-studies": ["school of vocational studies"],
           "school-of-humanities": ["school of humanities"],
+          "school-of-arts-and-humanities": ["school of arts and humanities"],
           "school-of-allied-health-science": [
             "school of allied health science",
           ],
