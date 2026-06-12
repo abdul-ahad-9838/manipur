@@ -649,3 +649,13 @@ button,
     max-height: 95vh;
   }
 }
+
+.layout-margin-fix {
+  margin-top: 125px;
+}
+
+@media (max-width: 768px) {
+  .layout-margin-fix {
+    margin-top: 62px;
+  }
+}
