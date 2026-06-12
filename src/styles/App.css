@@ -207,6 +207,7 @@ button,
 [class*="label"]:not([class*="card-label"]) {
   letter-spacing: 0.5px !important;
   word-spacing: normal !important;
+  color: #aaa;
 }
 
 /* ========================================

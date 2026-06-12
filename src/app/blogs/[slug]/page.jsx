@@ -9,8 +9,9 @@ async function getBlog(slug) {
   const host = headersList?.get("host");
 
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const baseUrl = `${protocol}://${host}`;
 
-  const res = await fetch(`${protocol}://${host}/api/blogs/${slug}`);
+  const res = await fetch(`${baseUrl}/api/blogs/${slug}`);
 
   if (!res.ok) return null;
 
@@ -83,7 +84,7 @@ export default async function BlogPage({ params }) {
     <div className="blog-detail-page">
       <div className="container blog-detail-container">
         <Link href="/blogs" className="blog-back-link">
-          ← Back to Blog
+          ← Back to Blogs
         </Link>
 
         <div className="blog-detail-header">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import "@/styles/Blog.css";
 import { headers } from "next/headers";
 import Image from "next/image";
+import BannerSection from "@/components/BannerSection";
 
 async function getBlogs() {
   const headersList = await headers();
@@ -11,8 +12,9 @@ async function getBlogs() {
   const host = headersList?.get("host");
 
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const baseUrl = `${protocol}://${host}`;
 
-  const res = await fetch(`${protocol}://${host}/api/blogs`);
+  const res = await fetch(`${baseUrl}/api/blogs`);
 
   if (!res.ok) return null;
 

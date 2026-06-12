@@ -10,9 +10,7 @@ async function getFaqs() {
 
   const baseUrl = `${protocol}://${host}`;
 
-  const res = await fetch(`${baseUrl}/api/faqs`, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(`${baseUrl}/api/faqs`);
 
   if (!res.ok) return [];
 

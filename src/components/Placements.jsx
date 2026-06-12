@@ -28,8 +28,9 @@ async function getPlacements() {
 
     const host = headersList.get("host");
     const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+    const baseUrl = `${protocol}://${host}`;
 
-    const res = await fetch(`${protocol}://${host}/api/settings/placements`, {
+    const res = await fetch(`${baseUrl}/api/settings/placements`, {
       cache: "no-store",
     });
 

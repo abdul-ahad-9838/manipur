@@ -33,7 +33,9 @@ async function getRecognitions() {
     const host = headersList.get("host");
     const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
 
-    const res = await fetch(`${protocol}://${host}/api/settings/recognitions`);
+    const baseUrl = `${protocol}://${host}`;
+
+    const res = await fetch(`${baseUrl}/api/settings/recognitions`);
 
     if (!res.ok) throw new Error("Failed request");
 

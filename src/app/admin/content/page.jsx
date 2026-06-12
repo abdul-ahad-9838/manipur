@@ -36,7 +36,7 @@ const DEFAULT_LEADERS = [
   {
     role: "Chancellor",
     name: "Dr. Hari Kumar",
-    image: "/leadership/chancellor.png",
+    image: "/leadership/chancellor.webp",
     title: "Welcome Message",
     active: false,
     message: [
@@ -54,7 +54,7 @@ const DEFAULT_LEADERS = [
   {
     role: "Vice Chancellor",
     name: "Vice Chancellor",
-    image: "/leadership/vc.png",
+    image: "/leadership/vc.webp",
     title: "Message from the Vice Chancellor",
     active: false,
     message: [
@@ -72,7 +72,7 @@ const DEFAULT_LEADERS = [
   {
     role: "Pro Vice Chancellor",
     name: "Pro Vice Chancellor",
-    image: "/leadership/pro_vc.png",
+    image: "/leadership/pro_vc.webp",
     title: "Welcome Message",
     active: false,
     message: [
@@ -89,7 +89,7 @@ const DEFAULT_LEADERS = [
   {
     role: "Registrar",
     name: "Registrar",
-    image: "/leadership/registrar.png",
+    image: "/leadership/registrar.webp",
     title: "Welcome Message",
     active: false,
     message: [
@@ -103,7 +103,7 @@ const DEFAULT_LEADERS = [
   {
     role: "Director – Admissions",
     name: "Director – Admissions",
-    image: "/leadership/director_admissions.png",
+    image: "/leadership/director_admissions.webp",
     title: "Welcome Message",
     active: false,
     message: [
@@ -120,7 +120,7 @@ const DEFAULT_LEADERS = [
   {
     role: "Controller of Examinations",
     name: "Controller of Examinations (COE)",
-    image: "/leadership/coe.png",
+    image: "/leadership/coe.webp",
     title: "Message from the COE",
     active: false,
     message: [
