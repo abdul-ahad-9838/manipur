@@ -518,6 +518,9 @@ const Navbar = () => {
             <Link href="/admin/login" onClick={() => setIsMenuOpen(false)}>
               STAFF LOGIN
             </Link>
+            <Link href="/about/public-self-disclosure">
+              PUBLIC SELF DISCLOSURE
+            </Link>
           </div>
         </div>
       </div>
