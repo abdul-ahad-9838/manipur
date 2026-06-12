@@ -343,7 +343,7 @@ const Navbar = () => {
                 <Link href="/blogs">BLOGS</Link>
               </li>
               <li>
-                <Link href="/news-events">HAPPENINGS</Link>
+                <Link href="/about/faqs">FAQs</Link>
               </li>
               <li className="highlight-link">
                 <Link href="/miunest">MIUNEST</Link>
@@ -502,8 +502,8 @@ const Navbar = () => {
             )}
           </ul>
           <div className="mobile-utility-links">
-            <Link href="/news-events" onClick={() => setIsMenuOpen(false)}>
-              HAPPENINGS
+            <Link href="/about/faqs" onClick={() => setIsMenuOpen(false)}>
+              FAQ
             </Link>
             <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
               BLOGS

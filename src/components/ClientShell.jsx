@@ -34,21 +34,23 @@ const StudentLoginButton = dynamic(() => import("./StudentLoginButton"), {
 });
 
 function useSplash() {
-  const [visible, setVisible] = useState(() => {
-    if (typeof window === "undefined") return false;
-    if (sessionStorage.getItem("miu-splash-seen")) return false;
-    sessionStorage.setItem("miu-splash-seen", "true");
-    return true;
-  });
-
+  // Always start as false (matches server render — no splash on SSR)
+  const [visible, setVisible] = useState(false);
   const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    // Now we're on the client — safe to read sessionStorage
+    if (sessionStorage.getItem("miu-splash-seen")) return;
+
+    sessionStorage.setItem("miu-splash-seen", "true");
+    setVisible(true); // trigger splash after hydration
+  }, []);
 
   useEffect(() => {
     if (!visible) return;
 
-    // Start CSS fade at 800 ms; let the 500 ms transition finish, then unmount.
     const fade = setTimeout(() => setFading(true), 800);
-    const remove = setTimeout(() => setVisible(false), 1300); // 800 + 500 ms transition
+    const remove = setTimeout(() => setVisible(false), 1300);
 
     return () => {
       clearTimeout(fade);
