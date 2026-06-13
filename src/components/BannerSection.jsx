@@ -2,8 +2,6 @@ import Image from "next/image";
 import "@/styles/BannerSection.css";
 
 const BannerSection = ({ data, url }) => {
-  console.log(data?.image);
-  console.log(data.coverImage);
   return (
     <div className="school-hero" style={{ "--school-color": data.color }}>
       <div className="school-hero-bg">
@@ -15,6 +13,7 @@ const BannerSection = ({ data, url }) => {
             priority
             sizes="100vw"
             className="school-hero-image"
+            unoptimized
           />
         )}
       </div>

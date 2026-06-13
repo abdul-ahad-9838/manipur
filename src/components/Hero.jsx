@@ -69,7 +69,7 @@ const Hero = () => {
             alt=""
             fill
             className="hero-image hero-image-fade"
-            // sizes="100vw"
+            unoptimized
           />
         )}
       </div>

@@ -119,6 +119,7 @@ export default async function Ecosystem() {
                 alt={card.title}
                 width={500}
                 height={500}
+                unoptimized
               />
 
               <div
