@@ -694,6 +694,7 @@
 .dept-contact-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 12px 16px;
   background: white;

@@ -25,8 +25,6 @@ export default function ContactUsPage() {
       })
       .catch(() => {});
   }, []);
-
-  console.log(pc);
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -362,10 +360,7 @@ export default function ContactUsPage() {
                         Sending...
                       </>
                     ) : (
-                      <>
-                        Send Message
-                        <span className="btn-arrow">→</span>
-                      </>
+                      <>Send Message →</>
                     )}
                   </button>
                 </form>
@@ -461,8 +456,7 @@ export default function ContactUsPage() {
               common inquiries
             </p>
             <Link href="/about/faqs" className="btn-faq">
-              View FAQs
-              <span className="btn-arrow">→</span>
+              View FAQs →
             </Link>
           </div>
         </div>
