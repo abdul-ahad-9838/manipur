@@ -9,6 +9,7 @@ async function getCourse(slug) {
   const headersList = await headers();
 
   const host = headersList.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
   const baseUrl = `${protocol}://${host}`;
 
   const res = await fetch(`${baseUrl}/api/courses/${slug}`);

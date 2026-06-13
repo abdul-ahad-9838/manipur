@@ -1,10 +1,9 @@
 // app/blogs/page.jsx
 
-import Link from "next/link";
 import "@/styles/Blog.css";
 import { headers } from "next/headers";
 import Image from "next/image";
-import BannerSection from "@/components/BannerSection";
+import Link from "next/link";
 
 async function getBlogs() {
   const headersList = await headers();

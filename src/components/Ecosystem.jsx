@@ -1,9 +1,6 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import API from "@/lib/api";
-import "@/styles/Ecosystem.css";
+import { headers } from "next/headers";
 import Image from "next/image";
+import "@/styles/Ecosystem.css";
 
 const DEFAULT_CARDS = [
   {
@@ -53,16 +50,31 @@ const DEFAULT_CARDS = [
   },
 ];
 
-const Ecosystem = () => {
-  const [cards, setCards] = useState(DEFAULT_CARDS);
+async function getEcosystemCards() {
+  try {
+    const headersList = await headers();
 
-  useEffect(() => {
-    API.get("/settings/ecosystem")
-      .then(({ data }) => {
-        if (data?.content?.cards?.length) setCards(data.content.cards);
-      })
-      .catch(() => {});
-  }, []);
+    const host = headersList.get("host");
+    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+    const baseUrl = `${protocol}://${host}`;
+
+    const res = await fetch(`${baseUrl}/api/settings/ecosystem`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) return DEFAULT_CARDS;
+
+    const data = await res.json();
+
+    return data?.content?.cards?.length ? data.content.cards : DEFAULT_CARDS;
+  } catch {
+    return DEFAULT_CARDS;
+  }
+}
+
+export default async function Ecosystem() {
+  const cards = await getEcosystemCards();
 
   return (
     <section className="ecosystem-section-container">
@@ -80,55 +92,47 @@ const Ecosystem = () => {
         </div>
       </div>
 
-      {/* All Cards */}
       {cards.map((card, index) => (
-        <React.Fragment key={card.id}>
-          <div className="ecosystem-card">
-            <div
-              className="card-inner"
-              style={{
-                flexDirection: index % 2 !== 0 ? "row-reverse" : "row",
-              }}
-            >
-              <div className="card-content">
-                <span className="card-meta">MIU ECOSYSTEM {card.id}</span>
-                <span className="card-label">{card.label}</span>
-                <h2>{card.title}</h2>
-                <p>{card.description}</p>
+        <div key={card.id} className="ecosystem-card">
+          <div
+            className="card-inner"
+            style={{
+              flexDirection: index % 2 !== 0 ? "row-reverse" : "row",
+            }}
+          >
+            <div className="card-content">
+              <span className="card-meta">MIU ECOSYSTEM {card.id}</span>
+              <span className="card-label">{card.label}</span>
+              <h2>{card.title}</h2>
+              <p>{card.description}</p>
 
-                <div className="card-actions">
-                  <a href="#apply" className="btn-explore">
-                    EXPLORE MORE <span>→</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="card-image-box">
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  width={500}
-                  height={500}
-                />
-
-                <div
-                  className="image-vignette"
-                  style={{
-                    background: `linear-gradient(to ${
-                      index % 2 === 0 ? "right" : "left"
-                    }, #000 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.4) 100%)`,
-                  }}
-                />
+              <div className="card-actions">
+                <a href="#apply" className="btn-explore">
+                  EXPLORE MORE <span>→</span>
+                </a>
               </div>
             </div>
-          </div>
-          {/* <div className="ecosystem-clearance"></div> */}
-        </React.Fragment>
-      ))}
 
-      {/* <div className="ecosystem-clearance"></div> */}
+            <div className="card-image-box">
+              <Image
+                src={card.image}
+                alt={card.title}
+                width={500}
+                height={500}
+              />
+
+              <div
+                className="image-vignette"
+                style={{
+                  background: `linear-gradient(to ${
+                    index % 2 === 0 ? "right" : "left"
+                  }, #000 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.4) 100%)`,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      ))}
     </section>
   );
-};
-
-export default Ecosystem;
+}
