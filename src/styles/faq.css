@@ -282,9 +282,7 @@
   font-size: 15px;
   line-height: 1.7;
   color: #444;
-
-  /* IMPORTANT: override your global justify rule */
-  text-align: left !important;
+  text-align: justify;
 }
 
 /* Empty state */
