@@ -1,11 +1,10 @@
 "use client";
 
-import API from "@/lib/api";
-import "@/styles/Hero.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import "@/styles/Hero.css";
 
-const Hero = () => {
+const Hero = ({ data }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [previousImageIndex, setPreviousImageIndex] = useState(0);
   const [fade, setFade] = useState(false);
@@ -18,11 +17,7 @@ const Hero = () => {
   });
 
   useEffect(() => {
-    API.get("/settings/hero")
-      .then(({ data }) => {
-        if (data?.content) setHeroData(data.content);
-      })
-      .catch(() => {});
+    if (data?.content) setHeroData(data.content);
   }, []);
 
   const { title, subtitle, images } = heroData;

@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import Image from "next/image";
 import "@/styles/Spotlight.css";
 import "@/styles/App.css";
@@ -69,44 +68,10 @@ const defaultRow2 = [
   },
 ];
 
-async function getSpotlightData() {
-  try {
-    const headersList = await headers();
+export default function Spotlight({ data }) {
+  const row1 = data?.row1?.length > 0 ? data.row1 : defaultRow1;
 
-    const host = headersList.get("host");
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-
-    const baseUrl = `${protocol}://${host}`;
-
-    const res = await fetch(`${baseUrl}/api/settings/spotlight`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      return {
-        row1: defaultRow1,
-        row2: defaultRow2,
-      };
-    }
-
-    const data = await res.json();
-
-    return {
-      row1: data?.content?.row1?.length ? data.content.row1 : defaultRow1,
-      row2: data?.content?.row2?.length ? data.content.row2 : defaultRow2,
-    };
-  } catch (error) {
-    console.error("Failed to fetch spotlight data:", error);
-
-    return {
-      row1: defaultRow1,
-      row2: defaultRow2,
-    };
-  }
-}
-
-export default async function Spotlight() {
-  const { row1, row2 } = await getSpotlightData();
+  const row2 = data?.row2?.length > 0 ? data.row2 : defaultRow2;
 
   return (
     <section className="spotlight-section">

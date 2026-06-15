@@ -2,6 +2,7 @@ import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
+import { headers } from "next/headers";
 
 const Stats = dynamic(() => import("@/components/Stats"));
 const Spotlight = dynamic(() => import("@/components/Spotlight"));
@@ -29,23 +30,54 @@ export const metadata = {
   },
 };
 
+async function getData(endpoint) {
+  const headersList = await headers();
+
+  const host = headersList.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const baseUrl = `${protocol}://${host}`;
+
+  const res = await fetch(`${baseUrl}${endpoint}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) return null;
+
+  return res.json();
+}
+
 export default async function Home() {
+  const results = await Promise.allSettled([
+    getData("/api/settings/hero"),
+    getData("/api/settings/spotlight"),
+    getData("/api/settings/campus"),
+    getData("/api/settings/placements"),
+    getData("/api/settings/ecosystem"),
+    getData("/api/blogs"),
+  ]);
+
+  const [
+    heroData,
+    spotlightData,
+    campusData,
+    placementsData,
+    ecosystemData,
+    blogsData,
+  ] = results.map((result) =>
+    result.status === "fulfilled" ? result.value : null,
+  );
+
   return (
     <main>
       <StructuredData />
 
-      {/* Above the fold */}
-      <Hero />
-
-      {/* Lazy loaded */}
-      {/* <Accreditations /> */}
-      <Spotlight />
+      <Hero data={heroData?.content} />
+      <Spotlight data={spotlightData?.content} />
       <Stats />
-      {/* <Programs /> */}
-      <CampusLife />
-      <Placements />
-      <Ecosystem />
-      <NewsSlider />
+      <CampusLife data={campusData?.content} />
+      <Placements data={placementsData?.content} />
+      <Ecosystem data={ecosystemData?.content} />
+      <NewsSlider blogs={blogsData} />
       <FAQ />
     </main>
   );

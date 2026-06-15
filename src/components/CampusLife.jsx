@@ -26,28 +26,7 @@ const DEFAULT_TABS = [
   },
 ];
 
-async function getCampus() {
-  try {
-    const headersList = await headers();
-
-    const host = headersList.get("host");
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-
-    const res = await fetch(`${protocol}://${host}/api/settings/campus`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) return null;
-
-    return res.json();
-  } catch {
-    return null;
-  }
-}
-
-export default async function CampusLife() {
-  const data = await getCampus();
-
+export default async function CampusLife({ data }) {
   const tabs =
     data?.content?.tabs?.length > 0 ? data.content.tabs : DEFAULT_TABS;
 

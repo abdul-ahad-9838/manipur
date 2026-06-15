@@ -848,36 +848,6 @@ export default function SchoolPage() {
   }));
   return (
     <div className="school-page">
-      {/* Hero */}
-      {/* <div
-        className="school-hero"
-        style={{ "--school-color": schoolData.color }}
-      >
-        <div
-          className="school-hero-bg"
-          style={{ backgroundImage: `url(${schoolData.image})` }}
-        />
-        <div className="school-hero-overlay" />
-        <div className="container school-hero-content">
-          <nav className="school-breadcrumb">
-            <Link href="/">Home</Link> <span>›</span>
-            <Link href="/information-cell">Schools</Link> <span>›</span>
-            <span>{schoolData.name}</span>
-          </nav>
-          <div className="school-hero-icon">{schoolData.icon}</div>
-          <h1>{schoolData.name}</h1>
-          <p className="school-hero-tagline">{schoolData.tagline}</p>
-          <a
-            href="https://admission.miu.edu.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-orange"
-            style={{ marginTop: "20px" }}
-          >
-            Apply Now
-          </a>
-        </div>
-      </div> */}
       <BannerSection data={schoolData} url="https://admission.miu.edu.in" />
 
       {/* Highlights */}

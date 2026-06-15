@@ -1,6 +1,5 @@
-import { headers } from "next/headers";
-import Image from "next/image";
 import "@/styles/Ecosystem.css";
+import Image from "next/image";
 
 const DEFAULT_CARDS = [
   {
@@ -50,31 +49,8 @@ const DEFAULT_CARDS = [
   },
 ];
 
-async function getEcosystemCards() {
-  try {
-    const headersList = await headers();
-
-    const host = headersList.get("host");
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-
-    const baseUrl = `${protocol}://${host}`;
-
-    const res = await fetch(`${baseUrl}/api/settings/ecosystem`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) return DEFAULT_CARDS;
-
-    const data = await res.json();
-
-    return data?.content?.cards?.length ? data.content.cards : DEFAULT_CARDS;
-  } catch {
-    return DEFAULT_CARDS;
-  }
-}
-
-export default async function Ecosystem() {
-  const cards = await getEcosystemCards();
+export default function Ecosystem({ data }) {
+  const cards = Array.isArray(data) && data.length > 0 ? data : DEFAULT_CARDS;
 
   return (
     <section className="ecosystem-section-container">
@@ -84,6 +60,7 @@ export default async function Ecosystem() {
           <div className="ecosystem-header-content">
             <span className="hero-label-text">360° LEARNING ECOSYSTEM</span>
             <div className="hero-label-line"></div>
+
             <h2 className="hero-main-title">
               Your Growth, Our Priority: Empowering every student through a
               complete learning experience
@@ -93,7 +70,7 @@ export default async function Ecosystem() {
       </div>
 
       {cards.map((card, index) => (
-        <div key={card.id} className="ecosystem-card">
+        <div key={card.id || index} className="ecosystem-card">
           <div
             className="card-inner"
             style={{
@@ -101,9 +78,14 @@ export default async function Ecosystem() {
             }}
           >
             <div className="card-content">
-              <span className="card-meta">MIU ECOSYSTEM {card.id}</span>
+              <span className="card-meta">
+                MIU ECOSYSTEM {card.id || index + 1}
+              </span>
+
               <span className="card-label">{card.label}</span>
+
               <h2>{card.title}</h2>
+
               <p>{card.description}</p>
 
               <div className="card-actions">
@@ -125,9 +107,13 @@ export default async function Ecosystem() {
               <div
                 className="image-vignette"
                 style={{
-                  background: `linear-gradient(to ${
-                    index % 2 === 0 ? "right" : "left"
-                  }, #000 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.4) 100%)`,
+                  background: `linear-gradient(
+                    to ${index % 2 === 0 ? "right" : "left"},
+                    #000 0%,
+                    transparent 20%,
+                    transparent 80%,
+                    rgba(0, 0, 0, 0.4) 100%
+                  )`,
                 }}
               />
             </div>

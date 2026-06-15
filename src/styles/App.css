@@ -258,7 +258,7 @@ button,
 
 [class*="hero"] h1,
 [class*="hero"] h2 {
-  text-align: center !important;
+  text-align: center;
 }
 
 [class*="hero"] p {

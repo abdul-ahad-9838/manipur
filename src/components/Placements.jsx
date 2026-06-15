@@ -22,29 +22,7 @@ const DEFAULTS = {
   companyLogos: [],
 };
 
-async function getPlacements() {
-  try {
-    const headersList = await headers();
-
-    const host = headersList.get("host");
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-    const baseUrl = `${protocol}://${host}`;
-
-    const res = await fetch(`${baseUrl}/api/settings/placements`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) return null;
-
-    return res.json();
-  } catch {
-    return null;
-  }
-}
-
-export default async function Placements() {
-  const data = await getPlacements();
-
+export default async function Placements({ data }) {
   const content = {
     ...DEFAULTS,
     ...(data?.content || {}),

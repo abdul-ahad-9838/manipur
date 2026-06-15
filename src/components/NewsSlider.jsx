@@ -1,32 +1,24 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import Link from "next/link";
-import API from "@/lib/api";
 import "@/styles/NewsSlider.css";
 
-const INTERVAL = 5; // seconds (CSS friendly)
-
-export default function NewsSlider({ fallback = [] }) {
-  const [posts, setPosts] = useState(fallback);
+export default function NewsSlider({ blogs = [] }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  useEffect(() => {
-    API.get("/blogs")
-      .then(({ data }) => {
-        if (data?.length) setPosts(data);
-      })
-      .catch(() => {});
-  }, []);
+  const posts = Array.isArray(blogs) ? blogs : [];
 
   const total = posts.length;
 
   const goNext = useCallback(() => {
+    if (total <= 1) return;
     setActive((p) => (p + 1) % total);
   }, [total]);
 
   const goPrev = useCallback(() => {
+    if (total <= 1) return;
     setActive((p) => (p - 1 + total) % total);
   }, [total]);
 
@@ -37,12 +29,16 @@ export default function NewsSlider({ fallback = [] }) {
   const featured = posts[active];
 
   const side = useMemo(() => {
-    return posts.filter((_, i) => i !== active).slice(0, 4);
+    return posts.filter((_, i) => i !== active).slice(0, 5);
   }, [posts, active]);
 
-  const tickerItems = useMemo(() => posts.concat(posts), [posts]);
+  const tickerItems = useMemo(() => {
+    return [...posts, ...posts];
+  }, [posts]);
 
-  if (!featured) return null;
+  if (!posts.length || !featured) {
+    return null;
+  }
 
   return (
     <section
@@ -57,7 +53,10 @@ export default function NewsSlider({ fallback = [] }) {
         <div className="ns-ticker-track">
           <div className="ns-ticker-inner">
             {tickerItems.map((p, i) => (
-              <span key={i} className="ns-ticker-item">
+              <span
+                key={`${p._id || p.slug || i}-${i}`}
+                className="ns-ticker-item"
+              >
                 <span className="ns-ticker-cat">{p.category}</span>
                 {p.title}
                 <span className="ns-ticker-sep">◆</span>
@@ -78,7 +77,7 @@ export default function NewsSlider({ fallback = [] }) {
           </div>
 
           <div className="ns-controls">
-            <button className="ns-btn" onClick={goPrev}>
+            <button type="button" className="ns-btn" onClick={goPrev}>
               ‹
             </button>
 
@@ -86,7 +85,7 @@ export default function NewsSlider({ fallback = [] }) {
               {active + 1} / {total}
             </div>
 
-            <button className="ns-btn" onClick={goNext}>
+            <button type="button" className="ns-btn" onClick={goNext}>
               ›
             </button>
 
@@ -109,7 +108,6 @@ export default function NewsSlider({ fallback = [] }) {
 
               <span className="ns-feat-cat">{featured.category}</span>
 
-              {/* PURE CSS RING */}
               <svg className="ns-ring" viewBox="0 0 44 44">
                 <circle cx="22" cy="22" r="18" className="ns-ring-bg" />
 
@@ -125,6 +123,7 @@ export default function NewsSlider({ fallback = [] }) {
 
             <div className="ns-feat-body">
               <h3 className="ns-feat-title">{featured.title}</h3>
+
               <p className="ns-feat-excerpt">{featured.excerpt}</p>
 
               <Link href={`/blogs/${featured.slug}`} className="btn-explore">
@@ -135,24 +134,25 @@ export default function NewsSlider({ fallback = [] }) {
 
           {/* Side */}
           <div className="ns-side">
-            {side.map((p) => {
-              const realIdx = posts.indexOf(p);
+            {side.map((post) => {
+              const realIdx = posts.findIndex((item) => item._id === post._id);
 
               return (
                 <div
-                  key={p._id}
+                  key={post._id || post.slug}
                   className="ns-side-card"
                   onClick={() => goTo(realIdx)}
                 >
                   <img
-                    src={p.coverImage}
+                    src={post.coverImage}
+                    alt={post.title}
                     className="ns-side-img"
-                    alt={p.title}
                   />
 
                   <div className="ns-side-body">
-                    <span className="ns-side-cat">{p.category}</span>
-                    <h4 className="ns-side-title">{p.title}</h4>
+                    <span className="ns-side-cat">{post.category}</span>
+
+                    <h4 className="ns-side-title">{post.title}</h4>
                   </div>
                 </div>
               );
