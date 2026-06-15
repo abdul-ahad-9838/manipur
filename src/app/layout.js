@@ -1,6 +1,5 @@
 import React from "react";
 import ClientShell from "@/components/ClientShell";
-// import "@/styles/globals.css";
 import "@/styles/App.css";
 
 export const metadata = {

@@ -56,7 +56,8 @@
   text-align: left !important;
 }
 
-.hero-main-title {
+.hero-typography h1 {
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 5vw, 3rem);
   line-height: 1.1;
   color: #fff;
@@ -153,7 +154,7 @@
     justify-content: flex-start;
   }
 
-  .hero-main-title {
+  .hero-typography h1 {
     text-align: center !important;
   }
 
@@ -187,7 +188,14 @@
 
 .hero-image {
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
   z-index: 1;
+}
+
+.hero-image.active {
+  opacity: 1;
+  z-index: 2;
 }
 
 .hero-image-fade {

@@ -6,8 +6,6 @@ import "@/styles/Hero.css";
 
 const Hero = ({ data }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [previousImageIndex, setPreviousImageIndex] = useState(0);
-  const [fade, setFade] = useState(false);
 
   const [heroData, setHeroData] = useState({
     title: "Shaping The Leaders of Tomorrow",
@@ -31,49 +29,36 @@ const Hero = ({ data }) => {
     if (displayImages.length <= 1) return;
 
     const interval = setInterval(() => {
-      setPreviousImageIndex(currentImageIndex);
-
       setCurrentImageIndex((prev) => (prev + 1) % displayImages.length);
-
-      setFade(true);
-
-      setTimeout(() => {
-        setFade(false);
-      }, 1000); // match CSS transition duration
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentImageIndex, displayImages.length]);
+  }, [displayImages.length]);
 
   return (
     <section className="lpu-hero-container">
       {/* New Image */}
       <div className="hero-image-wrapper">
-        <Image
-          src={displayImages[currentImageIndex]}
-          alt={title}
-          fill
-          priority={currentImageIndex === 0}
-          className="hero-image"
-          sizes="100vw"
-        />
-
-        {fade && (
+        {displayImages.map((img, index) => (
           <Image
-            src={displayImages[previousImageIndex]}
-            alt=""
+            key={img}
+            src={img}
+            alt={title}
             fill
-            className="hero-image hero-image-fade"
-            unoptimized
+            priority={index === 0}
+            className={`hero-image ${
+              index === currentImageIndex ? "active" : ""
+            }`}
+            sizes="100vw"
           />
-        )}
+        ))}
       </div>
 
       <div className="lpu-hero-overlay"></div>
 
       <div className="container hero-layout">
         <div className="hero-typography">
-          <h1 className="hero-main-title">{title}</h1>
+          <h1>{title}</h1>
           <p className="hero-subtext">{subtitle}</p>
 
           <div className="hero-buttons">

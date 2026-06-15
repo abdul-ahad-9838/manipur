@@ -14,7 +14,7 @@ export default function StructuredData() {
     ],
     url: "https://miu.edu.in",
     logo: "https://miu.edu.in/images/MIU_Logo.webp",
-    image: "https://miu.edu.in/emblem.png",
+    image: "https://miu.edu.in/emblem.webp",
     description:
       "Manipur International University (MIU) is a UGC recognized premier university in Imphal, Manipur, India offering undergraduate, postgraduate and doctoral programs across Engineering, Management, Science, Commerce, Humanities and more.",
     address: {

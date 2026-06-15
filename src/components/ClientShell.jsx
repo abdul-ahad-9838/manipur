@@ -75,7 +75,7 @@ export default function ClientShell({ children }) {
             <div className={`splash-screen${fadeSplash ? " fade-out" : ""}`}>
               <div className="splash-content">
                 <Image
-                  src="/emblem.png"
+                  src="/emblem.webp"
                   alt="MIU Logo"
                   className="splash-logo"
                   width={150}

@@ -410,9 +410,9 @@ const Navbar = () => {
               />
             ) : (
               <>
-                {/* <img src="/emblem.png" alt="MIU Crest" className="abs-emblem" /> */}
+                {/* <img src="/emblem.webp" alt="MIU Crest" className="abs-emblem" /> */}
                 <Image
-                  src="/emblem.png"
+                  src="/emblem.webp"
                   alt="MIU Crest"
                   className="abs-emblem"
                   width={50}
