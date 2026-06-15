@@ -1,9 +1,6 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import API from "@/lib/api";
 import "@/styles/Accreditations.css";
 import Image from "next/image";
+import { headers } from "next/headers";
 
 const DEFAULT_RECOGNITIONS = [
   {
@@ -29,23 +26,42 @@ const DEFAULT_RECOGNITIONS = [
   },
 ];
 
-const Accreditations = () => {
-  const [recognitions, setRecognitions] = useState(DEFAULT_RECOGNITIONS);
-  const [header, setHeader] = useState({
+// ✅ server-side fetch helper
+async function getAccreditationsData() {
+  try {
+    const headersList = headers();
+    const host = headersList.get("host");
+
+    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+    const baseUrl = `${protocol}://${host}`;
+
+    const res = await fetch(`${baseUrl}/api/settings/recognitions`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) return null;
+
+    return await res.json();
+  } catch (err) {
+    console.error("Accreditations fetch failed:", err);
+    return null;
+  }
+}
+
+export default async function Accreditations() {
+  const data = await getAccreditationsData();
+
+  const recognitions = data?.content?.items?.length
+    ? data.content.items
+    : DEFAULT_RECOGNITIONS;
+
+  const header = {
     badge: "AFFILIATIONS & ACCREDITATION",
     title: "Recognized by Leading Education Bodies",
     desc: "MIU holds prestigious recognitions from top national councils. These affiliations validate our commitment to academic excellence, quality education, and adherence to global university standards, ensuring your degree is valued worldwide.",
-  });
-
-  useEffect(() => {
-    API.get("/settings/recognitions")
-      .then(({ data }) => {
-        if (data?.content?.items?.length) setRecognitions(data.content.items);
-        if (data?.content?.header)
-          setHeader((prev) => ({ ...prev, ...data.content.header }));
-      })
-      .catch(() => {});
-  }, []);
+    ...(data?.content?.header || {}),
+  };
 
   return (
     <section className="accreditations-section">
@@ -65,17 +81,19 @@ const Accreditations = () => {
           >
             {header.badge}
           </span>
+
           <h2 className="acc-main-title">{header.title}</h2>
         </div>
+
         <div className="acc-header-right">
           <p className="acc-main-desc">{header.desc}</p>
         </div>
       </div>
 
-      {/* Static Cards */}
+      {/* Cards */}
       <div className="acc-cards-row container">
         {recognitions
-          .filter((item) => item.short != "AICTE")
+          .filter((item) => item.short !== "AICTE")
           .map((item, i) => (
             <div
               key={i}
@@ -101,10 +119,12 @@ const Accreditations = () => {
                   </div>
                 )}
               </div>
+
               <div
                 className="acc-card-divider"
                 style={{ background: item.color }}
               />
+
               <div className="acc-card-body">
                 <span className="acc-card-short" style={{ color: item.color }}>
                   {item.short}
@@ -117,6 +137,4 @@ const Accreditations = () => {
       </div>
     </section>
   );
-};
-
-export default Accreditations;
+}

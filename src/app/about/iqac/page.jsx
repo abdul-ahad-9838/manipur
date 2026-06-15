@@ -1,11 +1,7 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import API from "@/lib/api";
-import "@/styles/IQAC.css";
 import "@/styles/AcademicCouncil.css";
-// import "@/styles/SimplePage.css";
+import "@/styles/IQAC.css";
+import { headers } from "next/headers";
+import Link from "next/link";
 
 const DEFAULT = {
   title: "Internal Quality Assurance Cell (IQAC)",
@@ -147,17 +143,28 @@ const DEFAULT = {
   ],
 };
 
-export default function IQACPage() {
-  const [d, setD] = useState(DEFAULT);
+async function getIQACData() {
+  const headersList = await headers();
+  const host = headersList.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const baseUrl = `${protocol}://${host}`;
 
-  useEffect(() => {
-    API.get("/settings/iqac")
-      .then(({ data }) => {
-        if (data?.content) setD((prev) => ({ ...prev, ...data.content }));
-      })
-      .catch(() => {});
-  }, []);
+  try {
+    const res = await fetch(`${baseUrl}/api/settings/iqac`, {
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
 
+    return await res.json();
+  } catch (err) {
+    console.error("IQAC fetch failed:", err);
+    return null;
+  }
+}
+
+export default async function IQACPage() {
+  const iqacData = await getIQACData();
+  const d = iqacData?.content ? { ...DEFAULT, ...iqacData.content } : DEFAULT;
   return (
     <div className="ac-page">
       {/* Hero */}

@@ -1,4 +1,3 @@
-"use client";
 import DynamicPage from "@/components/DynamicPage";
 export default function Page() {
   return (

@@ -1,89 +1,109 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import API from "@/lib/api";
 import "@/styles/Programs.css";
 import Image from "next/image";
 
 const DEFAULT_SCHOOLS = [
   {
-    name: "School of Commerce",
-    slug: "school-of-commerce",
-    desc: "Nurturing future business leaders with a strong foundation in commerce, finance, and entrepreneurship.",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=600",
+    name: "School of Engineering and Information Technology",
+    slug: "school-of-engineering-and-information-technology",
+    desc: "Engineering the future.",
+    image: "/api/images/6a2d3f1618b853d4777d415a",
   },
   {
-    name: "School of Information Technology",
-    slug: "school-of-information-technology",
-    desc: "Empowering students with cutting-edge computing skills, software development, and digital innovation.",
-    image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600",
-  },
-  {
-    name: "School of Engineering",
-    slug: "school-of-engineering",
-    desc: "Building technically proficient engineers ready to solve real-world challenges with creativity and precision.",
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600",
-  },
-  {
-    name: "School of Management",
-    slug: "school-of-management",
-    desc: "Developing strategic thinkers and effective managers equipped for leadership in a dynamic global economy.",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600",
+    name: "School of Commerce and Management",
+    slug: "school-of-commerce-and-management",
+    desc: "Developing tomorrow's leaders.",
+    image: "/api/images/6a2d3f1d18b853d4777d415b",
   },
   {
     name: "School of Science",
     slug: "school-of-science",
-    desc: "Fostering scientific inquiry, research excellence, and innovation across core and applied science disciplines.",
-    image:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=600",
+    desc: "Discovering the world through science.",
+    image: "/api/images/6a2d3f2118b853d4777d415c",
   },
   {
     name: "School of Vocational Studies",
     slug: "school-of-vocational-studies",
-    desc: "Bridging education and employment with skill-based programs aligned with industry needs.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=600",
-    externalUrl: "https://vocational.miu.edu.in/",
+    desc: "Skills for the real world.",
+    image: "/api/images/6a2d3ef718b853d4777d4158",
   },
   {
-    name: "School of Allied Health Science",
-    slug: "school-of-allied-health-science",
-    desc: "Training compassionate healthcare professionals in paramedical, diagnostic, and therapeutic sciences.",
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600",
+    name: "School of Arts and Humanities",
+    slug: "school-of-arts-and-humanities",
+    desc: "Nurturing future leaders.",
+    image: "/api/images/6a2d3eff18b853d4777d4159",
+  },
+  {
+    name: "School of Fire & Safety",
+    slug: "school-of-fire-&-safety",
+    desc: "Fire & Safety",
+    image: "",
+  },
+  {
+    name: "School of Library and Information Science",
+    slug: "school-of-library-and-information-science",
+    desc: "School of Library and Information Science",
+    image: "",
+  },
+  {
+    name: "School of Paramedical Sciences",
+    slug: "school-of-paramedical-sciences",
+    desc: "The School of Allied Health Science at MIU is dedicated to training skilled healthcare professionals in paramedical, diagnostic, therapeutic, and rehabilitation sciences. Our programs combine rigorous academic training with hands-on clinical exposure, preparing graduates to serve as vital members of the modern healthcare team.",
+    image: "/api/images/6a2d41c318b853d4777d415d",
+  },
+  {
+    name: "School of Journalism & Mass Communication",
+    slug: "school-of-journalism-mass-communication",
+    desc: "The School of Journalism & Mass Communication prepares students for careers in media, journalism, public relations, advertising, and digital communication through a blend of theoretical knowledge and practical training.",
+    image: "",
   },
 ];
 
-const Programs = () => {
-  const [schools, setSchools] = useState(DEFAULT_SCHOOLS);
-  const [content, setContent] = useState({
+async function getSchoolsData() {
+  try {
+    const headersList = headers(); // 👈 no await needed
+
+    const host = headersList.get("host");
+
+    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+    const baseUrl = `${protocol}://${host}`;
+    const res = await fetch(`${baseUrl}/api/settings/schools-section`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) return null;
+
+    return await res.json();
+  } catch (err) {
+    console.error("Schools fetch failed:", err);
+    return null;
+  }
+}
+
+export default async function Programs() {
+  const data = await getSchoolsData();
+
+  let schools = DEFAULT_SCHOOLS;
+  let content = {
     badge: "ACADEMICS",
     title: "Schools & Faculties",
     subtitle:
       "Our Schools and Faculties bring together experienced academicians and subject experts dedicated to excellence in teaching and research.",
-  });
+  };
 
-  useEffect(() => {
-    API.get("/settings/schools-section")
-      .then(({ data }) => {
-        if (data?.content) {
-          if (data.content.schools?.length) {
-            const dbSchools = data.content.schools;
-            // Merge: append any DEFAULT_SCHOOLS not already in DB list
-            const dbSlugs = new Set(dbSchools.map((s) => s.slug));
-            const missing = DEFAULT_SCHOOLS.filter((s) => !dbSlugs.has(s.slug));
-            setSchools([...dbSchools, ...missing]);
-          }
-          setContent((prev) => ({ ...prev, ...data.content }));
-        }
-      })
-      .catch(() => {});
-  }, []);
+  if (data?.content) {
+    if (data.content.schools?.length) {
+      const dbSchools = data.content.schools;
+
+      const dbSlugs = new Set(dbSchools.map((s) => s.slug));
+      const missing = DEFAULT_SCHOOLS.filter((s) => !dbSlugs.has(s.slug));
+
+      schools = [...dbSchools, ...missing];
+    }
+
+    content = { ...content, ...data.content };
+  }
 
   return (
     <section id="academics" className="programs-section section-padding">
@@ -100,13 +120,6 @@ const Programs = () => {
           {schools.map((school, i) => (
             <div className="program-card" key={i}>
               <div className="program-card-img">
-                {/* <img
-                  src={
-                    school.image ||
-                    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600"
-                  }
-                  alt={school.name}
-                /> */}
                 <Image
                   src={
                     school.image ||
@@ -119,9 +132,11 @@ const Programs = () => {
                 />
                 <div className="program-card-img-overlay" />
               </div>
+
               <div className="program-card-body">
                 <h3 className="program-title">{school.name}</h3>
                 <p className="program-desc">{school.desc}</p>
+
                 <div className="program-footer">
                   {school.externalUrl ||
                   school.slug === "school-of-vocational-studies" ? (
@@ -151,6 +166,4 @@ const Programs = () => {
       </div>
     </section>
   );
-};
-
-export default Programs;
+}
