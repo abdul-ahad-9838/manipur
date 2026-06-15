@@ -12,11 +12,7 @@ const TextEditor = dynamic(() => import("@/components/TextEditor"), {
   ssr: false,
 });
 const DEFAULT_SCHOOLS = [
-  "School Of Commerce",
-  // "School Of Information Technology",
-  // "School Of Engineering",
   "School Of Engineering And Information Technology",
-  // "School Of Management",
   "School Of Science",
   "School Of Vocational Studies",
   "School Of Humanities",
@@ -34,7 +30,7 @@ const EMPTY = {
   highlight: "",
   duration: "3 Years",
   eligibility: "10+2 / Equivalent",
-  school: "School Of Commerce",
+  school: "",
   slug: "",
   coverImage: "",
   cardImage: "",
@@ -154,6 +150,7 @@ export default function CoursesManager() {
     submittingRef.current = true;
     setSaving(true);
     setMsg("");
+    console.log(form);
     try {
       const payload = {
         ...form,
@@ -502,7 +499,11 @@ export default function CoursesManager() {
                   value={form.school}
                   onChange={handleChange}
                   style={inp}
+                  required
                 >
+                  <option value="" disabled defaultValue>
+                    Select School
+                  </option>
                   {schools.map((s) => (
                     <option key={s}>{s}</option>
                   ))}
