@@ -45,7 +45,7 @@ const Footer = () => {
           <div className="footer-col col-about">
             <Link href="/" style={{ textDecoration: "none" }}>
               <img
-                src="/images/MIU_Logo.png"
+                src="/images/MIU_Logo.webp"
                 alt="Manipur International University"
                 style={{
                   height: "80px",

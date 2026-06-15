@@ -401,10 +401,12 @@ const Navbar = () => {
             style={{ textDecoration: "none", color: "inherit", flexShrink: 0 }}
           >
             {!isSticky ? (
-              <img
-                src="/images/MIU_Logo.png"
+              <Image
+                src="/images/MIU_Logo.webp"
                 alt="Manipur International University"
                 className="landing-logo"
+                width={200}
+                height={200}
               />
             ) : (
               <>

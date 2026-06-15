@@ -38,7 +38,7 @@ export const metadata = {
       "Premier UGC recognized university in Imphal, Manipur offering quality higher education across multiple disciplines.",
     images: [
       {
-        url: "/images/MIU_Logo.png",
+        url: "/images/MIU_Logo.webp",
         width: 1200,
         height: 630,
         alt: "Manipur International University",
@@ -51,7 +51,7 @@ export const metadata = {
     creator: "@miuimphal",
     title: "Manipur International University | MIU Imphal",
     description: "Premier UGC recognized university in Imphal, Manipur.",
-    images: ["/images/MIU_Logo.png"],
+    images: ["/images/MIU_Logo.webp"],
   },
   alternates: {
     canonical: "https://miu.edu.in",
