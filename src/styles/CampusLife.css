@@ -1,7 +1,9 @@
 .campus-section {
   position: relative;
   background-color: var(--lpu-black);
-  background-image: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.95)), url('https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?auto=format&fit=crop&w=1920&q=80');
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.95)),
+    url("https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?auto=format&fit=crop&w=1920&q=80");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -78,9 +80,9 @@
 }
 
 .campus-tab {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
   padding: 0.8rem 2rem;
   border-radius: 50px;
   font-family: var(--font-heading);
@@ -92,7 +94,7 @@
 }
 
 .campus-tab:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--lpu-white);
   transform: translateY(-2px);
 }
@@ -112,7 +114,7 @@
   overflow: hidden;
   position: relative;
   background: #000;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -126,28 +128,45 @@
 
 .gallery-image {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+
   opacity: 0.8;
+
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
   transition: opacity 0.5s ease;
 }
 
 .fade-in-image {
-  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1), continuousZoom 20s linear infinite forwards;
+  animation:
+    fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    continuousZoom 20s linear infinite forwards;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 0.8; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
 }
 
 @keyframes continuousZoom {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .gallery-glass-info {
@@ -155,21 +174,27 @@
   z-index: 2;
   margin: 30px;
   background: rgba(17, 17, 17, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: 2rem;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 4px solid var(--lpu-orange);
   max-width: 400px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transform: translateY(0);
   animation: slideUp 0.5s ease;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .gallery-glass-info h3 {
@@ -192,11 +217,11 @@
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .campus-header > div:first-child {
     align-items: center;
   }
-  
+
   .campus-section .section-title {
     font-size: 2.2rem;
   }
@@ -204,12 +229,12 @@
   .campus-gallery {
     height: 400px;
   }
-  
+
   .gallery-glass-info {
     margin: 20px;
     padding: 1.5rem;
   }
-  
+
   .gallery-glass-info h3 {
     font-size: 1.5rem;
   }
@@ -224,7 +249,7 @@
   .campus-section .section-title {
     font-size: 1.8rem;
   }
-  
+
   .campus-section .section-subtitle.campus-sub {
     font-size: 0.95rem;
     padding: 0 15px;
@@ -244,6 +269,11 @@
   .campus-tab {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
   }
 
   .gallery-glass-info {
@@ -267,15 +297,15 @@
   .campus-gallery {
     height: 280px;
   }
-  
+
   .gallery-glass-info {
     padding: 1rem;
   }
-  
+
   .gallery-glass-info h3 {
     font-size: 1.1rem;
   }
-  
+
   .gallery-glass-info p {
     font-size: 0.85rem;
   }

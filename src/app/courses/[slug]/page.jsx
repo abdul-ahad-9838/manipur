@@ -140,11 +140,15 @@ export default async function CourseDetail({ params }) {
               <h2>Career Prospects</h2>
 
               <div className="cd-career-grid">
-                {course.careerProspects.map((career, i) => (
-                  <div key={i} className="cd-career-tag">
-                    💼 {career}
-                  </div>
-                ))}
+                {course.careerProspects.map((career, i) => {
+                  const [boldText, regularText] = career.split(":");
+                  return (
+                    <div key={i} className="cd-career-tag">
+                      <span>💼{boldText} →</span>
+                      <span>{regularText}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -207,12 +211,12 @@ export default async function CourseDetail({ params }) {
             </a>
           </div>
 
-          {course.highlight && (
+          {/* {course.highlight && (
             <div className="cd-highlight-card">
               <span>🏆</span>
               <p>{course.highlight}</p>
             </div>
-          )}
+          )} */}
         </aside>
       </div>
     </div>

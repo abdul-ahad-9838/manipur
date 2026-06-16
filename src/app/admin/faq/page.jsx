@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Activity, useEffect, useState } from "react";
 import API from "@/lib/api";
 import "@/styles/faq.css";
 

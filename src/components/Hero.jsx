@@ -1,64 +1,82 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import "@/styles/Hero.css";
 
-const Hero = ({ data }) => {
+const DEFAULT_IMAGES = ["/hero/01.webp", "/hero/02.webp", "/hero/03.webp"];
+
+const DEFAULT_CONTENT = {
+  title: "Shaping The Leaders of Tomorrow",
+  subtitle:
+    "An institution committed to intellectual rigor, industry integration, and transformative learning experiences that shape global professionals.",
+  images: [],
+};
+
+function Hero({ data }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const [heroData, setHeroData] = useState({
-    title: "Shaping The Leaders of Tomorrow",
-    subtitle:
-      "An institution committed to intellectual rigor, industry integration, and transformative learning experiences that shape global professionals.",
-    images: [],
-  });
-
-  useEffect(() => {
-    if (data?.content) setHeroData(data.content);
-  }, []);
+  // Derive data directly from props
+  const heroData = useMemo(() => data?.content ?? DEFAULT_CONTENT, [data]);
 
   const { title, subtitle, images } = heroData;
 
-  const displayImages =
-    images.length > 0
-      ? images
-      : ["/hero/01.webp", "/hero/02.webp", "/hero/03.webp"];
+  // Memoize image list
+  const displayImages = useMemo(
+    () => (images?.length ? images : DEFAULT_IMAGES),
+    [images],
+  );
 
+  const imageCount = displayImages.length;
+
+  // Auto slide
   useEffect(() => {
-    if (displayImages.length <= 1) return;
+    if (imageCount <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % displayImages.length);
+      setCurrentImageIndex((prev) => (prev + 1) % imageCount);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [displayImages.length]);
+  }, [imageCount]);
+
+  // Preload next image
+  useEffect(() => {
+    if (imageCount <= 1) return;
+
+    const nextIndex = (currentImageIndex + 1) % imageCount;
+    const nextImage = displayImages[nextIndex];
+
+    const img = new window.Image();
+    img.src = nextImage;
+  }, [currentImageIndex, displayImages, imageCount]);
 
   return (
     <section className="lpu-hero-container">
-      {/* New Image */}
+      {/* Background Images */}
       <div className="hero-image-wrapper">
         {displayImages.map((img, index) => (
           <Image
-            key={img}
+            key={`${img}-${index}`}
             src={img}
             alt={title}
             fill
             priority={index === 0}
+            quality={75}
+            sizes="100vw"
             className={`hero-image ${
               index === currentImageIndex ? "active" : ""
             }`}
-            sizes="100vw"
           />
         ))}
       </div>
 
-      <div className="lpu-hero-overlay"></div>
+      <div className="lpu-hero-overlay" />
 
       <div className="container hero-layout">
         <div className="hero-typography">
           <h1>{title}</h1>
+
           <p className="hero-subtext">{subtitle}</p>
 
           <div className="hero-buttons">
@@ -75,6 +93,6 @@ const Hero = ({ data }) => {
       </div>
     </section>
   );
-};
+}
 
-export default Hero;
+export default memo(Hero);

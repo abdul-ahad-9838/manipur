@@ -1,24 +1,35 @@
-// CampusLifeClient.jsx
-
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { memo, useEffect, useState } from "react";
 import "@/styles/CampusLife.css";
 
-export default function CampusLifeClient({ tabs, content }) {
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+function CampusLifeClient({ tabs, content }) {
+  const [activeIndex, setActiveIndex] = useState(0);
 
+  const activeTab = tabs[activeIndex];
+  const tabCount = tabs.length;
+
+  // Auto switch tabs
   useEffect(() => {
+    if (tabCount <= 1) return;
+
     const interval = setInterval(() => {
-      setActiveTab((current) => {
-        const idx = tabs.findIndex((tab) => tab.id === current.id);
-        return tabs[(idx + 1) % tabs.length];
-      });
+      setActiveIndex((prev) => (prev + 1) % tabCount);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [tabs]);
+  }, [tabCount]);
+
+  // Preload next image
+  useEffect(() => {
+    if (tabCount <= 1) return;
+
+    const nextIndex = (activeIndex + 1) % tabCount;
+
+    const img = new window.Image();
+    img.src = tabs[nextIndex].img;
+  }, [activeIndex, tabCount, tabs]);
 
   return (
     <section id="campus" className="campus-section section-padding">
@@ -33,13 +44,13 @@ export default function CampusLifeClient({ tabs, content }) {
 
         <div className="campus-interactive">
           <div className="campus-tabs">
-            {tabs.map((tab) => (
+            {tabs.map((tab, index) => (
               <button
                 key={tab.id}
                 className={`campus-tab ${
-                  activeTab.id === tab.id ? "active" : ""
+                  activeIndex === index ? "active" : ""
                 }`}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => setActiveIndex(index)}
               >
                 {tab.name}
               </button>
@@ -49,12 +60,14 @@ export default function CampusLifeClient({ tabs, content }) {
           <div className="campus-gallery">
             <div className="gallery-glass">
               <Image
+                key={activeTab.id}
                 src={activeTab.img}
                 alt={activeTab.name}
-                className="gallery-image fade-in-image"
-                key={activeTab.id}
                 width={800}
                 height={500}
+                quality={75}
+                loading="lazy"
+                className="gallery-image fade-in-image"
               />
 
               <div className="gallery-glass-info">
@@ -68,3 +81,5 @@ export default function CampusLifeClient({ tabs, content }) {
     </section>
   );
 }
+
+export default memo(CampusLifeClient);
