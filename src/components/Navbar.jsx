@@ -397,6 +397,7 @@ const Navbar = () => {
         <div className="nav-flex edge-to-edge" style={{ paddingRight: "20px" }}>
           <Link
             href="/"
+            rel="preload"
             className={`absolute-logo-wrapper ${isSticky ? "logo-sticky" : ""}`}
             style={{ textDecoration: "none", color: "inherit", flexShrink: 0 }}
           >
@@ -407,6 +408,7 @@ const Navbar = () => {
                 className="landing-logo"
                 width={200}
                 height={200}
+                priority
               />
             ) : (
               <>
@@ -417,6 +419,7 @@ const Navbar = () => {
                   className="abs-emblem"
                   width={50}
                   height={50}
+                  priority
                 />
                 <div className="abs-miu-blocks">
                   <span>M</span>

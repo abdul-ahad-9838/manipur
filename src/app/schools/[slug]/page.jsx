@@ -5,144 +5,75 @@ import API from "@/lib/api";
 import "@/styles/SchoolPage.css";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Activity, useEffect, useState } from "react";
 
 const SCHOOLS = {
-  // "school-of-commerce": {
-  //   name: "School of Commerce",
-  //   icon: "📊",
-  //   color: "#1a3a6b",
-  //   tagline: "Building Future Business Leaders",
-  //   about:
-  //     "The School of Commerce at Manipur International University offers a comprehensive range of programs designed to equip students with strong foundations in business, finance, accounting, and entrepreneurship.",
-  //   vision:
-  //     "To be a centre of excellence in commerce education, fostering innovation, ethical business practices, and entrepreneurial thinking.",
-  //   mission:
-  //     "To provide quality education in commerce and business studies that empowers students with knowledge, skills, and values to succeed in a competitive global economy.",
-  //   highlights: [
-  //     {
-  //       icon: "🎓",
-  //       title: "Industry-Aligned Curriculum",
-  //       desc: "Programs designed in consultation with industry experts to meet current market demands.",
-  //     },
-  //     {
-  //       icon: "💼",
-  //       title: "Placement Support",
-  //       desc: "Dedicated placement cell with strong industry connections for career opportunities.",
-  //     },
-  //     {
-  //       icon: "🔬",
-  //       title: "Research Focus",
-  //       desc: "Encourages research in commerce, finance, and business management.",
-  //     },
-  //     {
-  //       icon: "🌐",
-  //       title: "Global Exposure",
-  //       desc: "International collaborations and exchange programs for global perspective.",
-  //     },
-  //   ],
-  //   programs: [
-  //     {
-  //       title: "B.Com (Bachelor of Commerce)",
-  //       duration: "3 Years",
-  //       eligibility: "10+2",
-  //       icon: "📈",
-  //     },
-  //     {
-  //       title: "B.Com (Hons)",
-  //       duration: "3 Years",
-  //       eligibility: "10+2",
-  //       icon: "📊",
-  //     },
-  //     {
-  //       title: "M.Com (Master of Commerce)",
-  //       duration: "2 Years",
-  //       eligibility: "B.Com",
-  //       icon: "💹",
-  //     },
-  //     {
-  //       title: "BBA (Bachelor of Business Administration)",
-  //       duration: "3 Years",
-  //       eligibility: "10+2",
-  //       icon: "🏢",
-  //     },
-  //     {
-  //       title: "MBA (Master of Business Administration)",
-  //       duration: "2 Years",
-  //       eligibility: "Graduation",
-  //       icon: "👔",
-  //     },
-  //   ],
-  //   image:
-  //     "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200",
-  // },
-  "school-of-computer-application": {
-    name: "School of Information Technology",
-    icon: "💻",
-    color: "#1a5c1a",
-    tagline: "Empowering Digital Innovators",
+  "school-of-commerce-and-management": {
+    name: "School of Management and Commerce",
+    icon: "🏢",
+    color: "#5c1a5c",
+    tagline: "Developing Tomorrow's Leaders",
     about:
-      "The School of Computer Application at MIU is dedicated to producing skilled IT professionals and software developers ready for the digital age.",
+      "The School of Management at MIU is committed to developing strategic thinkers, effective managers, and visionary leaders.",
     vision:
-      "To be a premier institution for computer science education, producing innovative technologists who drive digital transformation.",
+      "To be a globally recognized management school that nurtures ethical, innovative, and effective business leaders.",
     mission:
-      "To deliver high-quality computer application education that combines theoretical foundations with hands-on technical skills for real-world problem solving.",
+      "To provide transformative management education that develops critical thinking, leadership skills, and entrepreneurial mindset for sustainable business success.",
     highlights: [
       {
-        icon: "🖥️",
-        title: "State-of-the-Art Labs",
-        desc: "Modern computer labs with latest hardware and software infrastructure.",
+        icon: "📋",
+        title: "Case Study Method",
+        desc: "Learning through real business cases from global and Indian companies.",
       },
       {
-        icon: "🤖",
-        title: "AI & ML Focus",
-        desc: "Specialized tracks in Artificial Intelligence and Machine Learning.",
+        icon: "🤝",
+        title: "Industry Mentorship",
+        desc: "One-on-one mentorship from senior industry professionals.",
       },
       {
-        icon: "🔐",
-        title: "Cybersecurity",
-        desc: "Dedicated cybersecurity curriculum for the growing digital security sector.",
+        icon: "🌍",
+        title: "Global Curriculum",
+        desc: "International business curriculum aligned with global management standards.",
       },
       {
-        icon: "🚀",
-        title: "Startup Incubation",
-        desc: "Support for student startups through our incubation center.",
+        icon: "📊",
+        title: "Analytics Focus",
+        desc: "Data-driven decision making and business analytics integrated throughout.",
       },
     ],
     programs: [
       {
-        title: "BCA (Bachelor of Computer Application)",
+        title: "BBA (Bachelor of Business Administration)",
         duration: "3 Years",
         eligibility: "10+2",
-        icon: "💻",
+        icon: "📋",
       },
       {
-        title: "MCA (Master of Computer Application)",
+        title: "MBA (Master of Business Administration)",
         duration: "2 Years",
-        eligibility: "BCA/B.Sc",
-        icon: "🖥️",
-      },
-      {
-        title: "B.Sc Computer Science",
-        duration: "3 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "🔬",
-      },
-      {
-        title: "M.Sc Computer Science",
-        duration: "2 Years",
-        eligibility: "B.Sc CS",
-        icon: "🤖",
-      },
-      {
-        title: "PG Diploma in AI & ML",
-        duration: "1 Year",
         eligibility: "Graduation",
-        icon: "🧠",
+        icon: "🏢",
+      },
+      {
+        title: "MBA (Human Resource Management)",
+        duration: "2 Years",
+        eligibility: "Graduation",
+        icon: "👥",
+      },
+      {
+        title: "MBA (Marketing Management)",
+        duration: "2 Years",
+        eligibility: "Graduation",
+        icon: "📣",
+      },
+      {
+        title: "MBA (Finance)",
+        duration: "2 Years",
+        eligibility: "Graduation",
+        icon: "💰",
       },
     ],
-    image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
+    image: "/api/images/6a2d3f1d18b853d4777d415b",
   },
   "school-of-science": {
     name: "School of Science",
@@ -215,8 +146,7 @@ const SCHOOLS = {
         icon: "🔬",
       },
     ],
-    image:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1200",
+    image: "/api/images/6a2d3f2118b853d4777d415c",
   },
   "school-of-vocational-studies": {
     name: "School of Vocational Studies",
@@ -283,84 +213,39 @@ const SCHOOLS = {
         icon: "🛠️",
       },
     ],
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200",
+    image: "/api/images/6a2d3ef718b853d4777d4158",
   },
-  "school-of-humanities": {
-    name: "School of Humanities",
-    icon: "📚",
-    color: "#6b1a3a",
-    tagline: "Exploring Human Culture and Expression",
-    about:
-      "The School of Humanities at MIU offers comprehensive programs in literature, languages, philosophy, history, and cultural studies.",
-    vision:
-      "To be a center of excellence in humanities education that fosters critical thinking, cultural understanding, and humanistic values.",
-    mission:
-      "To provide quality education in humanities that develops analytical skills, cultural sensitivity, and ethical reasoning while preserving and promoting cultural heritage.",
-    highlights: [
-      {
-        icon: "📖",
-        title: "Rich Literary Tradition",
-        desc: "Comprehensive study of classical and contemporary literature from diverse cultures.",
-      },
-      {
-        icon: "🌍",
-        title: "Cultural Studies",
-        desc: "Deep exploration of regional and global cultural traditions and practices.",
-      },
-      {
-        icon: "🎭",
-        title: "Creative Expression",
-        desc: "Opportunities for creative writing, drama, and artistic expression.",
-      },
-      {
-        icon: "🔍",
-        title: "Research Excellence",
-        desc: "Strong emphasis on humanities research and scholarly publications.",
-      },
-    ],
-    programs: [
-      {
-        title: "BA English Literature",
-        duration: "3 Years",
-        eligibility: "10+2",
-        icon: "📚",
-      },
-      {
-        title: "BA History",
-        duration: "3 Years",
-        eligibility: "10+2",
-        icon: "🏛️",
-      },
-      {
-        title: "BA Philosophy",
-        duration: "3 Years",
-        eligibility: "10+2",
-        icon: "🤔",
-      },
-      {
-        title: "MA English Literature",
-        duration: "2 Years",
-        eligibility: "BA English",
-        icon: "📖",
-      },
-      {
-        title: "MA History",
-        duration: "2 Years",
-        eligibility: "BA History",
-        icon: "📜",
-      },
-    ],
-    image:
-      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80&w=1200",
+  "school-of-fire-&-safety": {
+    name: "School of Fire & Safety",
+    icon: "🏫",
+    color: "#1a3a6b",
+    tagline: "",
+    about: "",
+    vision: "",
+    mission: "",
+    highlights: [],
+    programs: [],
+    image: "",
+  },
+  "school-of-library-and-information-science": {
+    name: "School of Library and Information Science",
+    icon: "🏫",
+    color: "#1a3a6b",
+    tagline: "",
+    about: "",
+    vision: "",
+    mission: "",
+    highlights: [],
+    programs: [],
+    image: "",
   },
   "school-of-paramedical-sciences": {
-    name: "School of Allied Health Science",
+    name: "School of Paramedical Sciences",
     icon: "🏥",
     color: "#0d6e6e",
     tagline: "Caring for the Future of Healthcare",
     about:
-      "The School of Allied Health Science at MIU is dedicated to training skilled healthcare professionals in paramedical, diagnostic, therapeutic, and rehabilitation sciences. Our programs combine rigorous academic training with hands-on clinical exposure, preparing graduates to serve as vital members of the modern healthcare team.",
+      "The School of Paramedical Sciences at MIU is dedicated to training skilled healthcare professionals in paramedical, diagnostic, therapeutic, and rehabilitation sciences. Our programs combine rigorous academic training with hands-on clinical exposure, preparing graduates to serve as vital members of the modern healthcare team.",
     vision:
       "To be a leading institution in allied health education, producing competent, compassionate, and ethical healthcare professionals who contribute to the well-being of society.",
     mission:
@@ -428,10 +313,22 @@ const SCHOOLS = {
     image:
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200",
   },
-  "school-of-information-technology": {
-    name: "School of Information Technology",
+  "school-of-journalism-mass-communication": {
+    name: "School of Journalism & Mass Communication",
     icon: "🏫",
     color: "#1a3a6b",
+    tagline: "",
+    about: "",
+    vision: "",
+    mission: "",
+    highlights: [],
+    programs: [],
+    image: "",
+  },
+  "school-of-computer-application": {
+    name: "School of Information Technology",
+    icon: "💻",
+    color: "#1a5c1a",
     tagline: "Empowering Digital Innovators",
     about:
       "The School of Computer Application at MIU is dedicated to producing skilled IT professionals and software developers ready for the digital age.",
@@ -472,7 +369,7 @@ const SCHOOLS = {
         title: "MCA (Master of Computer Application)",
         duration: "2 Years",
         eligibility: "BCA/B.Sc",
-        icon: "💻",
+        icon: "🖥️",
       },
       {
         title: "B.Sc Computer Science",
@@ -488,16 +385,16 @@ const SCHOOLS = {
       },
       {
         title: "PG Diploma in AI & ML",
-        duration: "1 Years",
+        duration: "1 Year",
         eligibility: "Graduation",
         icon: "🧠",
       },
     ],
     image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600",
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
   },
-  "school-of-fire-&-safety": {
-    name: "School of Fire & Safety",
+  "school-of-journalism-&-mass-communication": {
+    name: "School Of Journalism & Mass Communication",
     icon: "🏫",
     color: "#1a3a6b",
     tagline: "",
@@ -508,184 +405,85 @@ const SCHOOLS = {
     programs: [],
     image: "",
   },
-  "School of Engineering (Banaras)": {
-    name: "School of Engineering (Banaras)",
-    icon: "🏫",
-    color: "#1a3a6b",
-    tagline: "",
-    about: "",
-    vision: "",
-    mission: "",
-    highlights: [
-      {
-        icon: "🛠️",
-        title: "Advanced Laboratories",
-        desc: "Fully equipped labs for hands-on learning across all engineering disciplines.",
-      },
-      {
-        icon: "🎓",
-        title: "Project-Based Learning",
-        desc: "Emphasis on real-world projects and problem-solving from day one.",
-      },
-      {
-        icon: "🌱",
-        title: "Sustainable Engineering",
-        desc: "Focus on green technologies and sustainable engineering practices.",
-      },
-      {
-        icon: "🏭",
-        title: "Industry Partnerships",
-        desc: "Strong ties with leading engineering firms for internships and placements.",
-      },
-    ],
-    programs: [],
-    image: "",
-  },
-  "school-of-engineering-and-information-technology": {
-    name: "School of Engineering and Information Technology",
-    icon: "⚙️",
-    color: "#8b1a1a",
-    tagline: "Engineering the Future",
+  "school-of-arts-and-humanities": {
+    name: "School of Arts and Humanities",
+    icon: "📚",
+    color: "#6b1a3a",
+    tagline: "Exploring Human Culture and Expression",
     about:
-      "The School of Engineering at MIU provides rigorous technical education across multiple engineering disciplines.",
+      "The School of Humanities at MIU offers comprehensive programs in literature, languages, philosophy, history, and cultural studies.",
     vision:
-      "To be a leading engineering school that produces technically proficient, innovative, and socially responsible engineers.",
+      "To be a center of excellence in humanities education that fosters critical thinking, cultural understanding, and humanistic values.",
     mission:
-      "To provide excellence in engineering education through a blend of theoretical knowledge, practical skills, and research that addresses societal needs.",
+      "To provide quality education in humanities that develops analytical skills, cultural sensitivity, and ethical reasoning while preserving and promoting cultural heritage.",
     highlights: [
       {
-        icon: "🔧",
-        title: "Advanced Laboratories",
-        desc: "Fully equipped labs for hands-on learning across all engineering disciplines.",
-      },
-      {
-        icon: "🏭",
-        title: "Industry Partnerships",
-        desc: "Strong ties with leading engineering firms for internships and placements.",
-      },
-      {
-        icon: "📐",
-        title: "Project-Based Learning",
-        desc: "Emphasis on real-world projects and problem-solving from day one.",
-      },
-      {
-        icon: "🌱",
-        title: "Sustainable Engineering",
-        desc: "Focus on green technologies and sustainable engineering practices.",
-      },
-    ],
-    programs: [
-      {
-        title: "B.Tech Civil Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "🏗️",
-      },
-      {
-        title: "B.Tech Mechanical Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "⚙️",
-      },
-      {
-        title: "B.Tech Electrical Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "⚡",
-      },
-      {
-        title: "B.Tech Computer Science & Engineering",
-        duration: "4 Years",
-        eligibility: "10+2 (PCM)",
-        icon: "💻",
-      },
-      {
-        title: "M.Tech (Various Specializations)",
-        duration: "2 Years",
-        eligibility: "B.Tech",
-        icon: "🔬",
-      },
-    ],
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
-  },
-  "school-of-commerce-and-management": {
-    name: "School of Management and Commerce",
-    icon: "🏢",
-    color: "#5c1a5c",
-    tagline: "Developing Tomorrow's Leaders",
-    about:
-      "The School of Management at MIU is committed to developing strategic thinkers, effective managers, and visionary leaders.",
-    vision:
-      "To be a globally recognized management school that nurtures ethical, innovative, and effective business leaders.",
-    mission:
-      "To provide transformative management education that develops critical thinking, leadership skills, and entrepreneurial mindset for sustainable business success.",
-    highlights: [
-      {
-        icon: "📋",
-        title: "Case Study Method",
-        desc: "Learning through real business cases from global and Indian companies.",
-      },
-      {
-        icon: "🤝",
-        title: "Industry Mentorship",
-        desc: "One-on-one mentorship from senior industry professionals.",
+        icon: "📖",
+        title: "Rich Literary Tradition",
+        desc: "Comprehensive study of classical and contemporary literature from diverse cultures.",
       },
       {
         icon: "🌍",
-        title: "Global Curriculum",
-        desc: "International business curriculum aligned with global management standards.",
+        title: "Cultural Studies",
+        desc: "Deep exploration of regional and global cultural traditions and practices.",
       },
       {
-        icon: "📊",
-        title: "Analytics Focus",
-        desc: "Data-driven decision making and business analytics integrated throughout.",
+        icon: "🎭",
+        title: "Creative Expression",
+        desc: "Opportunities for creative writing, drama, and artistic expression.",
+      },
+      {
+        icon: "🔍",
+        title: "Research Excellence",
+        desc: "Strong emphasis on humanities research and scholarly publications.",
       },
     ],
     programs: [
       {
-        title: "BBA (Bachelor of Business Administration)",
+        title: "BA English Literature",
         duration: "3 Years",
         eligibility: "10+2",
-        icon: "📋",
+        icon: "📚",
       },
       {
-        title: "MBA (Master of Business Administration)",
-        duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "🏢",
+        title: "BA History",
+        duration: "3 Years",
+        eligibility: "10+2",
+        icon: "🏛️",
       },
       {
-        title: "MBA (Human Resource Management)",
-        duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "👥",
+        title: "BA Philosophy",
+        duration: "3 Years",
+        eligibility: "10+2",
+        icon: "🤔",
       },
       {
-        title: "MBA (Marketing Management)",
+        title: "MA English Literature",
         duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "📣",
+        eligibility: "BA English",
+        icon: "📖",
       },
       {
-        title: "MBA (Finance)",
+        title: "MA History",
         duration: "2 Years",
-        eligibility: "Graduation",
-        icon: "💰",
+        eligibility: "BA History",
+        icon: "📜",
       },
     ],
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
   },
 };
 
 export default function SchoolPage() {
   const params = useParams();
   const slug = decodeURIComponent(params.slug || "");
-  // const { openEnquiry } = useEnquiry();
   const [apiCourses, setApiCourses] = useState([]);
   const [schoolData, setSchoolData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [collapsedCategories, setCollapsedCategories] = useState({});
+
+  const toggleCategory = (key) => {
+    setCollapsedCategories((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   // Load school details from database
   useEffect(() => {
@@ -949,115 +747,138 @@ export default function SchoolPage() {
 
               return categories
                 .filter((c) => grouped[c.key].length > 0)
-                .map((cat) => (
-                  <div key={cat.key} className="sp-program-category">
-                    <h3
-                      className="sp-category-title"
-                      style={{ borderLeftColor: schoolData.color }}
-                    >
-                      {cat.label}{" "}
-                      <span className="sp-category-count">
-                        {grouped[cat.key].length}
-                      </span>
-                    </h3>
-                    <div className="sp-programs-grid">
-                      {grouped[cat.key].map((prog, i) => {
-                        const titleMatch =
-                          prog.title.match(/^(.*?)\s*\((.*?)\)$/);
-                        const programName = titleMatch
-                          ? titleMatch[1].trim()
-                          : prog.title;
-                        const specialization =
-                          prog.specialisation ||
-                          (titleMatch ? titleMatch[2].trim() : "");
-                        return (
-                          <div key={i} className="sp-program-card">
-                            <Link
-                              href={
-                                prog.slug
-                                  ? `/courses/${prog.slug}`
-                                  : `/courses/${prog._id || i}`
-                              }
-                              className="sp-program-link"
-                            >
-                              <div className="sp-program-cover">
-                                {prog.cardImage ? (
-                                  <img
-                                    src={prog.cardImage}
-                                    alt={prog.title}
-                                    onError={(e) => {
-                                      e.target.style.display = "none";
-                                      e.target.parentNode.classList.add(
-                                        "sp-cover-fallback",
-                                      );
-                                    }}
-                                  />
-                                ) : (
-                                  <div className="sp-cover-fallback">
-                                    <span>{prog.icon}</span>
+                .map((cat) => {
+                  const isCollapsed = !!collapsedCategories[cat.key];
+                  return (
+                    <div key={cat.key} className="sp-program-category">
+                      <h3
+                        onClick={() => toggleCategory(cat.key)}
+                        className="sp-category-title"
+                        style={{
+                          borderLeftColor: schoolData.color,
+                          cursor: "pointer",
+                          userSelect: "none",
+                        }}
+                      >
+                        {cat.label}
+                        <span className="sp-category-count">
+                          {grouped[cat.key].length}
+                        </span>
+                        <span
+                          className="sp-toggle-icon"
+                          style={{
+                            marginLeft: "auto",
+                            display: "inline-block",
+                            transition: "transform 0.25s",
+                            transform: isCollapsed
+                              ? "rotate(-90deg)"
+                              : "rotate(0deg)",
+                          }}
+                        >
+                          ▾
+                        </span>
+                      </h3>
+                      <Activity mode={!isCollapsed ? "visible" : "hidden"}>
+                        <div className="sp-programs-grid">
+                          {grouped[cat.key].map((prog, i) => {
+                            const titleMatch =
+                              prog.title.match(/^(.*?)\s*\((.*?)\)$/);
+                            const programName = titleMatch
+                              ? titleMatch[1].trim()
+                              : prog.title;
+                            const specialization =
+                              prog.specialisation ||
+                              (titleMatch ? titleMatch[2].trim() : "");
+                            return (
+                              <div key={i} className="sp-program-card">
+                                <Link
+                                  href={
+                                    prog.slug
+                                      ? `/courses/${prog.slug}`
+                                      : `/courses/${prog._id || i}`
+                                  }
+                                  className="sp-program-link"
+                                >
+                                  <div className="sp-program-cover">
+                                    {prog.cardImage ? (
+                                      <img
+                                        src={prog.cardImage}
+                                        alt={prog.title}
+                                        onError={(e) => {
+                                          e.target.style.display = "none";
+                                          e.target.parentNode.classList.add(
+                                            "sp-cover-fallback",
+                                          );
+                                        }}
+                                      />
+                                    ) : (
+                                      <div className="sp-cover-fallback">
+                                        <span>{prog.icon}</span>
+                                      </div>
+                                    )}
+                                    <span className="sp-program-badge">
+                                      PROGRAM
+                                    </span>
                                   </div>
-                                )}
-                                <span className="sp-program-badge">
-                                  PROGRAM
-                                </span>
-                              </div>
-                              <div className="sp-program-body">
-                                <div className="sp-program-icon">
-                                  {prog.icon}
-                                </div>
-                                <div className="sp-program-title-wrapper">
-                                  <h3 className="sp-program-name">
-                                    {programName}
-                                  </h3>
-                                  {specialization && (
-                                    <p className="sp-program-specialization">
-                                      ({specialization})
-                                    </p>
-                                  )}
-                                </div>
-                                {prog.description && (
-                                  <p className="sp-program-desc">
-                                    {prog.description}
-                                  </p>
-                                )}
-                                <div className="sp-program-footer">
-                                  <div className="sp-program-meta">
-                                    <div>
-                                      <span className="sp-meta-label">
-                                        DURATION
-                                      </span>
-                                      <span className="sp-meta-val">
-                                        {prog.duration}
-                                      </span>
+                                  <div className="sp-program-body">
+                                    <div className="sp-program-icon">
+                                      {prog.icon}
                                     </div>
-                                    <div>
-                                      <span className="sp-meta-label">
-                                        ELIGIBILITY
-                                      </span>
-                                      <span className="sp-meta-val">
-                                        {prog.eligibility}
-                                      </span>
+                                    <div className="sp-program-title-wrapper">
+                                      <h3 className="sp-program-name">
+                                        {programName}
+                                      </h3>
+                                      {specialization && (
+                                        <p className="sp-program-specialization">
+                                          ({specialization})
+                                        </p>
+                                      )}
+                                    </div>
+                                    {prog.description && (
+                                      <p className="sp-program-desc">
+                                        {prog.description}
+                                      </p>
+                                    )}
+                                    <div className="sp-program-footer">
+                                      <div className="sp-program-meta">
+                                        <div>
+                                          <span className="sp-meta-label">
+                                            DURATION
+                                          </span>
+                                          <span className="sp-meta-val">
+                                            {prog.duration}
+                                          </span>
+                                        </div>
+                                        <div>
+                                          <span className="sp-meta-label">
+                                            ELIGIBILITY
+                                          </span>
+                                          <span className="sp-meta-val">
+                                            {prog.eligibility}
+                                          </span>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
+                                </Link>
+                                <div className="sp-program-apply">
+                                  <a
+                                    href="https://admission.miu.edu.in"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="sp-apply-btn"
+                                  >
+                                    Apply Now
+                                  </a>
                                 </div>
                               </div>
-                            </Link>
-                            <div className="sp-program-apply">
-                              <a
-                                href="https://admission.miu.edu.in"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="sp-apply-btn"
-                              >
-                                Apply Now
-                              </a>
-                            </div>
-                          </div>
-                        );
-                      })}
+                            );
+                          })}
+                        </div>
+                      </Activity>
                     </div>
-                  </div>
-                ));
+                  );
+                });
             })()
           ) : (
             <div

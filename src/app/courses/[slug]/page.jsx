@@ -92,60 +92,6 @@ export default async function CourseDetail({ params }) {
 
   return (
     <div className="cd-page">
-      {/* Hero */}
-      {/* <div
-        className="cd-hero"
-        style={{
-          backgroundImage: course.coverImage
-            ? `url(${course.coverImage})`
-            : "linear-gradient(135deg, var(--lpu-black) 0%, #1a2a4a 100%)",
-        }}
-      >
-        {course.coverImage && <div className="cd-hero-overlay" />}
-
-        <div className="container cd-hero-content">
-          <nav className="cd-breadcrumb">
-            <Link href="/">Home</Link>
-            <span>›</span>
-
-            <Link href="/information-cell">Schools</Link>
-            <span>›</span>
-
-            <Link href={`/schools/${schoolSlug}`}>{course.school}</Link>
-            <span>›</span>
-
-            <span>{course.title}</span>
-          </nav>
-
-          <div className="cd-hero-icon">{course.icon || "🎓"}</div>
-
-          <h1>{course.title}</h1>
-
-          <p className="cd-hero-sub">{course.description}</p>
-
-          <div className="cd-hero-tags">
-            {course.duration && <span>⏱ {course.duration}</span>}
-
-            {course.mode && <span>📋 {course.mode}</span>}
-
-            {course.eligibility && <span>✅ {course.eligibility}</span>}
-
-            {course.seats && <span>🪑 {course.seats} Seats</span>}
-          </div>
-
-          <div className="cd-hero-btns">
-            <a
-              href="https://admission.miu.edu.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-orange"
-            >
-              Apply Now
-            </a>
-          </div>
-        </div>
-      </div> */}
-
       <BannerSection data={course} url="https://admission.miu.edu.in" />
 
       <div className="container cd-body">
@@ -244,20 +190,6 @@ export default async function CourseDetail({ params }) {
                   <strong>{course.fee}</strong>
                 </li>
               )}
-
-              {/* {course.affiliation && (
-                <li>
-                  <span>Affiliation</span>
-                  <strong>{course.affiliation}</strong>
-                </li>
-              )}
-
-              {course.school && (
-                <li>
-                  <span>School</span>
-                  <strong>{course.school}</strong>
-                </li>
-              )} */}
             </ul>
 
             <a

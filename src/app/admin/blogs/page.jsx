@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Activity } from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
 import API from "@/lib/api";
@@ -226,7 +226,7 @@ export default function AdminBlogs() {
           </p>
         )}
 
-        {showForm && (
+        <Activity mode={showForm ? "visible" : "hidden"}>
           <form
             onSubmit={handleSubmit}
             style={{
@@ -379,7 +379,7 @@ export default function AdminBlogs() {
               </button>
             </div>
           </form>
-        )}
+        </Activity>
 
         {/* Blog list */}
         {blogs.length === 0 ? (

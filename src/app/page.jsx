@@ -76,7 +76,7 @@ export default async function Home() {
       <Stats />
       <CampusLife data={campusData?.content} />
       <Placements data={placementsData?.content} />
-      <Ecosystem data={ecosystemData?.content} />
+      <Ecosystem data={ecosystemData?.content?.cards} />
       <NewsSlider blogs={blogsData} />
       <FAQ />
     </main>

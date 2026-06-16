@@ -112,7 +112,7 @@ export default function AdminFAQ() {
           </p>
         )}
 
-        {showForm && (
+        <Activity mode={showForm ? "visible" : "hidden"}>
           <form className="faq-form" onSubmit={handleSubmit}>
             <h2>{editId ? "Edit FAQ" : "New FAQ"}</h2>
 
@@ -172,7 +172,7 @@ export default function AdminFAQ() {
               </button>
             </div>
           </form>
-        )}
+        </Activity>
 
         <div className="faq-list">
           {faqs.length === 0 ? (

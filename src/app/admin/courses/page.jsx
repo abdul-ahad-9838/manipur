@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Activity } from "react";
 import Link from "next/link";
 import API from "@/lib/api";
 import { useRouter } from "next/navigation";
@@ -458,7 +458,7 @@ export default function CoursesManager() {
           </p>
         )}
 
-        {showForm && (
+        <Activity mode={showForm ? "visible" : "hidden"}>
           <form
             onSubmit={handleSubmit}
             style={{
@@ -761,7 +761,7 @@ export default function CoursesManager() {
               </button>
             </div>
           </form>
-        )}
+        </Activity>
 
         {/* Program list */}
         <div
@@ -893,7 +893,7 @@ export default function CoursesManager() {
               </div>
 
               {/* School Courses */}
-              {isExpanded && (
+              <Activity mode={isExpanded ? "visible" : "hidden"}>
                 <div style={{ padding: "12px" }}>
                   <div
                     style={{
@@ -1264,7 +1264,7 @@ export default function CoursesManager() {
                     </div>
                   ))}
                 </div>
-              )}
+              </Activity>
             </div>
           );
         })}

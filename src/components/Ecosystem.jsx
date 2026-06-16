@@ -99,9 +99,8 @@ export default function Ecosystem({ data }) {
               <Image
                 src={card.image}
                 alt={card.title}
-                width={500}
-                height={500}
-                unoptimized
+                width={400}
+                height={400}
               />
 
               <div
