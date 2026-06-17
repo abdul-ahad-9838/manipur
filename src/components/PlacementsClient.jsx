@@ -32,7 +32,7 @@ function useCountUp(target, duration = 1800, active = false) {
     return () => clearInterval(timer);
   }, [active, target, duration]);
 
-  const suffix = target.replace(/[0-9.]/g, "");
+  const suffix = target?.replace(/[0-9.]/g, "");
 
   return count === 0 && !active ? "0" : `${count}${suffix}`;
 }

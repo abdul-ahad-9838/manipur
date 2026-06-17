@@ -7,10 +7,16 @@ import "@/styles/Hero.css";
 const DEFAULT_IMAGES = ["/hero/01.webp", "/hero/02.webp", "/hero/03.webp"];
 
 const DEFAULT_CONTENT = {
-  title: "Shaping The Leaders of Tomorrow",
+  title: "Shaping The Leaders of Tomorrow ",
   subtitle:
     "An institution committed to intellectual rigor, industry integration, and transformative learning experiences that shape global professionals.",
-  images: [],
+  images: [
+    "/api/images/69e145133330d1ac59fe5b08",
+    "/api/images/69e1485a3330d1ac59fe5b0b",
+    "/api/images/69e14d2d3330d1ac59fe5b0c",
+    "/api/images/69e4c6a483b3aec7e41c1efc",
+    "/api/images/69e4c6ab83b3aec7e41c1efd",
+  ],
 };
 
 function Hero({ data }) {

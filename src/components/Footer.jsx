@@ -22,9 +22,9 @@ const DEFAULTS = {
 
 async function getFooterData() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     const res = await fetch(`${baseUrl}/api/settings/footer`, {
-      next: { revalidate: 3600 }, // revalidate every hour
+      revalidate: 3600, // revalidate every hour
     });
 
     if (!res.ok) return DEFAULTS;
@@ -42,7 +42,7 @@ async function getFooterData() {
 
 const Footer = async () => {
   const d = await getFooterData();
-
+  console.log(d);
   const schools =
     navbarItems.find((item) => item.label === "Schools")?.subItems ?? [];
 

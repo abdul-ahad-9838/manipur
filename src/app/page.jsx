@@ -46,7 +46,7 @@ async function getData(endpoint) {
 
 export default async function Home() {
   const results = await Promise.allSettled([
-    getData("/api/settings/spotlight"),
+    getData("/api/settings/hero"),
     getData("/api/settings/spotlight"),
     getData("/api/settings/campus"),
     getData("/api/settings/placements"),
@@ -69,7 +69,7 @@ export default async function Home() {
     <main>
       <StructuredData />
 
-      <Hero data={[]} />
+      <Hero data={heroData?.content} />
       <Spotlight data={spotlightData?.content} />
       <Stats />
       <CampusLife data={campusData?.content} />
