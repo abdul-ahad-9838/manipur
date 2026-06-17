@@ -42,7 +42,7 @@ async function getFooterData() {
 
 const Footer = async () => {
   const d = await getFooterData();
-  console.log(d);
+
   const schools =
     navbarItems.find((item) => item.label === "Schools")?.subItems ?? [];
 

@@ -150,7 +150,6 @@ export default function CoursesManager() {
     submittingRef.current = true;
     setSaving(true);
     setMsg("");
-    console.log(form);
     try {
       const payload = {
         ...form,
