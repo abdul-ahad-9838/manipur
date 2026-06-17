@@ -1,6 +1,7 @@
 import React from "react";
 import ClientShell from "@/components/ClientShell";
 import "@/styles/App.css";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   metadataBase: new URL("https://miu.edu.in"),
@@ -101,6 +102,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ClientShell>{children}</ClientShell>
+        <Footer />
       </body>
     </html>
   );

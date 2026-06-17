@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import "@/styles/LeadershipMessages.css";
 import API from "@/lib/api";
-import { navbarItems } from "@/components/Navbar";
+import navbarItems from "@/data/navbarItems";
 
 export default function LeadershipDetail({ slug }) {
   const [leader, setLeader] = useState(null);
