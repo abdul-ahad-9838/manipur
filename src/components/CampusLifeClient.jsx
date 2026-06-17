@@ -56,7 +56,6 @@ function CampusLifeClient({ tabs, content }) {
               </button>
             ))}
           </div>
-
           <div className="campus-gallery">
             <div className="gallery-glass">
               <Image

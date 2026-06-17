@@ -6,28 +6,28 @@ const DEFAULT_TABS = [
   {
     id: "library",
     name: "Central Library",
-    img: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800",
+    img: "/api/images/69e4ddae96ee206c189621ad",
   },
   {
     id: "labs",
     name: "High-Tech Labs",
-    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    img: "/api/images/69e4ddbb96ee206c189621ae",
   },
   {
     id: "hostels",
     name: "Premium Hostels",
-    img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800",
+    img: "/api/images/69e4ddc396ee206c189621af",
   },
   {
     id: "sports",
     name: "Sports Complex",
-    img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=800",
+    img: "/api/images/69e4ddc896ee206c189621b0",
   },
 ];
 
 export default async function CampusLife({ data }) {
-  const tabs =
-    data?.content?.tabs?.length > 0 ? data.content.tabs : DEFAULT_TABS;
+  console.log(data);
+  const tabs = data?.tabs?.length > 0 ? data.tabs : DEFAULT_TABS;
 
   const content = {
     title: data?.content?.title || "A Campus Built For You",
