@@ -2,7 +2,6 @@ import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
-import { headers } from "next/headers";
 
 const Stats = dynamic(() => import("@/components/Stats"));
 const Spotlight = dynamic(() => import("@/components/Spotlight"));
@@ -31,24 +30,23 @@ export const metadata = {
 };
 
 async function getData(endpoint) {
-  const headersList = await headers();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${endpoint}`, {
+      next: { revalidate: 300 }, // cache for 5 min
+    });
 
-  const host = headersList.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const baseUrl = `${protocol}://${host}`;
+    if (!res.ok) return null;
 
-  const res = await fetch(`${baseUrl}${endpoint}`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) return null;
-
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.error(`Error fetching ${endpoint}:`, error);
+    return null;
+  }
 }
 
 export default async function Home() {
   const results = await Promise.allSettled([
-    getData("/api/settings/hero"),
+    getData("/api/settings/spotlight"),
     getData("/api/settings/spotlight"),
     getData("/api/settings/campus"),
     getData("/api/settings/placements"),
@@ -71,12 +69,12 @@ export default async function Home() {
     <main>
       <StructuredData />
 
-      <Hero data={heroData?.content} />
+      <Hero data={[]} />
       <Spotlight data={spotlightData?.content} />
       <Stats />
       <CampusLife data={campusData?.content} />
       <Placements data={placementsData?.content} />
-      <Ecosystem data={ecosystemData?.content} />
+      <Ecosystem data={ecosystemData?.content?.cards} />
       <NewsSlider blogs={blogsData} />
       <FAQ />
     </main>

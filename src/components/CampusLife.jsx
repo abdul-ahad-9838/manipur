@@ -1,6 +1,5 @@
 // CampusLife.jsx (Server Component)
 
-import { headers } from "next/headers";
 import CampusLifeClient from "./CampusLifeClient";
 
 const DEFAULT_TABS = [
