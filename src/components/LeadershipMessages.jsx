@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import "@/styles/LeadershipMessages.css";
 
@@ -128,7 +126,7 @@ export const defaultLeadership = [
 ];
 
 const LeadershipMessages = () => {
-  const [leadershipData] = useState(defaultLeadership);
+  const leadershipData = defaultLeadership;
 
   return (
     <section className="leadership-section">

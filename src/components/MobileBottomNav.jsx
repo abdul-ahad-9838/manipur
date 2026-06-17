@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
 import API from "@/lib/api";
 import "@/styles/MobileBottomNav.css";
+import { useState } from "react";
 
 const QUALIFICATIONS = [
   "10th Pass",

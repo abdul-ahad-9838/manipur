@@ -1,13 +1,19 @@
-'use client';
-
-import React from 'react';
-import Link from 'next/link';
-import '@/styles/NCCNSSPage.css';
+import React from "react";
+import Link from "next/link";
+import "@/styles/NCCNSSPage.css";
 
 export default function NCCNSSPage() {
   const nccActivities = [
-    { icon: '🎖️', title: 'Annual Training Camps', desc: 'Regular training camps for physical fitness, drill, and military skills.' },
-    { icon: '🤝', title: 'Community Service', desc: 'Social service activities including blood donation camps and disaster relief.' },
+    {
+      icon: "🎖️",
+      title: "Annual Training Camps",
+      desc: "Regular training camps for physical fitness, drill, and military skills.",
+    },
+    {
+      icon: "🤝",
+      title: "Community Service",
+      desc: "Social service activities including blood donation camps and disaster relief.",
+    },
   ];
 
   return (
@@ -24,7 +30,8 @@ export default function NCCNSSPage() {
           <span className="ncc-badge">STUDENT LIFE</span>
           <h1>NCC / NSS</h1>
           <p className="ncc-hero-subtitle">
-            Building disciplined, socially responsible citizens through NCC and NSS programs at MIU.
+            Building disciplined, socially responsible citizens through NCC and
+            NSS programs at MIU.
           </p>
         </div>
       </div>
@@ -41,7 +48,9 @@ export default function NCCNSSPage() {
               </div>
             </div>
             <p className="ncc-section-desc">
-              The NCC unit at MIU provides students with military training, discipline, and leadership skills. NCC cadets participate in camps, parades, and social service activities.
+              The NCC unit at MIU provides students with military training,
+              discipline, and leadership skills. NCC cadets participate in
+              camps, parades, and social service activities.
             </p>
           </div>
 
@@ -71,7 +80,9 @@ export default function NCCNSSPage() {
               </div>
             </div>
             <p className="nss-section-desc">
-              The NSS unit at MIU engages students in community service and social development activities including health camps, literacy programs, and environmental campaigns.
+              The NSS unit at MIU engages students in community service and
+              social development activities including health camps, literacy
+              programs, and environmental campaigns.
             </p>
           </div>
         </div>

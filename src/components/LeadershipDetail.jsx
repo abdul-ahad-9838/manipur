@@ -246,37 +246,6 @@ export default function LeadershipDetail({ slug }) {
                   </p>
                 ))}
               </div>
-              {/* <div
-                style={{
-                  marginTop: "40px",
-                  paddingTop: "24px",
-                  borderTop: "2px solid var(--lpu-orange)",
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    fontWeight: "700",
-                    fontSize: "1.1rem",
-                    color: "#111",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {leader.signature?.name}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9rem",
-                    color: "#666",
-                    fontWeight: 400,
-                    textTransform: "none",
-                    marginTop: "4px",
-                  }}
-                >
-                  {leader.signature?.role}
-                </p>
-              </div> */}
             </div>
           </div>
 

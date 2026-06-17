@@ -1,35 +1,33 @@
-'use client';
-
-import React from 'react';
-import Link from 'next/link';
-import '@/styles/HostelPage.css';
+import React from "react";
+import Link from "next/link";
+import "@/styles/HostelPage.css";
 
 export default function HostelPage() {
   const facilities = [
     {
-      icon: '🏠',
-      title: 'Separate Hostels',
-      desc: 'Separate well-maintained hostels for boys and girls with 24/7 security.',
-      color: 'orange'
+      icon: "🏠",
+      title: "Separate Hostels",
+      desc: "Separate well-maintained hostels for boys and girls with 24/7 security.",
+      color: "orange",
     },
     {
-      icon: '🍽️',
-      title: 'Mess & Dining',
-      desc: 'Hygienic and nutritious meals served in the hostel mess.',
-      color: 'green'
+      icon: "🍽️",
+      title: "Mess & Dining",
+      desc: "Hygienic and nutritious meals served in the hostel mess.",
+      color: "green",
     },
     {
-      icon: '📶',
-      title: 'Wi-Fi Connectivity',
-      desc: 'High-speed internet connectivity throughout the hostel premises.',
-      color: 'blue'
+      icon: "📶",
+      title: "Wi-Fi Connectivity",
+      desc: "High-speed internet connectivity throughout the hostel premises.",
+      color: "blue",
     },
     {
-      icon: '🔒',
-      title: '24/7 Security',
-      desc: 'Round-the-clock security with CCTV surveillance for student safety.',
-      color: 'red'
-    }
+      icon: "🔒",
+      title: "24/7 Security",
+      desc: "Round-the-clock security with CCTV surveillance for student safety.",
+      color: "red",
+    },
   ];
 
   return (
@@ -47,7 +45,8 @@ export default function HostelPage() {
           <span className="hostel-badge">STUDENT LIFE</span>
           <h1>Hostel Facilities</h1>
           <p className="hostel-hero-subtitle">
-            Safe, comfortable, and affordable residential facilities for MIU students.
+            Safe, comfortable, and affordable residential facilities for MIU
+            students.
           </p>
         </div>
       </div>
@@ -58,7 +57,10 @@ export default function HostelPage() {
           {/* Facilities Grid */}
           <div className="hostel-facilities-grid">
             {facilities.map((facility, idx) => (
-              <div key={idx} className={`hostel-facility-card hostel-${facility.color}`}>
+              <div
+                key={idx}
+                className={`hostel-facility-card hostel-${facility.color}`}
+              >
                 <div className="hostel-facility-icon-wrapper">
                   <span className="hostel-facility-icon">{facility.icon}</span>
                 </div>
@@ -78,10 +80,13 @@ export default function HostelPage() {
               </div>
               <div className="hostel-admission-content">
                 <p>
-                  Hostel accommodation is allotted on a <strong>first-come, first-served basis</strong> subject to availability.
+                  Hostel accommodation is allotted on a{" "}
+                  <strong>first-come, first-served basis</strong> subject to
+                  availability.
                 </p>
                 <p>
-                  Contact the <strong>Student Affairs Office</strong> for hostel-related queries.
+                  Contact the <strong>Student Affairs Office</strong> for
+                  hostel-related queries.
                 </p>
               </div>
               <div className="hostel-admission-actions">

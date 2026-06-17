@@ -1,16 +1,39 @@
-'use client';
-
-import React from 'react';
-import Link from 'next/link';
-import '@/styles/SportsPage.css';
+import React from "react";
+import Link from "next/link";
+import "@/styles/SportsPage.css";
 
 export default function SportsPage() {
   const facilities = [
-    { icon: '🏏', title: 'Cricket Ground', desc: 'Full-size cricket ground with practice nets.', color: 'orange' },
-    { icon: '⚽', title: 'Football Field', desc: 'Standard football field for matches and practice.', color: 'green' },
-    { icon: '🏸', title: 'Badminton Courts', desc: 'Indoor badminton courts with professional flooring.', color: 'blue' },
-    { icon: '🏀', title: 'Basketball Court', desc: 'Outdoor basketball court for recreational and competitive play.', color: 'purple' },
-    { icon: '🏋️', title: 'Gymnasium', desc: 'Well-equipped gymnasium for fitness training.', color: 'red' },
+    {
+      icon: "🏏",
+      title: "Cricket Ground",
+      desc: "Full-size cricket ground with practice nets.",
+      color: "orange",
+    },
+    {
+      icon: "⚽",
+      title: "Football Field",
+      desc: "Standard football field for matches and practice.",
+      color: "green",
+    },
+    {
+      icon: "🏸",
+      title: "Badminton Courts",
+      desc: "Indoor badminton courts with professional flooring.",
+      color: "blue",
+    },
+    {
+      icon: "🏀",
+      title: "Basketball Court",
+      desc: "Outdoor basketball court for recreational and competitive play.",
+      color: "purple",
+    },
+    {
+      icon: "🏋️",
+      title: "Gymnasium",
+      desc: "Well-equipped gymnasium for fitness training.",
+      color: "red",
+    },
   ];
 
   return (
@@ -27,7 +50,8 @@ export default function SportsPage() {
           <span className="sports-badge">STUDENT LIFE</span>
           <h1>Sports & Athletics</h1>
           <p className="sports-hero-subtitle">
-            MIU promotes a healthy and active lifestyle through a wide range of sports and physical activities.
+            MIU promotes a healthy and active lifestyle through a wide range of
+            sports and physical activities.
           </p>
         </div>
       </div>
@@ -36,7 +60,10 @@ export default function SportsPage() {
         <div className="container">
           <div className="sports-facilities-grid">
             {facilities.map((facility, idx) => (
-              <div key={idx} className={`sports-facility-card sports-${facility.color}`}>
+              <div
+                key={idx}
+                className={`sports-facility-card sports-${facility.color}`}
+              >
                 <div className="sports-facility-icon-wrapper">
                   <span className="sports-facility-icon">{facility.icon}</span>
                 </div>
@@ -51,7 +78,10 @@ export default function SportsPage() {
               <span className="sports-programs-icon">🏆</span>
               <h2>Sports Programs</h2>
             </div>
-            <p>MIU organizes annual sports meets, inter-department tournaments, and participates in inter-university competitions.</p>
+            <p>
+              MIU organizes annual sports meets, inter-department tournaments,
+              and participates in inter-university competitions.
+            </p>
           </div>
         </div>
       </div>
