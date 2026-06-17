@@ -100,7 +100,7 @@ export default async function CourseDetail({ params }) {
           {course.overview && (
             <div className="cd-section">
               <h2>Program Overview</h2>
-              <p dangerouslySetInnerHTML={{ __html: course.overview }} />
+              <div dangerouslySetInnerHTML={{ __html: course.overview }} />
             </div>
           )}
 
