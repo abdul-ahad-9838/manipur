@@ -3,6 +3,7 @@
 import BannerSection from "@/components/BannerSection";
 import API from "@/lib/api";
 import "@/styles/SchoolPage.css";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Activity, useEffect, useState } from "react";
@@ -792,24 +793,23 @@ export default function SchoolPage() {
                             return (
                               <div key={i} className="sp-program-card">
                                 <Link
-                                  href={
-                                    prog.slug
-                                      ? `/courses/${prog.slug}`
-                                      : `/courses/${prog._id || i}`
-                                  }
+                                  href={`/courses/${prog.slug}`}
                                   className="sp-program-link"
                                 >
                                   <div className="sp-program-cover">
                                     {prog.cardImage ? (
-                                      <img
+                                      <Image
                                         src={prog.cardImage}
                                         alt={prog.title}
+                                        fill
                                         onError={(e) => {
                                           e.target.style.display = "none";
                                           e.target.parentNode.classList.add(
                                             "sp-cover-fallback",
                                           );
                                         }}
+                                        sizes="50vw"
+                                        className="sp-program-cover"
                                       />
                                     ) : (
                                       <div className="sp-cover-fallback">
