@@ -30,6 +30,8 @@ const EMPTY = {
   highlight: "",
   duration: "3 Years",
   eligibility: "10+2 / Equivalent",
+  eligibilityCriteria: "",
+  whyChooseThisProgram: "",
   school: "",
   slug: "",
   coverImage: "",
@@ -471,7 +473,6 @@ export default function CoursesManager() {
             <h2 style={{ marginBottom: "25px", fontSize: "1.3rem" }}>
               {editingId ? "Edit Program" : "New Program"}
             </h2>
-
             {/* Row 1 */}
             <div
               style={{
@@ -509,7 +510,6 @@ export default function CoursesManager() {
                 </select>
               </div>
             </div>
-
             {/* Specialisation Field */}
             <div style={{ marginBottom: "16px" }}>
               <label style={lbl}>Specialisation (optional)</label>
@@ -534,7 +534,6 @@ export default function CoursesManager() {
                 cards
               </p>
             </div>
-
             {/* Row 2 */}
             <div
               style={{
@@ -577,7 +576,6 @@ export default function CoursesManager() {
                 </select>
               </div>
             </div>
-
             {/* Row 3 */}
             <div
               style={{
@@ -617,7 +615,6 @@ export default function CoursesManager() {
                 />
               </div>
             </div>
-
             {/* Row 4 */}
             <div
               style={{
@@ -660,7 +657,6 @@ export default function CoursesManager() {
                 />
               </div>
             </div>
-
             <div style={{ marginBottom: "16px" }}>
               <label style={lbl}>Short Description *</label>
               <textarea
@@ -718,6 +714,25 @@ export default function CoursesManager() {
                 }
               />
             </div>
+            <div style={{ marginBottom: "16px" }}>
+              <label style={lbl}>Eligibility Criteria </label>
+              <TextEditor
+                value={form.eligibilityCriteria}
+                onChange={(value) =>
+                  setForm((prev) => ({ ...prev, eligibilityCriteria: value }))
+                }
+              />
+            </div>
+            <div style={{ marginBottom: "16px" }}>
+              <label style={lbl}>Why Choose This Program</label>
+              <TextEditor
+                value={form.whyChooseThisProgram}
+                onChange={(value) =>
+                  setForm((prev) => ({ ...prev, whyChooseThisProgram: value }))
+                }
+              />
+            </div>
+
             <div style={{ marginBottom: "24px" }}>
               <label style={lbl}>Affiliation</label>
               <input
@@ -727,14 +742,12 @@ export default function CoursesManager() {
                 style={inp}
               />
             </div>
-
             <SeoForm
               form={form}
               setForm={setForm}
               labelStyle={lbl}
               inputStyle={inp}
             />
-
             <div style={{ display: "flex", gap: "12px" }}>
               <button
                 type="submit"

@@ -14,6 +14,8 @@ const courseSchema = new mongoose.Schema(
       type: String,
       default: "School Of Commerce",
     },
+    whyChooseThisProgram: { type: String, default: "" },
+    eligibilityCriteria: { type: String, default: "" },
     category: { type: String },
     order: { type: Number, default: 0 }, // Order within school for sorting
     isActive: { type: Boolean, default: true }, // Active/Inactive status

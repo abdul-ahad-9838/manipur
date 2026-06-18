@@ -134,6 +134,34 @@ export default async function CourseDetail({ params }) {
             </div>
           )}
 
+          {/* eligibility Criteria */}
+
+          {course.eligibilityCriteria && (
+            <div className="cd-section">
+              <h2>Eligibility Criteria</h2>
+
+              <div
+                className="cd-syllabus"
+                dangerouslySetInnerHTML={{
+                  __html: course.eligibilityCriteria,
+                }}
+              />
+            </div>
+          )}
+
+          {course.whyChooseThisProgram && (
+            <div className="cd-section">
+              <h2>Why Choose MIU for {course.title}</h2>
+
+              <div
+                className="cd-syllabus"
+                dangerouslySetInnerHTML={{
+                  __html: course.whyChooseThisProgram,
+                }}
+              />
+            </div>
+          )}
+
           {/* Career Prospects */}
           {course.careerProspects?.length > 0 && (
             <div className="cd-section">
