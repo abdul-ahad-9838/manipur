@@ -32,7 +32,7 @@ export const metadata = {
 async function getData(endpoint) {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${endpoint}`, {
-      next: { revalidate: 300 }, // cache for 5 min
+      next: { revalidate: 300 },
     });
 
     if (!res.ok) return null;

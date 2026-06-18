@@ -11,7 +11,6 @@
   padding: 6rem 0;
 }
 
-/* iOS Safari doesn't support background-attachment: fixed properly */
 @supports (-webkit-touch-callout: none) {
   .campus-section {
     background-attachment: scroll;
@@ -113,6 +112,7 @@
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  isolation: isolate;
   background: #000;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -133,39 +133,38 @@
   height: 100%;
   object-fit: cover;
 
-  opacity: 0.8;
+  opacity: 0;
+  z-index: 0;
 
   will-change: transform, opacity;
   transform: translateZ(0);
   backface-visibility: hidden;
 
-  transition: opacity 0.5s ease;
+  transition: opacity 0.8s ease;
 }
 
-.fade-in-image {
-  animation:
-    fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-    continuousZoom 20s linear infinite forwards;
+.active-image {
+  opacity: 0.8;
+  z-index: 1;
+  animation: continuousZoom 20s linear infinite;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.8;
-  }
+.hidden-image {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  animation: none;
 }
 
 @keyframes continuousZoom {
   0% {
-    transform: scale(1);
+    transform: translateZ(0) scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: translateZ(0) scale(1.1);
   }
   100% {
-    transform: scale(1);
+    transform: translateZ(0) scale(1);
   }
 }
 
@@ -182,7 +181,6 @@
   border-left: 4px solid var(--lpu-orange);
   max-width: 400px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transform: translateY(0);
   animation: slideUp 0.5s ease;
 }
 
@@ -269,11 +267,6 @@
   .campus-tab {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease,
-      border-color 0.3s ease,
-      transform 0.3s ease;
   }
 
   .gallery-glass-info {

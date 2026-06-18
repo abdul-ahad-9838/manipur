@@ -10,7 +10,6 @@ function CampusLifeClient({ tabs, content }) {
   const activeTab = tabs[activeIndex];
   const tabCount = tabs.length;
 
-  // Auto switch tabs
   useEffect(() => {
     if (tabCount <= 1) return;
 
@@ -20,16 +19,6 @@ function CampusLifeClient({ tabs, content }) {
 
     return () => clearInterval(interval);
   }, [tabCount]);
-
-  // Preload next image
-  useEffect(() => {
-    if (tabCount <= 1) return;
-
-    const nextIndex = (activeIndex + 1) % tabCount;
-
-    const img = new window.Image();
-    img.src = tabs[nextIndex].img;
-  }, [activeIndex, tabCount, tabs]);
 
   return (
     <section id="campus" className="campus-section section-padding">
@@ -56,18 +45,23 @@ function CampusLifeClient({ tabs, content }) {
               </button>
             ))}
           </div>
+
           <div className="campus-gallery">
             <div className="gallery-glass">
-              <Image
-                key={activeTab.id}
-                src={activeTab.img}
-                alt={activeTab.name}
-                width={800}
-                height={500}
-                quality={75}
-                loading="lazy"
-                className="gallery-image fade-in-image"
-              />
+              {tabs.map((tab, index) => (
+                <Image
+                  key={tab.id}
+                  src={tab.img}
+                  alt={tab.name}
+                  width={800}
+                  height={500}
+                  quality={75}
+                  priority={index === 0}
+                  className={`gallery-image ${
+                    activeIndex === index ? "active-image" : "hidden-image"
+                  }`}
+                />
+              ))}
 
               <div className="gallery-glass-info">
                 <h3>{activeTab.name}</h3>

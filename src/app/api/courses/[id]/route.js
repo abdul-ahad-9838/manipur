@@ -7,10 +7,9 @@ export async function GET(request, { params }) {
   try {
     await dbConnect();
     const { id } = await params;
-    // Support lookup by _id or slug
-    const course =
-      (await Course.findById(id).catch(() => null)) ||
-      (await Course.findOne({ slug: id }));
+
+    const course = await Course.findOne({ slug: id });
+
     if (!course)
       return NextResponse.json({ message: "Not found" }, { status: 404 });
     return NextResponse.json(course);

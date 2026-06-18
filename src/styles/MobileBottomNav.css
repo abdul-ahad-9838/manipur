@@ -65,7 +65,8 @@
 
 /* Hide desktop sidebars on mobile */
 @media (max-width: 768px) {
-  .apply-sticky, .enquire-sticky {
+  .apply-sticky,
+  .enquire-sticky {
     display: none !important;
   }
 }
@@ -97,8 +98,14 @@
 }
 
 @keyframes slideUpModal {
-  from { transform: translateY(100%); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .enquiry-close {
@@ -119,7 +126,9 @@
   transition: background 0.2s;
 }
 
-.enquiry-close:hover { background: #e0e0e0; }
+.enquiry-close:hover {
+  background: #e0e0e0;
+}
 
 .enquiry-modal-header {
   margin-bottom: 24px;
@@ -200,8 +209,13 @@
   font-family: var(--font-body);
 }
 
-.enquiry-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-.enquiry-submit:not(:disabled):hover { opacity: 0.9; }
+.enquiry-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.enquiry-submit:not(:disabled):hover {
+  opacity: 0.9;
+}
 
 /* Success state */
 .enquiry-success {

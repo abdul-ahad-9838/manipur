@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import "@/styles/NewsSlider.css";
+import Image from "next/image";
 
 export default function NewsSlider({ blogs = [] }) {
   const [active, setActive] = useState(0);
@@ -100,12 +101,13 @@ export default function NewsSlider({ blogs = [] }) {
           {/* Featured */}
           <div className="ns-featured">
             <div className={`ns-feat-img-wrap ${paused ? "paused" : ""}`}>
-              <img
+              <Image
                 src={featured.coverImage}
                 alt={featured.title}
+                fill
                 className="ns-feat-img"
+                placeholder="empty"
               />
-
               <span className="ns-feat-cat">{featured.category}</span>
 
               <svg className="ns-ring" viewBox="0 0 44 44">
@@ -143,9 +145,11 @@ export default function NewsSlider({ blogs = [] }) {
                   className="ns-side-card"
                   onClick={() => goTo(realIdx)}
                 >
-                  <img
+                  <Image
                     src={post.coverImage}
                     alt={post.title}
+                    width={75}
+                    height={75}
                     className="ns-side-img"
                   />
 

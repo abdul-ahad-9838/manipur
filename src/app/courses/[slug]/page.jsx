@@ -144,7 +144,10 @@ export default async function CourseDetail({ params }) {
                   const [boldText, regularText] = career.split(":");
                   return (
                     <div key={i} className="cd-career-tag">
-                      <span>💼{boldText} →</span>
+                      <span>
+                        {boldText}
+                        {regularText && " →"}
+                      </span>
                       <span>{regularText}</span>
                     </div>
                   );
@@ -210,13 +213,6 @@ export default async function CourseDetail({ params }) {
               Apply Now
             </a>
           </div>
-
-          {/* {course.highlight && (
-            <div className="cd-highlight-card">
-              <span>🏆</span>
-              <p>{course.highlight}</p>
-            </div>
-          )} */}
         </aside>
       </div>
     </div>

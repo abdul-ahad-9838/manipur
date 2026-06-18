@@ -26,7 +26,6 @@ const DEFAULT_TABS = [
 ];
 
 export default async function CampusLife({ data }) {
-  console.log(data);
   const tabs = data?.tabs?.length > 0 ? data.tabs : DEFAULT_TABS;
 
   const content = {
