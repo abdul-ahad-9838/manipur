@@ -153,6 +153,7 @@
 .blog-detail-page {
   min-height: 100vh;
   background: #fff;
+  margin-top: 120px;
 }
 
 .blog-detail-cover {
@@ -318,6 +319,7 @@
 
   .blog-container {
     padding-bottom: 120px;
+    margin-top: 20px;
   }
 
   .blog-detail-content {

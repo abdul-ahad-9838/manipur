@@ -42,7 +42,6 @@ export async function POST(request) {
       author,
       isPinned,
       published,
-      seo,
     });
 
     const created = await notice.save();
