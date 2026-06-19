@@ -5,13 +5,11 @@ const seoSchema = new mongoose.Schema(
     title: {
       type: String,
       trim: true,
-      maxlength: 60,
     },
 
     description: {
       type: String,
       trim: true,
-      maxlength: 160,
     },
 
     keywords: [

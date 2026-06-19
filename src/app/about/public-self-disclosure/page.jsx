@@ -11,19 +11,19 @@ const SECTIONS = [
     items: [
       {
         label: "Name of the University: Manipur International University (MIU)",
-        href: "",
+        href: "/about",
       },
       {
         label:
           "Establishment: Established under the Manipur International University Act, 2018 by the Government of Manipur",
-        href: "",
+        href: "/about/affiliations-accreditation",
       },
       {
         label:
           "Recognition: Recognised by the University Grants Commission (UGC) under Sections 2(f) and 22 of the UGC Act, 1956",
-        href: "",
+        href: "/about/affiliations-accreditation",
       },
-      { label: "Type: State Private University", href: "" },
+      { label: "Type: State Private University", href: "/about" },
     ],
   },
   {
@@ -48,7 +48,10 @@ const SECTIONS = [
       { label: "Postgraduate Programs", href: "" },
       { label: "Diploma and Certificate Courses", href: "" },
       { label: "Doctoral (Ph.D.) Programs", href: "" },
-      { label: "Skill and Vocational Programs", href: "" },
+      {
+        label: "Skill and Vocational Programs",
+        href: "https://vocational.miu.edu.in/",
+      },
     ],
     note: "Details regarding program structure, eligibility, curriculum, and academic regulations are available on the website.",
   },
@@ -59,11 +62,11 @@ const SECTIONS = [
       {
         label:
           "Admission procedures are conducted as per University norms and regulatory guidelines",
-        href: "",
+        href: "/admissions/process",
       },
       {
         label: "Eligibility criteria vary by program and are clearly defined",
-        href: "",
+        href: "/admissions/process",
       },
       {
         label:
@@ -130,7 +133,10 @@ const SECTIONS = [
       { label: "Refund Policy", href: "/refund-policy" },
       { label: "Scholarship Policy", href: "" },
       { label: "Anti-Ragging Policy", href: "/student-life/anti-ragging" },
-      { label: "Grievance Redressal Mechanism", href: "" },
+      {
+        label: "Grievance Redressal Mechanism",
+        href: "/student-life/grievance-cell",
+      },
     ],
   },
   {
@@ -140,8 +146,14 @@ const SECTIONS = [
     items: [
       { label: "Academic counseling and mentoring", href: "" },
       { label: "Career guidance and placement support", href: "" },
-      { label: "Grievance redressal system for students and staff", href: "" },
-      { label: "Anti-ragging and disciplinary committees", href: "" },
+      {
+        label: "Grievance redressal system for students and staff",
+        href: "/student-life/grievance-cell",
+      },
+      {
+        label: "Anti-ragging and disciplinary committees",
+        href: "/student-life/anti-ragging",
+      },
     ],
   },
   {

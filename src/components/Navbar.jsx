@@ -25,7 +25,7 @@ const MobileAccordion = ({ label, items = [], onClose }) => {
         >
           <span className="mobile-accordion-label">{label}</span>
           <span className={`mobile-accordion-arrow ${open ? "open" : ""}`}>
-            ›
+            +
           </span>
         </div>
       </div>
@@ -72,7 +72,7 @@ const MobileSubAccordion = ({ label, subItems = [], onClose }) => {
           className={`mobile-accordion-arrow`}
           style={{ color: "var(--lpu-orange )" }}
         >
-          ›
+          +
         </span>
       </div>
 
