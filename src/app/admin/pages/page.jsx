@@ -76,7 +76,7 @@ const ALL_PAGES = {
   ],
   Other: [
     { name: "Contact Us", path: "/contact" },
-    { name: "News & Events", path: "/news-events" },
+    { name: "Notices & Announcements", path: "/notices-and-announcements" },
     { name: "Jobs", path: "/jobs" },
     { name: "MIUNEST", path: "/miunest" },
   ],

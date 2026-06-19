@@ -1,0 +1,146 @@
+/* ==========================================================================
+   University Notice Board Section
+   ========================================================================== */
+
+.notice-board-section {
+  background: var(--lpu-light-gray);
+  width: 100%;
+}
+
+.notice-board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+/* Generic university style: Crisp border, clean background, sharp shadow */
+.notice-board-card {
+  position: relative;
+  background: var(--lpu-white);
+  padding: 28px 24px 24px;
+  border: 1px solid #e2e8f0; /* Subtle card boundary common in academic sites */
+  border-radius: 6px; /* Traditional, less rounded borders */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.notice-board-card:hover {
+  border-color: var(--lpu-orange);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+/* Classic University Accent Top-Border */
+.notice-board-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Thick structural bar at the top of the card */
+  background: var(--lpu-orange);
+  transition: background-color 0.25s ease;
+}
+
+.notice-board-card:hover .notice-board-accent {
+  background: var(--lpu-orange-dark);
+}
+
+/* Top Meta Section */
+.notice-board-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+/* Academic style flat tag */
+.notice-board-category {
+  background: #f1f5f9; /* Grounded gray background */
+  color: #475569; /* Balanced slate text */
+  padding: 4px 10px;
+  border-left: 3px solid var(--lpu-orange-dark); /* Subtle left brand accent */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.notice-board-date {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Title & Content Typography */
+.notice-board-title {
+  color: var(--lpu-black);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 12px;
+  /* Ensures consistency if title text runs long */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notice-board-description {
+  color: #4a5568;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  font-size: 0.92rem;
+  flex-grow: 1; /* Pushes button to bottom for uniformity */
+}
+
+/* Standard Academic Circular/Text Action Button */
+.notice-board-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--lpu-orange-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.notice-board-link:hover {
+  color: var(--lpu-orange);
+}
+
+.notice-board-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.notice-board-link:hover .notice-board-arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .notice-board-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .notice-board-card {
+    padding: 24px 20px 20px;
+  }
+}

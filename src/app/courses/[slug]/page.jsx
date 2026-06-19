@@ -87,9 +87,6 @@ export default async function CourseDetail({ params }) {
     );
   }
 
-  const schoolSlug =
-    course.school?.toLowerCase().replace(/\s+/g, "-") || "school-of-commerce";
-
   return (
     <div className="cd-page">
       <BannerSection data={course} url="https://admission.miu.edu.in" />

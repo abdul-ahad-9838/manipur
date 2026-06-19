@@ -125,7 +125,7 @@
 /* ───────── MAGAZINE LAYOUT ───────── */
 .ns-magazine {
   display: grid;
-  grid-template-columns: 1fr 350px;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
 
@@ -139,7 +139,8 @@
 
 .ns-feat-img-wrap {
   position: relative;
-  height: 360px;
+  width: 100%;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   contain: paint;
 }
@@ -149,7 +150,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transform: scale(1.01);
 }
 
 /* category badge */
@@ -197,12 +197,12 @@
 .ns-side {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .ns-side-card {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   padding: 12px;
   background: #161616;
   border-radius: 10px;
@@ -218,8 +218,8 @@
 }
 
 .ns-side-img {
-  width: 70px;
-  height: 55px;
+  width: 120px;
+  height: 80px;
   border-radius: 6px;
   flex-shrink: 0;
   object-fit: cover;
@@ -232,14 +232,15 @@
 }
 
 .ns-side-cat {
-  font-size: 0.6rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: justify;
   color: var(--lpu-orange);
   text-transform: uppercase;
 }
 
 .ns-side-title {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #fff;
   margin: 4px 0;

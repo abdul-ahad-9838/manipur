@@ -37,14 +37,16 @@ const BannerSection = ({ data, url }) => {
           {data.seats && <span>🪑 {data.seats} Seats</span>}
         </div>
 
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-orange"
-        >
-          Apply Now
-        </a>
+        {url && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-orange"
+          >
+            Apply Now
+          </a>
+        )}
       </div>
     </div>
   );

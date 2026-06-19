@@ -92,8 +92,11 @@ const Footer = async () => {
               <li>
                 <Link href="/blogs">Blogs</Link>
               </li>
+              {/* Notices and Announcements */}
               <li>
-                <Link href="/news-events">News &amp; Events</Link>
+                <Link href="/notices-and-announcements">
+                  Notices and Announcements
+                </Link>
               </li>
               <li>
                 <Link href="/information-cell">Placement Cell</Link>
