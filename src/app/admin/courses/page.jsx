@@ -8,6 +8,7 @@ import { AuthContext } from "@/context/AuthContext";
 import ImageUploader from "@/components/ImageUploader";
 import SeoForm from "@/components/SeoForm";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 const TextEditor = dynamic(() => import("@/components/TextEditor"), {
   ssr: false,
 });
@@ -1101,14 +1102,17 @@ export default function CoursesManager() {
                         >
                           {course.cardImage ? (
                             <>
-                              <img
+                              <Image
                                 src={course.cardImage}
                                 alt={course.title}
+                                width={80}
+                                height={80}
                                 style={{
                                   width: "100%",
                                   height: "100%",
-                                  objectFit: "cover",
+                                  objectFit: "contain",
                                 }}
+                                loading="lazy"
                               />
                               <div
                                 style={{
