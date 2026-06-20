@@ -1,5 +1,7 @@
 import Link from "next/link";
 import "@/styles/SimplePage.css";
+import AdvisoryPopup from "./AdvisoryPopup";
+import React from "react";
 
 /**
  * Server-side data fetch
@@ -118,9 +120,35 @@ export default async function DynamicPage({
               <ul className="simple-list">
                 {sec.items.map((item, j) => (
                   <li key={j}>
-                    {item.icon && <span>{item.icon}</span>}
+                    {item.icon && <span>{item.icon} </span>}
                     <div>
-                      {item.title && <strong>{item.title}</strong>}
+                      {item.title && (
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "0.5rem",
+                            alignItems: "center",
+                          }}
+                        >
+                          <strong>{item.title} </strong>
+
+                          {item.fileUrl && (
+                            <a
+                              href={item.fileUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                border: "1px solid var(--lpu-orange)",
+                                padding: "4px 8px",
+                                borderRadius: "4px",
+                                color: "var(--lpu-orange) ",
+                              }}
+                            >
+                              🔗 View
+                            </a>
+                          )}
+                        </div>
+                      )}
                       {item.desc && <p>{item.desc}</p>}
                       {typeof item === "string" && item}
                     </div>

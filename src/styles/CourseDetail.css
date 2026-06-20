@@ -137,6 +137,11 @@
   text-transform: none;
 }
 
+.cd-section a {
+  color: blue;
+  text-decoration: underline;
+}
+
 .cd-list {
   list-style: none;
   padding: 0;
