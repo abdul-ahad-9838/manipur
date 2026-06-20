@@ -15,7 +15,7 @@ export default function RecognitionCards({ recognitions }) {
             className="aff-card"
             style={{ "--card-color": item.color }}
           >
-            <div>
+            <div className="main-box">
               <div className="aff-card-header">
                 <div className="aff-card-logo-box">
                   {item.logo ? (
@@ -46,24 +46,23 @@ export default function RecognitionCards({ recognitions }) {
                 {item.details && (
                   <p className="aff-card-details">{item.details}</p>
                 )}
+                {item.short == "AICTE" && (
+                  <p className="aff-card-details">
+                    A university is exempt from AICTE approval because it is
+                    regulated by the UGC, while AICTE approval is primarily
+                    required for technical colleges and institutions.
+                  </p>
+                )}
               </div>
+
+              <button
+                className="aff-card-btn"
+                style={{ background: item.color }}
+                onClick={() => setSelectedFile(item.fileUrl)}
+              >
+                View
+              </button>
             </div>
-
-            {item.short == "AICTE" && (
-              <p className="aff-card-details">
-                A university is exempt from AICTE approval because it is
-                regulated by the UGC, while AICTE approval is primarily required
-                for technical colleges and institutions.
-              </p>
-            )}
-
-            <button
-              className="aff-card-btn"
-              style={{ background: item.color }}
-              onClick={() => setSelectedFile(item.fileUrl)}
-            >
-              View Details
-            </button>
           </div>
         ))}
       </div>

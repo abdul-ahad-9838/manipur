@@ -41,6 +41,14 @@ const DEFAULT_RECOGNITIONS = [
     color: "#1a3a6b",
     fileUrl: "/AICTE.pdf",
   },
+  {
+    name: "The Manipur International University Act/Gazette",
+    short: "University Act",
+    logo: "/emblem.webp",
+    desc: "No. 2/58/2018-Leg/L: The following Act of the Legislature, Manipur 2019, published in the Official Gazette",
+    color: "#008000",
+    fileUrl: "/MIU_ACT.pdf",
+  },
 ];
 
 async function getRecognitions() {
