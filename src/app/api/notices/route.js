@@ -7,7 +7,19 @@ export async function GET() {
   try {
     await dbConnect();
     // No populate needed since attachment is a direct string field
-    const notices = await Notice.find({ published: true }).sort({ date: -1 });
+    const notices = await Notice.aggregate([
+      {
+        $match: { published: true },
+      },
+      {
+        $addFields: {
+          sortDate: { $ifNull: ["$date", "$createdAt"] },
+        },
+      },
+      {
+        $sort: { sortDate: -1 },
+      },
+    ]);
     return NextResponse.json(notices);
   } catch (error) {
     return NextResponse.json({ message: "Server error" }, { status: 500 });

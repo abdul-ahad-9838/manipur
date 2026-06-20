@@ -51,7 +51,7 @@ async function getNotices() {
     const data = await res.json();
 
     if (Array.isArray(data) && data.length > 0) {
-      return [...DEFAULT_NOTICES, ...data];
+      return [...data, ...DEFAULT_NOTICES];
     }
 
     return DEFAULT_NOTICES;

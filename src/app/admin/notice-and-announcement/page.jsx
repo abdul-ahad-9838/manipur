@@ -374,7 +374,7 @@ export default function AdminNoticesPage() {
               <div style={{ width: "100%" }}>
                 <div
                   style={{
-                    display: "flex !important",
+                    display: "flex",
                     gap: "10px",
                     justifyContent: "space-between",
                     alignItems: "center",
