@@ -84,7 +84,7 @@ const Footer = async () => {
                 <Link href="/about">About MIU</Link>
               </li>
               <li>
-                <Link href="/admissions">Admissions 2026</Link>
+                <Link href="/admissions/process">Admissions 2026</Link>
               </li>
               <li>
                 <Link href="/jobs">Jobs &amp; Careers</Link>

@@ -46,7 +46,7 @@ body {
    ======================================== */
 
 /* Merged: Typography block + TEXT ALIGNMENT block */
-p,
+/* p,
 .section-subtitle,
 [class*="subtitle"],
 [class*="desc"] {
@@ -56,17 +56,15 @@ p,
   word-spacing: normal !important;
   letter-spacing: normal !important;
   hyphens: none !important;
-}
+} */
 
 /* Merged: Typography block + TEXT ALIGNMENT block */
-h1,
+/* h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-.section-title,
-[class*="-title"] {
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--lpu-black);
@@ -75,22 +73,13 @@ h6,
   word-spacing: normal !important;
   letter-spacing: normal !important;
   hyphens: none !important;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  list-style: none;
-}
+} */
 
 /* ========================================
    VIEWPORT / OVERFLOW GUARDS
    ======================================== */
 
-[class*="grid"],
+/* [class*="grid"],
 [class*="-grid"] {
   width: 100%;
   max-width: 100%;
@@ -101,20 +90,14 @@ ul {
 [class*="-card"] {
   max-width: 100%;
   box-sizing: border-box;
-}
+} */
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-[class*="row"],
+/* [class*="row"],
 [class*="-row"] {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-}
+} */
 
 /* ========================================
    LAYOUT
@@ -195,7 +178,7 @@ img {
 }
 
 /* Badges, labels, buttons — allow uppercase */
-.btn,
+/* .btn,
 button,
 .section-badge,
 [class*="badge"],
@@ -203,39 +186,14 @@ button,
   letter-spacing: 0.5px !important;
   word-spacing: normal !important;
   color: #aaa;
-}
-
-/* ========================================
-   SECTION HEADERS
-   Merged: TEXT ALIGNMENT block + SECTION HEADERS block
-   ======================================== */
-
-.section-header,
-[class*="section-header"] {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
-}
-
-.section-header *,
-.section-title,
-.section-subtitle,
-.section-badge,
-[class*="section-title"],
-[class*="section-subtitle"],
-[class*="section-badge"],
-[class*="-badge"],
-[class*="-subtitle"] {
-  text-align: center !important;
-}
+} */
 
 /* ========================================
    CARD CONTENT
    Merged: TEXT ALIGNMENT block + CARD CONTENT block
    ======================================== */
 
-[class*="card"] h3,
+/* [class*="card"] h3,
 [class*="card"] h4,
 [class*="card-title"],
 [class*="card-name"],
@@ -245,46 +203,24 @@ button,
   word-spacing: normal !important;
   letter-spacing: normal !important;
   line-height: 1.4 !important;
-}
+} */
 
 /* ========================================
    HERO SECTIONS
    ======================================== */
 
-[class*="hero"] h1,
+/* [class*="hero"] h1,
 [class*="hero"] h2 {
   text-align: center;
 }
 
 [class*="hero"] p {
   text-align: justify !important;
-}
+} */
 
 /* Shared page hero banner */
-.page-hero-banner {
-  position: relative;
-  padding: clamp(100px, 15vw, 160px) 0 60px;
-  min-height: 280px;
-  display: flex;
-  align-items: flex-end;
-}
 
-.page-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
-}
-
-.page-hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-.page-hero-breadcrumb {
+/* .page-hero-breadcrumb {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -301,18 +237,7 @@ button,
 }
 .page-hero-breadcrumb span {
   color: rgba(255, 255, 255, 0.4);
-}
-
-.page-hero-content h1 {
-  color: white;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 10px;
-}
-.page-hero-content p {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.05rem;
-  max-width: 600px;
-}
+} */
 
 /* Simple hero */
 .simple-hero {
@@ -336,9 +261,9 @@ button,
 .simple-breadcrumb a {
   color: var(--lpu-orange);
 }
-.bc-sep {
+/* .bc-sep {
   color: #666;
-}
+} */
 
 .simple-badge {
   display: block;
@@ -362,40 +287,6 @@ button,
   max-width: 650px;
   line-height: 1.7 !important;
   margin: 0 auto;
-}
-
-/* ========================================
-   STICKY RIBBON
-   ======================================== */
-
-.sticky-ribbon {
-  position: fixed;
-  right: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  z-index: 9999;
-}
-
-.sticky-button {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  background: var(--lpu-orange);
-  color: white;
-  padding: 15px 10px;
-  font-weight: 700;
-  font-family: var(--font-body);
-  text-transform: uppercase;
-  font-size: 14px;
-  border: 1px solid white;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-  transition: background 0.2s;
-  cursor: pointer;
-}
-.sticky-button:hover {
-  background: var(--lpu-black);
 }
 
 /* ========================================
@@ -555,10 +446,6 @@ button,
    ======================================== */
 
 /* Merged: TEXT ALIGNMENT block + UTILITY block */
-.text-center,
-.text-center * {
-  text-align: center !important;
-}
 
 .section-padding {
   padding: 80px 0;

@@ -12,7 +12,6 @@
   height: 38px;
   background: var(--lpu-orange);
   overflow: hidden;
-  will-change: transform;
 }
 
 .ns-ticker-label {
@@ -32,6 +31,8 @@
   overflow: hidden;
 }
 
+/* Only this element animates continuously, so it's the only one
+   that legitimately benefits from a persistent compositor layer. */
 .ns-ticker-inner {
   display: flex;
   white-space: nowrap;
@@ -64,6 +65,11 @@
   font-size: 0.6rem;
   padding: 2px 6px;
   margin-right: 6px;
+}
+
+.ns-ticker-sep {
+  margin-left: 18px;
+  opacity: 0.6;
 }
 
 /* ───────── HEADER ───────── */
@@ -99,6 +105,8 @@
   gap: 10px;
 }
 
+/* will-change removed: this only transforms briefly on :hover,
+   doesn't need a permanently promoted layer. */
 .ns-btn {
   width: 38px;
   height: 38px;
@@ -108,7 +116,6 @@
   color: #fff;
   cursor: pointer;
   transition: all 0.2s ease;
-  will-change: transform;
 }
 
 .ns-btn:hover {
@@ -152,7 +159,6 @@
   display: block;
 }
 
-/* category badge */
 .ns-feat-cat {
   position: absolute;
   top: 16px;
@@ -165,7 +171,6 @@
   z-index: 2;
 }
 
-/* body */
 .ns-feat-body {
   padding: 22px;
 }
@@ -186,7 +191,6 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.5;
-
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -200,6 +204,8 @@
   justify-content: space-between;
 }
 
+/* will-change removed: hover-only transform, no need for a
+   standing compositor layer per card. */
 .ns-side-card {
   display: flex;
   gap: 20px;
@@ -209,7 +215,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
   contain: layout paint;
-  will-change: transform;
 }
 
 .ns-side-card:hover {

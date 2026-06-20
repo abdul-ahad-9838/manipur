@@ -191,6 +191,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  list-style: none;
 }
 
 .footer-links a {
@@ -199,6 +200,7 @@
     padding-left var(--transition-fast);
   font-size: 0.95rem;
   line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-links a:hover {
@@ -230,6 +232,11 @@
 .bottom-links {
   display: flex;
   gap: 1.5rem;
+}
+
+.bottom-links a {
+  transition: color var(--transition-fast);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .bottom-links a:hover {

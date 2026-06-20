@@ -73,6 +73,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  line-height: normal;
 }
 
 .spotlight-subtitle {

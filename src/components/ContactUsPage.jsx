@@ -396,7 +396,7 @@ export default function ContactUsPage() {
               </div>
 
               {/* Office Hours Card */}
-              <div className="sidebar-card hours-card-new">
+              {/* <div className="sidebar-card hours-card-new">
                 <div className="sidebar-card-header">
                   <span className="sidebar-icon">🕐</span>
                   <h3>Office Hours</h3>
@@ -411,7 +411,7 @@ export default function ContactUsPage() {
                     <span className="hours-time">Closed</span>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -29,8 +29,13 @@ export default function NewsSlider({ blogs = [] }) {
 
   const featured = posts[active];
 
+  // Carry the original index through instead of re-deriving it later with
+  // findIndex (which was O(n) per card => O(n^2) per render).
   const side = useMemo(() => {
-    return posts.filter((_, i) => i !== active).slice(0, 5);
+    return posts
+      .map((post, i) => ({ post, i }))
+      .filter(({ i }) => i !== active)
+      .slice(0, 5);
   }, [posts, active]);
 
   const tickerItems = useMemo(() => {
@@ -52,7 +57,10 @@ export default function NewsSlider({ blogs = [] }) {
         <span className="ns-ticker-label">LIVE</span>
 
         <div className="ns-ticker-track">
-          <div className="ns-ticker-inner">
+          <div
+            className="ns-ticker-inner"
+            style={paused ? { animationPlayState: "paused" } : undefined}
+          >
             {tickerItems.map((p, i) => (
               <span
                 key={`${p._id || p.slug || i}-${i}`}
@@ -100,27 +108,16 @@ export default function NewsSlider({ blogs = [] }) {
         <div className="ns-magazine">
           {/* Featured */}
           <div className="ns-featured">
-            <div className={`ns-feat-img-wrap ${paused ? "paused" : ""}`}>
+            <div className="ns-feat-img-wrap">
               <Image
                 src={featured.coverImage}
                 alt={featured.title}
                 fill
+                sizes="100vw"
                 className="ns-feat-img"
                 placeholder="empty"
               />
               <span className="ns-feat-cat">{featured.category}</span>
-
-              <svg className="ns-ring" viewBox="0 0 44 44">
-                <circle cx="22" cy="22" r="18" className="ns-ring-bg" />
-
-                <circle
-                  cx="22"
-                  cy="22"
-                  r="18"
-                  className={`ns-ring-fill ${paused ? "paused" : ""}`}
-                  onAnimationEnd={goNext}
-                />
-              </svg>
             </div>
 
             <div className="ns-feat-body">
@@ -136,31 +133,27 @@ export default function NewsSlider({ blogs = [] }) {
 
           {/* Side */}
           <div className="ns-side">
-            {side.map((post) => {
-              const realIdx = posts.findIndex((item) => item._id === post._id);
+            {side.map(({ post, i }) => (
+              <div
+                key={post._id || post.slug}
+                className="ns-side-card"
+                onClick={() => goTo(i)}
+              >
+                <Image
+                  src={post.coverImage}
+                  alt={post.title}
+                  width={75}
+                  height={75}
+                  className="ns-side-img"
+                />
 
-              return (
-                <div
-                  key={post._id || post.slug}
-                  className="ns-side-card"
-                  onClick={() => goTo(realIdx)}
-                >
-                  <Image
-                    src={post.coverImage}
-                    alt={post.title}
-                    width={75}
-                    height={75}
-                    className="ns-side-img"
-                  />
+                <div className="ns-side-body">
+                  <span className="ns-side-cat">{post.category}</span>
 
-                  <div className="ns-side-body">
-                    <span className="ns-side-cat">{post.category}</span>
-
-                    <h4 className="ns-side-title">{post.title}</h4>
-                  </div>
+                  <h4 className="ns-side-title">{post.title}</h4>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>
