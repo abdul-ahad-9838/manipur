@@ -68,8 +68,8 @@ function Hero({ data }) {
             alt={title}
             fill
             priority={index === 0}
-            quality={75}
-            sizes="100vw"
+            quality={60}
+            sizes="80vw"
             className={`hero-image ${
               index === currentImageIndex ? "active" : ""
             }`}
