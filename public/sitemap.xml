@@ -4,171 +4,673 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>https://miu.edu.in/</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
   <priority>1.00</priority>
 </url>
-<url>
-  <loc>https://miu.edu.in/jobs</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/notices-and-announcements</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/miunest</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/about/public-self-disclosure</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/contact</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/student-login</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/admin/login</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+
+<!-- about -->
 <url>
   <loc>https://miu.edu.in/about</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.90</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/about/governance</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/about/academic-council</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/about/iqac</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://miu.edu.in/about/leadership</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
+  <loc>https://miu.edu.in/about/affiliations-accreditation</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/about/public-self-disclosure</loc>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/about/ugc-performance</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://miu.edu.in/schools/school-of-commerce</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://miu.edu.in/about/leadership</loc>
+  <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://miu.edu.in/schools/school-of-computer-application</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://miu.edu.in/about/faqs</loc>
+  <priority>0.60</priority>
 </url>
+
+<!-- admissions -->
 <url>
-  <loc>https://miu.edu.in/schools/school-of-engineering</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/schools/school-of-management</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/schools/school-of-science</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/schools/school-of-humanities</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/academics/academic-calendar</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/academics/brochure</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://miu.edu.in/admissions</loc>
+  <priority>0.90</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/admissions/process</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/information-cell</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/admissions/fee-structure</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/admissions/rules</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.70</priority>
+</url>
+
+<!-- academics -->
+<url>
+  <loc>https://miu.edu.in/academics/academic-calendar</loc>
+  <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://miu.edu.in/student-life/sports</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
+  <loc>https://miu.edu.in/academics/brochure</loc>
+  <priority>0.70</priority>
+</url>
+
+<!-- examination -->
+<url>
+  <loc>https://miu.edu.in/examination</loc>
   <priority>0.80</priority>
+</url>
+
+<!-- research -->
+<url>
+  <loc>https://miu.edu.in/research/overview</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/research/publications</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/research/projects</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/research/development-cell</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/research/degree-awarded</loc>
+  <priority>0.60</priority>
+</url>
+
+<!-- student-life -->
+<url>
+  <loc>https://miu.edu.in/student-life/sports</loc>
+  <priority>0.60</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/student-life/hostel</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/student-life/ncc-nss</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://miu.edu.in/student-life/icc</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.60</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/student-life/anti-ragging</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/grievance-cell</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/ncc-nss</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/icc</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/health-facilities</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/awards</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/cpio</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/equal-opportunity-cell</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/incubation-center</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/ombudsperson</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/project-development-cell</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-life/sedg-cell</loc>
+  <priority>0.50</priority>
+</url>
+
+<!-- misc top-level pages -->
+<url>
+  <loc>https://miu.edu.in/notices-and-announcements</loc>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/contact</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/jobs</loc>
+  <priority>0.70</priority>
 </url>
 <url>
   <loc>https://miu.edu.in/blogs</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://miu.edu.in/admissions</loc>
-  <lastmod>2026-04-17T06:48:12+00:00</lastmod>
+  <loc>https://miu.edu.in/miunest</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/miu-cell</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/apprenticeship</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/reservation-roster</loc>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/credit-transfer-policy</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/refund-policy</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/privacy-policy</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/terms-of-use</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/student-login</loc>
+  <priority>0.40</priority>
+</url>
+
+<!-- schools (dynamic [slug] route — slugs taken from your previously generated sitemap) -->
+<url>
+  <loc>https://miu.edu.in/schools/school-of-engineering-and-information-technology</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-commerce-and-management</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-science</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-vocational-studies</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-arts-and-humanities</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-fire-and-safety</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-paramedical-sciences</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-library-and-information-science</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/schools/school-of-journalism-and-mass-communication</loc>
+  <priority>0.80</priority>
+</url>
+
+<!-- courses (dynamic [slug] route — add your actual course slugs here) -->
+<url>
+  <loc>https://miu.edu.in/courses/bachelore-of-business-administration</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/bachelor-of-arts</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/bachelor-of-commerce</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/bachelor-of-computer-applications</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/bachelor-of-hotel-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/bachelor-of-journalism-mass-communication</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/bachelor-of-library-and-information-science</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-economics</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-english</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-history</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-manipuri</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-political-science</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-psychology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-public-administration</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-social-work</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-sociology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-a-in-yoga</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-chemistry</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-general</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-cardiovascular-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-computer-science</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-critical-care-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-dialysis-therapy</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-emergency-trauma-care-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-environmental-science</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-fire-safety</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-health-safety</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-information-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-medical-imaging-radiology-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-medical-laboratory-technology-mlt</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-operation-theatre-ot-anesthesia-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-in-respiratory-therapy</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-mathematics</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-sc-physics</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-tech-in-civil-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-tech-in-computer-science-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-tech-in-electrical-electronics-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-tech-in-electrical-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-tech-in-electronics-communication-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-tech-in-information-technology-it</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/b-tech-in-mechanical-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-civil-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-computer-applications</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-computer-science-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-dietetics-applied-nutrition</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-dietetics-nutrition</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-electrical-and-electronics-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-electrical-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-electronics-and-communication-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-industrial-fire-safety</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-journalism-mass-communication</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-mechanical-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/diploma-in-yoga</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-economics</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-english</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-hindi</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-history</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-manipuri</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-political-science</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-psychology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-public-administration</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-social-work</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-sociology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-a-in-yoga</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/courses/master-of-commerce-m-com</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/master-of-computer-applications</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/master-of-hotel-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/master-of-journalism-mass-communication</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/master-of-library-and-information-science</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-finance-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-fire-safety-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-health-safety-environment-hse</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-human-resource-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-information-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-logistics-supply-chain-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-marketing-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-operations-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-project-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-in-retail-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/mba-international-business</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-chemistry</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-computer-science</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-environmental-science</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-fire-safety</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-health-safety</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-information-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-mathematics</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-sc-in-physics</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/courses/m-tech-in-civil-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-tech-in-computer-science-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-tech-in-electrical-electronics-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-tech-in-electrical-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-tech-in-electronics-communication-engineering</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-tech-in-information-technology</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/m-tech-in-mechanical-engineering</loc>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://miu.edu.in/courses/pg-diploma-in-yoga</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/post-graduate-diploma-in-computer-applications</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/post-graduate-diploma-in-dietetics-applied-nutrition</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/post-graduate-diploma-in-fire-safety-management</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/post-graduate-diploma-in-food-processing-preservation</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://miu.edu.in/courses/post-graduate-diploma-in-journalism-mass-communication</loc>
   <priority>0.80</priority>
 </url>
 

@@ -1,0 +1,478 @@
+/* Uses existing design tokens from globals.css:
+   --lpu-orange, --lpu-black, --lpu-dark-gray, --lpu-light-gray,
+   --font-body (Roboto), --font-heading (Oswald) */
+
+.rs-page {
+  background: var(--lpu-white);
+  text-align: justify;
+}
+
+/* ───────── HERO ───────── */
+.rs-hero {
+  background: linear-gradient(135deg, var(--lpu-black) 0%, #1a2a4a 100%);
+  padding: clamp(120px, 16vw, 180px) 0 70px;
+  color: var(--lpu-white);
+}
+
+.rs-hero-eyebrow {
+  display: inline-block;
+  color: var(--lpu-orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.rs-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: var(--lpu-white);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.rs-hero-title em {
+  color: var(--lpu-orange);
+  font-style: normal;
+}
+
+.rs-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+}
+
+.rs-hero-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 24px;
+}
+
+.rs-hero-meta > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.rs-hero-num {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--lpu-orange);
+}
+
+.rs-hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 4px;
+}
+
+/* ───────── SECTION SHELL ───────── */
+.rs-section {
+  padding: 70px 0;
+}
+
+.rs-section--alt {
+  background: var(--lpu-light-gray);
+}
+
+.rs-section-head {
+  margin-bottom: 36px;
+}
+
+.rs-section-eyebrow {
+  display: block;
+  color: var(--lpu-orange-dark);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.rs-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--lpu-black);
+}
+
+/* ───────── RESEARCH ECOSYSTEM ───────── */
+.rs-ecosystem-lead {
+  color: var(--lpu-dark-gray);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.rs-ecosystem-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+/* ───────── VISION / MISSION ───────── */
+.rs-vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.rs-vm-card {
+  background: var(--lpu-light-gray);
+  border-radius: 12px;
+  padding: 36px;
+}
+
+.rs-vm-card p {
+  color: var(--lpu-dark-gray);
+  line-height: 1.7;
+}
+
+.rs-vm-card--dark {
+  background: var(--lpu-black);
+}
+.rs-vm-card--dark p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rs-vm-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--lpu-orange-dark);
+  margin-bottom: 16px;
+}
+
+.rs-vm-card--dark .rs-vm-tag {
+  color: var(--lpu-orange);
+}
+
+.rs-vm-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.rs-vm-list li {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.92rem;
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.rs-vm-list--light li {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.rs-vm-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  background: var(--lpu-orange);
+  border-radius: 2px;
+}
+
+/* ───────── RESEARCH DOMAINS ───────── */
+.rs-domain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.rs-domain-card {
+  background: var(--lpu-white);
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  padding: 28px;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.rs-domain-card:hover {
+  border-color: var(--lpu-orange);
+  transform: translateY(-2px);
+}
+
+.rs-domain-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.rs-domain-code {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  color: var(--lpu-white);
+  background: var(--lpu-black);
+  padding: 4px 9px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.rs-domain-head h3 {
+  font-size: 1.15rem;
+  color: var(--lpu-black);
+}
+
+.rs-domain-blurb {
+  color: var(--lpu-dark-gray);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.rs-domain-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rs-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--lpu-dark-gray);
+  background: var(--lpu-light-gray);
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.rs-tag--dark {
+  color: var(--lpu-white);
+  background: var(--lpu-black);
+}
+
+.rs-ethics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ───────── RDC ───────── */
+.rs-rdc-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.rs-rdc-intro p {
+  color: var(--lpu-dark-gray);
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+.rs-rdc-list {
+  display: grid;
+  gap: 22px;
+}
+
+.rs-rdc-item {
+  display: flex;
+  gap: 18px;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 18px;
+}
+
+.rs-rdc-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rs-rdc-index {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--lpu-orange);
+  flex-shrink: 0;
+  width: 36px;
+}
+
+.rs-rdc-item h4 {
+  font-size: 1rem;
+  color: var(--lpu-black);
+  margin-bottom: 4px;
+}
+
+.rs-rdc-item p {
+  color: var(--lpu-dark-gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ───────── INFRASTRUCTURE ───────── */
+.rs-infra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.rs-infra-card {
+  background: var(--lpu-white);
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid #e7e7e7;
+}
+
+.rs-infra-card h3 {
+  font-size: 1.15rem;
+  color: var(--lpu-black);
+  margin-bottom: 14px;
+}
+
+.rs-infra-card p {
+  color: var(--lpu-dark-gray);
+  line-height: 1.7;
+}
+
+.rs-infra-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.rs-infra-list li {
+  color: var(--lpu-dark-gray);
+  font-size: 0.92rem;
+  padding-left: 18px;
+  position: relative;
+}
+
+.rs-infra-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  background: var(--lpu-orange);
+  border-radius: 2px;
+}
+
+/* ───────── PROJECTS ───────── */
+.rs-project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.rs-project-card {
+  background: var(--lpu-white);
+  border-radius: 12px;
+  padding: 28px;
+  border-top: 3px solid var(--lpu-orange);
+}
+
+.rs-project-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--lpu-black);
+  margin-bottom: 10px;
+}
+
+.rs-project-card p {
+  color: var(--lpu-dark-gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ───────── OUTPUT ───────── */
+.rs-output-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.rs-output-card {
+  background: var(--lpu-black);
+  border-radius: 10px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rs-output-label {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--lpu-orange);
+  font-weight: 700;
+}
+
+.rs-output-count {
+  font-size: 0.78rem;
+  color: var(--lpu-light-gray);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ───────── COLLABORATION ───────── */
+.rs-collab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.rs-collab-card {
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.rs-collab-card p {
+  color: var(--lpu-dark-gray);
+  line-height: 1.7;
+}
+
+.rs-ethics-label {
+  margin-bottom: 10px;
+}
+
+/* ───────── RESPONSIVE ───────── */
+@media (max-width: 900px) {
+  .rs-vm-grid,
+  .rs-domain-grid,
+  .rs-infra-grid,
+  .rs-collab-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rs-rdc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rs-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rs-output-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rs-hero-meta {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rs-output-grid {
+    grid-template-columns: 1fr;
+  }
+}
