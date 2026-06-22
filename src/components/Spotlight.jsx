@@ -1,6 +1,4 @@
 import Image from "next/image";
-// import "@/styles/Spotlight.css";
-// import "@/styles/App.css";
 
 const defaultRow1 = [
   {
@@ -75,6 +73,26 @@ export default function Spotlight({ data }) {
   return (
     <section className="spotlight-section">
       {/* ... */}
+      <div className="container">
+        <div className="spotlight-header-container">
+          <div className="spotlight-head">
+            <div className="spotlight-badge-pulse">
+              <span className="pulse-dot"></span>
+              <span className="spotlight-badge">HAPPENING NOW</span>
+            </div>
+
+            <h2 className="spotlight-title">
+              MIU <span className="highlight-text">Spotlight</span>
+            </h2>
+
+            <p className="spotlight-subtitle">
+              Relive the most magnificent moments, electrifying concerts, and
+              mega events that define the vibrant campus life at Manipur
+              International University.
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="spotlight-marquee-container">
         <div className="marquee-row">
           <div className="marquee-content marquee-left">
