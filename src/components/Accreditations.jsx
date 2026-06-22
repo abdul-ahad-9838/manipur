@@ -1,6 +1,5 @@
 import "@/styles/Accreditations.css";
 import Image from "next/image";
-import { headers } from "next/headers";
 
 const DEFAULT_RECOGNITIONS = [
   {
@@ -29,22 +28,18 @@ const DEFAULT_RECOGNITIONS = [
 // ✅ server-side fetch helper
 async function getAccreditationsData() {
   try {
-    const headersList = headers();
-    const host = headersList.get("host");
-
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-
-    const baseUrl = `${protocol}://${host}`;
-
-    const res = await fetch(`${baseUrl}/api/settings/recognitions`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/settings/recognitions`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
 
     if (!res.ok) return null;
 
-    return await res.json();
-  } catch (err) {
-    console.error("Accreditations fetch failed:", err);
+    return res.json();
+  } catch (error) {
+    console.error("Accreditations fetch failed:", error);
     return null;
   }
 }

@@ -1,20 +1,18 @@
-import React from "react";
-import { headers } from "next/headers";
 import "@/styles/faq.css";
 
 async function getFaqs() {
-  const headersList = await headers();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/faqs`, {
+      next: { revalidate: 300 },
+    });
 
-  const host = headersList.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+    if (!res.ok) return [];
 
-  const baseUrl = `${protocol}://${host}`;
-
-  const res = await fetch(`${baseUrl}/api/faqs`);
-
-  if (!res.ok) return [];
-
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.error("FAQs fetch failed:", error);
+    return [];
+  }
 }
 
 const FAQ = async () => {

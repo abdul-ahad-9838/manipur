@@ -1,6 +1,5 @@
 import "@/styles/AcademicCouncil.css";
 import "@/styles/IQAC.css";
-import { headers } from "next/headers";
 import Link from "next/link";
 
 const DEFAULT = {
@@ -144,20 +143,19 @@ const DEFAULT = {
 };
 
 async function getIQACData() {
-  const headersList = await headers();
-  const host = headersList.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const baseUrl = `${protocol}://${host}`;
-
   try {
-    const res = await fetch(`${baseUrl}/api/settings/iqac`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/settings/iqac`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
+
     if (!res.ok) return null;
 
-    return await res.json();
-  } catch (err) {
-    console.error("IQAC fetch failed:", err);
+    return res.json();
+  } catch (error) {
+    console.error(`IQAC fetch failed: ${slug}:`, error);
     return null;
   }
 }

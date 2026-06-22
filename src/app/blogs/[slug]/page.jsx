@@ -1,21 +1,23 @@
-import { headers } from "next/headers";
-import Link from "next/link";
 import "@/styles/Blog.css";
 import Image from "next/image";
+import Link from "next/link";
 
 async function getBlog(slug) {
-  const headersList = await headers();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${slug}`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
 
-  const host = headersList?.get("host");
+    if (!res.ok) return null;
 
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const baseUrl = `${protocol}://${host}`;
-
-  const res = await fetch(`${baseUrl}/api/blogs/${slug}`);
-
-  if (!res.ok) return null;
-
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.error(`Blog fetch failed: ${slug}:`, error);
+    return null;
+  }
 }
 
 export async function generateMetadata({ params }) {

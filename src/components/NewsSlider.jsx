@@ -113,7 +113,7 @@ export default function NewsSlider({ blogs = [] }) {
                 src={featured.coverImage}
                 alt={featured.title}
                 fill
-                sizes="100vw"
+                sizes="25vw"
                 className="ns-feat-img"
                 placeholder="empty"
               />

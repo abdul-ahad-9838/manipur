@@ -1,23 +1,22 @@
 // app/blogs/page.jsx
 
 import "@/styles/Blog.css";
-import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
 async function getBlogs() {
-  const headersList = await headers();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs`, {
+      next: { revalidate: 300 },
+    });
 
-  const host = headersList?.get("host");
+    if (!res.ok) return null;
 
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const baseUrl = `${protocol}://${host}`;
-
-  const res = await fetch(`${baseUrl}/api/blogs`);
-
-  if (!res.ok) return null;
-
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.error("Blogs fetch failed:", error);
+    return null;
+  }
 }
 
 export default async function BlogPage() {

@@ -8,7 +8,7 @@ export const metadata = {
   metadataBase: new URL("https://miu.edu.in"),
   title: {
     default: "Manipur International University | Excellence in Education",
-    template: "%s | Manipur International University",
+    // template: "%s | Manipur International University",
   },
   description:
     "Manipur International University (MIU) - Premier UGC recognized university in Imphal, Manipur. Offering undergraduate, postgraduate & doctoral programs in Engineering, Management, Science, Commerce, Humanities & more.",

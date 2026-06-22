@@ -1,6 +1,6 @@
-import Link from "next/link";
 import "@/styles/Programs.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const DEFAULT_SCHOOLS = [
   {
@@ -61,22 +61,18 @@ const DEFAULT_SCHOOLS = [
 
 async function getSchoolsData() {
   try {
-    const headersList = headers(); // 👈 no await needed
-
-    const host = headersList.get("host");
-
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-
-    const baseUrl = `${protocol}://${host}`;
-    const res = await fetch(`${baseUrl}/api/settings/schools-section`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/settings/schools-section`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
 
     if (!res.ok) return null;
 
-    return await res.json();
-  } catch (err) {
-    console.error("Schools fetch failed:", err);
+    return res.json();
+  } catch (error) {
+    console.error("Schools fetch failed:", error);
     return null;
   }
 }

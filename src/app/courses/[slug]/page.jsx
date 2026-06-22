@@ -1,22 +1,25 @@
 // app/courses/[slug]/page.jsx
 
-import { headers } from "next/headers";
-import Link from "next/link";
-import "@/styles/CourseDetail.css";
 import BannerSection from "@/components/BannerSection";
+import "@/styles/CourseDetail.css";
+import Link from "next/link";
 
 async function getCourse(slug) {
-  const headersList = await headers();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/${slug}`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
 
-  const host = headersList.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const baseUrl = `${protocol}://${host}`;
+    if (!res.ok) return null;
 
-  const res = await fetch(`${baseUrl}/api/courses/${slug}`);
-
-  if (!res.ok) return null;
-
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.error(`Error fetching ${slug}:`, error);
+    return null;
+  }
 }
 
 export async function generateMetadata({ params }) {
