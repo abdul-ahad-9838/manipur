@@ -292,7 +292,6 @@ export default function Page() {
               <span className="rs-section-eyebrow">
                 Research & Development Cell
               </span>
-              <h2 className="rs-section-title">R N D</h2>
             </div>
             <p>
               The research and development cell (RDC) is the main body
@@ -435,12 +434,6 @@ export default function Page() {
         <div className="container">
           <div className="rs-section-head">
             <span className="rs-section-eyebrow">From idea to outcome</span>
-            <h2 className="rs-section-title">Research Projects</h2>
-            <p>
-              Research projects are an important part of university research
-              activities. These projects help generate knowledge, encourage
-              innovative ideas, and solve research problems.{" "}
-            </p>
           </div>
           <div className="rs-project-grid">
             <div className="rs-project-card">
