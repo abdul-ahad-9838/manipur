@@ -2,6 +2,7 @@ import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
+import "@/styles/HomePage.css";
 
 const Stats = dynamic(() => import("@/components/Stats"));
 const Spotlight = dynamic(() => import("@/components/Spotlight"));

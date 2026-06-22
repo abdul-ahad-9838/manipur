@@ -1,4 +1,4 @@
-import "@/styles/Ecosystem.css";
+// import "@/styles/Ecosystem.css";
 import Image from "next/image";
 
 const DEFAULT_CARDS = [

@@ -230,7 +230,8 @@ const Navbar = () => {
                 className="landing-logo"
                 width={200}
                 height={200}
-                priority
+                loading="lazy"
+                sizes="(max-width: 768px) 50vw, 300px"
               />
             ) : (
               <>

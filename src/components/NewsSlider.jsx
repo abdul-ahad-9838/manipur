@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useMemo } from "react";
 import Link from "next/link";
-import "@/styles/NewsSlider.css";
+// import "@/styles/NewsSlider.css";
 import Image from "next/image";
 
 export default function NewsSlider({ blogs = [] }) {

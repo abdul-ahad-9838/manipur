@@ -1,6 +1,6 @@
 import Image from "next/image";
-import "@/styles/Spotlight.css";
-import "@/styles/App.css";
+// import "@/styles/Spotlight.css";
+// import "@/styles/App.css";
 
 const defaultRow1 = [
   {
@@ -70,34 +70,12 @@ const defaultRow2 = [
 
 export default function Spotlight({ data }) {
   const row1 = data?.row1?.length > 0 ? data.row1 : defaultRow1;
-
   const row2 = data?.row2?.length > 0 ? data.row2 : defaultRow2;
 
   return (
     <section className="spotlight-section">
-      <div className="container">
-        <div className="spotlight-header-container">
-          <div className="spotlight-head">
-            <div className="spotlight-badge-pulse">
-              <span className="pulse-dot"></span>
-              <span className="spotlight-badge">HAPPENING NOW</span>
-            </div>
-
-            <h2 className="spotlight-title">
-              MIU <span className="highlight-text">Spotlight</span>
-            </h2>
-
-            <p className="spotlight-subtitle">
-              Relive the most magnificent moments, electrifying concerts, and
-              mega events that define the vibrant campus life at Manipur
-              International University.
-            </p>
-          </div>
-        </div>
-      </div>
-
+      {/* ... */}
       <div className="spotlight-marquee-container">
-        {/* First Row */}
         <div className="marquee-row">
           <div className="marquee-content marquee-left">
             {[...row1, ...row1, ...row1].map((img, index) => (
@@ -108,8 +86,12 @@ export default function Spotlight({ data }) {
                   className="marquee-img"
                   width={800}
                   height={500}
+                  // Only the first couple of *visible* images should be eager/priority
+                  priority={index < 2}
+                  loading={index < 2 ? "eager" : "lazy"}
+                  sizes="(max-width: 768px) 50vw, 300px"
+                  quality={70}
                 />
-
                 <div className="marquee-info">
                   <h4>{img.title}</h4>
                   <p>{img.desc}</p>
@@ -118,8 +100,7 @@ export default function Spotlight({ data }) {
             ))}
           </div>
         </div>
-
-        {/* Second Row */}
+        {/* same pattern for row2, but priority={false} since row2 likely isn't the LCP element */}
         <div className="marquee-row">
           <div className="marquee-content marquee-right">
             {[...row2, ...row2, ...row2].map((img, index) => (
@@ -130,6 +111,11 @@ export default function Spotlight({ data }) {
                   className="marquee-img"
                   width={800}
                   height={500}
+                  // Only the first couple of *visible* images should be eager/priority
+                  priority={index < 2}
+                  loading={index < 2 ? "eager" : "lazy"}
+                  sizes="(max-width: 768px) 50vw, 300px"
+                  quality={70}
                 />
 
                 <div className="marquee-info">
