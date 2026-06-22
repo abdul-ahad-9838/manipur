@@ -1,7 +1,7 @@
 .school-hero {
   position: relative;
   min-height: 480px;
-  height: 60vh;
+  padding: 60px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -40,6 +40,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  text-align: center;
 }
 
 .school-hero-icon {
@@ -50,18 +51,25 @@
 .school-hero-content h1 {
   color: white;
   font-size: clamp(2rem, 5vw, 3.5rem);
-  /* margin-bottom: 10px; */
 }
 
 .school-hero-tagline {
   color: #ccc;
   font-size: clamp(1rem, 2vw, 1.2rem);
+  text-align: justify;
+}
+
+/* Tags container */
+.cd-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
 /* Tablet */
 @media (max-width: 992px) {
   .school-hero {
-    height: 50vh;
     min-height: 400px;
   }
 }
@@ -70,9 +78,8 @@
 @media (max-width: 768px) {
   .school-hero {
     margin-top: 62px;
-    height: 45vh;
-    min-height: 350px;
-    padding: 30px 16px 40px;
+    padding: 60px 40px;
+    min-height: auto;
   }
 
   .school-hero-icon {
@@ -83,7 +90,8 @@
 /* Small Mobile */
 @media (max-width: 480px) {
   .school-hero {
-    min-height: 70vh !important;
+    min-height: auto !important; /* FIX: prevent forced height */
+    padding: 50px 20px;
   }
 
   .school-hero-content h1 {

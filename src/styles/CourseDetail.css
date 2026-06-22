@@ -120,6 +120,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   margin-bottom: 24px;
   border-left: 4px solid var(--lpu-orange);
+  text-align: justify;
 }
 
 .cd-section h2 {

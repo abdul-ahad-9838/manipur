@@ -2,6 +2,7 @@ import React from "react";
 import ClientShell from "@/components/ClientShell";
 import "@/styles/App.css";
 import Footer from "@/components/Footer";
+import SplashLoader from "@/components/SplashLoader";
 
 export const metadata = {
   metadataBase: new URL("https://miu.edu.in"),
@@ -101,6 +102,7 @@ export default function RootLayout({ children }) {
         </script>
       </head>
       <body>
+        <SplashLoader />
         <ClientShell>{children}</ClientShell>
         <Footer />
       </body>
