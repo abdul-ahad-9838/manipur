@@ -118,7 +118,7 @@ export default function StructuredData() {
         "@type": "ListItem",
         position: 4,
         name: "Schools",
-        item: "https://miu.edu.in/information-cell",
+        item: "https://miu.edu.in/",
       },
       {
         "@type": "ListItem",

@@ -99,10 +99,10 @@ const Footer = async () => {
                 </Link>
               </li>
               <li>
-                <Link href="/information-cell">Placement Cell</Link>
+                <Link href="#">Placement Cell</Link>
               </li>
               <li>
-                <Link href="/information-cell">Alumni Network</Link>
+                <Link href="#">Alumni Network</Link>
               </li>
             </ul>
           </div>

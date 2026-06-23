@@ -77,7 +77,7 @@ export default async function CourseDetail({ params }) {
         <p>Course not found.</p>
 
         <Link
-          href="/information-cell"
+          href="/"
           className="btn btn-orange"
           style={{
             marginTop: "20px",

@@ -40,7 +40,7 @@ const ALL_PAGES = {
   ],
   Admissions: [
     { name: "Admission Process", path: "/admissions/process" },
-    { name: "Programs", path: "/information-cell" },
+    // { name: "Programs", path: "/information-cell" },
     { name: "Fee Structure", path: "/admissions/fee-structure" },
     { name: "Rules for Admission", path: "/admissions/rules" },
   ],

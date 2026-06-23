@@ -624,7 +624,7 @@ export default function SchoolPage() {
       <div style={{ padding: "160px 20px", textAlign: "center" }}>
         <h2>School not found</h2>
         <Link
-          href="/information-cell"
+          href="/"
           className="btn btn-orange"
           style={{ marginTop: "20px", display: "inline-block" }}
         >
