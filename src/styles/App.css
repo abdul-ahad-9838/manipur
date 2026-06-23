@@ -176,68 +176,6 @@ h6 {
   color: var(--lpu-white);
 }
 
-/* Badges, labels, buttons — allow uppercase */
-/* .btn,
-button,
-.section-badge,
-[class*="badge"],
-[class*="label"]:not([class*="card-label"]) {
-  letter-spacing: 0.5px !important;
-  word-spacing: normal !important;
-  color: #aaa;
-} */
-
-/* ========================================
-   CARD CONTENT
-   Merged: TEXT ALIGNMENT block + CARD CONTENT block
-   ======================================== */
-
-/* [class*="card"] h3,
-[class*="card"] h4,
-[class*="card-title"],
-[class*="card-name"],
-[class*="program-title"],
-[class*="job-title"] {
-  text-transform: none !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  line-height: 1.4 !important;
-} */
-
-/* ========================================
-   HERO SECTIONS
-   ======================================== */
-
-/* [class*="hero"] h1,
-[class*="hero"] h2 {
-  text-align: center;
-}
-
-[class*="hero"] p {
-  text-align: justify !important;
-} */
-
-/* Shared page hero banner */
-
-/* .page-hero-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.65);
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-}
-.page-hero-breadcrumb a {
-  color: rgba(255, 255, 255, 0.65);
-}
-.page-hero-breadcrumb a:hover {
-  color: white;
-}
-.page-hero-breadcrumb span {
-  color: rgba(255, 255, 255, 0.4);
-} */
-
 /* Simple hero */
 .simple-hero {
   background: linear-gradient(135deg, var(--lpu-black) 0%, #1a2a4a 100%);
@@ -303,8 +241,8 @@ button,
   justify-content: center;
   align-items: center;
 
-  animation: splashHide 0.3s ease forwards;
-  animation-delay: 1.5s;
+  animation: splashHide 1.3s ease forwards;
+  animation-delay: 1s;
 }
 
 .splash-content {

@@ -1,23 +1,6 @@
 import "@/styles/faq.css";
 
-async function getFaqs() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/faqs`, {
-      next: { revalidate: 300 },
-    });
-
-    if (!res.ok) return [];
-
-    return res.json();
-  } catch (error) {
-    console.error("FAQs fetch failed:", error);
-    return [];
-  }
-}
-
-const FAQ = async () => {
-  const faqs = await getFaqs();
-
+const FAQ = async ({ faqs }) => {
   if (!faqs) return null;
 
   const filteredFaqs = faqs?.filter((faq) => faq?.published);

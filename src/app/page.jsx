@@ -1,4 +1,3 @@
-import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
@@ -10,6 +9,7 @@ const CampusLife = dynamic(() => import("@/components/CampusLife"));
 const Placements = dynamic(() => import("@/components/Placements"));
 const Ecosystem = dynamic(() => import("@/components/Ecosystem"));
 const NewsSlider = dynamic(() => import("@/components/NewsSlider"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
 
 export const metadata = {
   title: "Manipur International University | MIU Imphal — UGC Recognised",
@@ -53,6 +53,7 @@ export default async function Home() {
     getData("/api/settings/placements"),
     getData("/api/settings/ecosystem"),
     getData("/api/blogs"),
+    getData("/api/faqs"),
   ]);
 
   const [
@@ -62,14 +63,13 @@ export default async function Home() {
     placementsData,
     ecosystemData,
     blogsData,
+    faqsData,
   ] = results.map((result) =>
     result.status === "fulfilled" ? result.value : null,
   );
 
   return (
     <main>
-      <StructuredData />
-
       <Hero data={heroData?.content} />
       <Spotlight data={spotlightData?.content} />
       <Stats />
@@ -77,7 +77,8 @@ export default async function Home() {
       <Placements data={placementsData?.content} />
       <Ecosystem data={ecosystemData?.content?.cards} />
       <NewsSlider blogs={blogsData} />
-      <FAQ />
+      <FAQ faqs={faqsData} />
+      <StructuredData />
     </main>
   );
 }

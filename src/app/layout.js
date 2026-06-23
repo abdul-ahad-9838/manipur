@@ -1,14 +1,31 @@
 import React from "react";
+import Script from "next/script";
 import ClientShell from "@/components/ClientShell";
-import "@/styles/App.css";
-import Footer from "@/components/Footer";
 import SplashLoader from "@/components/SplashLoader";
+import Footer from "@/components/Footer";
+
+import "@/styles/App.css";
+
+// ✅ Next.js fonts (CWV optimized)
+import { Roboto, Oswald } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "900"],
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-oswald",
+});
 
 export const metadata = {
   metadataBase: new URL("https://miu.edu.in"),
   title: {
     default: "Manipur International University | Excellence in Education",
-    // template: "%s | Manipur International University",
   },
   description:
     "Manipur International University (MIU) - Premier UGC recognized university in Imphal, Manipur. Offering undergraduate, postgraduate & doctoral programs in Engineering, Management, Science, Commerce, Humanities & more.",
@@ -61,50 +78,54 @@ export const metadata = {
     google: "XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns",
   },
 };
-// export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Mobile optimization */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
+
         <meta
           name="google-site-verification"
           content="XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns"
         />
-        {/* Preconnect to Google Fonts for better performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+        {/* Optional performance boost */}
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
+          crossOrigin="true"
         />
-        {/* Load fonts as stylesheet — no preload trick needed in Next.js */}
-        {/* <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Oswald:wght@400;500;700&display=swap"
-        /> */}
-        {/* <!-- Google tag (gtag.js) --> */}
-        <script
-          async
+      </head>
+
+      <body className={`${roboto.className} ${oswald.variable}`}>
+        {/* Splash first (but should NOT block layout) */}
+        <SplashLoader />
+
+        {/* Main App */}
+        <ClientShell>{children}</ClientShell>
+
+        {/* Footer */}
+        <Footer />
+
+        {/* ✅ Proper Next.js Google Analytics */}
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-5XNC75T6EH"
-        ></script>
-        <script id="google-analytics" strategy="afterInteractive">
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-5XNC75T6EH');
           `}
-        </script>
-      </head>
-      <body>
-        <ClientShell>{children}</ClientShell>
-        <SplashLoader />
-        <Footer />
+        </Script>
       </body>
     </html>
   );

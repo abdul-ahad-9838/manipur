@@ -172,7 +172,7 @@ export default function Page() {
             </p>
             <p className="rs-hero-sub">
               The research projects at MIU are coordinated with the new
-              education policy (NEP ) 2020 which highlights multidisciplinary
+              education policy (NEP) 2020 which highlights multidisciplinary
               education, innovation, entrepreneurship, research innovation, and
               more.
             </p>
@@ -562,14 +562,14 @@ export default function Page() {
         <div className="container">
           <div className="rs-section-head">
             <span className="rs-section-eyebrow">Research Opportunities</span>
-            <h2 className="rs-section-title"> Collaborations </h2>
+            {/* <h2 className="rs-section-title"> Collaborations </h2>
             <p>
               Collaboration is important for research growth. MIU actively works
               with educational institutions, industries, research organizations
               and government agencies to boost their research activities. These
               partnerships create opportunities for joint projects, training
               programs, knowledge sharing and innovation.
-            </p>
+            </p> */}
           </div>
           <div className="rs-collab-grid">
             <div className="rs-collab-card">

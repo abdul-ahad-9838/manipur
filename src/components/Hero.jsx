@@ -1,21 +1,19 @@
 "use client";
 
+import "@/styles/Hero.css";
 import Image from "next/image";
 import { memo, useEffect, useMemo, useState } from "react";
-import "@/styles/Hero.css";
-
-const DEFAULT_IMAGES = ["/hero/01.webp", "/hero/02.webp", "/hero/03.webp"];
 
 const DEFAULT_CONTENT = {
   title: "Shaping The Leaders of Tomorrow ",
   subtitle:
     "An institution committed to intellectual rigor, industry integration, and transformative learning experiences that shape global professionals.",
   images: [
-    "/api/images/69e145133330d1ac59fe5b08",
-    "/api/images/69e1485a3330d1ac59fe5b0b",
-    "/api/images/69e14d2d3330d1ac59fe5b0c",
-    "/api/images/69e4c6a483b3aec7e41c1efc",
-    "/api/images/69e4c6ab83b3aec7e41c1efd",
+    "/api/images/6a34cb48446374637b2f4caa",
+    "/api/images/6a34cb4c446374637b2f4cab",
+    "/api/images/6a34cb4f446374637b2f4cac",
+    "/api/images/6a34cb52446374637b2f4cad",
+    "/api/images/6a34cb55446374637b2f4cae",
   ],
 };
 
@@ -23,13 +21,13 @@ function Hero({ data }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Derive data directly from props
-  const heroData = useMemo(() => data?.content ?? DEFAULT_CONTENT, [data]);
+  const heroData = useMemo(() => data ?? DEFAULT_CONTENT, [data]);
 
   const { title, subtitle, images } = heroData;
 
   // Memoize image list
   const displayImages = useMemo(
-    () => (images?.length ? images : DEFAULT_IMAGES),
+    () => (images?.length ? images : DEFAULT_CONTENT?.images),
     [images],
   );
 
