@@ -25,9 +25,9 @@ export const metadata = {
     googleBot: { index: true, follow: true },
   },
   icons: {
-    icon: [{ url: "/favicon-transparent.png", type: "image/png" }],
-    shortcut: "/favicon-transparent.png",
-    apple: "/favicon-transparent.png",
+    icon: [{ url: "/favicon-transparent.webp", type: "image/webp" }],
+    shortcut: "/favicon-transparent.webp",
+    apple: "/favicon-transparent.webp",
   },
   openGraph: {
     type: "website",
@@ -61,7 +61,7 @@ export const metadata = {
     google: "XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns",
   },
 };
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }) {
   return (
@@ -83,10 +83,10 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         {/* Load fonts as stylesheet — no preload trick needed in Next.js */}
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Oswald:wght@400;500;700&display=swap"
-        />
+        /> */}
         {/* <!-- Google tag (gtag.js) --> */}
         <script
           async
@@ -102,8 +102,8 @@ export default function RootLayout({ children }) {
         </script>
       </head>
       <body>
-        <SplashLoader />
         <ClientShell>{children}</ClientShell>
+        <SplashLoader />
         <Footer />
       </body>
     </html>

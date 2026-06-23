@@ -36,14 +36,14 @@ export default async function BlogPage() {
       </div>
 
       <div className="container blog-container">
-        {blogs.length === 0 && (
+        {blogs?.length === 0 && (
           <div className="blog-empty">
             <p>No blog posts yet. Check back soon.</p>
           </div>
         )}
 
         <div className="blog-grid">
-          {blogs.map((blog) => (
+          {blogs?.map((blog) => (
             <Link
               href={`/blogs/${blog.slug}`}
               key={blog._id}

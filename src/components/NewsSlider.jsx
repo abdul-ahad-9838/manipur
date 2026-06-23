@@ -11,7 +11,7 @@ export default function NewsSlider({ blogs = [] }) {
 
   const posts = Array.isArray(blogs) ? blogs : [];
 
-  const total = posts.length;
+  const total = posts?.length;
 
   const goNext = useCallback(() => {
     if (total <= 1) return;
@@ -133,7 +133,7 @@ export default function NewsSlider({ blogs = [] }) {
 
           {/* Side */}
           <div className="ns-side">
-            {side.map(({ post, i }) => (
+            {side?.map(({ post, i }) => (
               <div
                 key={post._id || post.slug}
                 className="ns-side-card"

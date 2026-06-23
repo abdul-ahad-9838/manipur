@@ -155,7 +155,7 @@ async function getIQACData() {
 
     return res.json();
   } catch (error) {
-    console.error(`IQAC fetch failed: ${slug}:`, error);
+    console.error(`IQAC fetch failed:`, error);
     return null;
   }
 }

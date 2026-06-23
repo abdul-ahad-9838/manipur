@@ -1,4 +1,4 @@
-const base = "http://localhost:3000";
+const base = process.env.NEXT_PUBLIC_BASE_URL;
 
 const staticRoutes = [
   { url: base, priority: 1.0, changeFrequency: "daily" },

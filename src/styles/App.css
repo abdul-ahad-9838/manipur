@@ -291,7 +291,6 @@ button,
 /* ========================================
    SPLASH SCREEN
    ======================================== */
-
 .splash-screen {
   position: fixed;
   inset: 0;
@@ -299,14 +298,13 @@ button,
   height: 100vh;
   background-color: var(--lpu-black);
   z-index: 99999;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.5s ease-out;
-}
-.splash-screen.fade-out {
-  opacity: 0;
-  pointer-events: none;
+
+  animation: splashHide 0.3s ease forwards;
+  animation-delay: 1.5s;
 }
 
 .splash-content {
@@ -316,32 +314,74 @@ button,
   gap: 30px;
 }
 
+/* wrapper for next/image */
 .splash-logo {
   width: 150px;
   height: 150px;
-  object-fit: contain;
   border-radius: 50%;
-  animation: singleRotate 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: rotateOnce 2s ease-in-out;
+}
+
+.splash-logo img {
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .splash-miu-blocks {
   display: flex;
   gap: 15px;
   opacity: 0;
-  animation: slideUpFade 0.6s ease-out 0.3s forwards;
+  animation: slideUpFade 0.6s ease-out 0.5s forwards;
 }
+
 .splash-miu-blocks span {
   width: 60px;
   height: 60px;
   background-color: var(--lpu-orange);
   color: var(--lpu-black);
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-family: var(--font-heading);
   font-size: 38px;
   font-weight: 900;
   border-radius: 4px;
+}
+
+@keyframes rotateOnce {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashHide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 /* ========================================

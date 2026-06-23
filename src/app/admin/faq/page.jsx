@@ -2,7 +2,7 @@
 
 import { Activity, useEffect, useState } from "react";
 import API from "@/lib/api";
-import "@/styles/faq.css";
+import "@/styles/FaqAdmin.css";
 
 const emptyForm = {
   question: "",

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { memo, useEffect, useState } from "react";
-import "@/styles/CampusLife.css";
 
 function CampusLifeClient({ tabs, content }) {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -3,7 +3,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import "@/styles/Placements.css";
+// import "@/styles/Placements.css";
 
 // Animate number counting up
 function useCountUp(target, duration = 1800, active = false) {
