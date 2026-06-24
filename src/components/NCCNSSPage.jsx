@@ -1,6 +1,5 @@
-import React from "react";
-import Link from "next/link";
 import "@/styles/NCCNSSPage.css";
+import Link from "next/link";
 
 export default function NCCNSSPage() {
   const nccActivities = [

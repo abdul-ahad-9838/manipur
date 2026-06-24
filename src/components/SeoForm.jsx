@@ -1,5 +1,3 @@
-import React from "react";
-
 const SeoForm = ({ form, setForm, labelStyle, inputStyle }) => {
   return (
     <>

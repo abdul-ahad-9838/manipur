@@ -1,7 +1,5 @@
-import Link from "next/link";
 import "@/styles/SimplePage.css";
-import AdvisoryPopup from "./AdvisoryPopup";
-import React from "react";
+import Link from "next/link";
 
 /**
  * Server-side data fetch

@@ -1,13 +1,12 @@
-import React from "react";
-import Script from "next/script";
 import ClientShell from "@/components/ClientShell";
-import SplashLoader from "@/components/SplashLoader";
 import Footer from "@/components/Footer";
+import SplashLoader from "@/components/SplashLoader";
+import Script from "next/script";
 
 import "@/styles/App.css";
 
 // ✅ Next.js fonts (CWV optimized)
-import { Roboto, Oswald } from "next/font/google";
+import { Oswald, Roboto } from "next/font/google";
 
 const roboto = Roboto({
   subsets: ["latin"],

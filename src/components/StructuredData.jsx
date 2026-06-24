@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function StructuredData() {
   const universitySchema = {
     "@context": "https://schema.org",

@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
 import "@/styles/GenericInfoPage.css";
+import Link from "next/link";
+import React from "react";
 
 export default function GenericInfoPage({
   badge = "STUDENT LIFE",

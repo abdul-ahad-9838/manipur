@@ -1,7 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import "@/styles/Footer.css";
 import navbarItems from "@/data/navbarItems";
+import "@/styles/Footer.css";
+import Link from "next/link";
 
 const DEFAULTS = {
   aboutText:

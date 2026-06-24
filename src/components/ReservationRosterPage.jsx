@@ -1,6 +1,5 @@
-import React from "react";
-import Link from "next/link";
 import "@/styles/ReservationRosterPage.css";
+import Link from "next/link";
 
 export default function ReservationRosterPage() {
   const reservationData = [

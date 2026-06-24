@@ -1,8 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import "@/styles/AcademicCouncil.css";
 import "@/styles/IQAC.css";
 import "@/styles/SimplePage.css";
+import Link from "next/link";
 
 const SECTIONS = [
   {

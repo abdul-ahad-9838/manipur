@@ -1,7 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import "@/styles/SimplePage.css";
 import "@/styles/About.css";
+import "@/styles/SimplePage.css";
+import Link from "next/link";
 
 export const metadata = {
   title: "About MIU | Manipur International University, Imphal",

@@ -231,6 +231,7 @@ const Navbar = () => {
                 width={200}
                 height={200}
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 768px) 50vw, 300px"
               />
             ) : (

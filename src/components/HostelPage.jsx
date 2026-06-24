@@ -1,6 +1,5 @@
-import React from "react";
-import Link from "next/link";
 import "@/styles/HostelPage.css";
+import Link from "next/link";
 
 export default function HostelPage() {
   const facilities = [

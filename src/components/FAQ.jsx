@@ -1,4 +1,4 @@
-import "@/styles/faq.css";
+// import "@/styles/faq.css";
 
 const FAQ = async ({ faqs }) => {
   if (!faqs) return null;

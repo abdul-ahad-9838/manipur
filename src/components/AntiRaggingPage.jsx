@@ -1,6 +1,5 @@
-import React from "react";
-import Link from "next/link";
 import "@/styles/AntiRaggingPage.css";
+import Link from "next/link";
 
 export default function AntiRaggingPage() {
   const helplines = [
