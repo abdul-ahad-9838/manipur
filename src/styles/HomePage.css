@@ -385,7 +385,7 @@
 .active-image {
   opacity: 0.8;
   z-index: 1;
-  animation: continuousZoom 20s linear infinite;
+  /* animation: continuousZoom 20s linear infinite; */
 }
 .hidden-image {
   opacity: 0;

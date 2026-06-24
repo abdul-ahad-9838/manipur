@@ -2,6 +2,7 @@
 
 "use client";
 
+import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 // import "@/styles/Placements.css";
 
@@ -182,10 +183,12 @@ export default function PlacementsClient({ data }) {
               ? [...companyLogos, ...companyLogos].map((company, i) => (
                   <div key={i} className="company-logo-box">
                     {company.logo ? (
-                      <img
+                      <Image
                         src={company.logo}
                         alt={company.name}
                         className="company-logo-img"
+                        width={100}
+                        height={100}
                       />
                     ) : (
                       <div className="text-logo">{company.name}</div>
