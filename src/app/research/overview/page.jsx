@@ -7,89 +7,97 @@ const researchAreas = [
     blurb:
       "In the fast paced digital era Manipur international university technology researchers are focused on building smarter, safer and more efficient digital systems. The key research sub domain include: ",
     subdomains: [
-      "Artificial Intelligence",
-      "Data Science & Big Data Analytics",
-      "Internet of Things (IoT)",
-      "Cloud Computing",
-      "Software Engineering",
-      "Human Computer Interaction",
-      "Blockchain Technologies",
-      "Robotics & Automation",
-      "Computer Vision",
-      "Natural Language Processing",
-      "Smart Cities & Digital Transformation",
-      "Edge Computing",
-      "Quantum Computing",
+      "Artificial intelligence",
+      "Data science & big data analytics",
+      "Software engineering",
+      "Transportation engineering",
+      "Earthquake engineering",
+      "Design engineering",
+      "Automotive engineering",
+      "Power electronics ",
+      "Control systems",
+      "Signal processing",
+      "Semiconductor technology",
+      "Human computer interactions",
+      "Blockchain technologies",
+      "Robotics and Automation",
+      "Computer vision",
+      "Quantum computing",
+      "Electrical vehicles",
+      "Thermal engineering",
     ],
   },
   {
-    code: "BIO",
-    name: "Biodiversity & Ecology",
+    code: "COM",
+    name: "Commerce and Management",
     blurb:
-      "Explore the diversity of living organisms and their interaction with the environment. The research will focus on understanding ecosystems, conserving natural resources, protecting endangered species, and addressing environmental challenges. The sub domains included in this are: ",
+      "Explore how business, organization and economics work and grow. MIU research in this area will focus on improving business performance, managing resources, understanding markets, supporting entrepreneurship and solving business challenges. The sub domains included in this area are: ",
     subdomains: [
-      "Biodiversity Conservation",
-      "Wildlife Ecology & Management",
-      "Forest Ecology",
-      "Environmental Science",
-      "Climate Change & Ecosystem Resilience",
-      "Sustainable Natural Resource Management",
-      "Plant Taxonomy & Systematics",
-      "Microbial Ecology",
-      "Freshwater & Aquatic Ecosystems",
-      "Landscape Ecology & GIS Applications",
-    ],
-  },
-  {
-    code: "BUS",
-    name: "Business & Economics",
-    blurb:
-      "The research in this domain will be focused on entrepreneurship, management, policy analysis, innovation and strategy that enhances regional and global economic prosperity. The sub domains covered under this are:",
-    subdomains: [
-      "Entrepreneurship & Innovation Management",
-      "Regional Economic Practices",
-      "Sustainable Business Practices",
-      "Development Economics",
+      "Accounting and Finance",
+      "Marketing",
       "Human Resource Management",
-      "Social Entrepreneurship",
-      "Rural Development & Inclusive Growth",
-      "International Business & Trade",
+      "Entrepreneurship and Startups",
+      "Business Analytics",
+      "International Business",
+      "Banking and Insurance",
+      "Supply Chain Management",
+      "Business Ethics and Governance",
+      "Sustainable Business Management",
     ],
   },
   {
     code: "SCI",
-    name: "Applied Science",
+    name: "Science",
     blurb:
-      "Applies scientific principles to solve practice problems and create impactful technologies. Research will include chemistry, physics, material science, and related fields, contributing for advancement in technologies and industrial innovation. Below are the subdomains of this area:",
+      "Explore the natural world and use scientific knowledge to solve problems and improve lives. The research will focus on understanding scientific concepts, developing new technologies, improving health and industry and more. There are various sub domains included in this area: ",
     subdomains: [
-      "Green Chemistry",
-      "Environmental Chemistry",
-      "Computational Physics",
-      "Biophysics",
-      "Analytical Chemistry",
-      "Semiconductor Research",
-      "Sustainable Industrial Processes",
-      "Renewable Energy Technologies",
+      "Physics",
+      "Chemistry",
+      "Mathematics",
+      "Biological Sciences",
+      "Environmental Sciences",
+      "Earth and Atmospheric Sciences",
+      "Data Science and Artificial Intelligence",
+      "Biotechnology",
+      "Materials Science",
+      "Applied and Interdisciplinary Sciences",
     ],
   },
-];
-
-const rdcFunctions = [
   {
-    title: "Research Proposal Support",
-    desc: "Helps researchers prepare and submit proposals for funding opportunities.",
+    code: "ART",
+    name: "Arts and Humanities",
+    blurb:
+      "Explore human culture, history, language,  creativity, and society. The research will focus on understanding people and communities, preserving cultural heritage, improving communication and addressing social issues. Sub domains of the area are: ",
+    subdomains: [
+      "Literature and Language Studies",
+      "History",
+      "Philosophy and Ethics",
+      "Fine Arts",
+      "Performing Arts",
+      "Media and Cultural Studies",
+      "Linguistics",
+      "Religious Studies",
+      "Sociology",
+      "Gender and Diversity Studies",
+    ],
   },
   {
-    title: "Project Monitoring",
-    desc: "Monitors ongoing projects and ensures research activities are completed effectively.",
-  },
-  {
-    title: "Collaboration Facilities",
-    desc: "Establishes partnerships with industries, universities and research organisations.",
-  },
-  {
-    title: "Funding Guidance",
-    desc: "Provides students with research grants and funding opportunities from various agencies.",
+    code: "OTH",
+    name: "Other Areas",
+    blurb:
+      "Explore other skill based, professional, and interdisciplinary fields that support career developments, public services, communication, safety, and information management. The research will focus on practical knowledge, professional training, community engagements, workplace safety, information services, and media communication. The sub domain include are: ",
+    subdomains: [
+      "Vocational Education and Skill Development",
+      "Entrepreneurship and Small Business ",
+      "Fire Safety and Risk ",
+      "Disaster Management and Emergency Response",
+      "Occupational Health and Industrial Safety",
+      "Library and Information science",
+      "Knowledge Organization and Digital Libraries",
+      "Information and Communication Technologies in Libraries",
+      "Journalism and News Reporting",
+      "Mass Communication and Media Studies",
+    ],
   },
 ];
 
@@ -99,6 +107,13 @@ const missionPoints = [
   "Research databases",
   "Digital learning platforms",
   "Online study materials",
+];
+
+const rdcFunctions = [
+  "It promotes quality research and innovation. ",
+  "It encourages interdisciplinary research. ",
+  "It supports funded projects. ",
+  "It develops industry academia partnerships. ",
 ];
 
 const keyFunctionOfRDC = [
@@ -183,20 +198,20 @@ export default function Page() {
               competition while also focusing on solving local problems.{" "}
             </p>
           </div>
-          {/* <div className="rs-hero-meta">
+          <div className="rs-hero-meta">
             <div>
               <span className="rs-hero-num">2018</span>
               <span className="rs-hero-label">Established</span>
             </div>
             <div>
-              <span className="rs-hero-num">4</span>
+              <span className="rs-hero-num">14+</span>
               <span className="rs-hero-label">Research Domains</span>
             </div>
             <div>
               <span className="rs-hero-num">NEP</span>
               <span className="rs-hero-label">2020 Aligned</span>
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
 
@@ -312,12 +327,7 @@ export default function Page() {
               className="rs-vm-list rs-vm-list--light"
               style={{ color: "#000 !important" }}
             >
-              {[
-                "It promotes quality research and innovation.",
-                "It encourages interdisciplinary research. ",
-                "It supports funded projects.",
-                "It develops industry academia partnerships.",
-              ].map((point) => (
+              {rdcFunctions.map((point) => (
                 <li key={point}>{point}</li>
               ))}
             </ul>
@@ -481,7 +491,7 @@ export default function Page() {
       </section>
 
       {/* ───────── Publication and Research Output ✅ ───────── */}
-      <section className="rs-section ">
+      <section className="rs-section ✅ ">
         <div className="container">
           <div className="rs-section-head">
             <span className="rs-section-eyebrow">
@@ -562,14 +572,6 @@ export default function Page() {
         <div className="container">
           <div className="rs-section-head">
             <span className="rs-section-eyebrow">Research Opportunities</span>
-            {/* <h2 className="rs-section-title"> Collaborations </h2>
-            <p>
-              Collaboration is important for research growth. MIU actively works
-              with educational institutions, industries, research organizations
-              and government agencies to boost their research activities. These
-              partnerships create opportunities for joint projects, training
-              programs, knowledge sharing and innovation.
-            </p> */}
           </div>
           <div className="rs-collab-grid">
             <div className="rs-collab-card">
