@@ -7,6 +7,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+const AccordionArrow = ({ open }) => (
+  <span className={`mobile-accordion-arrow ${open ? "open" : ""}`}>+</span>
+);
+
 const MobileAccordion = ({ label, items = [], onClose }) => {
   const [open, setOpen] = useState(false);
 
@@ -24,9 +28,7 @@ const MobileAccordion = ({ label, items = [], onClose }) => {
           }}
         >
           <span className="mobile-accordion-label">{label}</span>
-          <span className={`mobile-accordion-arrow ${open ? "open" : ""}`}>
-            +
-          </span>
+          <AccordionArrow open={open} />
         </div>
       </div>
 
@@ -68,12 +70,7 @@ const MobileSubAccordion = ({ label, subItems = [], onClose }) => {
         }}
       >
         <span className="mobile-accordion-sub-label">{label}</span>
-        <span
-          className={`mobile-accordion-arrow`}
-          style={{ color: "var(--lpu-orange )" }}
-        >
-          +
-        </span>
+        <AccordionArrow open={open} />
       </div>
 
       {open && (
@@ -122,6 +119,49 @@ const renderMenuItem = (item) => {
   );
 };
 
+const TopLinks = () => (
+  <ul className="top-links">
+    <li>
+      <Link href="/blogs">BLOGS</Link>
+    </li>
+    <li>
+      <Link href="/about/faqs">FAQs</Link>
+    </li>
+    <li className="highlight-link">
+      <Link href="/miunest">MIUNEST</Link>
+    </li>
+    <li className="highlight-link abc-link">
+      <a
+        href="https://accounts.digilocker.gov.in/v3/f336decca8027472f2eb10755499b13597ca6370b41299030e250fa3fd4d60dc--en"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ABC ID
+      </a>
+    </li>
+    <li>
+      <Link href="/about/public-self-disclosure">PUBLIC SELF DISCLOSURE</Link>
+    </li>
+    <li className="login-dropdown-wrapper">
+      <button className="login-top-btn login-dropdown-trigger">LOGIN ▾</button>
+      <ul className="login-dropdown-menu">
+        <li>
+          <a
+            href="https://student.miu.edu.in"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🎓 Student Login
+          </a>
+        </li>
+        <li>
+          <Link href="/admin/login">👨‍💼 Staff Login</Link>
+        </li>
+      </ul>
+    </li>
+  </ul>
+);
+
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -130,27 +170,15 @@ const Navbar = () => {
   const isLandingPage = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 35) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
+    const handleScroll = () => setIsSticky(window.scrollY > 35);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock scroll when menu is open
+  // Lock scroll when mobile menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
   }, [isMenuOpen]);
-
-  // Filter menu items based on active status
 
   return (
     <header
@@ -158,52 +186,8 @@ const Navbar = () => {
     >
       <div className="top-strip">
         <div className="strip-flex edge-to-edge">
-          <div className="strip-left"></div>
           <div className="strip-right">
-            <ul className="top-links">
-              <li>
-                <Link href="/blogs">BLOGS</Link>
-              </li>
-              <li>
-                <Link href="/about/faqs">FAQs</Link>
-              </li>
-              <li className="highlight-link">
-                <Link href="/miunest">MIUNEST</Link>
-              </li>
-              <li className="highlight-link abc-link">
-                <a
-                  href="https://accounts.digilocker.gov.in/v3/f336decca8027472f2eb10755499b13597ca6370b41299030e250fa3fd4d60dc--en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  ABC ID
-                </a>
-              </li>
-              <li>
-                <Link href="/about/public-self-disclosure">
-                  PUBLIC SELF DISCLOSURE
-                </Link>
-              </li>
-              <li className="login-dropdown-wrapper">
-                <button className="login-top-btn login-dropdown-trigger">
-                  LOGIN ▾
-                </button>
-                <ul className="login-dropdown-menu">
-                  <li>
-                    <a
-                      href="https://student.miu.edu.in"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      🎓 Student Login
-                    </a>
-                  </li>
-                  <li>
-                    <Link href="/admin/login">👨‍💼 Staff Login</Link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            <TopLinks />
             <div className="top-logo-boxes">
               <span>M</span>
               <span>I</span>
@@ -214,14 +198,15 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`main-navbar ${isSticky ? "sticky-nav" : ""} ${!isLandingPage && !isSticky ? "other-page-nav" : ""}`}
+        className={`main-navbar ${isSticky ? "sticky-nav" : ""} ${
+          !isLandingPage && !isSticky ? "other-page-nav" : ""
+        }`}
       >
-        <div className="nav-flex edge-to-edge" style={{ paddingRight: "20px" }}>
+        <div className="nav-flex edge-to-edge">
           <Link
             href="/"
             rel="preload"
             className={`absolute-logo-wrapper ${isSticky ? "logo-sticky" : ""}`}
-            style={{ textDecoration: "none", color: "inherit", flexShrink: 0 }}
           >
             {!isSticky ? (
               <Image
@@ -232,11 +217,9 @@ const Navbar = () => {
                 height={200}
                 priority
                 fetchPriority="high"
-                sizes="(max-width: 768px) 50vw, 300px"
               />
             ) : (
               <>
-                {/* <img src="/emblem.webp" alt="MIU Crest" className="abs-emblem" /> */}
                 <Image
                   src="/emblem.webp"
                   alt="MIU Crest"
@@ -271,9 +254,9 @@ const Navbar = () => {
                       </button>
 
                       <ul className="dropdown-menu">
-                        {item.subItems.map((subItem) => {
-                          return renderMenuItem(subItem);
-                        })}
+                        {item.subItems.map((subItem) =>
+                          renderMenuItem(subItem),
+                        )}
                       </ul>
                     </>
                   ) : (

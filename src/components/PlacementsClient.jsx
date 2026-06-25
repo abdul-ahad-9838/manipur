@@ -13,7 +13,7 @@ function useCountUp(target, duration = 1800, active = false) {
   useEffect(() => {
     if (!active) return;
 
-    const num = parseFloat(target.replace(/[^0-9.]/g, ""));
+    const num = parseFloat(target?.replace(/[^0-9.]/g, ""));
     if (!num) return;
 
     let start = 0;
@@ -187,8 +187,7 @@ export default function PlacementsClient({ data }) {
                         src={company.logo}
                         alt={company.name}
                         className="company-logo-img"
-                        width={100}
-                        height={100}
+                        fill
                       />
                     ) : (
                       <div className="text-logo">{company.name}</div>

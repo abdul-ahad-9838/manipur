@@ -1,11 +1,16 @@
 "use client";
 
-import "@/styles/Hero.css";
 import Image from "next/image";
-import { memo, useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+import { memo, useMemo } from "react";
+import { useIsDesktop } from "@/lib/useIsDesktop";
+
+const DesktopHeroSlider = dynamic(() => import("./DesktopHeroSlider"), {
+  ssr: false,
+});
 
 const DEFAULT_CONTENT = {
-  title: "Shaping The Leaders of Tomorrow ",
+  title: "Shaping The Leaders of Tomorrow",
   subtitle:
     "An institution committed to intellectual rigor, industry integration, and transformative learning experiences that shape global professionals.",
   images: [
@@ -18,62 +23,31 @@ const DEFAULT_CONTENT = {
 };
 
 function Hero({ data }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Derive data directly from props
   const heroData = useMemo(() => data ?? DEFAULT_CONTENT, [data]);
 
   const { title, subtitle, images } = heroData;
 
-  // Memoize image list
-  const displayImages = useMemo(
-    () => (images?.length ? images : DEFAULT_CONTENT?.images),
-    [images],
-  );
+  const heroImages = images?.length ? images : DEFAULT_CONTENT.images;
 
-  const imageCount = displayImages.length;
-
-  // Auto slide
-  useEffect(() => {
-    if (imageCount <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % imageCount);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [imageCount]);
-
-  // Preload next image
-  useEffect(() => {
-    if (imageCount <= 1) return;
-
-    const nextIndex = (currentImageIndex + 1) % imageCount;
-    const nextImage = displayImages[nextIndex];
-
-    const img = new window.Image();
-    img.src = nextImage;
-  }, [currentImageIndex, displayImages, imageCount]);
+  const isDesktop = useIsDesktop(768);
 
   return (
     <section className="lpu-hero-container">
-      {/* Background Images */}
-      <div className="hero-image-wrapper">
-        {displayImages.map((img, index) => (
+      {isDesktop && <DesktopHeroSlider images={heroImages} title={title} />}
+
+      {isDesktop === false && (
+        <div className="hero-image-wrapper mobile-only">
           <Image
-            key={`${img}-${index}`}
-            src={img}
+            src={heroImages[0]}
             alt={title}
             fill
-            priority={index === 0}
-            quality={75}
-            sizes="80vw"
-            className={`hero-image ${
-              index === currentImageIndex ? "active" : ""
-            }`}
+            priority
+            quality={65}
+            sizes="100vw"
+            className="hero-image active"
           />
-        ))}
-      </div>
+        </div>
+      )}
 
       <div className="lpu-hero-overlay" />
 

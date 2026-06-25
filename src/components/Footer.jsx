@@ -1,5 +1,6 @@
 import navbarItems from "@/data/navbarItems";
 import "@/styles/Footer.css";
+import Image from "next/image";
 import Link from "next/link";
 
 const DEFAULTS = {
@@ -51,9 +52,11 @@ const Footer = async () => {
         <div className="footer-top">
           <div className="footer-col col-about">
             <Link href="/" style={{ textDecoration: "none" }}>
-              <img
+              <Image
                 src="/images/MIU_Logo.webp"
                 alt="Manipur International University"
+                height={100}
+                width={100}
                 style={{
                   height: "80px",
                   width: "auto",

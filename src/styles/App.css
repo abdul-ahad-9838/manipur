@@ -153,6 +153,7 @@ h6 {
   letter-spacing: 0.5px !important;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
   transition:
     background-color 0.3s,
     color 0.3s;
@@ -241,8 +242,8 @@ h6 {
   justify-content: center;
   align-items: center;
 
-  animation: splashHide 1.3s ease forwards;
-  animation-delay: 1s;
+  animation: splashHide 0.3s ease forwards;
+  animation-delay: 1.5s;
 }
 
 .splash-content {
@@ -513,5 +514,8 @@ h6 {
 @media (max-width: 768px) {
   .layout-margin-fix {
     margin-top: 62px;
+  }
+  .splash-screen {
+    display: none;
   }
 }
