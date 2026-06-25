@@ -24,6 +24,8 @@ export default function Page() {
               icon: "📄",
               title: "University Prospectus 2026–27",
               desc: "Complete guide to all programs, admissions, and campus life at MIU.",
+              fileUrl:
+                "/brochure/Manipur International University Prospectus 2026–27.pdf",
             },
             {
               icon: "📊",
