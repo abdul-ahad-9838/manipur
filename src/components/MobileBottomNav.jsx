@@ -152,6 +152,7 @@ const MobileBottomNav = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="nav-item"
+          aria-label="Student Portal"
         >
           <svg
             // xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +174,7 @@ const MobileBottomNav = () => {
           </svg>
         </a>
 
-        <a href="tel:+919319727766" className="nav-item">
+        <a href="tel:+919319727766" className="nav-item" aria-label="Call Us">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -194,6 +195,7 @@ const MobileBottomNav = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="nav-item"
+          aria-label="WhatsApp"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

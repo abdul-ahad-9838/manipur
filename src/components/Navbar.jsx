@@ -150,12 +150,15 @@ const TopLinks = () => (
             href="https://student.miu.edu.in"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Student Portal"
           >
             🎓 Student Login
           </a>
         </li>
         <li>
-          <Link href="/admin/login">👨‍💼 Staff Login</Link>
+          <Link href="/admin/login" aria-label="Admin Portal">
+            👨‍💼 Staff Login
+          </Link>
         </li>
       </ul>
     </li>

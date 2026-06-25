@@ -62,7 +62,7 @@ function Hero({ data }) {
               href="https://admission.miu.edu.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-orange"
+              aria-label="Admissions 2026"
             >
               Admissions 2026
             </a>

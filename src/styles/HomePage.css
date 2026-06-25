@@ -131,6 +131,25 @@
   gap: 15px;
   margin-bottom: 40px;
 }
+/* now i want to add glass effect */
+.hero-buttons > a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+.hero-buttons > a:hover {
+  background-color: var(--lpu-orange);
+  border-color: var(--lpu-orange);
+  color: #fff;
+}
 
 /* ───────── STATS SECTION (orange band) ───────── */
 .stats-section {

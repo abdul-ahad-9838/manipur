@@ -80,7 +80,7 @@ const Footer = async () => {
           </div>
 
           <div className="footer-col">
-            <h4 className="footer-heading">Quick Links</h4>
+            <h3 className="footer-heading">Quick Links</h3>
             <ul className="footer-links">
               <li>
                 <Link href="/about">About MIU</Link>
@@ -110,7 +110,7 @@ const Footer = async () => {
           </div>
 
           <div className="footer-col">
-            <h4 className="footer-heading">Schools &amp; Institutes</h4>
+            <h3 className="footer-heading">Schools &amp; Institutes</h3>
             <ul className="footer-links">
               {schools.map((school) => (
                 <li key={school.href}>
@@ -121,7 +121,7 @@ const Footer = async () => {
           </div>
 
           <div className="footer-col col-contact">
-            <h4 className="footer-heading">Contact Us</h4>
+            <h3 className="footer-heading">Contact Us</h3>
             <ul className="footer-contact-info">
               <li>
                 <span>📍</span> {d.address}
