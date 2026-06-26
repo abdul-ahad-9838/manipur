@@ -101,7 +101,7 @@
   font-weight: 900;
   color: var(--lpu-black) !important;
   margin-bottom: 18px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -211,7 +211,7 @@
   font-weight: 900;
   color: var(--lpu-black);
   margin-bottom: 12px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -243,7 +243,7 @@
   font-size: 1.8rem;
   font-weight: 900;
   margin-bottom: 15px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 

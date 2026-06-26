@@ -229,7 +229,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   font-size: 38px;
   font-weight: 900;
   border-radius: 4px;

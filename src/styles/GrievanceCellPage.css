@@ -43,7 +43,7 @@
   font-weight: 900;
   color: var(--lpu-black);
   margin-bottom: 15px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 

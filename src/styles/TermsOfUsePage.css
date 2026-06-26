@@ -139,7 +139,7 @@
   justify-content: center;
   font-size: 1.8rem;
   font-weight: 900;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   box-shadow: 0 8px 25px rgba(232, 185, 25, 0.3);
 }
 
@@ -152,7 +152,7 @@
   font-weight: 900;
   color: var(--lpu-black) !important;
   margin-bottom: 20px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -170,7 +170,7 @@
   font-weight: 800;
   color: var(--lpu-black);
   margin-bottom: 10px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -221,7 +221,7 @@
   font-weight: 900;
   color: var(--lpu-black) !important;
   margin-bottom: 15px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -254,7 +254,7 @@
   font-size: 1.8rem;
   font-weight: 900;
   margin-bottom: 15px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -358,7 +358,7 @@
   font-weight: 900;
   color: var(--lpu-black);
   margin-bottom: 8px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 

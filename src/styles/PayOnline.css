@@ -11,7 +11,7 @@
 .pay-card {
   background: white;
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 520px;
   overflow: hidden;
@@ -37,11 +37,11 @@
   color: white;
   font-size: 1.6rem;
   margin: 0 0 4px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 .pay-subtitle {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.88rem;
   font-family: var(--font-body);
   font-weight: 400;
@@ -67,7 +67,7 @@
   font-size: 0.88rem;
   font-weight: 700;
   color: #333;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 .pay-req {
@@ -126,9 +126,11 @@
   padding: 16px;
   font-size: 1.05rem;
   font-weight: 700;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+  transition:
+    background 0.2s,
+    transform 0.1s;
   margin-top: 4px;
 }
 
@@ -183,11 +185,15 @@
 .pay-result-title {
   font-size: 1.8rem;
   margin-bottom: 12px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
-.pay-result-title.success { color: #2e7d32; }
-.pay-result-title.failed  { color: #c62828; }
+.pay-result-title.success {
+  color: #2e7d32;
+}
+.pay-result-title.failed {
+  color: #c62828;
+}
 
 .pay-result-msg {
   color: #555;
@@ -220,9 +226,16 @@
   gap: 12px;
 }
 
-.pay-detail-row:last-child { border-bottom: none; }
-.pay-detail-row span { color: #888; }
-.pay-detail-row strong { color: #333; text-align: right; }
+.pay-detail-row:last-child {
+  border-bottom: none;
+}
+.pay-detail-row span {
+  color: #888;
+}
+.pay-detail-row strong {
+  color: #333;
+  text-align: right;
+}
 
 .pay-result-note {
   font-size: 0.85rem;
@@ -234,7 +247,9 @@
   line-height: 1.6;
 }
 
-.pay-result-note a { color: var(--lpu-orange); }
+.pay-result-note a {
+  color: var(--lpu-orange);
+}
 
 .pay-error-box {
   background: #ffebee;
@@ -256,12 +271,14 @@
   padding: 14px 32px;
   border-radius: 10px;
   font-weight: 700;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-decoration: none;
   transition: background 0.2s;
 }
 
-.pay-result-btn:hover { background: #d4820a; }
+.pay-result-btn:hover {
+  background: #d4820a;
+}
 
 .pay-result-btn-outline {
   background: transparent;
@@ -275,6 +292,10 @@
 
 @media (max-width: 560px) {
   .pay-form,
-  .pay-result-card { padding: 24px 20px; }
-  .pay-header { padding: 24px 20px; }
+  .pay-result-card {
+    padding: 24px 20px;
+  }
+  .pay-header {
+    padding: 24px 20px;
+  }
 }

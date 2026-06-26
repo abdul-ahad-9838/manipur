@@ -8,10 +8,10 @@ import { EnquiryProvider } from "@/context/EnquiryContext";
 
 // ── Lazy client-only components ──────────────────────────────────────────────
 // Each gets a no-op fallback so the shell never blocks on these chunks.
-const EnquiryPopup = dynamic(() => import("@/components/EnquiryPopup"), {
-  ssr: false,
-  loading: () => null,
-});
+// const EnquiryPopup = dynamic(() => import("@/components/EnquiryPopup"), {
+//   ssr: false,
+//   loading: () => null,
+// });
 
 const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton"), {
   ssr: false,
@@ -44,7 +44,7 @@ export default function ClientShell({ children }) {
           {/* Deferred, non-critical UI — rendered after main content */}
           <WhatsAppButton />
           <StudentLoginButton />
-          <EnquiryPopup />
+          {/* <EnquiryPopup /> */}
           <MobileBottomNav />
         </div>
       </EnquiryProvider>

@@ -225,7 +225,7 @@
 .aff-card-short {
   font-size: 1.8rem;
   font-weight: 900;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 

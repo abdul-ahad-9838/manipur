@@ -111,7 +111,7 @@
 
 .acc-logo-badge span {
   color: white;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   font-size: 1.6rem;
   font-weight: 900;
   letter-spacing: 1px;
@@ -137,7 +137,7 @@
 
 .acc-card-short {
   display: inline-block;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   font-size: 1.5rem;
   font-weight: 900;
   color: var(--acc-color, var(--lpu-black));
@@ -150,7 +150,7 @@
   font-weight: 700;
   color: var(--lpu-black);
   margin-bottom: 12px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: none !important;
   line-height: 1.5;
   min-height: 45px;

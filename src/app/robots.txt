@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /student-login/
+
+Sitemap: https://miu.edu.in/sitemap.xml

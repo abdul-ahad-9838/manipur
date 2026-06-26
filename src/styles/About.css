@@ -200,7 +200,7 @@
 }
 
 .about-stat-num {
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   font-size: 2.8rem;
   color: var(--lpu-orange);
   font-weight: 900;
@@ -458,7 +458,7 @@
   font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--lpu-black);
   margin-bottom: 28px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   border-left: 4px solid var(--lpu-orange);
   padding-left: 16px;
 }
@@ -478,7 +478,7 @@
   font-weight: 700;
   color: var(--lpu-orange);
   margin-top: 28px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 /* ── Recognitions Block ── */
@@ -500,7 +500,7 @@
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   color: var(--lpu-black);
   margin-bottom: 10px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 .about-rec-intro {

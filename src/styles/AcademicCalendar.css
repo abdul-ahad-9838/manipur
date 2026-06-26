@@ -15,15 +15,28 @@
 .ac-hero-bg {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(232, 185, 25, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(232, 185, 25, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 50%
+    );
   animation: pulse 8s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .ac-breadcrumb {
@@ -109,8 +122,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .ac-loading p {
@@ -140,7 +157,7 @@
   border-radius: 50px;
   font-size: 1.8rem;
   font-weight: 900;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   box-shadow: 0 8px 30px rgba(232, 185, 25, 0.3);
   margin-bottom: 20px;
 }
@@ -202,7 +219,7 @@
   font-weight: 900;
   color: var(--lpu-black);
   margin-bottom: 4px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -249,7 +266,7 @@
   font-weight: 700;
   color: var(--lpu-black);
   margin-bottom: 4px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -325,7 +342,7 @@
   font-size: 1.3rem;
   font-weight: 900;
   color: var(--lpu-black);
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -388,7 +405,7 @@
   font-weight: 900;
   color: #856404;
   margin-bottom: 8px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 

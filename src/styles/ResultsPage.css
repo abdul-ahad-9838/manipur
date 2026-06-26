@@ -1,5 +1,5 @@
 /* Import SimplePage styles */
-@import './SimplePage.css';
+@import "./SimplePage.css";
 
 /* Results button list */
 .results-button-list {
@@ -19,7 +19,7 @@
   border-radius: 10px;
   text-decoration: none;
   color: #1a3a6b;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   font-size: 1.1rem;
   font-weight: 700;
   transition: all 0.3s ease;

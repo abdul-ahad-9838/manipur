@@ -5,21 +5,21 @@ import Script from "next/script";
 
 import "@/styles/App.css";
 
-// ✅ Next.js fonts (CWV optimized)
-import { Oswald, Roboto } from "next/font/google";
+// // ✅ Next.js fonts (CWV optimized)
+// import { Oswald, Roboto } from "next/font/google";
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
-  display: "swap",
-});
+// const roboto = Roboto({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "700", "900"],
+//   display: "swap",
+// });
 
-const oswald = Oswald({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-  variable: "--font-oswald",
-});
+// const oswald = Oswald({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "700"],
+//   display: "swap",
+//   variable: "--font-oswald",
+// });
 
 export const metadata = {
   metadataBase: new URL("https://miu.edu.in"),
@@ -102,8 +102,8 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <body className={`${roboto.className} ${oswald.variable}`}>
-        {/* Splash first (but should NOT block layout) */}
+      {/* <body className={`${roboto.className} ${oswald.variable}`}> */}
+      <body>
         <SplashLoader />
 
         {/* Main App */}

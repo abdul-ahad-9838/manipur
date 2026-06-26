@@ -5,7 +5,6 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  font-family: var(--font-body);
 }
 
 .other-page-header {
@@ -112,7 +111,6 @@ a {
   gap: 4px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
@@ -137,7 +135,6 @@ a {
   width: 40px;
   height: 40px;
   border: 1.5px solid rgba(255, 255, 255, 0.5);
-  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 20px;
   margin-left: -1.5px;
@@ -145,42 +142,11 @@ a {
 }
 
 /* ===== Admissions strip ===== */
-.admissions-strip {
-  background-color: var(--lpu-black);
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 0;
-  text-transform: uppercase;
-}
-.ad-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.ad-left span,
-.ad-right span {
-  color: #ccc;
-  margin-right: 15px;
-}
-.ad-left a {
-  color: var(--lpu-orange);
-  margin-right: 15px;
-  font-weight: 900;
-}
-.ad-left a:hover {
-  text-decoration: underline;
-}
+
 .apply-blink-btn {
   background-color: var(--lpu-orange);
   color: white !important;
   padding: 5px 15px;
-  animation: blinker 2s linear infinite;
-}
-@keyframes blinker {
-  50% {
-    opacity: 0.7;
-  }
 }
 
 /* ===== Main nav ===== */
@@ -237,13 +203,6 @@ a {
   margin-left: auto;
 }
 
-.nav-logo {
-  background-color: transparent;
-  padding: 10px 0;
-  min-width: 250px;
-  transition: all 0.3s ease;
-}
-
 /* Overlapping left logo */
 .absolute-logo-wrapper {
   position: absolute;
@@ -282,7 +241,6 @@ a {
   height: 120px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
 }
 .other-page-header .landing-logo {
@@ -302,7 +260,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 900;
 }
@@ -327,7 +284,6 @@ a {
 }
 
 .big-word {
-  font-family: var(--font-heading);
   font-size: 21px;
   font-weight: 500;
   line-height: 1;
@@ -461,7 +417,6 @@ a {
   text-decoration: none !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  font-family: var(--font-body) !important;
   white-space: nowrap !important;
   transition: background 0.2s ease !important;
   opacity: 1 !important;
@@ -617,7 +572,6 @@ a {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: var(--font-body);
   white-space: nowrap;
 }
 .nav-submenu-btn:hover {
@@ -666,7 +620,6 @@ a {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: var(--font-body);
   white-space: nowrap;
   width: 100%;
   text-align: left;
@@ -692,7 +645,6 @@ a {
   gap: 15px;
 }
 
-.search-btn,
 .hamburger-btn {
   background: transparent;
   border: none;
@@ -703,34 +655,6 @@ a {
 }
 .hamburger-btn {
   display: none;
-}
-
-/* Direct nav link (no dropdown) */
-.nav-link {
-  color: white;
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  padding: 8px 4px;
-  display: block;
-  transition: color 0.2s;
-}
-.nav-link:hover {
-  color: var(--lpu-orange);
-}
-
-.mobile-direct-link {
-  display: block;
-  padding-bottom: 15px;
-  color: white;
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-}
-.mobile-direct-link:hover {
-  color: var(--lpu-orange);
 }
 
 /* ===== Mobile menu overlay ===== */
@@ -816,7 +740,6 @@ a {
   color: white;
   font-size: 1.4rem;
   font-weight: 800;
-  font-family: var(--font-heading);
 }
 .mobile-accordion-sub-label {
   color: #bbb;
@@ -861,9 +784,7 @@ a {
 
 /* ===== Responsive ===== */
 @media (max-width: 992px) {
-  .desktop-nav,
-  .strip-left,
-  .admissions-strip {
+  .desktop-nav {
     display: none;
   }
   .hamburger-btn {
@@ -996,9 +917,7 @@ a {
   .nav-actions {
     gap: 8px;
   }
-  .search-btn {
-    display: none;
-  }
+
   .hamburger-btn {
     min-width: 44px;
     min-height: 44px;

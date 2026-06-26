@@ -31,7 +31,7 @@ function Hero({ data }) {
           <p className="hero-subtext">{subtitle}</p>
           <div className="hero-buttons">
             <a
-              href="https://miu.edu.in"
+              href="https://admission.miu.edu.in/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Admissions 2026"

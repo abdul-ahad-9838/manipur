@@ -129,7 +129,7 @@
   font-weight: 900;
   color: var(--lpu-black);
   margin-bottom: 10px;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
@@ -170,7 +170,7 @@
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 900;
   color: var(--lpu-black) !important;
-  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
