@@ -43,6 +43,7 @@
 .hero-image {
   object-fit: cover;
   opacity: 0;
+  object-position: center;
   transition: opacity 0.7s ease;
 }
 
@@ -107,24 +108,24 @@
   color: var(--lpu-orange);
 }
 
-.desktop-only {
-  display: block;
-}
-
-.mobile-only {
+.desktop-only-wrapper {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-only {
-    display: block;
-  }
+.mobile-only-wrapper {
+  display: block;
 }
 
+/* Desktop Configurations */
+@media (min-width: 769px) {
+  .desktop-only-wrapper {
+    display: block;
+  }
+
+  .mobile-only-wrapper {
+    display: none;
+  }
+}
 /* ---------- Buttons ---------- */
 
 .hero-buttons {

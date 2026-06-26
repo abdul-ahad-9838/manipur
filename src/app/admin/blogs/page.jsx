@@ -44,6 +44,7 @@ const emptyForm = {
     twitterTitle: "",
     twitterDescription: "",
     twitterImage: "",
+    structuredData: "",
   },
 
   published: false,
@@ -140,6 +141,7 @@ export default function AdminBlogs() {
         twitterTitle: blog?.seo?.twitterTitle || "",
         twitterDescription: blog?.seo?.twitterDescription || "",
         twitterImage: blog?.seo?.twitterImage || "",
+        structuredData: blog?.seo?.structuredData || "",
       },
     });
     setEditId(blog._id);

@@ -60,6 +60,7 @@ const EMPTY = {
     twitterTitle: "",
     twitterDescription: "",
     twitterImage: "",
+    structuredData: "",
   },
 };
 
@@ -198,6 +199,7 @@ export default function CoursesManager() {
         twitterTitle: course?.seo?.twitterTitle || "",
         twitterDescription: course?.seo?.twitterDescription || "",
         twitterImage: course?.seo?.twitterImage || "",
+        structuredData: course?.seo?.structuredData || "",
       },
     });
     setEditingId(course._id);

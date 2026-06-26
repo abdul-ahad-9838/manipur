@@ -251,6 +251,55 @@ const SeoForm = ({ form, setForm, labelStyle, inputStyle }) => {
           style={inputStyle}
         />
       </div>
+      <h3 style={{ marginTop: "30px" }}>Structured Data (JSON-LD)</h3>
+
+      <div style={{ marginBottom: "20px" }}>
+        <label style={labelStyle}>Structured Data</label>
+
+        <textarea
+          value={
+            typeof form?.seo?.structuredData === "string"
+              ? form?.seo?.structuredData
+              : JSON.stringify(form?.seo?.structuredData || {}, null, 2)
+          }
+          placeholder={`{
+   "@context": "https://schema.org",
+   "@type": "BlogPosting",
+   "headline": "My Blog Title"
+}`}
+          onChange={(e) =>
+            setForm((prev) => {
+              let parsed = e.target.value;
+
+              // try parsing JSON safely
+              try {
+                parsed = JSON.parse(e.target.value);
+              } catch (err) {
+                // keep as string while typing
+                parsed = e.target.value;
+              }
+
+              return {
+                ...prev,
+                seo: {
+                  ...prev.seo,
+                  structuredData: parsed,
+                },
+              };
+            })
+          }
+          style={{
+            ...inputStyle,
+            height: "200px",
+            fontFamily: "monospace",
+            resize: "vertical",
+          }}
+        />
+
+        <p style={{ fontSize: "12px", color: "#888", marginTop: "5px" }}>
+          Paste valid JSON-LD structured data here
+        </p>
+      </div>
     </>
   );
 };

@@ -53,6 +53,11 @@ const seoSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+
+    structuredData: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
+    },
   },
   { _id: false },
 );

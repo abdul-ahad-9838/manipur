@@ -84,6 +84,17 @@ export default async function BlogPage({ params }) {
 
   return (
     <div className="blog-detail-page">
+      {blog?.seo?.structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html:
+              typeof blog.seo.structuredData === "string"
+                ? blog.seo.structuredData
+                : JSON.stringify(blog.seo.structuredData),
+          }}
+        />
+      )}
       <div className="container blog-detail-container">
         <Link href="/blogs" className="blog-back-link">
           ← Back to Blogs

@@ -1,13 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { memo, useMemo } from "react";
-import { useIsDesktop } from "@/lib/useIsDesktop";
 
-const DesktopHeroSlider = dynamic(() => import("./DesktopHeroSlider"), {
-  ssr: false,
-});
+const DesktopHeroSlider = dynamic(() => import("./DesktopHeroSlider"));
 
 const DEFAULT_CONTENT = {
   title: "Shaping The Leaders of Tomorrow",
@@ -24,42 +19,19 @@ const DEFAULT_CONTENT = {
 
 function Hero({ data }) {
   const heroData = useMemo(() => data ?? DEFAULT_CONTENT, [data]);
-
   const { title, subtitle, images } = heroData;
-
   const heroImages = images?.length ? images : DEFAULT_CONTENT.images;
-
-  const isDesktop = useIsDesktop(768);
 
   return (
     <section className="lpu-hero-container">
-      {isDesktop && <DesktopHeroSlider images={heroImages} title={title} />}
-
-      {isDesktop === false && (
-        <div className="hero-image-wrapper mobile-only">
-          <Image
-            src={heroImages[0]}
-            alt={title}
-            fill
-            priority
-            quality={65}
-            sizes="100vw"
-            className="hero-image active"
-          />
-        </div>
-      )}
-
-      <div className="lpu-hero-overlay" />
-
+      {/* Desktop view handled via CSS display rules inside the component wrapper */}
       <div className="container hero-layout">
         <div className="hero-typography">
           <h1>{title}</h1>
-
           <p className="hero-subtext">{subtitle}</p>
-
           <div className="hero-buttons">
             <a
-              href="https://admission.miu.edu.in"
+              href="https://miu.edu.in"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Admissions 2026"
@@ -69,6 +41,24 @@ function Hero({ data }) {
           </div>
         </div>
       </div>
+      <div className="desktop-only-wrapper">
+        <DesktopHeroSlider images={heroImages} title={title} />
+      </div>
+
+      {/* Mobile view is now always present in HTML so 'priority' works instantly */}
+      <div className="hero-image-wrapper mobile-only-wrapper">
+        <Image
+          src={heroImages[0]}
+          alt={title}
+          fill
+          priority // Tells the browser to download this immediately
+          quality={65}
+          sizes="(max-width: 768px) 375px, 100vw"
+          className="hero-image active"
+        />
+      </div>
+
+      <div className="lpu-hero-overlay" />
     </section>
   );
 }
