@@ -1,4 +1,4 @@
-const base = process.env.NEXT_PUBLIC_BASE_URL;
+const base = "https://miu.edu.in";
 
 const staticRoutes = [
   { url: base, priority: 1.0, changeFrequency: "daily" },

@@ -69,10 +69,8 @@ const defaultRow2 = [
 export default function Spotlight({ data }) {
   const row1 = data?.row1?.length > 0 ? data.row1 : defaultRow1;
   const row2 = data?.row2?.length > 0 ? data.row2 : defaultRow2;
-
   return (
     <section className="spotlight-section">
-      {/* ... */}
       <div className="container">
         <div className="spotlight-header-container">
           <div className="spotlight-head">
@@ -110,14 +108,15 @@ export default function Spotlight({ data }) {
                   sizes="(max-width: 768px) 50vw, 300px"
                   quality={70}
                 />
-                <div className="marquee-info">
+                {/* <div className="marquee-info">
                   <h4>{img.title}</h4>
                   <p>{img.desc}</p>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
         </div>
+
         {/* same pattern for row2, but priority={false} since row2 likely isn't the LCP element */}
         <div className="marquee-row">
           <div className="marquee-content marquee-right">
@@ -136,10 +135,10 @@ export default function Spotlight({ data }) {
                   quality={70}
                 />
 
-                <div className="marquee-info">
+                {/* <div className="marquee-info">
                   <h4>{img.title}</h4>
                   <p>{img.desc}</p>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>

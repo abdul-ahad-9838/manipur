@@ -36,17 +36,15 @@ export default function ClientShell({ children }) {
       <EnquiryProvider>
         <AdminTopBar />
 
-        <div className="app-container">
-          <Navbar />
+        <Navbar />
 
-          <main>{children}</main>
+        <main>{children}</main>
 
-          {/* Deferred, non-critical UI — rendered after main content */}
-          <WhatsAppButton />
-          <StudentLoginButton />
-          {/* <EnquiryPopup /> */}
-          <MobileBottomNav />
-        </div>
+        {/* Deferred, non-critical UI — rendered after main content */}
+        <WhatsAppButton />
+        <StudentLoginButton />
+        {/* <EnquiryPopup /> */}
+        <MobileBottomNav />
       </EnquiryProvider>
     </AuthProvider>
   );

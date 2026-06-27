@@ -132,7 +132,7 @@ const Footer = async () => {
               <li>
                 <span>✉️</span> {d.email}
               </li>
-              <div className="social-links">
+              <li className="social-links">
                 {d.facebook && (
                   <a
                     href={d.facebook}
@@ -272,7 +272,7 @@ const Footer = async () => {
                     </svg>
                   </a>
                 )}
-              </div>
+              </li>
             </ul>
           </div>
         </div>

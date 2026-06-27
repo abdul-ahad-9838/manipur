@@ -1,32 +1,10 @@
-/* =========================================================
-   OPTIMIZED STYLESHEET  (performance pass)
-   - 18 media queries consolidated into 7 (one per breakpoint)
-   - Dead/overridden declarations removed
-   - Duplicate selectors merged
-   - Identical rule bodies grouped
-   - Exact rendered appearance preserved
-   Layout order: all base rules first (source order),
-   then keyframes, then consolidated media queries (desc).
-   ========================================================= */
-
-/* ===========================================================
-   CRITICAL  (inline this part in <head> — see report)
-   Above-the-fold: root tokens + stats band + spotlight header
-   =========================================================== */
-
-:root {
-  --border-soft: rgba(255, 255, 255, 0.5);
-  --border-faint: rgba(255, 255, 255, 0.1);
-  --border-faint-2: rgba(255, 255, 255, 0.08);
-}
-
 /* ──────────────────────   HERO SECTION  ────────────────────────── */
 
 .lpu-hero-container {
   position: relative;
   width: 100%;
-  height: 100dvh;
-  max-height: 1000px;
+  height: 100vh;
+  max-height: 950px;
   min-height: 700px;
   padding-top: 250px;
   overflow: hidden;
@@ -95,7 +73,6 @@
   color: #fff;
   margin-bottom: 20px;
   letter-spacing: -0.02em;
-  font-display: swap;
 }
 
 .hero-subtext {
@@ -220,21 +197,23 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(232, 185, 25, 0.1);
-  border: 1px solid rgba(232, 185, 25, 0.3);
+  background: #fff4e6;
+  border: 1px solid #d97706;
   padding: 6px 16px;
-  border-radius: 50px;
+  border-radius: 999px;
   margin-bottom: 20px;
 }
+
 .pulse-dot {
   width: 10px;
   height: 10px;
-  background-color: var(--lpu-orange, #ff6b00);
+  background-color: #b45309;
   border-radius: 50%;
   animation: pulse-animation 2s infinite;
 }
+
 .spotlight-badge {
-  color: var(--lpu-orange, #ff6b00);
+  color: #92400e;
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 1px;
@@ -358,26 +337,7 @@
   transform: translateY(0);
   opacity: 1;
 }
-.marquee-info h4 {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-.marquee-info p {
-  font-size: 0.95rem;
-  color: #333;
-  line-height: 1.5;
-  margin: 0;
-  white-space: normal;
-  word-wrap: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+
 .marquee-left {
   animation: scroll-left 40s linear infinite;
 }
@@ -464,7 +424,7 @@
 .campus-tab {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-faint);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.909);
   padding: 0.8rem 2rem;
   border-radius: 50px;
   letter-spacing: -0.02em;
@@ -483,8 +443,6 @@
   background: var(--lpu-orange);
   border-color: var(--lpu-orange);
   color: var(--lpu-black);
-  font-weight: 700;
-  box-shadow: 0 4px 15px rgba(232, 185, 25, 0.4);
 }
 .campus-gallery {
   width: 100%;
@@ -532,7 +490,7 @@
   position: relative;
   z-index: 2;
   margin: 30px;
-  background: rgba(17, 17, 17, 0.7);
+  background: rgba(0, 0, 0, 0.73);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 2rem;
@@ -1019,7 +977,7 @@
   background-color: #000;
 }
 .card-meta {
-  color: #555;
+  color: #bcbcbc;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -1091,7 +1049,7 @@
 
 /* ───────── NEWS / TICKER SECTION ───────── */
 .ns-section {
-  background: #0d0d0d;
+  background: #000000;
   padding-bottom: 60px;
   overflow: hidden;
 }
@@ -1162,7 +1120,7 @@
 }
 .ns-sub {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #d2d2d2;
 }
 .ns-controls {
   display: flex;
@@ -1186,7 +1144,7 @@
 }
 .ns-counter {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #b2b2b2;
 }
 .ns-magazine {
   display: grid;
@@ -1590,17 +1548,7 @@
     width: 75vw;
     height: 220px;
   }
-  .marquee-info {
-    padding: 20px 15px;
-  }
-  .marquee-info h4 {
-    font-size: 1.15rem;
-    margin-bottom: 6px;
-  }
-  .marquee-info p {
-    font-size: 0.88rem;
-    -webkit-line-clamp: 3;
-  }
+
   .spotlight-section {
     padding-bottom: 30px;
   }

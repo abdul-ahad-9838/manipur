@@ -53,6 +53,7 @@ function Hero({ data }) {
           fill
           priority // Tells the browser to download this immediately
           quality={65}
+          fetchPriority="high"
           sizes="(max-width: 768px) 375px, 100vw"
           className="hero-image active"
         />

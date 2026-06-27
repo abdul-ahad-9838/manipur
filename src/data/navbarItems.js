@@ -172,6 +172,10 @@ const navbarItems = [
     ],
   },
   {
+    label: "Notices",
+    href: "/notices-and-announcements",
+  },
+  {
     label: "Contact Us",
     href: "/contact",
   },
