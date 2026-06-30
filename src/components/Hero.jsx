@@ -26,19 +26,17 @@ function Hero({ data }) {
     <section className="lpu-hero-container">
       {/* Desktop view handled via CSS display rules inside the component wrapper */}
       <div className="container hero-layout">
-        <div className="hero-typography">
-          <h1>{title}</h1>
-          <p className="hero-subtext">{subtitle}</p>
-          <div className="hero-buttons">
-            <a
-              href="https://admission.miu.edu.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Admissions 2026"
-            >
-              Admissions 2026
-            </a>
-          </div>
+        <h1>{title}</h1>
+        <p className="hero-subtext">{subtitle}</p>
+        <div className="hero-buttons">
+          <a
+            href="https://admission.miu.edu.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Admissions 2026"
+          >
+            Admissions 2026
+          </a>
         </div>
       </div>
       <div className="desktop-only-wrapper">

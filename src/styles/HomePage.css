@@ -52,41 +52,27 @@
   z-index: 3;
 
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
   height: calc(100% - 250px);
-}
-
-/* ---------- Typography ---------- */
-
-.hero-typography {
-  flex: 1;
-  max-width: 800px;
-  flex-direction: column;
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero-subtext {
+    color: #d1d5db;
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    margin-bottom: 30px;
+    font-weight: 300;
+    max-width: 550px;
+  }
 }
 
 /* char spacing reduce  */
-
-.hero-typography h1 {
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  line-height: 1.1;
-  color: #fff;
-  margin-bottom: 20px;
-  letter-spacing: -0.02em;
-}
-
-.hero-subtext {
-  color: #d1d5db;
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  margin-bottom: 30px;
-  font-weight: 300;
-  max-width: 550px;
-}
-
-.orange-text {
-  color: var(--lpu-orange);
-}
-
 .desktop-only-wrapper {
   display: none;
 }
@@ -237,6 +223,7 @@
   font-size: 1.15rem;
   max-width: 600px;
   line-height: 1.6;
+  text-align: justify;
 }
 .spotlight-header-actions .btn-glow {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -1489,14 +1476,14 @@
     align-items: center;
   }
 
-  .hero-typography {
+  .hero-layout {
     max-width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
   }
 
-  .hero-typography h1 {
+  .hero-layout h1 {
     text-align: center;
     font-size: clamp(2rem, 8vw, 2.8rem);
   }
@@ -1547,10 +1534,6 @@
   .marquee-item {
     width: 75vw;
     height: 220px;
-  }
-
-  .spotlight-section {
-    padding-bottom: 30px;
   }
 
   /* campus */

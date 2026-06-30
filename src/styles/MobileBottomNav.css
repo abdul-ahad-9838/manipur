@@ -5,35 +5,23 @@
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 400px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   height: 70px;
   border-radius: 50px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   z-index: 1000;
   align-items: center;
   justify-content: space-around;
-  /* padding: 0 10px; */
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Accessibility */
 .nav-item {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  color: #333;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-  width: 50px;
-  height: 50px;
-}
-
-.nav-item:active {
-  transform: scale(0.9);
+  color: var(--lpu-black);
 }
 
 .nav-item svg {
@@ -65,15 +53,15 @@
 }
 
 /* Hide desktop sidebars on mobile */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .apply-sticky,
   .enquire-sticky {
     display: none !important;
   }
-}
+} */
 
 /* ── Enquiry Popup ── */
-.enquiry-overlay {
+/* .enquiry-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -218,7 +206,6 @@
   opacity: 0.9;
 }
 
-/* Success state */
 .enquiry-success {
   text-align: center;
   padding: 40px 20px;
@@ -248,4 +235,4 @@
   font-family: var(--font-body);
   font-weight: 400;
   text-transform: none;
-}
+} */

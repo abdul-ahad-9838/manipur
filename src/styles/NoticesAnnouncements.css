@@ -43,10 +43,6 @@
   transition: background-color 0.25s ease;
 }
 
-.notice-board-card:hover .notice-board-accent {
-  background: var(--lpu-orange-dark);
-}
-
 /* Top Meta Section */
 .notice-board-top {
   display: flex;

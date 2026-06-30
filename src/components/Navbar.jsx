@@ -143,7 +143,7 @@ const TopLinks = () => (
       <Link href="/about/public-self-disclosure">PUBLIC SELF DISCLOSURE</Link>
     </li>
     <li className="login-dropdown-wrapper">
-      <button className="login-top-btn login-dropdown-trigger">LOGIN ▾</button>
+      <button className="login-dropdown-trigger">LOGIN ▾</button>
       <ul className="login-dropdown-menu">
         <li>
           <a
@@ -188,14 +188,12 @@ const Navbar = () => {
       className={`lpu-header ${!isLandingPage ? "other-page-header" : ""}`}
     >
       <div className="top-strip">
-        <div className="strip-flex edge-to-edge">
-          <div className="strip-right">
-            <TopLinks />
-            <div className="top-logo-boxes">
-              <span>M</span>
-              <span>I</span>
-              <span>U</span>
-            </div>
+        <div className="strip-flex">
+          <TopLinks />
+          <div className="top-logo-boxes">
+            <span>M</span>
+            <span>I</span>
+            <span>U</span>
           </div>
         </div>
       </div>
@@ -205,7 +203,7 @@ const Navbar = () => {
           !isLandingPage && !isSticky ? "other-page-nav" : ""
         }`}
       >
-        <div className="nav-flex edge-to-edge">
+        <div className="nav-flex">
           <Link
             href="/"
             rel="preload"
@@ -235,11 +233,6 @@ const Navbar = () => {
                   <span>M</span>
                   <span>I</span>
                   <span>U</span>
-                </div>
-                <div className="abs-text">
-                  <span className="big-word">MANIPUR</span>
-                  <span className="big-word">INTERNATIONAL</span>
-                  <span className="big-word">UNIVERSITY</span>
                 </div>
               </>
             )}

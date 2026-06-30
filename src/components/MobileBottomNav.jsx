@@ -1,55 +1,53 @@
 "use client";
 
-import API from "@/lib/api";
 import "@/styles/MobileBottomNav.css";
-import { useState } from "react";
 
-const QUALIFICATIONS = [
-  "10th Pass",
-  "12th Pass",
-  "Diploma",
-  "Graduate",
-  "Post Graduate",
-  "Other",
-];
+// const QUALIFICATIONS = [
+//   "10th Pass",
+//   "12th Pass",
+//   "Diploma",
+//   "Graduate",
+//   "Post Graduate",
+//   "Other",
+// ];
 
 const MobileBottomNav = () => {
-  const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    qualification: "",
-  });
-  const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState(false);
-  const [error, setError] = useState("");
+  // const [open, setOpen] = useState(false);
+  // const [form, setForm] = useState({
+  //   name: "",
+  //   phone: "",
+  //   email: "",
+  //   qualification: "",
+  // });
+  // const [submitting, setSubmitting] = useState(false);
+  // const [done, setDone] = useState(false);
+  // const [error, setError] = useState("");
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  // const handleChange = (e) =>
+  //   setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setError("");
-    try {
-      await API.post("/enquiries", form);
-      setDone(true);
-      setForm({ name: "", phone: "", email: "", qualification: "" });
-      setTimeout(() => {
-        setDone(false);
-        setOpen(false);
-      }, 2500);
-    } catch {
-      setError("Something went wrong. Please try again.");
-    }
-    setSubmitting(false);
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setSubmitting(true);
+  //   setError("");
+  //   try {
+  //     await API.post("/enquiries", form);
+  //     setDone(true);
+  //     setForm({ name: "", phone: "", email: "", qualification: "" });
+  //     setTimeout(() => {
+  //       setDone(false);
+  //       setOpen(false);
+  //     }, 2500);
+  //   } catch {
+  //     setError("Something went wrong. Please try again.");
+  //   }
+  //   setSubmitting(false);
+  // };
 
   return (
     <>
       {/* Enquiry Popup */}
-      {open && (
+      {/* {open && (
         <div
           className="enquiry-overlay"
           onClick={(e) => e.target === e.currentTarget && setOpen(false)}
@@ -134,7 +132,7 @@ const MobileBottomNav = () => {
             )}
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Bottom Nav Bar */}
       <div className="mobile-bottom-nav">

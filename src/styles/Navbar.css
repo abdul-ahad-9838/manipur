@@ -15,6 +15,11 @@
   z-index: 1000;
   background: var(--lpu-black) !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+
+  .top-strip {
+    display: block;
+    background-color: var(--lpu-black) !important;
+  }
 }
 
 a {
@@ -34,23 +39,10 @@ a {
 .lpu-header:has(.sticky-nav) .top-strip {
   display: none;
 }
-.other-page-header .top-strip {
-  display: block;
-  background-color: var(--lpu-black) !important;
-}
 
 .strip-flex {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-}
-.edge-to-edge {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-.strip-right {
-  display: flex;
   align-items: center;
 }
 
@@ -93,8 +85,7 @@ a {
   z-index: 10000;
 }
 
-.login-dropdown-trigger,
-.login-top-btn {
+.login-dropdown-trigger {
   background: #ffffff;
   color: #000000 !important;
   padding: 4px 15px !important;
@@ -115,8 +106,7 @@ a {
   letter-spacing: 0.3px;
 }
 
-.login-dropdown-trigger:hover,
-.login-top-btn:hover {
+.login-dropdown-trigger:hover {
   background: var(--lpu-orange) !important;
   color: #fff !important;
   transform: translateY(-2px);
@@ -273,31 +263,6 @@ a {
   border-radius: 4px;
 }
 
-.abs-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.5px;
-}
-.absolute-logo-wrapper.logo-sticky .abs-text {
-  display: none;
-}
-
-.big-word {
-  font-size: 21px;
-  font-weight: 500;
-  line-height: 1;
-  color: white;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-.other-page-header .big-word {
-  color: white !important;
-}
-.other-page-header .sticky-nav .big-word {
-  color: var(--lpu-black) !important;
-}
-
 .other-page-header .top-links li a {
   color: white !important;
 }
@@ -406,31 +371,21 @@ a {
 
 /* Single consolidated rule (was repeated 4x) — always dark text on white menu, regardless of header/sticky state */
 .login-dropdown-menu li a {
-  display: block !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  padding: 10px 18px !important;
-  background: transparent !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  line-height: 1.5 !important;
-  text-decoration: none !important;
-  text-transform: none !important;
-  letter-spacing: normal !important;
-  white-space: nowrap !important;
-  transition: background 0.2s ease !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  overflow: visible !important;
+  display: block;
+  padding: 10px 18px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: none;
 }
 
 .login-dropdown-menu li a:hover {
-  background: #3d3b3b !important;
-  color: var(--lpu-orange) !important;
+  background: var(--lpu-dark-gray);
+  color: var(--lpu-orange);
 }
 
 .main-nav-apply {
-  border-radius: 4px;
   font-weight: 700;
   text-decoration: none;
   display: flex;
@@ -455,9 +410,6 @@ a {
   max-height: 70vh;
   overflow-y: auto;
   overflow-x: visible;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  list-style: none;
-  display: flex;
   flex-direction: column;
   padding: 10px 0;
   margin: 0;
@@ -757,7 +709,6 @@ a {
   line-height: 1;
 }
 .mobile-accordion-arrow.open {
-  transform: rotate(90deg) !important;
   color: var(--lpu-orange);
 }
 
@@ -765,6 +716,7 @@ a {
   list-style: none;
   padding: 8px 0 8px 16px;
   margin: 8px 0 0;
+
   border-left: 2px solid var(--lpu-orange);
 }
 .mobile-accordion-list li {
@@ -830,9 +782,6 @@ a {
   .abs-text,
   .abs-miu-blocks {
     display: none !important;
-  }
-  .top-strip {
-    height: 35px;
   }
 
   .main-navbar,
