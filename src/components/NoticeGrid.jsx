@@ -15,14 +15,13 @@ export default function NoticeGrid({ notices }) {
           <div
             className="notice-board-card"
             key={notice._id || index}
-            onClick={() =>
-              hasAttachment(notice) &&
-              setActiveFile({
-                url: notice.attachment,
-                type: notice.attachmentType,
-              })
-            }
-            style={{ cursor: hasAttachment(notice) ? "pointer" : "default" }}
+            // onClick={() =>
+            //   hasAttachment(notice) &&
+            //   setActiveFile({
+            //     url: notice.attachment,
+            //     type: notice.attachmentType,
+            //   })
+            // }
           >
             <span className="notice-board-accent" />
             <div className="notice-board-top">
@@ -30,31 +29,29 @@ export default function NoticeGrid({ notices }) {
             </div>
             <h3 className="notice-board-title">{notice.title}</h3>
             <p className="notice-board-description">{notice.description}</p>
-
-            {hasAttachment(notice) && (
-              <span
-                style={{
-                  display: "inline-block",
-                  marginTop: "10px",
-                  fontSize: "0.8rem",
-                  fontWeight: 600,
-                  color: "var(--lpu-orange, #ff6a00)",
-                }}
-              >
-                📎 View Attachment
-              </span>
-            )}
+            <div>
+              {hasAttachment(notice) && (
+                <a
+                  href={notice.attachment}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="notice-btn"
+                >
+                  📎 View Attachment
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </div>
 
-      {activeFile && (
+      {/* {activeFile && (
         <AdvisoryPopup
           fileUrl={activeFile.url}
           fileType={activeFile.type}
           onClose={() => setActiveFile(null)}
         />
-      )}
+      )} */}
     </>
   );
 }
