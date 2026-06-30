@@ -195,7 +195,6 @@
   height: 10px;
   background-color: #b45309;
   border-radius: 50%;
-  animation: pulse-animation 2s infinite;
 }
 
 .spotlight-badge {
@@ -455,17 +454,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
+  /* opacity: 0; */
   z-index: 0;
   will-change: transform, opacity;
   transform: translateZ(0);
   backface-visibility: hidden;
   transition: opacity 0.8s ease;
-}
-.active-image {
-  opacity: 0.8;
-  z-index: 1;
-  /* animation: continuousZoom 20s linear infinite; */
 }
 .hidden-image {
   opacity: 0;
@@ -486,7 +480,6 @@
   border-left: 4px solid var(--lpu-orange);
   max-width: 400px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.5s ease;
 }
 .gallery-glass-info h3 {
   color: var(--lpu-white) !important;
@@ -555,12 +548,10 @@
 }
 .ps-card {
   padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: psCardIn 0.5s ease forwards;
   cursor: default;
   transition: background 0.2s;
 }
@@ -600,9 +591,6 @@
   background: var(--lpu-black);
   border-radius: 2px;
   transition: transform 0.3s ease;
-}
-.ps-card:hover .ps-card-line {
-  transform: translateX(-50%) scaleX(1);
 }
 
 /* faq */
@@ -711,9 +699,7 @@
   text-align: center;
   width: 160px;
   flex-shrink: 0;
-  opacity: 0;
   transform: translateY(30px);
-  animation: ppFadeUp 0.5s ease forwards;
 }
 .pp-icon-ring {
   position: relative;
@@ -727,7 +713,6 @@
   box-shadow:
     0 0 0 4px var(--lpu-orange),
     0 8px 24px rgba(0, 0, 0, 0.15);
-  animation: ppPulse 2.5s ease-in-out infinite;
   margin-bottom: 1rem;
 }
 .pp-icon {
@@ -771,8 +756,6 @@
   align-items: center;
   padding-bottom: 3.5rem;
   flex-shrink: 0;
-  opacity: 0;
-  animation: ppFadeUp 0.4s ease forwards;
 }
 .pp-arrow {
   font-size: 2rem;
@@ -1261,17 +1244,7 @@
 /* =========================================================
    KEYFRAMES (grouped)
    ========================================================= */
-@keyframes pulse-animation {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 107, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 0, 0);
-  }
-}
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
@@ -1288,52 +1261,15 @@
     transform: translateX(0);
   }
 }
-@keyframes continuousZoom {
+@keyframes scrollCompanies {
   0% {
-    transform: translateZ(0) scale(1);
-  }
-  50% {
-    transform: translateZ(0) scale(1.1);
+    transform: translateX(0);
   }
   100% {
-    transform: translateZ(0) scale(1);
+    transform: translateX(calc(-50% - 2rem));
   }
 }
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes psCardIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes ppFadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes ppPulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 4px var(--lpu-orange),
-      0 8px 24px rgba(0, 0, 0, 0.15);
-  }
-  50% {
-    box-shadow:
-      0 0 0 8px rgba(232, 185, 25, 0.3),
-      0 8px 24px rgba(0, 0, 0, 0.15);
-  }
-}
+
 @keyframes ppArrowBounce {
   0%,
   100% {
@@ -1345,14 +1281,7 @@
     opacity: 0.6;
   }
 }
-@keyframes scrollCompanies {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-50% - 2rem));
-  }
-}
+
 @keyframes nsTicker {
   from {
     transform: translate3d(0, 0, 0);

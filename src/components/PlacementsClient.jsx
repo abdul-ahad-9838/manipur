@@ -42,7 +42,7 @@ function StatCard({ stat, index, active }) {
   const display = useCountUp(stat.val, 1600, active);
 
   return (
-    <div className="ps-card" style={{ animationDelay: `${index * 0.1}s` }}>
+    <div className="ps-card">
       <div className="ps-card-icon">{stat.icon}</div>
       <div className="ps-card-val">{display}</div>
       <div className="ps-card-label">{stat.label}</div>
@@ -163,12 +163,7 @@ export default function PlacementsClient({ data }) {
                 </div>
 
                 {i < 4 && (
-                  <div
-                    className="pp-connector"
-                    style={{
-                      animationDelay: `${i * 0.18 + 0.12}s`,
-                    }}
-                  >
+                  <div className="pp-connector">
                     <span className="pp-arrow">›</span>
                   </div>
                 )}
@@ -188,6 +183,7 @@ export default function PlacementsClient({ data }) {
                         alt={company.name}
                         className="company-logo-img"
                         fill
+                        sizes="100%"
                       />
                     ) : (
                       <div className="text-logo">{company.name}</div>
