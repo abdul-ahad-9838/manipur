@@ -69,7 +69,11 @@ export default async function BlogPage() {
 
                 <h2 className="blog-card-title">{blog.title}</h2>
 
-                <p className="blog-card-excerpt">{blog.excerpt}</p>
+                <p className="blog-card-excerpt">
+                  {blog.excerpt?.length > 135
+                    ? `${blog.excerpt.slice(0, 135)}...`
+                    : blog.excerpt}
+                </p>
 
                 <div className="blog-card-meta">
                   <span>{blog.author}</span>
