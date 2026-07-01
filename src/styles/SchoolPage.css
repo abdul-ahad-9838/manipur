@@ -297,11 +297,6 @@
   text-transform: none;
   line-height: 1.5;
   margin-bottom: 16px;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .sp-program-footer {

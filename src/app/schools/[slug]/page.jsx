@@ -836,7 +836,9 @@ export default function SchoolPage() {
                                     </div>
                                     {prog.description && (
                                       <p className="sp-program-desc">
-                                        {prog.description}
+                                        {prog?.description?.length > 160
+                                          ? `${prog.description.substring(0, 160)}...`
+                                          : prog.description}
                                       </p>
                                     )}
                                     <div className="sp-program-footer">
