@@ -1,5 +1,3 @@
-// app/blogs/page.jsx
-
 import "@/styles/Blog.css";
 import Image from "next/image";
 import Link from "next/link";
