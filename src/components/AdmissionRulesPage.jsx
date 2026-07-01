@@ -63,7 +63,7 @@ export default function AdmissionRulesPage() {
           <nav className="admission-rules-breadcrumb">
             <Link href="/">Home</Link>
             <span>›</span>
-            <Link href="/admissions">Admissions</Link>
+            <Link href="/admissions/process">Admissions</Link>
             <span>›</span>
             <span>Rules for Admission</span>
           </nav>

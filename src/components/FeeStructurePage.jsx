@@ -78,7 +78,7 @@ export default function FeeStructurePage() {
           <nav className="fee-breadcrumb">
             <Link href="/">Home</Link>
             <span>›</span>
-            <Link href="/admissions">Admissions</Link>
+            <Link href="/admissions/process">Admissions</Link>
             <span>›</span>
             <span>Fee Structure</span>
           </nav>

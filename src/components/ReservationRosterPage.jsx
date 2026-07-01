@@ -268,7 +268,7 @@ export default function ReservationRosterPage() {
           <div className="reservation-quick-links">
             <h3>Related Information</h3>
             <div className="quick-links-grid">
-              <Link href="/admissions" className="quick-link-card">
+              <Link href="/admissions/process" className="quick-link-card">
                 <span className="link-icon">🎓</span>
                 <h4>Admissions</h4>
                 <p>Apply for admission to MIU</p>

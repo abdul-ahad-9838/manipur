@@ -71,7 +71,7 @@ export default function AdmissionProcess() {
           <nav className="ap-breadcrumb">
             <Link href="/">Home</Link>
             <span className="bc-sep">›</span>
-            <Link href="/admissions">Admissions</Link>
+            <Link href="/admissions/process">Admissions</Link>
             <span className="bc-sep">›</span>
             <span>Admission Process</span>
           </nav>
@@ -146,7 +146,7 @@ export default function AdmissionProcess() {
               <Link href="/contact" className="btn btn-orange">
                 Get Started
               </Link>
-              <Link href="/admissions" className="btn btn-outline">
+              <Link href="/admissions/process" className="btn btn-outline">
                 View Programs
               </Link>
             </div>
