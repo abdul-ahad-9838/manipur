@@ -70,7 +70,7 @@ export default function ContactUsPage() {
       ),
       title: "Phone",
       primary: pc.phone1 || "+91 9319727766",
-      secondary: "Mon-Sat, 9:30 AM - 4:00 PM",
+      secondary: "Mon-Sat, 9:30 AM - 4:30 PM",
       link: `tel:${(pc.phone1 || "+919319727766").replace(/\s/g, "")}`,
       color: "#007AFF",
       bgColor: "#E3F2FD",
