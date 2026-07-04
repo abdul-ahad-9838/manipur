@@ -30,54 +30,37 @@ export const metadata = {
   },
 };
 
-async function getData(endpoint) {
+async function getHomepageData() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${endpoint}`, {
-      next: { revalidate: 300 },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
 
     if (!res.ok) return null;
 
     return res.json();
   } catch (error) {
-    console.error(`Error fetching ${endpoint}:`, error);
+    console.error("Homepage data fetch failed:", error);
     return null;
   }
 }
 
 export default async function Home() {
-  const results = await Promise.allSettled([
-    getData("/api/settings/hero"),
-    getData("/api/settings/spotlight"),
-    getData("/api/settings/campus"),
-    getData("/api/settings/placements"),
-    getData("/api/settings/ecosystem"),
-    getData("/api/blogs"),
-    getData("/api/faqs"),
-  ]);
-
-  const [
-    heroData,
-    spotlightData,
-    campusData,
-    placementsData,
-    ecosystemData,
-    blogsData,
-    faqsData,
-  ] = results.map((result) =>
-    result.status === "fulfilled" ? result.value : null,
-  );
+  const results = await getHomepageData();
 
   return (
     <main>
-      <Hero data={heroData?.content} />
-      <Spotlight data={spotlightData?.content} />
+      <Hero data={results?.hero} />
+      <Spotlight data={results?.spotlight} />
       <Stats />
-      <CampusLife data={campusData?.content} />
-      <Placements data={placementsData?.content} />
-      <Ecosystem data={ecosystemData?.content?.cards} />
-      <NewsSlider blogs={blogsData} />
-      <FAQ faqs={faqsData} />
+      <CampusLife data={results?.campus} />
+      <Placements data={results?.placements} />
+      <Ecosystem data={results?.ecosystem?.cards} />
+      <NewsSlider blogs={results?.blogs} />
+      <FAQ faqs={results?.faqs} />
       <StructuredData />
     </main>
   );
