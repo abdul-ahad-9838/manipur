@@ -1,6 +1,7 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { memo, useMemo } from "react";
+import DateClient from "./DateClient";
 
 const DesktopHeroSlider = dynamic(() => import("./DesktopHeroSlider"));
 
@@ -35,7 +36,7 @@ function Hero({ data }) {
             rel="noopener noreferrer"
             aria-label="Admissions 2026"
           >
-            Admissions 2026
+            Admissions <DateClient />
           </a>
         </div>
       </div>

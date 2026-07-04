@@ -12,9 +12,9 @@ const NewsSlider = dynamic(() => import("@/components/NewsSlider"));
 const FAQ = dynamic(() => import("@/components/FAQ"));
 
 export const metadata = {
-  title: "Manipur International University | MIU Imphal — UGC Recognised",
+  title: "Manipur International University | Best University in Manipur",
   description:
-    "Manipur International University (MIU) is a UGC-recognised state private university in Imphal offering UG, PG & PhD courses. Apply for 2026–27 admissions.",
+    "Manipur International University is a leading university in Manipur offering UG, PG, Diploma, and Ph.D. programs with quality education, expert faculty, and admissions open for 2026-27.",
   keywords:
     "Manipur International University, MIU Imphal, university in Manipur, MIU India, engineering college Manipur, management college Imphal",
   alternates: {

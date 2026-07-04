@@ -1,15 +1,24 @@
 "use client";
 
-import React, { useState, useEffect, useContext, Activity } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  Activity,
+} from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
-import API from "@/lib/api";
 import dynamic from "next/dynamic";
+
 const TextEditor = dynamic(() => import("@/components/TextEditor"), {
   ssr: false,
 });
+
 import ImageUploader from "@/components/ImageUploader";
 import SeoForm from "@/components/SeoForm";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const CATEGORIES = [
   "General",
@@ -29,26 +38,93 @@ const emptyForm = {
   coverImage: "",
   category: "General",
   author: "MIU Staff",
-
   seo: {
     title: "",
     description: "",
     keywords: [],
-
     canonicalUrl: "",
-
     ogTitle: "",
     ogDescription: "",
     ogImage: "",
-
     twitterTitle: "",
     twitterDescription: "",
     twitterImage: "",
     structuredData: "",
   },
-
   published: false,
 };
+
+/* ---------------------------------------------------------
+   Shared fetch helper
+   - Reads token from localStorage
+   - Sets JSON headers
+   - Normalizes error handling
+   - Returns parsed JSON (or null for empty responses)
+--------------------------------------------------------- */
+function getAuthHeaders() {
+  if (typeof window === "undefined") return {};
+
+  try {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    return userInfo?.token ? { Authorization: `Bearer ${userInfo.token}` } : {};
+  } catch {
+    return {};
+  }
+}
+
+async function apiFetch(path, options = {}) {
+  const res = await fetch(`${BASE_URL}${path}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+      ...options.headers,
+    },
+    cache: "no-store",
+  });
+
+  let data = null;
+  const contentType = res.headers.get("content-type");
+  if (contentType && contentType.includes("application/json")) {
+    data = await res.json().catch(() => null);
+  }
+
+  if (!res.ok) {
+    const message = data?.message || `Request failed with status ${res.status}`;
+    throw new Error(message);
+  }
+
+  return data;
+}
+
+async function getBlogs() {
+  try {
+    return await apiFetch("/api/blogs/all", { method: "GET" });
+  } catch (error) {
+    console.error("Blogs fetch failed:", error);
+    return [];
+  }
+}
+
+async function createBlog(payload) {
+  return apiFetch("/api/blogs", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+async function updateBlog(id, payload) {
+  return apiFetch(`/api/blogs/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+async function deleteBlog(id) {
+  return apiFetch(`/api/blogs/${id}`, {
+    method: "DELETE",
+  });
+}
 
 export default function AdminBlogs() {
   const { user, loading: authLoading } = useContext(AuthContext);
@@ -58,25 +134,28 @@ export default function AdminBlogs() {
   const [form, setForm] = useState(emptyForm);
   const [editId, setEditId] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState({ text: "", type: "" });
 
   useEffect(() => {
     if (!authLoading && !user) router.push("/admin/login");
   }, [user, authLoading, router]);
 
+  const fetchBlogs = useCallback(async () => {
+    const data = await getBlogs();
+    setBlogs(Array.isArray(data) ? data : []);
+  }, []);
+
   useEffect(() => {
     if (user) fetchBlogs();
-  }, [user]);
+  }, [user, fetchBlogs]);
 
-  const fetchBlogs = async () => {
-    try {
-      const { data } = await API.get("/blogs/all");
-      setBlogs(data);
-    } catch {
-      setBlogs([]);
-    }
-  };
+  const autoSlug = (title) =>
+    title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -86,45 +165,39 @@ export default function AdminBlogs() {
     }));
   };
 
-  const autoSlug = (title) =>
-    title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
-
   const handleTitleChange = (e) => {
     const title = e.target.value;
-    setForm((prev) => {
-      const newTitle = title;
 
-      return {
-        ...prev,
-        title: newTitle,
-        slug: editId ? prev.slug : autoSlug(newTitle),
-      };
-    });
+    setForm((prev) => ({
+      ...prev,
+      title,
+      slug: editId ? prev.slug : autoSlug(title),
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
-    setMsg("");
+    setMsg({ text: "", type: "" });
+
     try {
       if (editId) {
-        await API.put(`/blogs/${editId}`, form);
-        setMsg("Blog updated.");
+        await updateBlog(editId, form);
+        setMsg({ text: "Blog updated.", type: "success" });
       } else {
-        await API.post("/blogs", form);
-        setMsg("Blog created.");
+        await createBlog(form);
+        setMsg({ text: "Blog created.", type: "success" });
       }
+
       setForm(emptyForm);
       setEditId(null);
       setShowForm(false);
-      fetchBlogs();
+      await fetchBlogs();
     } catch (err) {
-      setMsg(err.response?.data?.message || "Error saving blog.");
+      setMsg({ text: err.message || "Error saving blog.", type: "error" });
+    } finally {
+      setSaving(false);
     }
-    setSaving(false);
   };
 
   const handleEdit = (blog) => {
@@ -144,31 +217,42 @@ export default function AdminBlogs() {
         structuredData: blog?.seo?.structuredData || "",
       },
     });
+
     setEditId(blog._id);
     setShowForm(true);
-    setMsg("");
+    setMsg({ text: "", type: "" });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this blog post?")) return;
-    await API.delete(`/blogs/${id}`);
-    fetchBlogs();
+
+    setDeletingId(id);
+    try {
+      await deleteBlog(id);
+      await fetchBlogs();
+    } catch (err) {
+      console.error(err);
+      setMsg({ text: err.message || "Error deleting blog.", type: "error" });
+    } finally {
+      setDeletingId(null);
+    }
   };
 
   const handleCancel = () => {
     setForm(emptyForm);
     setEditId(null);
     setShowForm(false);
-    setMsg("");
+    setMsg({ text: "", type: "" });
   };
 
-  if (authLoading || !user)
+  if (authLoading || !user) {
     return (
       <div style={{ padding: "160px 20px", textAlign: "center" }}>
         Loading...
       </div>
     );
+  }
 
   return (
     <div
@@ -183,21 +267,17 @@ export default function AdminBlogs() {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "30px",
             flexWrap: "wrap",
             gap: "15px",
+            marginBottom: "30px",
           }}
         >
-          <h1
-            style={{ fontSize: "clamp(1.5rem,4vw,2.2rem)", fontWeight: "900" }}
-          >
-            📝 Manage Blogs
-          </h1>
+          <h1 style={{ fontSize: "2rem", fontWeight: 900 }}>📝 Manage Blogs</h1>
+
           <div style={{ display: "flex", gap: "10px" }}>
             <button
               onClick={() => {
-                setShowForm(!showForm);
+                setShowForm((p) => !p);
                 setEditId(null);
                 setForm(emptyForm);
               }}
@@ -205,6 +285,7 @@ export default function AdminBlogs() {
             >
               {showForm ? "Cancel" : "+ New Post"}
             </button>
+
             <button
               onClick={() => router.push("/admin/dashboard")}
               className="btn btn-black"
@@ -214,17 +295,17 @@ export default function AdminBlogs() {
           </div>
         </div>
 
-        {msg && (
+        {msg.text && (
           <p
             style={{
-              background: msg.includes("Error") ? "#fee" : "#efe",
+              background: msg.type === "error" ? "#fee" : "#efe",
               padding: "12px 20px",
-              borderRadius: "8px",
-              marginBottom: "20px",
-              fontWeight: "600",
+              borderRadius: 8,
+              marginBottom: 20,
+              fontWeight: 600,
             }}
           >
-            {msg}
+            {msg.text}
           </p>
         )}
 
@@ -242,7 +323,6 @@ export default function AdminBlogs() {
             <h2 style={{ marginBottom: "25px", fontSize: "1.4rem" }}>
               {editId ? "Edit Post" : "New Blog Post"}
             </h2>
-
             <div style={rowStyle}>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Title *</label>
@@ -267,7 +347,6 @@ export default function AdminBlogs() {
                 />
               </div>
             </div>
-
             <div style={rowStyle}>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Category</label>
@@ -292,7 +371,6 @@ export default function AdminBlogs() {
                 />
               </div>
             </div>
-
             <div style={{ marginBottom: "20px" }}>
               <ImageUploader
                 label="Cover Image"
@@ -304,7 +382,6 @@ export default function AdminBlogs() {
                 height={140}
               />
             </div>
-
             <div style={{ marginBottom: "20px" }}>
               <label style={labelStyle}>Excerpt *</label>
               <textarea
@@ -317,21 +394,15 @@ export default function AdminBlogs() {
                 placeholder="Short summary shown on listing page"
               />
             </div>
-
             <div style={{ marginBottom: "20px" }}>
               <label style={labelStyle}>Content *</label>
-
               <TextEditor
                 value={form.content}
                 onChange={(data) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    content: data,
-                  }))
+                  setForm((prev) => ({ ...prev, content: data }))
                 }
               />
             </div>
-
             {/* seo title, description and keywords goes here */}
             <SeoForm
               form={form}
@@ -339,7 +410,6 @@ export default function AdminBlogs() {
               labelStyle={labelStyle}
               inputStyle={inputStyle}
             />
-
             <div
               style={{
                 display: "flex",
@@ -363,7 +433,6 @@ export default function AdminBlogs() {
                 Publish immediately
               </label>
             </div>
-
             <div style={{ display: "flex", gap: "12px" }}>
               <button
                 type="submit"
@@ -383,96 +452,56 @@ export default function AdminBlogs() {
           </form>
         </Activity>
 
-        {/* Blog list */}
-        {blogs.length === 0 ? (
-          <div
-            style={{
-              textAlign: "center",
-              padding: "60px",
-              background: "white",
-              borderRadius: "12px",
-            }}
-          >
-            <p style={{ color: "#888", fontSize: "1.1rem" }}>
-              No blog posts yet. Create your first one above.
-            </p>
-          </div>
-        ) : (
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "15px" }}
-          >
-            {blogs.map((blog) => (
-              <div
-                key={blog._id}
-                style={{
-                  background: "white",
-                  padding: "20px 25px",
-                  borderRadius: "12px",
-                  boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                  gap: "12px",
-                }}
-              >
-                <div style={{ flex: 1, minWidth: "200px" }}>
-                  <div
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {blogs.map((blog) => (
+            <div
+              key={blog._id}
+              style={{
+                background: "#fff",
+                padding: 20,
+                borderRadius: 12,
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+              }}
+            >
+              <div>
+                <h3>{blog.title}</h3>
+                <p style={{ color: "#777", fontSize: 13 }}>
+                  {blog.category} · {blog.author}{" "}
+                  <span
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      marginBottom: "4px",
-                      flexWrap: "wrap",
+                      background: blog.published ? "#d4edda" : "#fff3cd",
+                      color: blog.published ? "#155724" : "#856404",
+                      padding: "2px 10px",
+                      borderRadius: "20px",
+                      fontSize: "0.75rem",
+                      fontWeight: "700",
                     }}
                   >
-                    <h3
-                      style={{
-                        fontSize: "1.05rem",
-                        fontWeight: "700",
-                        textTransform: "none",
-                      }}
-                    >
-                      {blog.title}
-                    </h3>
-                    <span
-                      style={{
-                        background: blog.published ? "#d4edda" : "#fff3cd",
-                        color: blog.published ? "#155724" : "#856404",
-                        padding: "2px 10px",
-                        borderRadius: "20px",
-                        fontSize: "0.75rem",
-                        fontWeight: "700",
-                      }}
-                    >
-                      {blog.published ? "Published" : "Draft"}
-                    </span>
-                  </div>
-                  <p style={{ color: "#888", fontSize: "0.85rem" }}>
-                    {blog.category} · {blog.author} ·{" "}
-                    {new Date(blog.createdAt).toLocaleDateString()}
-                  </p>
-                </div>
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <button
-                    onClick={() => handleEdit(blog)}
-                    className="btn btn-orange"
-                    style={{ padding: "8px 18px", fontSize: "0.85rem" }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(blog._id)}
-                    className="btn btn-black"
-                    style={{ padding: "8px 18px", fontSize: "0.85rem" }}
-                  >
-                    Delete
-                  </button>
-                </div>
+                    {blog.published ? "Published" : "Draft"}
+                  </span>
+                </p>
               </div>
-            ))}
-          </div>
-        )}
+
+              <div style={{ display: "flex", gap: 10 }}>
+                <button
+                  onClick={() => handleEdit(blog)}
+                  className="btn btn-orange"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(blog._id)}
+                  className="btn btn-black"
+                  disabled={deletingId === blog._id}
+                >
+                  {deletingId === blog._id ? "Deleting..." : "Delete"}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -480,23 +509,23 @@ export default function AdminBlogs() {
 
 const rowStyle = {
   display: "flex",
-  gap: "20px",
-  marginBottom: "20px",
+  gap: 20,
   flexWrap: "wrap",
+  marginBottom: 20,
 };
-const fieldStyle = { flex: 1, minWidth: "200px" };
+
+const fieldStyle = { flex: 1, minWidth: 200 };
+
 const labelStyle = {
   display: "block",
-  fontWeight: "600",
-  marginBottom: "6px",
-  fontSize: "0.9rem",
+  fontWeight: 600,
+  marginBottom: 6,
 };
+
 const inputStyle = {
   width: "100%",
   padding: "10px 14px",
   border: "1px solid #ddd",
-  borderRadius: "8px",
-  fontSize: "0.95rem",
+  borderRadius: 8,
   outline: "none",
-  boxSizing: "border-box",
 };
