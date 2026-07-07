@@ -151,7 +151,7 @@ export default async function CourseDetail({ params }) {
 
           {course.whyChooseThisProgram && (
             <div className="cd-section">
-              <h2>Why Choose MIU for {course.title}</h2>
+              <h2>Why Choose MIU for {course.title}?</h2>
 
               <div
                 className="cd-syllabus"
