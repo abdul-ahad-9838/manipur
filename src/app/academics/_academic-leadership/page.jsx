@@ -17,6 +17,7 @@ export default function Page() {
           content:
             "The Vice Chancellor is the principal academic and executive officer of the university, responsible for academic planning, research promotion, and overall institutional development.",
         },
+
         {
           title: "Pro Vice Chancellor",
           content:

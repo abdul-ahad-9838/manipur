@@ -118,11 +118,11 @@ const staticRoutes = [
     priority: 0.6,
     changeFrequency: "monthly",
   },
-  {
-    path: "/student-life/ncc-nss",
-    priority: 0.6,
-    changeFrequency: "monthly",
-  },
+  // {
+  //   path: "/student-life/ncc-nss",
+  //   priority: 0.6,
+  //   changeFrequency: "monthly",
+  // },
   { path: "/student-life/icc", priority: 0.6, changeFrequency: "monthly" },
   {
     path: "/student-life/health-facilities",
@@ -136,11 +136,11 @@ const staticRoutes = [
     priority: 0.5,
     changeFrequency: "monthly",
   },
-  {
-    path: "/student-life/incubation-center",
-    priority: 0.6,
-    changeFrequency: "monthly",
-  },
+  // {
+  //   path: "/student-life/incubation-center",
+  //   priority: 0.6,
+  //   changeFrequency: "monthly",
+  // },
   {
     path: "/student-life/ombudsperson",
     priority: 0.5,
@@ -167,8 +167,8 @@ const staticRoutes = [
   { path: "/jobs", priority: 0.7, changeFrequency: "weekly" },
   { path: "/blogs", priority: 0.8, changeFrequency: "daily" },
   { path: "/miunest", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/miu-cell", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/apprenticeship", priority: 0.6, changeFrequency: "monthly" },
+  // { path: "/miu-cell", priority: 0.6, changeFrequency: "monthly" },
+  // { path: "/apprenticeship", priority: 0.6, changeFrequency: "monthly" },
   {
     path: "/reservation-roster",
     priority: 0.6,

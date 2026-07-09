@@ -47,11 +47,11 @@ const ALL_PAGES = {
   "Student Life": [
     { name: "Sports", path: "/student-life/sports" },
     { name: "Hostel", path: "/student-life/hostel" },
-    { name: "NCC/NSS", path: "/student-life/ncc-nss" },
+    // { name: "NCC/NSS", path: "/student-life/ncc-nss" },
     { name: "Internal Complaints Committee", path: "/student-life/icc" },
     { name: "Anti-Ragging Cell", path: "/student-life/anti-ragging" },
-    { name: "Incubation Center", path: "/student-life/incubation-center" },
-    { name: "CPIO", path: "/student-life/cpio" },
+    // { name: "Incubation Center", path: "/student-life/incubation-center" },
+    // { name: "CPIO", path: "/student-life/cpio" },
     { name: "Grievance Cell", path: "/student-life/grievance-cell" },
     {
       name: "Equal Opportunity Cell",

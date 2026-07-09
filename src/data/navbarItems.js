@@ -30,20 +30,10 @@ const navbarItems = [
       {
         label: "Committees",
         subItems: [
-          // { label: "Sports", href: "/student-life/sports" },
-          // { label: "Hostel", href: "/student-life/hostel" },
-          // { label: "NCC/NSS", href: "/student-life/ncc-nss" },
           {
             label: "Internal Complaints Committee",
             href: "/student-life/icc",
           },
-          // { label: "Anti-Ragging Cell", href: "/student-life/anti-ragging" },
-          // {
-          //   label: "Incubation Center",
-          //   href: "/student-life/incubation-center",
-          // },
-          // { label: "CPIO", href: "/student-life/cpio" },
-          // { label: "Grievance Cell", href: "/student-life/grievance-cell" },
           {
             label: "Equal Opportunity Cell",
             href: "/student-life/equal-opportunity-cell",
@@ -55,12 +45,6 @@ const navbarItems = [
             href: "/student-life/project-development-cell",
           },
           { label: "SEDG Cell", href: "/student-life/sedg-cell" },
-          // { label: "Awards", href: "/student-life/awards" },
-
-          // {
-          //   label: "Health Facilities",
-          //   href: "/student-life/health-facilities",
-          // },
         ],
       },
       {
@@ -118,10 +102,6 @@ const navbarItems = [
     label: "Research",
     subItems: [
       { label: "Overview", href: "/research/overview" },
-      // {
-      //   label: "Degree Awarded",
-      //   href: "/research/degree-awarded",
-      // },
       { label: "Development Cell", href: "/research/development-cell" },
       { label: "Projects", href: "/research/projects" },
       { label: "Publications", href: "/research/publications" },
@@ -149,23 +129,9 @@ const navbarItems = [
     subItems: [
       { label: "Sports Facilities", href: "/student-life/sports" },
       { label: "Hostel", href: "/student-life/hostel" },
-      // { label: "NCC/NSS", href: "/student-life/ncc-nss" },
-      // { label: "Internal Complaints Committee", href: "/student-life/icc" },
       { label: "Anti-Ragging Cell", href: "/student-life/anti-ragging" },
-      // { label: "Incubation Center", href: "/student-life/incubation-center" },
-      // { label: "CPIO", href: "/student-life/cpio" },
       { label: "Grievance Cell", href: "/student-life/grievance-cell" },
-      // {
-      //   label: "Equal Opportunity Cell",
-      //   href: "/student-life/equal-opportunity-cell",
-      // },
 
-      // { label: "Ombudsperson", href: "/student-life/ombudsperson" },
-      // {
-      //   label: "Project Development Cell",
-      //   href: "/student-life/project-development-cell",
-      // },
-      // { label: "SEDG Cell", href: "/student-life/sedg-cell" },
       { label: "Awards", href: "/student-life/awards" },
 
       { label: "Health Facilities", href: "/student-life/health-facilities" },
