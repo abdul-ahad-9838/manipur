@@ -3,14 +3,10 @@ export default function Page() {
   return (
     <DynamicPage
       settingsKey="dp-ugc-performance"
-      badge="RECOGNITION"
+      // badge="RECOGNITION"
       title="UGC Proforma"
-      subtitle="Manipur International University's standing and performance as recognized by the University Grants Commission."
-      breadcrumb={[
-        { label: "Home", href: "/" },
-        { label: "About Us", href: "/about" },
-        { label: "UGC Proforma" },
-      ]}
+      // subtitle="Manipur International University's standing and performance as recognized by the University Grants Commission."
+      // breadcrumb={[{ label: "UGC Proforma" }]}
       defaultSections={[
         {
           title: "UGC Proforma",
@@ -24,7 +20,7 @@ export default function Page() {
               uriLink: "/ugc/UGC Proforma (MIU).pdf",
             },
             {
-              title: "DEED COPY",
+              title: "Registered Trust Deed",
               uriLink: "/ugc/Deed Copy.pdf",
             },
 
