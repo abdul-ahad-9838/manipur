@@ -128,7 +128,18 @@ export default async function DynamicPage({
                             alignItems: "center",
                           }}
                         >
-                          <strong>{item.title} </strong>
+                          {item.uriLink ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ textDecoration: "underline" }}
+                              href={item.uriLink}
+                            >
+                              {item.title}
+                            </a>
+                          ) : (
+                            <strong>{item.title} </strong>
+                          )}
 
                           {item.fileUrl && (
                             <a
@@ -137,7 +148,7 @@ export default async function DynamicPage({
                               rel="noopener noreferrer"
                               style={{
                                 border: "1px solid var(--lpu-orange)",
-                                padding: "4px 8px",
+                                padding: "0 4px",
                                 borderRadius: "4px",
                                 color: "var(--lpu-orange) ",
                               }}

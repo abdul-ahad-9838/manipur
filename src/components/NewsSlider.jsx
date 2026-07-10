@@ -2,14 +2,14 @@
 
 import React, { useState, useCallback, useMemo } from "react";
 import Link from "next/link";
-// import "@/styles/NewsSlider.css";
 import Image from "next/image";
 
 export default function NewsSlider({ blogs = [] }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  const posts = Array.isArray(blogs) ? blogs : [];
+  const cropBlog = blogs.slice(0, 6);
+  const posts = Array.isArray(cropBlog) ? cropBlog : [];
 
   const total = posts?.length;
 

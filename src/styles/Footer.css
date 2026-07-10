@@ -254,6 +254,9 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+  .ugc-performa-link {
+    display: none;
+  }
   .footer-bottom {
     flex-direction: column;
     gap: 1rem;

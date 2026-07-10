@@ -15,8 +15,8 @@
   --border-faint: rgba(255, 255, 255, 0.1);
   --border-faint-2: rgba(255, 255, 255, 0.08);
 
-  --font-body: "Roboto", sans-serif;
-  --font-heading: "Oswald", sans-serif;
+  --font-body: sans-serif;
+  --font-heading: sans-serif;
 
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);

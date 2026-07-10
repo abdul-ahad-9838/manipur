@@ -100,6 +100,10 @@ const Footer = async () => {
                   Notices and Announcements
                 </Link>
               </li>
+              <li className="ugc-performa-link">
+                <Link href="/about/ugc-performa">UGC Performa</Link>
+              </li>
+
               <li>
                 <Link href="#">Placement Cell</Link>
               </li>
