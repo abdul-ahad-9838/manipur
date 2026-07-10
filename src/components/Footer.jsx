@@ -101,7 +101,7 @@ const Footer = async () => {
                 </Link>
               </li>
               <li className="ugc-performa-link">
-                <Link href="/about/ugc-performa">UGC Performa</Link>
+                <Link href="/about/ugc-proforma">UGC Proforma</Link>
               </li>
 
               <li>
