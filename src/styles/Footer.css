@@ -6,8 +6,8 @@
 
 .footer-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 3rem;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
+  gap: 2rem;
   margin-bottom: 3rem;
 }
 
@@ -33,6 +33,7 @@
 .social-links {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-icon {
@@ -243,16 +244,13 @@
   color: var(--primary);
 }
 
-@media (max-width: 992px) {
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 @media (max-width: 768px) {
   .footer-top {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  .footer-top > :first-child {
+    grid-column: 1 / -1; /* spans all 4 columns */
   }
   .ugc-performa-link {
     display: none;

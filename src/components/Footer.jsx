@@ -86,12 +86,6 @@ const Footer = async () => {
                 <Link href="/about">About MIU</Link>
               </li>
               <li>
-                <Link href="/admissions/process">Admissions 2026</Link>
-              </li>
-              <li>
-                <Link href="/jobs">Jobs &amp; Careers</Link>
-              </li>
-              <li>
                 <Link href="/blogs">Blogs</Link>
               </li>
               {/* Notices and Announcements */}
@@ -124,7 +118,21 @@ const Footer = async () => {
             </ul>
           </div>
 
-          <div className="footer-col col-contact">
+          <div className="footer-col">
+            <h3 className="footer-heading">Useful Links</h3>
+            <ul className="footer-links">
+              <li>
+                <Link href="/academics/brochure">Brochure Download</Link>
+              </li>
+              <li>
+                <Link href="/admissions/process">Admissions 2026</Link>
+              </li>
+              <li>
+                <Link href="/jobs">Jobs &amp; Careers</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-col">
             <h3 className="footer-heading">Contact Us</h3>
             <ul className="footer-contact-info">
               <li>
