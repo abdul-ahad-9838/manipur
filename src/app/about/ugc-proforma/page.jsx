@@ -21,7 +21,7 @@ export default function Page() {
             },
             {
               title: "Registered Trust Deed",
-              uriLink: "/ugc/Deed Copy.pdf",
+              uriLink: "/ugc/DEED COPY.pdf",
             },
 
             {
