@@ -93,6 +93,11 @@ export default function RootLayout({ children }) {
           content="XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns"
         />
 
+        <meta
+          name="facebook-domain-verification"
+          content="dh41zny9obu2u0zng15i3djtnesg2z"
+        />
+
         {/* Optional performance boost */}
         {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
