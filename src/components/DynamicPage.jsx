@@ -27,7 +27,7 @@ export default async function DynamicPage({
   breadcrumb,
   defaultSections,
 }) {
-  const data = await getPageData(settingsKey);
+  const data = []; //await getPageData(settingsKey);
 
   const c = data?.content || {};
 

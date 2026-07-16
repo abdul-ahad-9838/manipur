@@ -9,17 +9,18 @@ const SECTIONS = [
     title: "Institutional Information",
     items: [
       {
-        label: "Name of the University: Manipur International University (MIU)",
+        label:
+          "Institutional information: Manipur International University (MIU)",
         href: "/about",
       },
       {
         label:
-          "Establishment: Established under the Manipur International University Act, 2018 by the Government of Manipur",
+          "Date of Establishment: Manipur International University was established under the Manipur International University Act, 2018 by the Governments of Manipur.",
         href: "/about/affiliations-accreditation",
       },
       {
         label:
-          "Recognition: Recognised by the University Grants Commission (UGC) under Sections 2(f) and 22 of the UGC Act, 1956",
+          "Recognition: MIU is recognized by University Grant Commission (UGC) under Sections 2(f) and 22 of the UGC Act, 1956.",
         href: "/about/affiliations-accreditation",
       },
       { label: "Type: State Private University", href: "/about" },
@@ -29,80 +30,100 @@ const SECTIONS = [
     icon: "⚖️",
     title: "Governance and Administration",
     intro:
-      "MIU follows a structured governance framework to ensure efficient decision-making and academic excellence. Key bodies include:",
+      "There are various committees/governing bodies in the university that govern the academic/administrative affairs of the university.Some of these committees are:",
     items: [
       { label: "Board of Governors", href: "/about/governance" },
       { label: "Academic Council", href: "/about/academic-council" },
       { label: "Finance Committee", href: "" },
       { label: "Internal Quality Assurance Cell (IQAC)", href: "/about/iqac" },
     ],
-    note: "These bodies function in accordance with statutory provisions and institutional policies.",
+    note: "These committees function as per the rules and regulations of the university.",
   },
+
   {
     icon: "🎓",
-    title: "Academic Information",
-    intro: "The University offers a wide range of:",
+    title: "Academic Programs",
+    intro: "MIU offers diverse academic programs, which include the following:",
     items: [
-      { label: "Undergraduate Programs", href: "" },
-      { label: "Postgraduate Programs", href: "" },
+      { label: "UG Programs", href: "" },
+      { label: "PG Programs", href: "" },
       { label: "Diploma and Certificate Courses", href: "" },
-      { label: "Doctoral (Ph.D.) Programs", href: "" },
+      { label: "Ph.D. Programs", href: "" },
+
       {
         label: "Skill and Vocational Programs",
         href: "https://vocational.miu.edu.in/",
       },
     ],
-    note: "Details regarding program structure, eligibility, curriculum, and academic regulations are available on the website.",
+    note: "Details about eligibility, course structure and academic regulations are available on the university website.",
   },
+
   {
     icon: "📋",
-    title: "Admission and Fee Information",
+    title: "Admission and Fee",
     items: [
       {
         label:
-          "Admission procedures are conducted as per University norms and regulatory guidelines",
-        href: "/admissions/process",
-      },
-      {
-        label: "Eligibility criteria vary by program and are clearly defined",
+          "Admission for all programs is conducted according to the University rules",
         href: "/admissions/process",
       },
       {
         label:
-          "Fee structure for all programs is published and updated regularly",
+          "Eligibility requirements for each program are published and updated regularly",
+        href: "/admissions/process",
+      },
+      {
+        label: "The fee structure for all courses is available on the website",
         href: "",
       },
       {
         label:
-          "Scholarship schemes and financial assistance options are available for eligible students",
+          "Scholarship and financial assistance are offered to eligible students",
         href: "",
       },
     ],
   },
+
   {
     icon: "👨‍🏫",
-    title: "Faculty Information",
+    title: "Faculty",
     intro:
-      "MIU has qualified and experienced faculty members across disciplines. Information regarding faculty qualifications, experience, and departmental affiliations is made available for transparency.",
+      "The University has qualified and experienced faculty members from different academic fields. Information about faculty qualifications and departments is available on the website.",
     items: [],
   },
+
   {
-    icon: "🏢",
-    title: "Infrastructure and Facilities",
-    intro: "The University provides:",
+    icon: "🏫",
+    title: "Campus Facilities",
+    intro:
+      "MIU provides facilities to support learning and students life, including:",
     items: [
-      { label: "Classrooms and laboratories", href: "" },
-      { label: "Library and digital learning resources", href: "" },
-      { label: "IT-enabled learning facilities", href: "" },
-      { label: "Research and innovation support", href: "" },
-      { label: "Student support services and campus amenities", href: "" },
+      { label: "Classrooms and Laboratories", href: "" },
+      { label: "Library and Digital Learning Resources", href: "" },
+      { label: "Computer and IT Facilities", href: "" },
+      { label: "Research and Innovation Support", href: "" },
     ],
   },
   {
-    icon: "📝",
-    title: "Examinations and Evaluation",
+    icon: "👨‍💼",
+    title: "Students Support Services",
+    intro:
+      "MIU offers comprehensive support services to enhance the overall student experience, including:",
     items: [
-      { label: "Transparent and systematic examination processes", href: "" },
+      { label: "Academic Counseling", href: "" },
+      { label: "Career Guidance", href: "" },
+      { label: "Mental Health and Wellness", href: "" },
+      { label: "Student Grievance Redressal", href: "" },
+    ],
+  },
+
+  {
+    icon: "📝",
+    title: "Examinations",
+    intro:
+      "The university follows a fair and transparent examination system. Internal assessments and semester examinations are conducted with the following features:",
+    items: [
+      { label: "Fair and transparent examination processes", href: "" },
       {
         label: "Continuous internal assessment and semester-end examinations",
         href: "",
@@ -115,17 +136,19 @@ const SECTIONS = [
       },
     ],
   },
+
   {
     icon: "✅",
     title: "Quality Assurance",
     intro:
-      "MIU has established an Internal Quality Assurance Cell (IQAC) in accordance with NAAC guidelines to ensure continuous quality improvement in teaching, learning, research, and administration.",
+      "The Internal Quality Assurance  Cell (IQAC) works to improve the quality of teaching, learning, research and other academic activities.",
     items: [],
   },
+
   {
     icon: "📜",
-    title: "Policies and Regulations",
-    intro: "The University publishes key policies, including:",
+    title: "Policies",
+    intro: "The university publishes important policies including:",
     items: [
       { label: "Admission Policy", href: "" },
       { label: "Examination Policy", href: "" },
@@ -138,9 +161,10 @@ const SECTIONS = [
       },
     ],
   },
+
   {
     icon: "🤝",
-    title: "Student Support and Grievance Redressal",
+    title: "Students Support",
     intro: "MIU ensures student welfare through:",
     items: [
       { label: "Academic counseling and mentoring", href: "" },
@@ -155,11 +179,12 @@ const SECTIONS = [
       },
     ],
   },
+
   {
     icon: "🏅",
     title: "Statutory Compliance",
     intro:
-      "The University complies with all applicable regulations of statutory bodies and ensures adherence to national education policies and quality standards.",
+      "The university follows the rules and guidance issued by the UGC and other statutory bodies. It also complies with national education policies and maintains the required academic standards. ",
     items: [],
   },
 ];
@@ -203,18 +228,14 @@ export default function PublicSelfDisclosurePage() {
             OVERVIEW
           </span>
           <p className="ac-intro-text">
-            Manipur International University (MIU) is committed to maintaining
-            transparency, accountability, and good governance in all its
-            academic and administrative functions. In line with the guidelines
-            of regulatory authorities and best practices in higher education,
-            the University provides comprehensive and up-to-date information in
-            the public domain for the benefit of students, parents, faculty, and
-            other stakeholders.
+            Manipur International University (MIU) is dedicated to transparency
+            and sound governance. MIU provides vital information related to the
+            institution for the benefit of students, parents, faculty, and other
+            interested stakeholders.
           </p>
           <p className="ac-intro-text" style={{ marginTop: "12px" }}>
-            This Public Self-Disclosure section aims to ensure easy access to
-            key institutional information, enabling informed decision-making and
-            promoting trust among stakeholders.
+            Below is the information related to the institution, its academic
+            programs, policies, facilities and services.
           </p>
         </div>
 

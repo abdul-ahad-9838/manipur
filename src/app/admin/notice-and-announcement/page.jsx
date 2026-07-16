@@ -50,7 +50,13 @@ export default function AdminNoticesPage() {
 
   const fetchNotices = async () => {
     try {
-      const { data } = await API.get("/notices");
+      const { data } = await API.get("/notices", {
+        params: { _t: Date.now() }, // cache-busting query param
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+        },
+      });
       setNotices(data);
     } catch {
       setNotices([]);
@@ -80,7 +86,6 @@ export default function AdminNoticesPage() {
       };
 
       if (editId) {
-        console.log(editId);
         await API.put(`/notices/${editId}`, payload);
         setMsg("Notice updated successfully.");
       } else {
@@ -91,7 +96,7 @@ export default function AdminNoticesPage() {
       setForm(emptyForm);
       setEditId(null);
       setShowForm(false);
-      fetchNotices();
+      await fetchNotices();
     } catch (err) {
       setMsg(err.response?.data?.message || "Error saving notice");
     }

@@ -1,0 +1,134 @@
+/* Card */
+
+.cta-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Background Glow */
+
+.cta-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cta-glow-gradient {
+  position: absolute;
+  top: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 70%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e0f2fe, #ffffff, #fef3c7);
+  filter: blur(80px);
+}
+
+/* Content */
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cta-text h2 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.cta-text p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.8;
+  font-family: var(--font-body);
+}
+
+/* Button */
+
+.cta-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 56px 0 24px;
+  border: none;
+  border-radius: 999px;
+  background: var(--lpu-orange);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+/* Hover pe shadow */
+.cta-button:hover {
+  box-shadow: 0 4px 6px rgba(160, 117, 0, 0.4);
+}
+
+.cta-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-button-icon {
+  position: absolute;
+  right: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .cta {
+    padding: 3rem 1rem;
+  }
+
+  .cta-card {
+    min-height: 340px;
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .cta-text p {
+    font-size: 0.95rem;
+  }
+}

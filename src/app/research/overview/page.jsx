@@ -5,7 +5,7 @@ const researchAreas = [
     code: "ENG",
     name: "Engineering & Technology",
     blurb:
-      "In the fast paced digital era Manipur international university technology researchers are focused on building smarter, safer and more efficient digital systems. The key research sub domain include: ",
+      "In the fast paced digital era Manipur International University technology researchers are focused on building smarter, safer and more efficient digital systems. The key research sub domain include: ",
     subdomains: [
       "Artificial intelligence",
       "Data science & big data analytics",
@@ -118,9 +118,9 @@ const rdcFunctions = [
 
 const keyFunctionOfRDC = [
   "Research proposal support: The cell helps researchers prepare and submit proposals for funding opportunities.",
-  "Projects  monitoring:It monitors ongoing projects and ensures that research activities are completed effectively.",
-  "Collaboration facilities: the RDC will help in establishing partnerships with industries, universities and research organizations.",
-  "Funding guidance: the cell provides students the research grants and funding opportunities available from different agencies. ",
+  "Projects  monitoring: It monitors ongoing projects and ensures that research activities are completed effectively.",
+  "Collaboration facilities: The RDC will help in establishing partnerships with industries, universities and research organizations.",
+  "Funding guidance: The cell provides students the research grants and funding opportunities available from different agencies. ",
 ];
 
 const outputs = [
@@ -167,11 +167,11 @@ export default function Page() {
           </h1>
           <div style={{ marginBottom: "40px" }}>
             <p className="rs-hero-sub">
-              Manipur international university (MIU) is located in imphal
+              Manipur International University (MIU) is located in Imphal
               Manipur. The university is built to create knowledge, improve
               education, and help society grow through research. MIU was
-              established in 2018 and is recognised by the university grant
-              commission (UGC) and various national bodies.
+              established in 2018 and is recognised by the University Grants
+              Commission (UGC) and various national bodies.
             </p>
             <p className="rs-hero-sub">
               Research and innovation plays a vital role in the growth of higher
@@ -277,7 +277,7 @@ export default function Page() {
           </div>
 
           <p className="rs-ecosystem-lead">
-            Manipur international university has developed a supportive research
+            Manipur International University has developed a supportive research
             environment for students and faculty members. The university
             believes that research should be an important part of academic life.
           </p>
@@ -397,7 +397,7 @@ export default function Page() {
             </span>
             <p>
               A strong research infrastructure is important for quality
-              research. Manipur international university provides the facilities
+              research. Manipur International University provides the facilities
               and resources needed for research and innovation. The university
               continues to improve its infrastructure to support teaching,
               learning and research activities.

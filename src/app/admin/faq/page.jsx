@@ -22,7 +22,13 @@ export default function AdminFAQ() {
 
   const fetchFaqs = async () => {
     try {
-      const { data } = await API.get("/faqs");
+      const { data } = await API.get("/faqs", {
+        params: { _t: Date.now() }, // cache-busting query param
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+        },
+      });
       setFaqs(data);
     } catch {
       setFaqs([]);

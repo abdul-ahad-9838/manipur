@@ -510,8 +510,6 @@ export default function SchoolPage() {
           SCHOOLS[resolvedSlug] ||
           SCHOOLS[slug];
 
-        // console.log(sectionsRes);
-
         // 2. If not found, build from schools-section list (for dynamically added schools)
         if (!school) {
           const found = (sectionsRes.data?.content?.schools || []).find(

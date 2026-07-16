@@ -14,59 +14,59 @@ export default function SEDGCell() {
       icon: "🤝",
       title: "Socio-Economically Disadvantaged Group Cell",
       content:
-        "At Manipur International University, we are committed to uplifting students from diverse socio-economic backgrounds through inclusive academic and career support. By ensuring equal access to resources, mentorship, and financial aid, the Cell fosters empowerment and holistic development across the campus.",
+        "The Socio-Economically Disadvantaged Group (SEDG) Cell at Manipur International University helps students who belong to socio-economically disadvantaged backgrounds. The cell helps ensure that each student receives equal educational opportunities.",
     },
     {
       title: "Mission & Vision",
       content:
-        "The SEDG Cell at Manipur International University is dedicated to promote equity, dignity, and opportunity for students from socio-economically disadvantaged backgrounds by ensuring inclusive access to education, resources, and institutional support.",
+        "The SEDG Cell is dedicated to building an inclusive environment where all the students receive the necessary support to accomplish their academic and professional goals with respect.",
     },
     {
       title: "Key Objectives",
       list: [
-        "Identify and support students from economically weaker sections",
-        "Eliminate systemic barriers to academic and career advancement",
-        "Foster a respectful and empowering campus environment",
+        "Help students belonging to economically weaker sections.",
+        "Reduce impediments to academic and professional success of students.",
+        "Create an inclusive and respectful campus for all.",
       ],
     },
     {
-      title: "Supporting Initiatives",
+      title: "Our Initiatives",
       cards: [
         {
           icon: "💰",
-          title: "Financial Support",
+          title: "Financial Assistance",
           content:
-            "Financial aid, fee waivers, and emergency grants for students in need",
+            "Scholarships, fee assistance and financial assistance programs for disadvantaged students",
         },
         {
           icon: "👨‍🏫",
-          title: "Mentorship Programs",
+          title: "Mentoring Program",
           content:
-            "One-on-one mentorship and academic counselling for disadvantaged students",
+            "Academic counseling and mentoring for helping students achieve their academic goals",
         },
         {
           icon: "🎓",
-          title: "Skill Development",
+          title: "Skill Building",
           content:
-            "Workshops and career guidance to enhance employability and confidence",
+            "Skill development programs like workshops and career guidance for improving employability",
         },
         {
           icon: "🤲",
-          title: "Holistic Support",
+          title: "Student Assistance",
           content:
-            "Comprehensive support ecosystem addressing academic and personal needs",
+            "Academic and personal assistance for helping students through their academics",
         },
       ],
     },
     {
-      title: "Collaboration",
+      title: "Collaborations",
       content:
-        "Works in coordination with the Equal Opportunity Cell (EOC), Student Welfare Division, and external agencies to mobilize resources, conduct outreach, and ensure policy-level inclusion.",
+        "The SEDG cell collaborates with the equal opportunity Cell (EOC), the students welfare section, and many other organizations to offer more help and provide equal opportunities to students. ",
     },
     {
       title: "Our Commitment",
       content:
-        "The SEDG Cell stands as a pillar of institutional commitment to social justice—ensuring that no student is left behind due to economic hardship or social disadvantage.",
+        "The SEDG cell is committed to ensuring that no student misses any educational opportunities due to their inability and socioeconomic condition. We strive to create an environment where all the students feel empowered to study and learn.",
     },
   ];
 

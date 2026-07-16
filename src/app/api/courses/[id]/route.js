@@ -27,11 +27,8 @@ export async function PUT(request, { params }) {
 
     const { id } = await params;
     const body = await request.json();
-    console.log(id);
     await dbConnect();
     const course = await Course.findById(id);
-
-    console.log("For checking purpose", course);
 
     if (course) {
       Object.assign(course, body);

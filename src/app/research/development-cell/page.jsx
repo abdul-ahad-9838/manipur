@@ -44,119 +44,93 @@ export default function ResearchDevelopmentCell() {
         <div className="simple-section">
           <h2 className="simple-sec-title">Introduction</h2>
           <p className="simple-sec-content">
-            Manipur International University (MIU) is committed to fostering a
-            strong culture of research, innovation, and industry collaboration
-            in alignment with its statutory objectives and academic vision. To
-            strengthen and institutionalize its research initiatives, the
-            University has established a Research and Development Cell (RDC).
+            The research and developments cell (RDC) at Manipur International
+            University (MIU) promotes research, innovation and collaboration. It
+            encourages students and faculty to take part in research projects,
+            consultancy work, and partnership with universities, research
+            organizations and industries.
           </p>
           <p className="simple-sec-content" style={{ marginTop: "12px" }}>
-            The RDC functions as a dedicated platform to promote research
-            excellence, encourage consultancy projects, and facilitate
-            collaborations with national and international universities,
-            research institutions, and industries. It aims to create an
-            ecosystem that supports interdisciplinary research,
-            innovation-driven learning, and practical application of knowledge.
-          </p>
-          <p className="simple-sec-content" style={{ marginTop: "12px" }}>
-            This initiative is aligned with the goals of the National Education
-            Policy (NEP) 2020 and reflects MIU's commitment to advancing
-            high-quality, impactful research that contributes to academic
-            growth, societal development, and global engagement.
+            The RDC supports new ideas, interdisciplinary research and practical
+            solutions to real world problems. It also works in line with the
+            national education policy (NEP) 2020 to improve the quality and
+            impact of research at the university.
           </p>
         </div>
 
         {/* Objectives */}
         <div className="simple-section">
-          <h2 className="simple-sec-title">
-            Objectives of the Research and Development Cell
-          </h2>
+          <h2 className="simple-sec-title">Objectives</h2>
+
           <p className="simple-sec-content" style={{ marginBottom: "16px" }}>
-            The RDC aims to:
+            The research and development cell aims to:
           </p>
           <ol className="rdc-list">
+            <li>It encourages quality research and innovation.</li>
+            <li>Support research projects in different fields.</li>
             <li>
-              <strong>Promote Research Excellence:</strong> To create a
-              supportive and dynamic environment that encourages high-quality
-              research, innovation, and scholarly contributions across
-              disciplines.
+              Build a partnership with universities, industries and research
+              organizations.
             </li>
+            <li>Promotes consultancy projects for faculty and students.</li>
+            <li>It encourages interdisciplinary research.</li>
             <li>
-              <strong>Enhance Collaboration:</strong> To facilitate meaningful
-              national and international collaborations with academic
-              institutions, research organizations, and industry partners.
-            </li>
-            <li>
-              <strong>Foster Consultancy Projects:</strong> To encourage faculty
-              members and students to undertake consultancy assignments,
-              enabling knowledge transfer, industry engagement, and resource
-              generation.
-            </li>
-            <li>
-              <strong>Encourage Interdisciplinary Research:</strong> To promote
-              research initiatives that address complex, real-world challenges
-              through multidisciplinary and integrated approaches.
-            </li>
-            <li>
-              <strong>Ensure Sustainability:</strong> To align research
-              activities with the principles of environmental responsibility,
-              social relevance, and sustainable development.
+              It supports research that benefits society and promotes
+              sustainable development.
             </li>
           </ol>
         </div>
 
         {/* Functions */}
         <div className="simple-section">
-          <h2 className="simple-sec-title">
-            Functions of the Research and Development Cell
-          </h2>
+          <h2 className="simple-sec-title">Functions of the RDC</h2>
           {[
             {
-              title: "1. Research Facilitation",
+              title: "1. Research Support",
               points: [
-                "Formulate and implement research policies in alignment with UGC guidelines and global best practices",
-                "Identify emerging and priority research areas and support their development",
-                "Provide seed funding for pilot studies to encourage innovation and scalable research initiatives",
+                "It develops policies and guidelines.",
+                "It identifies important research areas.",
+                "It provides support for new research projects and pilot studies.",
               ],
             },
             {
-              title: "2. Management of Consultancy Projects",
+              title: "2. Consultancy Projects",
               points: [
-                "Establish collaborations with industries, government bodies, and non-governmental organizations for consultancy assignments",
-                "Ensure transparent and equitable sharing of consultancy revenue among stakeholders",
-                "Develop and enforce guidelines for ethical, high-quality consultancy practices",
+                "Work with industries, governments departments and organizations on consultancy projects.",
+                "They make sure fair and transparent management of consultancy work.",
+                "It promotes ethical and professional research practices.",
               ],
             },
             {
-              title: "3. International Collaboration",
+              title: "3. National and International Collaboration",
               points: [
-                "Build partnerships with reputed international universities and research institutions for joint research initiatives and academic exchange",
-                "Facilitate mobility of students and researchers through formal collaborations and MoUs",
-                "Organize international seminars, conferences, and workshops to promote knowledge exchange and global engagement",
+                "It builds partnerships with universities and research institutions in India and abroad",
+                "It supports joint research projects and academic exchange",
+                "It organizes seminars, conferences and workshops",
               ],
             },
             {
               title: "4. Industry Collaboration",
               points: [
-                "Promote strong linkages with industry to encourage applied research and innovation",
-                "Establish Centers of Excellence in collaboration with industry partners for specialized research and development",
-                "Facilitate internships, live projects, and research fellowships to bridge the gap between academia and industry",
+                "It encourages research in partnership with industries.",
+                "It supports internships, live projects and research fellowships.",
+                "It promotes industry based research and innovation.",
               ],
             },
             {
-              title: "5. Capacity Building",
+              title: "5. Research Training",
               points: [
-                "Organize workshops, training programs, and conferences to enhance research skills and competencies",
-                "Provide mentorship and guidance to early-career researchers and scholars",
-                "Encourage continuous professional development and academic growth",
+                "It conducts workshops and training programs to improve research skills",
+                "It guides young researchers and research scholars",
+                "It encourages continuous learning and professional development",
               ],
             },
             {
-              title: "6. Intellectual Property and Commercialization",
+              title: "6. Intellectual Property",
               points: [
-                "Support researchers in patent filing, copyright protection, and other intellectual property rights",
-                "Facilitate the commercialization and transfer of research outcomes for societal and economic impact",
-                "Promote innovation-driven entrepreneurship and start-up initiatives",
+                "It helps researchers with patent filing and copyright registration",
+                "It supports the transfer of research outcomes for practical use",
+                "It encourages innovation, entrepreneurship and start-up activities",
               ],
             },
           ].map((fn, i) => (
@@ -182,13 +156,10 @@ export default function ResearchDevelopmentCell() {
 
         {/* Governance Table */}
         <div className="simple-section">
-          <h2 className="simple-sec-title">
-            Governance and Constitution of the RDC
-          </h2>
+          <h2 className="simple-sec-title">Governance of the RDC</h2>
           <p className="simple-sec-content" style={{ marginBottom: "20px" }}>
-            The RDC operates as a statutory body under Section 36 of the Manipur
-            International University Act, 2018. Its governance structure
-            includes:
+            The research and developments cell function under section36 of the
+            Manipur International University Act, 2018. Its members include:
           </p>
           <div className="rdc-table-wrap">
             <table className="rdc-table">
@@ -201,37 +172,26 @@ export default function ResearchDevelopmentCell() {
               <tbody>
                 <tr>
                   <td>Chairperson</td>
-                  <td>
-                    Vice-Chancellor; provides strategic leadership to the RDC.
-                  </td>
+                  <td>Provides overall leadership to the RDC.</td>
                 </tr>
                 <tr>
                   <td>Coordinator</td>
-                  <td>
-                    Senior faculty member overseeing the daily functioning of
-                    the RDC.
-                  </td>
+                  <td>Manages the day-to-day activities of the RDC.</td>
                 </tr>
                 <tr>
                   <td>Industry Representative</td>
                   <td>
-                    Liaises between the university and industries for
-                    collaborative projects.
+                    Connects the University with industries for collaborative
+                    projects.
                   </td>
                 </tr>
                 <tr>
                   <td>Research Experts</td>
-                  <td>
-                    Senior researchers from within and outside the university to
-                    guide research priorities.
-                  </td>
+                  <td>Provide guidance on research and innovation.</td>
                 </tr>
                 <tr>
                   <td>Student Representative</td>
-                  <td>
-                    Represents the student research community and ensures
-                    inclusivity.
-                  </td>
+                  <td>Represents the interests of research students.</td>
                 </tr>
               </tbody>
             </table>
@@ -240,85 +200,72 @@ export default function ResearchDevelopmentCell() {
 
         {/* PhD Scholar Categories */}
         <div className="simple-section">
-          <h2 className="simple-sec-title">
-            Admission Eligibility and Process
-          </h2>
-          <h3
-            style={{
-              fontSize: "1.05rem",
-              fontWeight: "700",
-              marginBottom: "12px",
-              color: "var(--lpu-black)",
-            }}
-          >
-            Ph.D. Scholar Categories
-          </h3>
+          <h2 className="simple-sec-title">P.h.D Admission Categories</h2>
+
           <p className="simple-sec-content" style={{ marginBottom: "16px" }}>
-            An applicant seeking admission to the Ph.D. program at MIU shall
-            apply under one of the following categories:
+            Applicants can apply for the P.h.D programmes under the following
+            categories:
           </p>
           <ol className="rdc-list">
             <li>
               <strong>Sponsored Candidates:</strong> Candidates sponsored by
-              Government, Semi-Government, Private Organizations, or other
-              recognized bodies. <em>Mode: Full-Time / Part-Time</em>
+              government departments, private organizations and other recognized
+              institutes. <em>Mode: Full-Time / Part-Time</em>
             </li>
             <li>
-              <strong>Regular Self-Financed Candidates:</strong> Self-sponsored
-              students, self-employed individuals, or working/non-working
-              professionals. <em>Mode: Full-Time / Part-Time</em>
+              <strong>Self-Financed Candidates:</strong> Students or working
+              professionals who wish to pursue a Ph.D. on their own.{" "}
+              <em>Mode: Full-Time / Part-Time</em>
             </li>
             <li>
               <strong>Corporate Research Scholars:</strong> Professionals with
-              minimum 10 years of work experience. <em>Mode: Part-Time Only</em>
-            </li>
-            <li>
-              <strong>Working Faculty (External):</strong> Faculty members
-              working in other universities, colleges, or recognized
-              institutions. <em>Mode: Part-Time Only</em>
-            </li>
-            <li>
-              <strong>Regular Academic Staff of MIU:</strong> Permanent academic
-              staff members of MIU. <em>Mode: Part-Time Only</em>
-            </li>
-            <li>
-              <strong>Regular Non-Academic Staff of MIU:</strong> Permanent
-              non-academic staff members of the University.{" "}
+              at least 10 years of work experience.{" "}
               <em>Mode: Part-Time Only</em>
             </li>
             <li>
-              <strong>Research Fellows (JRF/SRF/RA) – MIU Projects:</strong>{" "}
-              Candidates working as JRF/SRF/RA in research projects at MIU.{" "}
+              <strong>Faculty from Other Institutions:</strong> Teachers working
+              in recognized universities or colleges.{" "}
+              <em>Mode: Part-Time Only</em>
+            </li>
+            <li>
+              <strong>MIU Academic Staff:</strong> Permanent teaching staff of
+              Manipur International University. <em>Mode: Part-Time Only</em>
+            </li>
+            <li>
+              <strong>MIU Non-Academic Staff:</strong> Permanent non-teaching
+              staff of the University. <em>Mode: Part-Time Only</em>
+            </li>
+            <li>
+              <strong>Research Fellows (MIU Projects):</strong> Candidates
+              working as JRF, SRF, or RA in research projects at MIU.{" "}
               <em>Mode: Full-Time Only</em>
             </li>
             <li>
-              <strong>
-                Research Fellows (JRF/SRF/RA) – External Organizations:
-              </strong>{" "}
-              Candidates working as JRF/SRF/RA in organizations outside MIU.{" "}
-              <em>Mode: Part-Time Only</em>
+              <strong>Research Fellows (External Organizations):</strong>{" "}
+              Candidates working as JRF, SRF, or RA in research projects outside
+              MIU. <em>Mode: Part-Time Only</em>
             </li>
             <li>
-              <strong>Candidates in Recognized Research Laboratories:</strong>{" "}
-              Candidates employed in reputed research laboratories with academic
+              <strong>Candidates from Research Laboratories:</strong>{" "}
+              Researchers working in recognized laboratories that have academic
               collaboration with MIU. <em>Mode: Part-Time Only</em>
             </li>
             <li>
-              <strong>National Fellowship Awardees:</strong> Candidates
-              qualified in UGC/CSIR or equivalent national-level fellowships.{" "}
+              <strong>National Fellowship Awardees:</strong> Candidates who have
+              qualified for UGC, CSIR, or other national-level fellowships.{" "}
               <em>Mode: Full-Time Only</em>
             </li>
           </ol>
           <div className="rdc-note">
-            <strong>Note:</strong>
+            <strong>Please Note:</strong>
             <ul className="rdc-bullet-list" style={{ marginTop: "8px" }}>
               <li>
-                The final approval of category and mode of registration is
-                subject to verification of documents and University regulations.
+                Final determination of category and method of registration
+                depends on documentation and regulations of the University.
               </li>
               <li>
-                All candidates must comply with the guidelines of the University
-                and applicable regulatory bodies.
+                All applicants should abide by the guidelines of the University
+                and other relevant regulatory bodies.
               </li>
             </ul>
           </div>
@@ -410,57 +357,57 @@ export default function ResearchDevelopmentCell() {
             },
             {
               num: "2",
-              title: "Eligibility Requirements",
+              title: "Eligibility Criteria",
               content:
-                "Candidates must meet the prescribed minimum eligibility criteria, including required marks, subject specialization, and academic qualifications as specified for the respective discipline.",
+                "The candidates should fulfill the minimum eligibility criteria as prescribed, which includes the prescribed marks, subject specialization, etc., as specified for the particular discipline.",
             },
             {
               num: "3",
-              title: "Application Process",
+              title: "Application Procedure",
               content:
-                "· Applications must be submitted online only through the University's official admission portal\n· Candidates are required to upload all mandatory documents in the prescribed format\n· Payment of the application fee must be made through online modes\n· No hard copy submissions will be accepted\n\nNote: Each application form is valid for one program only. Candidates can appear in the selection process only once per session for a particular program.",
+                "· Applications can be submitted online only on the official portal of the university\n· The candidate needs to upload all the necessary documents in the prescribed format\n· Application fee should be paid through online means\n· Hard copy submission shall not be entertained\n\nNote: Each application form is valid for only one program. Candidates can apply for the selection process once only in a session for the concerned program.",
             },
             {
               num: "4",
-              title: "Part-Time Ph.D. Requirements",
+              title: "Part-Time Ph.D.",
               content:
-                "Candidates applying for Part-Time Ph.D. must:\n· Submit employment details at the time of application\n· Provide a No Objection Certificate (NOC) from the employer at the time of admission/registration",
+                "Candidates seeking admission in the Part-time Ph.D. course have to:\n· Submit their employment details while submitting their applications\n· Submit the No Objection Certificate from their employers during admission/registration process",
             },
             {
               num: "5",
-              title: "Document Submission",
+              title: "Upload of Documents",
               content:
-                "Applicants must upload all required documents, including:\n· Academic certificates and mark sheets\n· Identity proof\n· Research proposal / preliminary research idea\n· Experience certificate (if applicable)\n· Category certificate (if applicable)",
+                "The candidates should upload all the documents as follows:\n· Academic certificates & mark sheets\n· Identity proof\n· Research proposal / preliminary research idea\n· Experience certificate (if any)\n· Category certificate (if any)",
             },
             {
               num: "6",
-              title: "Application Tracking and Updates",
+              title: "Tracking & Updates",
               content:
-                "After submission, candidates can log in to the admission portal to:\n· Check application status\n· Verify document submission\n· View shortlisting status\n· Download admit card (if applicable)\n· Check selection results\n· Download admission offer letter\n· Confirm fee payment status\n\nImportant: All communication will be made available only on the admission portal.",
+                "Upon submission, applicants are expected to login to the admissions portal for checking their:\n· Application status\n· Document submission status\n· Short-listing status\n· Admit card (if any)\n· Selection status\n· Admission offer letter\n· Fee payment status\n\nImportant: All communications will be provided on the admission portal alone.",
             },
             {
               num: "7",
               title: "Selection Process",
               content:
-                "Eligible candidates will undergo:\n· Ph.D. Entrance Test (PET) – assessing research aptitude and subject knowledge\n· Personal Interview / Viva Voce – including discussion on research proposal\n\nNote: Candidates qualified in UGC-NET / JRF / equivalent examinations may be exempted from PET, but must appear for the interview.",
+                "The eligible candidates will be called for:\n· Ph.D. Entrance Test (PET) – evaluating the research aptitude and subject knowledge of the applicant.\n· Personal Interview / Viva Voce – including discussion of research proposal\n\nNote: The candidates who have qualified in the UGC-NET / JRF / equivalent examination shall be exempted from taking the Ph.D. Entrance Test (PET).",
             },
             {
               num: "8",
               title: "Selection and Admission Offer",
               content:
-                "· Selected candidates will be notified through the admission portal\n· A provisional admission letter will be made available for download\n· The letter will include details of fee payment, reporting schedule, and commencement of academic session",
+                "· Notification to selected candidates will be sent through the admissions portal\n· Provisional admission letter will be sent for download\n· This letter will contain details about the payment of fee and start of academic session",
             },
             {
               num: "9",
               title: "Confirmation of Admission",
               content:
-                "Admission is confirmed only after:\n· Verification of original documents\n· Submission of required certificates (including NOC, if applicable)\n· Payment of prescribed fees within the stipulated time\n\nNote: The admission offer is provisional and valid only for the specific program and session.",
+                "Confirmation of admission will happen only upon:\n· Verification of originals\n· Presentation of relevant certificates (NOC, if any)\n· Payment of requisite fee within the specified time frame\n\nNote: Admission offer is tentative and valid only for the stated program & session.",
             },
             {
               num: "10",
               title: "General Instructions",
               content:
-                "· Candidates applying for multiple programs must ensure they appear in selection processes on different dates\n· The University reserves the right to modify admission procedures as per regulatory guidelines\n· All applicants must comply with University rules and regulations",
+                "· Candidates seeking admission to more than one program should take care to participate in selection process at different dates\n· University reserves the right to change admission procedure as per regulatory requirement\n· Applicants are required to follow rules and regulations of the University",
             },
           ].map((step, i) => (
             <div

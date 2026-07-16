@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
 import "@/styles/HomePage.css";
+import CTA from "@/components/CTA";
 
 const Stats = dynamic(() => import("@/components/Stats"));
 const Spotlight = dynamic(() => import("@/components/Spotlight"));
@@ -55,6 +56,7 @@ export default async function Home() {
     <main>
       <Hero data={results?.hero} />
       <Spotlight data={results?.spotlight} />
+      <CTA />
       <Stats />
       <CampusLife data={results?.campus} />
       <Placements data={results?.placements} />
