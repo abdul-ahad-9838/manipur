@@ -142,14 +142,14 @@ export default function AdminBlogs() {
     if (!authLoading && !user) router.push("/admin/login");
   }, [user, authLoading, router]);
 
-  const fetchBlogs = useCallback(async () => {
+  const fetchBlogs = async () => {
     const data = await getBlogs();
     setBlogs(Array.isArray(data) ? data : []);
-  }, []);
+  };
 
   useEffect(() => {
     if (user) fetchBlogs();
-  }, [user, fetchBlogs]);
+  }, [user]);
 
   const autoSlug = (title) =>
     title

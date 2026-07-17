@@ -20,27 +20,8 @@ export async function POST(request) {
       return NextResponse.json({ message: "Not authorized" }, { status: 401 });
 
     const body = await request.json();
-    const {
-      title,
-      slug,
-      excerpt,
-      content,
-      coverImage,
-      category,
-      author,
-      published,
-    } = body;
 
-    const blog = new Blog({
-      title,
-      slug,
-      excerpt,
-      content,
-      coverImage,
-      category,
-      author,
-      published,
-    });
+    const blog = new Blog(body);
     const created = await blog.save();
     return NextResponse.json(created, { status: 201 });
   } catch (error) {
