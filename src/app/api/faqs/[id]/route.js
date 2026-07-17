@@ -1,3 +1,4 @@
+import { protect } from "@/lib/auth";
 import dbConnect from "@/lib/mongodb";
 import Faq from "@/models/Faq";
 import { NextResponse } from "next/server";
@@ -24,6 +25,9 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
   try {
+    const user = await protect(req);
+    if (!user)
+      return NextResponse.json({ message: "Not authorized" }, { status: 401 });
     await dbConnect();
     const { id } = await params;
     const body = await req.json();
@@ -41,6 +45,9 @@ export async function PUT(req, { params }) {
 
 export async function DELETE(req, { params }) {
   try {
+    const user = await protect(req);
+    if (!user)
+      return NextResponse.json({ message: "Not authorized" }, { status: 401 });
     await dbConnect();
     const { id } = await params;
 

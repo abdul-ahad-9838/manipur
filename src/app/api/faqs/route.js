@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import Faq from "@/models/Faq";
 import dbConnect from "@/lib/mongodb";
+import { protect } from "@/lib/auth";
 
 export async function GET() {
   try {
     await dbConnect();
 
-    const faqs = await Faq.find();
+    const faqs = await Faq.find({ published: true }).lean();
 
     return NextResponse.json(faqs);
   } catch (error) {
@@ -19,6 +20,9 @@ export async function GET() {
 
 export async function POST(req) {
   try {
+    const user = await protect(req);
+    if (!user)
+      return NextResponse.json({ message: "Not authorized" }, { status: 401 });
     await dbConnect();
 
     const body = await req.json();

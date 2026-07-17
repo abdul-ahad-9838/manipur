@@ -50,13 +50,7 @@ export default function AdminNoticesPage() {
 
   const fetchNotices = async () => {
     try {
-      const { data } = await API.get("/notices", {
-        params: { _t: Date.now() }, // cache-busting query param
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-        },
-      });
+      const { data } = await API.get("/notices/all");
       setNotices(data);
     } catch {
       setNotices([]);
