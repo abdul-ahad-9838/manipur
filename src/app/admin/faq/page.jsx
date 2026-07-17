@@ -3,6 +3,7 @@
 import { Activity, useEffect, useState } from "react";
 import API from "@/lib/api";
 import "@/styles/FaqAdmin.css";
+import toast from "react-hot-toast";
 
 const emptyForm = {
   question: "",
@@ -54,10 +55,12 @@ export default function AdminFAQ() {
     try {
       if (editId) {
         await API.put(`/faqs/${editId}`, form);
-        setMsg("FAQ updated.");
+        // setMsg("FAQ updated.");
+        toast.success("FAQ updated successfully.");
       } else {
         await API.post("/faqs", form);
-        setMsg("FAQ created.");
+        // setMsg("FAQ created.");
+        toast.success("FAQ created successfully.");
       }
       setForm(emptyForm);
       setEditId(null);

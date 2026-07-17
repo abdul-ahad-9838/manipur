@@ -2,6 +2,7 @@ import ClientShell from "@/components/ClientShell";
 import Footer from "@/components/Footer";
 import SplashLoader from "@/components/SplashLoader";
 import Script from "next/script";
+import { Toaster } from "react-hot-toast";
 
 import "@/styles/App.css";
 
@@ -110,6 +111,7 @@ export default function RootLayout({ children }) {
       {/* <body className={`${roboto.className} ${oswald.variable}`}> */}
       <body>
         <SplashLoader />
+        <Toaster position="top-center" />
 
         {/* Main App */}
         <ClientShell>{children}</ClientShell>

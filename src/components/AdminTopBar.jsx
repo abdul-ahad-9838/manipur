@@ -43,7 +43,7 @@ const AdminTopBar = () => {
         width: "100%",
         background: "#111",
         color: "white",
-        zIndex: 99999,
+        zIndex: 11,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
