@@ -31,7 +31,6 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Support both `seo` object and flat `name`/`title` fields
   const seo = blog.seo ?? {};
 
   return {
@@ -58,7 +57,10 @@ export async function generateMetadata({ params }) {
       images: seo.twitterImage || seo.ogImage || blog.coverImage || undefined,
     },
     alternates: {
-      canonical: seo.canonicalUrl || undefined,
+      canonical: seo.canonicalUrl?.startsWith("http")
+        ? seo.canonicalUrl
+        : `${process.env.NEXT_PUBLIC_BASE_URL}/blogs/${seo.canonicalUrl}` ||
+          undefined,
     },
   };
 }

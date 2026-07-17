@@ -9,6 +9,7 @@ import ImageUploader from "@/components/ImageUploader";
 import SeoForm from "@/components/SeoForm";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import toast from "react-hot-toast";
 const TextEditor = dynamic(() => import("@/components/TextEditor"), {
   ssr: false,
 });
@@ -87,7 +88,6 @@ export default function CoursesManager() {
   const [form, setForm] = useState(EMPTY);
   const [editingId, setEditingId] = useState(null);
   const [saving, setSaving] = useState(false);
-  const [msg, setMsg] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [expandedSchools, setExpandedSchools] = useState({});
   const [filterSchool, setFilterSchool] = useState("All Schools");
@@ -153,7 +153,6 @@ export default function CoursesManager() {
     if (submittingRef.current) return; // prevent double submit
     submittingRef.current = true;
     setSaving(true);
-    setMsg("");
     try {
       const payload = {
         ...form,
@@ -166,21 +165,20 @@ export default function CoursesManager() {
       };
       if (editingId) {
         await API.put(`/courses/${editingId}`, payload);
-        setMsg("✅ Program updated.");
+        toast.success("Program updated successfully.");
       } else {
         await API.post("/courses", payload);
-        setMsg("✅ Program created.");
+        toast.success("Program created successfully.");
       }
       setForm(EMPTY);
       setEditingId(null);
       setShowForm(false);
       fetchCourses();
     } catch {
-      setMsg("❌ Error saving program.");
+      toast.error("❌ Error saving program.");
     }
     setSaving(false);
     submittingRef.current = false;
-    setTimeout(() => setMsg(""), 4000);
   };
 
   const handleEdit = (course) => {
@@ -209,8 +207,13 @@ export default function CoursesManager() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this program?")) return;
-    await API.delete(`/courses/${id}`);
-    fetchCourses();
+    try {
+      await API.delete(`/courses/${id}`);
+      fetchCourses();
+      toast.success("Program deleted successfully.");
+    } catch {
+      toast.error("❌ Error deleting program.");
+    }
   };
 
   const handleMoveUp = async (course, school) => {
@@ -239,8 +242,7 @@ export default function CoursesManager() {
       fetchCourses();
     } catch (error) {
       console.error("Error reordering courses:", error);
-      setMsg("❌ Failed to reorder courses.");
-      setTimeout(() => setMsg(""), 3000);
+      toast.error("❌ Failed to reorder courses.");
     }
   };
 
@@ -270,8 +272,7 @@ export default function CoursesManager() {
       fetchCourses();
     } catch (error) {
       console.error("Error reordering courses:", error);
-      setMsg("❌ Failed to reorder courses.");
-      setTimeout(() => setMsg(""), 3000);
+      toast.error("❌ Failed to reorder courses.");
     }
   };
 
@@ -280,18 +281,13 @@ export default function CoursesManager() {
 
     // Validate file
     if (!file.type.startsWith("image/")) {
-      setMsg("❌ Please select an image file.");
-      setTimeout(() => setMsg(""), 3000);
+      toast.error("❌ Please select an image file.");
       return;
     }
     if (file.size > 2 * 1024 * 1024) {
-      setMsg("❌ Image must be under 2MB.");
-      setTimeout(() => setMsg(""), 3000);
+      toast.error("❌ Image must be under 2MB.");
       return;
     }
-
-    // Show loading state
-    setMsg("📤 Uploading image...");
 
     try {
       const formData = new FormData();
@@ -320,29 +316,26 @@ export default function CoursesManager() {
 
       // Update course with new image
       await API.put(`/courses/${courseId}`, { cardImage: imageUrl });
-
-      setMsg("✅ Image updated successfully!");
+      toast.success("Image updated successfully!");
       fetchCourses();
     } catch (error) {
       console.error("Error uploading image:", error);
-      setMsg("❌ Failed to upload image. Please try again.");
+      toast.error("❌ Failed to upload image. Please try again.");
     }
-
-    setTimeout(() => setMsg(""), 3000);
   };
 
   const handleToggleActive = async (courseId, currentStatus) => {
     try {
       await API.put(`/courses/${courseId}`, { isActive: !currentStatus });
-      setMsg(
-        `✅ Course ${!currentStatus ? "activated" : "deactivated"} successfully!`,
+
+      toast.success(
+        `Course ${!currentStatus ? "activated" : "deactivated"} successfully!`,
       );
       fetchCourses();
     } catch (error) {
       console.error("Error toggling course status:", error);
-      setMsg("❌ Failed to update course status.");
+      toast.error("❌ Failed to update course status. Please try again.");
     }
-    setTimeout(() => setMsg(""), 3000);
   };
 
   if (authLoading || !user)
@@ -446,21 +439,6 @@ export default function CoursesManager() {
             </button>
           </div>
         </div>
-
-        {msg && (
-          <p
-            style={{
-              background: msg.startsWith("✅") ? "#d4edda" : "#f8d7da",
-              color: msg.startsWith("✅") ? "#155724" : "#721c24",
-              padding: "12px 20px",
-              borderRadius: "8px",
-              marginBottom: "20px",
-              fontWeight: "600",
-            }}
-          >
-            {msg}
-          </p>
-        )}
 
         <Activity mode={showForm ? "visible" : "hidden"}>
           <form

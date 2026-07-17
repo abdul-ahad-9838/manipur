@@ -19,7 +19,6 @@ export default function AdminFAQ() {
   const [editId, setEditId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [msg, setMsg] = useState("");
 
   const fetchFaqs = async () => {
     try {
@@ -51,15 +50,12 @@ export default function AdminFAQ() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
-    setMsg("");
     try {
       if (editId) {
         await API.put(`/faqs/${editId}`, form);
-        // setMsg("FAQ updated.");
         toast.success("FAQ updated successfully.");
       } else {
         await API.post("/faqs", form);
-        // setMsg("FAQ created.");
         toast.success("FAQ created successfully.");
       }
       setForm(emptyForm);
@@ -67,7 +63,7 @@ export default function AdminFAQ() {
       setShowForm(false);
       await fetchFaqs();
     } catch (err) {
-      setMsg(err.response?.data?.message || "Error saving FAQ.");
+      toast.error(err.response?.data?.message || "Error saving FAQ.");
     }
     setSaving(false);
   };
@@ -76,7 +72,6 @@ export default function AdminFAQ() {
     setForm(faq);
     setEditId(faq._id);
     setShowForm(true);
-    setMsg("");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -90,7 +85,6 @@ export default function AdminFAQ() {
     setForm(emptyForm);
     setEditId(null);
     setShowForm(false);
-    setMsg("");
   };
 
   return (
@@ -114,12 +108,6 @@ export default function AdminFAQ() {
             </button>
           </div>
         </div>
-
-        {msg && (
-          <p className={`msg ${msg.includes("Error") ? "error" : "success"}`}>
-            {msg}
-          </p>
-        )}
 
         <Activity mode={showForm ? "visible" : "hidden"}>
           <form className="faq-form" onSubmit={handleSubmit}>

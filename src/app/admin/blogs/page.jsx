@@ -17,6 +17,7 @@ const TextEditor = dynamic(() => import("@/components/TextEditor"), {
 
 import ImageUploader from "@/components/ImageUploader";
 import SeoForm from "@/components/SeoForm";
+import toast from "react-hot-toast";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -136,7 +137,6 @@ export default function AdminBlogs() {
   const [saving, setSaving] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [msg, setMsg] = useState({ text: "", type: "" });
 
   useEffect(() => {
     if (!authLoading && !user) router.push("/admin/login");
@@ -178,15 +178,16 @@ export default function AdminBlogs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
-    setMsg({ text: "", type: "" });
 
     try {
       if (editId) {
         await updateBlog(editId, form);
-        setMsg({ text: "Blog updated.", type: "success" });
+        toast.success("Blog updated successfully.");
+        // setMsg({ text: "Blog updated.", type: "success" });
       } else {
         await createBlog(form);
-        setMsg({ text: "Blog created.", type: "success" });
+        toast.success("Blog created successfully.");
+        // setMsg({ text: "Blog created.", type: "success" });
       }
 
       setForm(emptyForm);
@@ -194,7 +195,8 @@ export default function AdminBlogs() {
       setShowForm(false);
       await fetchBlogs();
     } catch (err) {
-      setMsg({ text: err.message || "Error saving blog.", type: "error" });
+      toast.error(err.message || "Error saving blog.");
+      // setMsg({ text: err.message || "Error saving blog.", type: "error" });
     } finally {
       setSaving(false);
     }
@@ -220,7 +222,6 @@ export default function AdminBlogs() {
 
     setEditId(blog._id);
     setShowForm(true);
-    setMsg({ text: "", type: "" });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -233,7 +234,7 @@ export default function AdminBlogs() {
       await fetchBlogs();
     } catch (err) {
       console.error(err);
-      setMsg({ text: err.message || "Error deleting blog.", type: "error" });
+      toast.error(err.message || "Error deleting blog.");
     } finally {
       setDeletingId(null);
     }
@@ -243,7 +244,6 @@ export default function AdminBlogs() {
     setForm(emptyForm);
     setEditId(null);
     setShowForm(false);
-    setMsg({ text: "", type: "" });
   };
 
   if (authLoading || !user) {
@@ -294,20 +294,6 @@ export default function AdminBlogs() {
             </button>
           </div>
         </div>
-
-        {msg.text && (
-          <p
-            style={{
-              background: msg.type === "error" ? "#fee" : "#efe",
-              padding: "12px 20px",
-              borderRadius: 8,
-              marginBottom: 20,
-              fontWeight: 600,
-            }}
-          >
-            {msg.text}
-          </p>
-        )}
 
         <Activity mode={showForm ? "visible" : "hidden"}>
           <form
