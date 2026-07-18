@@ -77,8 +77,13 @@ export default function AdminFAQ() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this FAQ?")) return;
-    await API.delete(`/faqs/${id}`);
-    fetchFaqs();
+    try {
+      await API.delete(`/faqs/${id}`);
+      fetchFaqs();
+      toast.success("FAQ deleted successfully.");
+    } catch (error) {
+      toast.error("Error deleting FAQ.");
+    }
   };
 
   const handleCancel = () => {

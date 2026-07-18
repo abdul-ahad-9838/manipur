@@ -104,13 +104,13 @@ const DEFAULT = {
       contact: "",
       email: "",
     },
-    {
-      role: "Controller",
-      name: "Prof. T. Kamalabati Devi",
-      detail: "Controller of Examinations",
-      contact: "",
-      email: "",
-    },
+    // {
+    //   role: "Controller",
+    //   name: "Prof. T. Kamalabati Devi",
+    //   detail: "Controller of Examinations",
+    //   contact: "",
+    //   email: "",
+    // },
     {
       role: "Student Representative",
       name: "Elangbam Monika Devi",

@@ -502,51 +502,51 @@ export default function AcademicCouncilPage() {
           },
         ],
       },
-      {
-        title: "Member Secretary",
-        members: [
-          {
-            sl: "61",
-            name: "Prof T Brajeshwari Devi",
-            designation: "Registrar MIU — Member Secretary",
-            contact: "9862879287",
-            email: "registrar@miu.edu.in",
-          },
-        ],
-      },
+      // {
+      //   title: "Member Secretary",
+      //   members: [
+      //     {
+      //       sl: "61",
+      //       name: "Prof T Brajeshwari Devi",
+      //       designation: "Registrar MIU — Member Secretary",
+      //       contact: "9862879287",
+      //       email: "registrar@miu.edu.in",
+      //     },
+      //   ],
+      // },
       {
         title: "Invitees",
         members: [
+          // {
+          //   sl: "62",
+          //   name: "Prof T Kamalabati Devi",
+          //   designation: "Controller of Examinations — Permanent Invitee",
+          //   contact: "",
+          //   email: "tkamalabati@miu.edu.in",
+          // },
           {
-            sl: "62",
-            name: "Prof T Kamalabati Devi",
-            designation: "Controller of Examinations — Permanent Invitee",
-            contact: "",
-            email: "tkamalabati@miu.edu.in",
-          },
-          {
-            sl: "63",
+            sl: "61",
             name: "Ningombam Amarjit Singh",
             designation: "Director MIU — Permanent Invitee",
             contact: "9612123121",
             email: "",
           },
           {
-            sl: "64",
+            sl: "62",
             name: "Thokchom Lenin Singh",
             designation: "Librarian MIU — Permanent Invitee",
             contact: "8014761077",
             email: "",
           },
           {
-            sl: "65",
+            sl: "63",
             name: "Kiran Soraisam",
             designation: "Finance Officer — Permanent Invitee",
             contact: "6009149750",
             email: "",
           },
           {
-            sl: "66",
+            sl: "64",
             name: "Prof (Retd) T Umabati Devi",
             designation:
               "Ombudsperson, Students Grievances Redressal Committee — Permanent Invitee",
@@ -600,14 +600,14 @@ export default function AcademicCouncilPage() {
               📄 Download Notification
             </a>
           )}
-          <div className="ac-composition">
+          {/* <div className="ac-composition">
             <h3>Composition</h3>
             <ul>
               {(data.composition || []).map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Sections */}

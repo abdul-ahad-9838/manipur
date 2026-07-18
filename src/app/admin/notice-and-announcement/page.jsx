@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
 import API from "@/lib/api";
 import ImageUploader from "@/components/ImageUploader";
+import toast from "react-hot-toast";
 
 const CATEGORIES = [
   "General",
@@ -38,7 +39,6 @@ export default function AdminNoticesPage() {
   const [editId, setEditId] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     if (!authLoading && !user) router.push("/admin/login");
@@ -68,7 +68,6 @@ export default function AdminNoticesPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
-    setMsg("");
 
     try {
       const payload = {
@@ -81,10 +80,10 @@ export default function AdminNoticesPage() {
 
       if (editId) {
         await API.put(`/notices/${editId}`, payload);
-        setMsg("Notice updated successfully.");
+        toast.success("Notice updated successfully.");
       } else {
         await API.post("/notices", payload);
-        setMsg("Notice created successfully.");
+        toast.success("Notice created successfully.");
       }
 
       setForm(emptyForm);
@@ -92,7 +91,7 @@ export default function AdminNoticesPage() {
       setShowForm(false);
       await fetchNotices();
     } catch (err) {
-      setMsg(err.response?.data?.message || "Error saving notice");
+      toast.error(err.response?.data?.message || "Error saving notice.");
     }
 
     setSaving(false);
@@ -114,8 +113,13 @@ export default function AdminNoticesPage() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this notice?")) return;
-    await API.delete(`/notices/${id}`);
-    fetchNotices();
+    try {
+      await API.delete(`/notices/${id}`);
+      fetchNotices();
+      toast.success("Notice deleted successfully.");
+    } catch (err) {
+      toast.error("Error deleting notice.");
+    }
   };
 
   const handleCancel = () => {
@@ -187,21 +191,6 @@ export default function AdminNoticesPage() {
             </button>
           </div>
         </div>
-
-        {/* MESSAGE */}
-        {msg && (
-          <p
-            style={{
-              background: msg.includes("Error") ? "#fee" : "#efe",
-              padding: "12px 20px",
-              borderRadius: "8px",
-              marginBottom: "20px",
-              fontWeight: "600",
-            }}
-          >
-            {msg}
-          </p>
-        )}
 
         {/* FORM (UNCHANGED) */}
         {showForm && (

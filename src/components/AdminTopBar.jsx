@@ -26,8 +26,8 @@ const AdminTopBar = () => {
     { href: "/admin/courses", label: "🎓 Courses" },
     { href: "/admin/faq", label: "❓Faq" },
     { href: "/admin/content", label: "🖼️ Content" },
-    { href: "/admin/pages", label: "📄 Pages" },
-    { href: "/admin/seo", label: "🔍 SEO" },
+    // { href: "/admin/pages", label: "📄 Pages" },
+    // { href: "/admin/seo", label: "🔍 SEO" },
     {
       href: "/admin/notice-and-announcement",
       label: "📢 Notice & Announcement",

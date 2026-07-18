@@ -61,10 +61,11 @@ export async function generateMetadata({ params }) {
     },
 
     alternates: {
-      canonical: seo.canonicalUrl?.startsWith("http")
-        ? seo.canonicalUrl
-        : `${process.env.NEXT_BASE_URL}/courses/${seo.canonicalUrl}` ||
-          undefined,
+      canonical: seo.canonicalUrl
+        ? seo.canonicalUrl.startsWith("http")
+          ? seo.canonicalUrl
+          : `${process.env.NEXT_PUBLIC_BASE_URL}/courses/${seo.canonicalUrl}`
+        : `${process.env.NEXT_PUBLIC_BASE_URL}/courses/${course.slug}`,
     },
   };
 }
