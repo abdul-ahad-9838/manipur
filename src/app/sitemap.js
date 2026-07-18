@@ -72,7 +72,7 @@ const staticRoutes = [
   { path: "/academics/brochure", priority: 0.7, changeFrequency: "monthly" },
 
   // Examination
-  { path: "/examination", priority: 0.8, changeFrequency: "monthly" },
+  // { path: "/examination", priority: 0.8, changeFrequency: "monthly" },
 
   // Research
   {
@@ -174,11 +174,11 @@ const staticRoutes = [
     priority: 0.6,
     changeFrequency: "monthly",
   },
-  {
-    path: "/credit-transfer-policy",
-    priority: 0.5,
-    changeFrequency: "yearly",
-  },
+  // {
+  //   path: "/credit-transfer-policy",
+  //   priority: 0.5,
+  //   changeFrequency: "yearly",
+  // },
   { path: "/refund-policy", priority: 0.5, changeFrequency: "yearly" },
   { path: "/privacy-policy", priority: 0.5, changeFrequency: "yearly" },
   { path: "/terms-of-use", priority: 0.5, changeFrequency: "yearly" },

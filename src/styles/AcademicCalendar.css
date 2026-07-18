@@ -47,6 +47,7 @@
   font-weight: 400;
   text-transform: none;
   position: relative;
+  text-align: center;
   z-index: 1;
 }
 

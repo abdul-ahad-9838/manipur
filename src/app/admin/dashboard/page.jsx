@@ -120,7 +120,7 @@ const Dashboard = () => {
             <p>Review, shortlist and manage career applications.</p>
           </Link>
 
-          <Link href="/admin/pages" className="admin-card" style={cardStyle}>
+          {/* <Link href="/admin/pages" className="admin-card" style={cardStyle}>
             <div style={{ fontSize: "3rem", marginBottom: "15px" }}>📄</div>
             <h3>Page Content</h3>
             <p>Edit text, stats, and content for all website pages.</p>
@@ -130,7 +130,7 @@ const Dashboard = () => {
             <div style={{ fontSize: "3rem", marginBottom: "15px" }}>🔍</div>
             <h3>SEO & Meta</h3>
             <p>Optimize page titles, descriptions and metadata.</p>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
