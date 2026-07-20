@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import "@/styles/ProgramCard.css";
-import { detectProgramLevel, getDeliveryFormat } from "@/lib/filterUtils";
+import { detectProgramLevel } from "@/lib/filterUtils";
 
 export default function ProgramCard({ program }) {
   const level = detectProgramLevel(program.title);
-  const format = getDeliveryFormat(program);
 
   // Split title into program + specialization
   const titleMatch = program.title?.match(/^(.*?)\s*\((.*?)\)$/);
@@ -76,20 +75,6 @@ export default function ProgramCard({ program }) {
                 <div>
                   <span className="sp-meta-label">ELIGIBILITY</span>
                   <span className="sp-meta-val">{program.eligibility}</span>
-                </div>
-              )}
-
-              {program.mode && (
-                <div>
-                  <span className="sp-meta-label">MODE</span>
-                  <span className="sp-meta-val">{program.mode}</span>
-                </div>
-              )}
-
-              {format && (
-                <div>
-                  <span className="sp-meta-label">FORMAT</span>
-                  <span className="sp-meta-val">{format}</span>
                 </div>
               )}
             </div>

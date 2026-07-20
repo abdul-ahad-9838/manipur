@@ -3,10 +3,11 @@
 import BannerSection from "@/components/BannerSection";
 import ProgramCard from "@/components/ProgramCard";
 import API from "@/lib/api";
+import groupedPrograms from "@/lib/groupProgram";
 import "@/styles/SchoolPage.css";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { Activity, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const SCHOOLS = {
   "school-of-commerce-and-management": {
@@ -610,6 +611,24 @@ export default function SchoolPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
+  const programs = apiCourses.map((c) => ({
+    _id: c._id,
+    title: c.title,
+    specialisation: c.specialisation || "",
+    duration: c.duration || "3 Years",
+    eligibility: c.eligibility || "10+2",
+    icon: c.icon || "🎓",
+    slug: c.slug || "",
+    coverImage: c.coverImage || "",
+    cardImage: c.cardImage || "",
+    description: c.description || "",
+  }));
+
+  const newGroupProgram = useMemo(() => {
+    const grouped = groupedPrograms(programs);
+    return { categories: grouped.categories, grouped: grouped.grouped };
+  }, [programs]);
+
   if (loading)
     return (
       <div style={{ padding: "160px 20px", textAlign: "center" }}>
@@ -631,18 +650,6 @@ export default function SchoolPage() {
       </div>
     );
 
-  const programs = apiCourses.map((c) => ({
-    _id: c._id,
-    title: c.title,
-    specialisation: c.specialisation || "",
-    duration: c.duration || "3 Years",
-    eligibility: c.eligibility || "10+2",
-    icon: c.icon || "🎓",
-    slug: c.slug || "",
-    coverImage: c.coverImage || "",
-    cardImage: c.cardImage || "",
-    description: c.description || "",
-  }));
   return (
     <div className="school-page">
       <BannerSection data={schoolData} url="https://admission.miu.edu.in" />
@@ -698,111 +705,72 @@ export default function SchoolPage() {
           </div>
 
           {programs.length > 0 ? (
-            (() => {
-              // Group programs by category
-              const categories = [
-                {
-                  key: "bachelors",
-                  label: "Bachelor's Programs",
-                  match: (t) =>
-                    /^b\.|^bachelor|^bca|^bba|^b\.tech|^b\.sc|^b\.com|^b\.voc|^b\.a/i.test(
-                      t,
-                    ),
-                },
-                {
-                  key: "masters",
-                  label: "Master's Programs",
-                  match: (t) =>
-                    /^m\.|^master|^mca|^mba|^m\.tech|^m\.sc|^m\.com|^m\.a/i.test(
-                      t,
-                    ),
-                },
-                {
-                  key: "pgdiploma",
-                  label: "PG Diploma",
-                  match: (t) =>
-                    /^pg diploma|^post.?graduate diploma|^p\.g\. diploma/i.test(
-                      t,
-                    ),
-                },
-                {
-                  key: "diploma",
-                  label: "Diploma Programs",
-                  match: (t) => /^diploma/i.test(t),
-                },
-                { key: "other", label: "Other Programs", match: () => true },
-              ];
+            newGroupProgram.categories
+              .filter((c) => newGroupProgram.grouped[c.key].length)
+              .map((cat) => {
+                const isCollapsed = !!collapsedCategories[cat.key];
 
-              const grouped = {};
-              categories.forEach((c) => {
-                grouped[c.key] = [];
-              });
+                return (
+                  <div key={cat.key} className="sp-program-category">
+                    <h3
+                      className="sp-category-title"
+                      onClick={() => toggleCategory(cat.key)}
+                      style={{
+                        cursor: "pointer",
+                        userSelect: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      {cat.label}
 
-              programs.forEach((prog) => {
-                const title = prog.title.trim();
-                const cat = categories.find((c) => c.match(title));
-                grouped[cat.key].push(prog);
-              });
+                      <span className="sp-category-count">
+                        {newGroupProgram.grouped[cat.key].length}
+                      </span>
 
-              return categories
-                .filter((c) => grouped[c.key].length > 0)
-                .map((cat) => {
-                  const isCollapsed = !!collapsedCategories[cat.key];
-                  return (
-                    <div key={cat.key} className="sp-program-category">
-                      <h3
-                        onClick={() => toggleCategory(cat.key)}
-                        className="sp-category-title"
+                      <span
+                        className="sp-toggle-icon"
                         style={{
-                          borderLeftColor: schoolData.color,
-                          cursor: "pointer",
-                          userSelect: "none",
+                          marginLeft: "auto",
+                          transition: "transform .25s",
+                          transform: isCollapsed
+                            ? "rotate(-90deg)"
+                            : "rotate(0deg)",
                         }}
                       >
-                        {cat.label}
-                        <span className="sp-category-count">
-                          {grouped[cat.key].length}
-                        </span>
-                        <span
-                          className="sp-toggle-icon"
-                          style={{
-                            marginLeft: "auto",
-                            display: "inline-block",
-                            transition: "transform 0.25s",
-                            transform: isCollapsed
-                              ? "rotate(-90deg)"
-                              : "rotate(0deg)",
-                          }}
-                        >
-                          ▾
-                        </span>
-                      </h3>
-                      <Activity mode={!isCollapsed ? "visible" : "hidden"}>
-                        <div className="sp-programs-grid">
-                          {grouped[cat.key].map((prog, i) => {
-                            const titleMatch =
-                              prog.title.match(/^(.*?)\s*\((.*?)\)$/);
-                            const programName = titleMatch
-                              ? titleMatch[1].trim()
-                              : prog.title;
-                            const specialization =
-                              prog.specialisation ||
-                              (titleMatch ? titleMatch[2].trim() : "");
-                            return (
-                              <ProgramCard
-                                key={i}
-                                program={prog}
-                                programName={programName}
-                                specialization={specialization}
-                              />
-                            );
-                          })}
-                        </div>
-                      </Activity>
-                    </div>
-                  );
-                });
-            })()
+                        ▾
+                      </span>
+                    </h3>
+
+                    {!isCollapsed && (
+                      <div className="programs-grid">
+                        {newGroupProgram.grouped[cat.key].map((prog, i) => {
+                          const titleMatch =
+                            prog.title.match(/^(.*?)\s*\((.*?)\)$/);
+
+                          const programName = titleMatch
+                            ? titleMatch[1].trim()
+                            : prog.title;
+
+                          const specialization =
+                            prog.specialisation ||
+                            (titleMatch ? titleMatch[2].trim() : "");
+
+                          return (
+                            <ProgramCard
+                              key={prog.id ?? i}
+                              program={prog}
+                              programName={programName}
+                              specialization={specialization}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })
           ) : (
             <div
               style={{

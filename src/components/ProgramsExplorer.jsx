@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import FilterSidebar from "./FilterSidebar";
 import ActiveFilterChips from "./ActiveFilterChips";
 import ProgramCard from "./ProgramCard";
@@ -9,6 +9,7 @@ import {
   buildFacetOptions,
   filterPrograms,
 } from "@/lib/filterUtils";
+import groupedPrograms from "@/lib/groupProgram";
 
 const EMPTY_FILTERS = {};
 
@@ -16,12 +17,8 @@ export default function ProgramsExplorer({ programs }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilters, setActiveFilters] = useState(EMPTY_FILTERS);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [collapsedCategories, setCollapsedCategories] = useState({});
 
-  // Infinite scroll state
-  const [visibleCount, setVisibleCount] = useState(10);
-  const loadMoreRef = useRef(null);
-
-  // Facet definitions
   const specs = useMemo(() => buildFilterSpecs(programs), [programs]);
 
   const filtered = useMemo(
@@ -34,39 +31,6 @@ export default function ProgramsExplorer({ programs }) {
     [programs, specs, activeFilters, searchTerm],
   );
 
-  // Only render visible programs
-  const visiblePrograms = useMemo(
-    () => filtered.slice(0, visibleCount),
-    [filtered, visibleCount],
-  );
-
-  // Reset pagination when filters/search change
-  useEffect(() => {
-    setVisibleCount(10);
-  }, [searchTerm, activeFilters]);
-
-  // Infinite scroll observer
-  useEffect(() => {
-    const element = loadMoreRef.current;
-
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisibleCount((prev) => Math.min(prev + 10, filtered.length));
-        }
-      },
-      {
-        rootMargin: "300px",
-      },
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, [filtered.length]);
-
   const toggleCheckbox = useCallback((facetKey, value) => {
     setActiveFilters((prev) => {
       const current = prev[facetKey] || [];
@@ -77,14 +41,15 @@ export default function ProgramsExplorer({ programs }) {
 
       const clone = { ...prev };
 
-      if (next.length) {
-        clone[facetKey] = next;
-      } else {
-        delete clone[facetKey];
-      }
+      if (next.length) clone[facetKey] = next;
+      else delete clone[facetKey];
 
       return clone;
     });
+  }, []);
+  const clearAll = useCallback(() => {
+    setActiveFilters(EMPTY_FILTERS);
+    setSearchTerm("");
   }, []);
 
   const setRange = useCallback((facetKey, range) => {
@@ -92,14 +57,10 @@ export default function ProgramsExplorer({ programs }) {
       const clone = { ...prev };
 
       const hasMin = range.min !== null && range.min !== undefined;
-
       const hasMax = range.max !== null && range.max !== undefined;
 
-      if (!hasMin && !hasMax) {
-        delete clone[facetKey];
-      } else {
-        clone[facetKey] = range;
-      }
+      if (!hasMin && !hasMax) delete clone[facetKey];
+      else clone[facetKey] = range;
 
       return clone;
     });
@@ -115,24 +76,30 @@ export default function ProgramsExplorer({ programs }) {
       }
 
       const current = prev[facetKey] || [];
-
       const next = current.filter((v) => v !== value);
 
-      if (next.length) {
-        clone[facetKey] = next;
-      } else {
-        delete clone[facetKey];
-      }
+      if (next.length) clone[facetKey] = next;
+      else delete clone[facetKey];
 
       return clone;
     });
   }, []);
 
-  const clearAll = useCallback(() => {
-    setActiveFilters(EMPTY_FILTERS);
-    setSearchTerm("");
-    setVisibleCount(10);
+  useEffect(() => {
+    setCollapsedCategories({});
+  }, [searchTerm, activeFilters]);
+
+  const toggleCategory = useCallback((key) => {
+    setCollapsedCategories((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   }, []);
+
+  const newGroupProgram = useMemo(() => {
+    const grouped = groupedPrograms(filtered);
+    return { categories: grouped.categories, grouped: grouped.grouped };
+  }, [filtered]);
 
   const activeCount = Object.keys(activeFilters).length + (searchTerm ? 1 : 0);
 
@@ -170,10 +137,8 @@ export default function ProgramsExplorer({ programs }) {
           <div className="programs-results__header">
             <div>
               <h1>Explore Programs</h1>
-
               <p className="programs-results__count">
-                <strong>{visiblePrograms.length}</strong> loaded of{" "}
-                {filtered.length} programs
+                <strong>{filtered.length}</strong> programs
               </p>
             </div>
           </div>
@@ -207,24 +172,72 @@ export default function ProgramsExplorer({ programs }) {
               </button>
             </div>
           ) : (
-            <div className="programs-grid">
-              {visiblePrograms.map((program) => (
-                <ProgramCard
-                  key={program._id || program.slug}
-                  program={program}
-                />
-              ))}
+            newGroupProgram.categories
+              .filter((c) => newGroupProgram.grouped[c.key].length)
+              .map((cat) => {
+                const isCollapsed = !!collapsedCategories[cat.key];
 
-              {visibleCount < filtered.length && (
-                <div
-                  ref={loadMoreRef}
-                  style={{
-                    height: "50px",
-                    width: "100%",
-                  }}
-                />
-              )}
-            </div>
+                return (
+                  <div key={cat.key} className="sp-program-category">
+                    <h3
+                      className="sp-category-title"
+                      onClick={() => toggleCategory(cat.key)}
+                      style={{
+                        cursor: "pointer",
+                        userSelect: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      {cat.label}
+
+                      <span className="sp-category-count">
+                        {newGroupProgram.grouped[cat.key].length}
+                      </span>
+
+                      <span
+                        className="sp-toggle-icon"
+                        style={{
+                          marginLeft: "auto",
+                          transition: "transform .25s",
+                          transform: isCollapsed
+                            ? "rotate(-90deg)"
+                            : "rotate(0deg)",
+                        }}
+                      >
+                        ▾
+                      </span>
+                    </h3>
+
+                    {!isCollapsed && (
+                      <div className="programs-grid">
+                        {newGroupProgram.grouped[cat.key].map((prog, i) => {
+                          const titleMatch =
+                            prog.title.match(/^(.*?)\s*\((.*?)\)$/);
+
+                          const programName = titleMatch
+                            ? titleMatch[1].trim()
+                            : prog.title;
+
+                          const specialization =
+                            prog.specialisation ||
+                            (titleMatch ? titleMatch[2].trim() : "");
+
+                          return (
+                            <ProgramCard
+                              key={prog.id ?? i}
+                              program={prog}
+                              programName={programName}
+                              specialization={specialization}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })
           )}
         </section>
       </div>

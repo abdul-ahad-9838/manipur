@@ -244,10 +244,17 @@ const Navbar = () => {
                 <li key={item.label} className="has-dropdown">
                   {item.subItems ? (
                     <>
-                      <button className="nav-dropdown-btn">
-                        {item.label}
-                        <span className="dropdown-plus">+</span>
-                      </button>
+                      {item.href ? (
+                        <Link href={item.href} className="nav-dropdown-btn">
+                          {item.label}
+                          <span className="dropdown-plus">+</span>
+                        </Link>
+                      ) : (
+                        <button className="nav-dropdown-btn">
+                          {item.label}
+                          <span className="dropdown-plus">+</span>
+                        </button>
+                      )}
 
                       <ul className="dropdown-menu">
                         {item.subItems.map((subItem) =>

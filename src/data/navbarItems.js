@@ -59,6 +59,7 @@ const navbarItems = [
   },
   {
     label: "Schools",
+    href: "/schools",
     subItems: [
       {
         label: "School of Engineering and Information Technology",

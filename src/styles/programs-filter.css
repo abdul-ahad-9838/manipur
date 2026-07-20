@@ -11,9 +11,7 @@
   --pf-radius-md: 10px;
   --pf-radius-lg: 14px;
   --pf-border: #e7e5e0;
-  --pf-sidebar-width: 300px;
-  --pf-sticky-top: 140px; /* clears the fixed header (.layout-margin-fix) */
-  --pf-gap: 28px;
+  --pf-sidebar-width: 300px; /* clears the fixed header (.layout-margin-fix) */
 }
 
 /* ========================================
@@ -29,7 +27,7 @@
 .programs-shell__inner {
   display: grid;
   grid-template-columns: var(--pf-sidebar-width) 1fr;
-  gap: var(--pf-gap);
+  gap: 28px;
   align-items: start;
 }
 
@@ -103,11 +101,10 @@
   border-radius: var(--pf-radius-lg);
   box-shadow: var(--shadow);
   position: sticky;
-  top: var(--pf-sticky-top);
-  max-height: calc(100vh - var(--pf-sticky-top) - 24px);
+  top: 140;
+  max-height: calc(100vh - 140px - 24px);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .filter-sidebar__header {
@@ -568,6 +565,41 @@
 /* ========================================
    RESULTS GRID + CARDS
    ======================================== */
+
+/* Program Categories */
+.sp-program-category {
+  margin-bottom: 48px;
+}
+
+.sp-category-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--lpu-black);
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 4px solid var(--lpu-orange);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.sp-category-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+  margin-left: 8px;
+}
+
+.sp-category-count {
+  background: var(--lpu-orange);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
 
 .programs-grid {
   display: grid;

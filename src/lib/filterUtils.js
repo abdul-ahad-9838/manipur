@@ -140,18 +140,6 @@ export function hasField(programs, key) {
   return programs.some((p) => getField(p, key));
 }
 
-// Delivery Format falls back to a heuristic derived from Study Mode
-// when the API doesn't provide an explicit field.
-export function getDeliveryFormat(program) {
-  const explicit = getField(program, "deliveryFormat");
-  if (explicit) return explicit;
-  const mode = (program.mode || "").toLowerCase();
-  if (!mode) return null;
-  if (mode.includes("online") || mode.includes("distance")) return "Online";
-  if (mode.includes("hybrid")) return "Hybrid";
-  return "On Campus";
-}
-
 /* ----------------------------------------------------------------
    5. TALLYING VALUES INTO { value, count } OPTIONS
    ---------------------------------------------------------------- */
@@ -169,11 +157,11 @@ function tallyCounts(programs, getValue) {
   return counts;
 }
 
-function tally(programs, getValue) {
-  return [...tallyCounts(programs, getValue).entries()]
-    .map(([value, count]) => ({ value, count }))
-    .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
-}
+// function tally(programs, getValue) {
+//   return [...tallyCounts(programs, getValue).entries()]
+//     .map(([value, count]) => ({ value, count }))
+//     .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+// }
 
 function sortValues(values, spec) {
   const sorted = [...values];
@@ -240,14 +228,14 @@ export function buildFilterSpecs(programs) {
     });
   }
 
-  if (programs.some((p) => p.mode)) {
-    specs.push({
-      key: "mode",
-      label: "Study Mode",
-      type: "checkbox",
-      getValue: (p) => p.mode || null,
-    });
-  }
+  // if (programs.some((p) => p.mode)) {
+  //   specs.push({
+  //     key: "mode",
+  //     label: "Study Mode",
+  //     type: "checkbox",
+  //     getValue: (p) => p.mode || null,
+  //   });
+  // }
 
   if (programs.some((p) => getDurationBucket(p.duration))) {
     specs.push({
@@ -292,15 +280,6 @@ export function buildFilterSpecs(programs) {
       label: "Program Type",
       type: "checkbox",
       getValue: (p) => getField(p, "programType"),
-    });
-  }
-
-  if (programs.some((p) => getDeliveryFormat(p))) {
-    specs.push({
-      key: "deliveryFormat",
-      label: "Delivery Format",
-      type: "checkbox",
-      getValue: (p) => getDeliveryFormat(p),
     });
   }
 
