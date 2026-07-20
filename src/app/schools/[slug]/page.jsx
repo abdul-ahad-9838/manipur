@@ -1,9 +1,9 @@
 "use client";
 
 import BannerSection from "@/components/BannerSection";
+import ProgramCard from "@/components/ProgramCard";
 import API from "@/lib/api";
 import "@/styles/SchoolPage.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Activity, useEffect, useState } from "react";
@@ -789,89 +789,12 @@ export default function SchoolPage() {
                               prog.specialisation ||
                               (titleMatch ? titleMatch[2].trim() : "");
                             return (
-                              <div key={i} className="sp-program-card">
-                                <Link
-                                  href={`/courses/${prog.slug}`}
-                                  className="sp-program-link"
-                                >
-                                  <div className="sp-program-cover">
-                                    {prog.cardImage ? (
-                                      <Image
-                                        src={prog.cardImage}
-                                        alt={prog.title}
-                                        fill
-                                        onError={(e) => {
-                                          e.target.style.display = "none";
-                                          e.target.parentNode.classList.add(
-                                            "sp-cover-fallback",
-                                          );
-                                        }}
-                                        sizes="50vw"
-                                        className="sp-program-cover"
-                                      />
-                                    ) : (
-                                      <div className="sp-cover-fallback">
-                                        <span>{prog.icon}</span>
-                                      </div>
-                                    )}
-                                    <span className="sp-program-badge">
-                                      PROGRAM
-                                    </span>
-                                  </div>
-                                  <div className="sp-program-body">
-                                    <div className="sp-program-icon">
-                                      {prog.icon}
-                                    </div>
-                                    <div className="sp-program-title-wrapper">
-                                      <h3 className="sp-program-name">
-                                        {programName}
-                                      </h3>
-                                      {specialization && (
-                                        <p className="sp-program-specialization">
-                                          ({specialization})
-                                        </p>
-                                      )}
-                                    </div>
-                                    {prog.description && (
-                                      <p className="sp-program-desc">
-                                        {prog?.description?.length > 160
-                                          ? `${prog.description.substring(0, 160)}...`
-                                          : prog.description}
-                                      </p>
-                                    )}
-                                    <div className="sp-program-footer">
-                                      <div className="sp-program-meta">
-                                        <div>
-                                          <span className="sp-meta-label">
-                                            DURATION
-                                          </span>
-                                          <span className="sp-meta-val">
-                                            {prog.duration}
-                                          </span>
-                                        </div>
-                                        <div>
-                                          <span className="sp-meta-label">
-                                            ELIGIBILITY
-                                          </span>
-                                          <span className="sp-meta-val">
-                                            {prog.eligibility}
-                                          </span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </Link>
-                                <div className="sp-program-apply">
-                                  <a
-                                    href="https://admission.miu.edu.in"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="sp-apply-btn"
-                                  >
-                                    Apply Now
-                                  </a>
-                                </div>
-                              </div>
+                              <ProgramCard
+                                key={i}
+                                program={prog}
+                                programName={programName}
+                                specialization={specialization}
+                              />
                             );
                           })}
                         </div>
