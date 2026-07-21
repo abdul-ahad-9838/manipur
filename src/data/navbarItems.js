@@ -98,10 +98,48 @@ const navbarItems = [
       },
     ],
   },
-  {
-    label: "All Courses",
-    href: "/courses",
-  },
+  // {
+  //   label: "Schools Test",
+  //   subItems: [
+  //     {
+  //       label: "School of Engineering and Information Technology",
+  //       href: "/schools-test?school=school-of-engineering-and-information-technology",
+  //     },
+  //     {
+  //       label: "School of Commerce and Management",
+  //       href: "/schools-test?school=school-of-commerce-and-management",
+  //     },
+  //     {
+  //       label: "School of Science",
+  //       href: "/schools-test?school=school-of-science",
+  //     },
+
+  //     {
+  //       label: "School of Arts and Humanities",
+  //       href: "/schools-test?school=school-of-arts-and-humanities",
+  //     },
+  //     {
+  //       label: "School of Fire & Safety",
+  //       href: "/schools-test?school=school-of-fire-&-safety",
+  //     },
+  //     {
+  //       label: "School of Paramedical Sciences",
+  //       href: "/schools-test?school=school-of-paramedical-sciences",
+  //     },
+  //     {
+  //       label: "School of Library and Information Science",
+  //       href: "/schools-test?school=school-of-library-and-information-science",
+  //     },
+  //     {
+  //       label: "School of Journalism & Mass Communication",
+  //       href: "/schools-test?school=school-of-journalism-&-mass-communication",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "All Courses",
+  //   href: "/courses",
+  // },
   {
     label: "Research",
     subItems: [
