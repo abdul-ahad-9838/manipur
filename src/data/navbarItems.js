@@ -59,7 +59,6 @@ const navbarItems = [
   },
   {
     label: "Schools",
-    href: "/schools",
     subItems: [
       {
         label: "School of Engineering and Information Technology",
@@ -98,6 +97,10 @@ const navbarItems = [
         href: "/schools/school-of-journalism-&-mass-communication",
       },
     ],
+  },
+  {
+    label: "All Courses",
+    href: "/courses",
   },
   {
     label: "Research",

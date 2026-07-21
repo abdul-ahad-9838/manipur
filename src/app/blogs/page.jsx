@@ -5,7 +5,7 @@ import Link from "next/link";
 async function getBlogs() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs`, {
-      next: { revalidate: 300 },
+      cache: "no-store",
     });
 
     if (!res.ok) return null;
