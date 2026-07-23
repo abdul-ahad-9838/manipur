@@ -14,14 +14,14 @@ const TextEditor = dynamic(() => import("@/components/TextEditor"), {
   ssr: false,
 });
 const DEFAULT_SCHOOLS = [
-  "School Of Engineering And Information Technology",
-  "School Of Science",
-  "School Of Vocational Studies",
-  "School Of Humanities",
-  "School Of Allied Health Science",
-  "School Of Fire & Safety",
-  "School Of Library And Information Science",
-  "School Of Journalism & Mass Communication",
+  "School of Engineering and Information Technology",
+  "School of Science",
+  "School of Vocational Studies",
+  "School of Humanities",
+  "School of Allied Health Science",
+  "School of Fire & Safety",
+  "School of Library and Information Science",
+  "School of Journalism & Mass Communication",
 ];
 
 const EMPTY = {
@@ -108,9 +108,7 @@ export default function CoursesManager() {
           const list = data?.content?.schools;
           if (list?.length) {
             // Convert "School of Fire & Safety" → "School Of Fire & Safety" (title case first word)
-            const dbNames = list.map((s) =>
-              s.name.replace(/\b\w/g, (c) => c.toUpperCase()),
-            );
+            const dbNames = list.map((s) => s.name.replace(/\b\w/g, (c) => c));
 
             // const dbNamesSet = new Set(dbNames.map((n) => n.toLowerCase()));
             // Merge: append any DEFAULT_SCHOOLS not already in DB list
@@ -360,14 +358,6 @@ export default function CoursesManager() {
 
     return acc;
   }, {});
-
-  // Also ensure all schools from DB appear even with 0 courses
-  // Normalize to title case to match course school field format
-  schools.forEach((s) => {
-    // Convert "School of Fire & Safety" → "School Of Fire & Safety"
-    const normalized = s.replace(/\b\w/g, (c) => c.toUpperCase());
-    if (!coursesBySchool[normalized]) coursesBySchool[normalized] = [];
-  });
 
   // Sort courses within each school by order field
   Object.keys(coursesBySchool).forEach((school) => {

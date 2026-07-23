@@ -187,14 +187,14 @@ export default function ProgramsExplorer({ programs }) {
   const activeCount = Object.keys(activeFilters).length + (searchTerm ? 1 : 0);
 
   const schoolOrder = {
-    "School Of Engineering And Information Technology": 1,
-    "School Of Arts And Humanities": 2,
-    "School Of Science": 3,
-    "School Of Commerce And Management": 4,
-    "School Of Paramedical Sciences": 5,
-    "School Of Fire & Safety": 6,
-    "School Of Journalism & Mass Communication": 7,
-    "School Of Library And Information Science": 8,
+    "School of Engineering and Information Technology": 1,
+    "School of Arts and Humanities": 2,
+    "School of Science": 3,
+    "School of Commerce and Management": 4,
+    "School of Paramedical Sciences": 5,
+    "School of Fire & Safety": 6,
+    "School of Journalism & Mass Communication": 7,
+    "School of Library and Information Science": 8,
   };
 
   const programOrder = {
