@@ -59,7 +59,11 @@ function FilterSection({ title, defaultOpen = true, badge, children }) {
 
 function CheckboxList({ spec, options, selected, onToggle }) {
   const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? options : options.slice(0, 6);
+
+  // Sort options by count (highest first)
+  const sortedOptions = [...options].sort((a, b) => b.count - a.count);
+
+  const visible = showAll ? sortedOptions : sortedOptions.slice(0, 6);
 
   if (!options.length) {
     return <p className="filter-empty">No options available</p>;
@@ -71,10 +75,13 @@ function CheckboxList({ spec, options, selected, onToggle }) {
         {visible.map(({ value, count }) => {
           const checked = (selected || []).includes(value);
           const disabled = count === 0 && !checked;
+
           return (
             <li key={value}>
               <label
-                className={`filter-option${disabled ? " filter-option--disabled" : ""}`}
+                className={`filter-option${
+                  disabled ? " filter-option--disabled" : ""
+                }`}
               >
                 <input
                   type="checkbox"
@@ -82,6 +89,7 @@ function CheckboxList({ spec, options, selected, onToggle }) {
                   disabled={disabled}
                   onChange={() => onToggle(spec.key, value)}
                 />
+
                 <span className="filter-option__box" aria-hidden="true" />
                 <span className="filter-option__label">{value}</span>
                 <span className="filter-option__count">{count}</span>
@@ -90,6 +98,7 @@ function CheckboxList({ spec, options, selected, onToggle }) {
           );
         })}
       </ul>
+
       {options.length > 6 && (
         <button
           type="button"

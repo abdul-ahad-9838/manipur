@@ -15,6 +15,7 @@ import {
   filterPrograms,
 } from "@/lib/programs-filter/filterUtils";
 import ProgramCard from "../ProgramCard";
+import groupedPrograms from "@/lib/groupProgram";
 
 const EMPTY_FILTERS = {};
 
@@ -22,6 +23,14 @@ export default function ProgramsExplorer({ programs }) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [collapsedCategories, setCollapsedCategories] = useState({});
+
+  const toggleCategory = useCallback((key) => {
+    setCollapsedCategories((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  }, []);
 
   // Facet definitions are derived once from the dataset shape (which
   // fields actually exist), then reused for filtering + live counts.
@@ -60,6 +69,11 @@ export default function ProgramsExplorer({ programs }) {
     () => filterPrograms(programs, specs, activeFilters, searchTerm),
     [programs, specs, activeFilters, searchTerm],
   );
+
+  const newGroupProgram = useMemo(() => {
+    const grouped = groupedPrograms(filtered);
+    return { categories: grouped.categories, grouped: grouped.grouped };
+  }, [filtered]);
 
   const facetOptions = useMemo(
     () =>
@@ -172,6 +186,27 @@ export default function ProgramsExplorer({ programs }) {
 
   const activeCount = Object.keys(activeFilters).length + (searchTerm ? 1 : 0);
 
+  const schoolOrder = {
+    "School Of Engineering And Information Technology": 1,
+    "School Of Arts And Humanities": 2,
+    "School Of Science": 3,
+    "School Of Commerce And Management": 4,
+    "School Of Paramedical Sciences": 5,
+    "School Of Fire & Safety": 6,
+    "School Of Journalism & Mass Communication": 7,
+    "School Of Library And Information Science": 8,
+  };
+
+  const programOrder = {
+    "Business Administration": 1,
+    "Computer Application": 2,
+    Tech: 3,
+    "B.A.": 4,
+    "B.Sc.": 5,
+    "Hotel Management": 6,
+    "Fire & Safety": 7,
+  };
+
   return (
     <div className="programs-shell">
       <div className="container programs-shell__inner">
@@ -238,14 +273,93 @@ export default function ProgramsExplorer({ programs }) {
               </button>
             </div>
           ) : (
-            <div className="programs-grid">
-              {filtered.map((program) => (
-                <ProgramCard
-                  key={program._id || program.slug}
-                  program={program}
-                />
-              ))}
-            </div>
+            newGroupProgram.categories
+              .filter((c) => newGroupProgram.grouped[c.key].length)
+              .map((cat) => {
+                const isCollapsed = !!collapsedCategories[cat.key];
+
+                return (
+                  <div key={cat.key} className="sp-program-category">
+                    <h3
+                      className="sp-category-title"
+                      onClick={() => toggleCategory(cat.key)}
+                      style={{
+                        cursor: "pointer",
+                        userSelect: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      {cat.label}
+
+                      <span className="sp-category-count">
+                        {newGroupProgram.grouped[cat.key].length}
+                      </span>
+
+                      <span
+                        className="sp-toggle-icon"
+                        style={{
+                          marginLeft: "auto",
+                          transition: "transform .25s",
+                          transform: isCollapsed
+                            ? "rotate(-90deg)"
+                            : "rotate(0deg)",
+                        }}
+                      >
+                        ▾
+                      </span>
+                    </h3>
+
+                    {!isCollapsed && (
+                      <div className="programs-grid">
+                        {newGroupProgram.grouped[cat.key]
+                          .sort((a, b) => {
+                            const getOrder = (title) => {
+                              const key = Object.keys(programOrder).find(
+                                (program) => title.includes(program),
+                              );
+
+                              return key ? programOrder[key] : 999;
+                            };
+
+                            const orderA = getOrder(a.title);
+                            const orderB = getOrder(b.title);
+
+                            return orderA - orderB;
+                          })
+                          .sort((a, b) => {
+                            const orderA = schoolOrder[a.school] ?? 999;
+                            const orderB = schoolOrder[b.school] ?? 999;
+
+                            return orderA - orderB;
+                          })
+                          .map((prog, i) => {
+                            const titleMatch =
+                              prog.title.match(/^(.*?)\s*\((.*?)\)$/);
+
+                            const programName = titleMatch
+                              ? titleMatch[1].trim()
+                              : prog.title;
+
+                            const specialization =
+                              prog.specialisation ||
+                              (titleMatch ? titleMatch[2].trim() : "");
+
+                            return (
+                              <ProgramCard
+                                key={prog.id ?? i}
+                                program={prog}
+                                programName={programName}
+                                specialization={specialization}
+                              />
+                            );
+                          })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })
           )}
         </section>
       </div>
