@@ -5,26 +5,26 @@ export default function HostelPage() {
   const facilities = [
     {
       icon: "🏠",
-      title: "Separate Hostels",
-      desc: "Separate well-maintained hostels for boys and girls with 24/7 security.",
+      title: "Dedicated Hostels",
+      desc: "Well-kept hostels for both males and females with round-the-clock security.",
       color: "orange",
     },
     {
       icon: "🍽️",
-      title: "Mess & Dining",
-      desc: "Hygienic and nutritious meals served in the hostel mess.",
+      title: "Mess Services",
+      desc: "Nutrition food services at the hostel's mess.",
       color: "green",
     },
     {
       icon: "📶",
-      title: "Wi-Fi Connectivity",
-      desc: "High-speed internet connectivity throughout the hostel premises.",
+      title: "Internet Facilities",
+      desc: "Fast internet facility at the hostel's premises.",
       color: "blue",
     },
     {
       icon: "🔒",
-      title: "24/7 Security",
-      desc: "Round-the-clock security with CCTV surveillance for student safety.",
+      title: "Security",
+      desc: "Round the clock security at the hostels with CCTV camera surveillance.",
       color: "red",
     },
   ];
@@ -44,7 +44,7 @@ export default function HostelPage() {
           <span className="hostel-badge">STUDENT LIFE</span>
           <h1>Hostel Facilities</h1>
           <p className="hostel-hero-subtitle">
-            Safe, comfortable, and affordable residential facilities for MIU
+            Safe, comfortable and economical accommodation facilities for MIU
             students.
           </p>
         </div>
@@ -79,13 +79,13 @@ export default function HostelPage() {
               </div>
               <div className="hostel-admission-content">
                 <p>
-                  Hostel accommodation is allotted on a{" "}
-                  <strong>first-come, first-served basis</strong> subject to
+                  Hostel accommodation is on a first come first basis
+                  <strong>first-come, first-served basis</strong>as per
                   availability.
                 </p>
                 <p>
-                  Contact the <strong>Student Affairs Office</strong> for
-                  hostel-related queries.
+                  Contact the <strong>Students Affairs Departments</strong> for
+                  hostel related information.
                 </p>
               </div>
               <div className="hostel-admission-actions">

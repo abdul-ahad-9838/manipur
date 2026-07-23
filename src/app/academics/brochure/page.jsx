@@ -15,7 +15,7 @@ export default function Page() {
         {
           title: "University Prospectus 2026–27",
           content:
-            "The MIU Prospectus contains comprehensive information about all programs, admission procedures, fee structure, scholarships, campus facilities, and more. Contact the admissions office to receive a physical copy.",
+            "The MIU prospectus provides detailed information about academic programs, admission procedure, fee structure, scholarships, campus facilities, and other important aspects of university life. A physical copy can be obtained from the admission office.",
         },
         {
           title: "Available Brochures",

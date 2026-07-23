@@ -14,12 +14,12 @@ export default function HealthFacilities() {
       icon: "🏥",
       title: "Health Facilities at MIU",
       content:
-        "At Manipur International University (MIU), we understand that good health is essential for academic success and personal growth. The University is committed to providing a safe, healthy, and supportive environment for all students, faculty, and staff.",
+        "Manipur International University realizes the significance of being healthy in order to excel in studies and personal life. Thus, it makes sure that everyone present on its premises remains safe, healthy and supported in every way possible. ",
     },
     {
       title: "UGC Guidelines Compliant",
       content:
-        "Our health facilities are designed and maintained in accordance with UGC guidelines to ensure the highest standards of healthcare and wellness support for the university community.",
+        "These facilities are managed in a manner that meets the requirements laid down by UGC in this regard. ",
     },
     {
       title: "Medical Services",
@@ -28,13 +28,13 @@ export default function HealthFacilities() {
           icon: "👨‍⚕️",
           title: "Medical Center",
           content:
-            "On-campus medical center with qualified doctors and nurses available during working hours",
+            "As an on-campus medical centre with skilled doctors and nurses working during office hours. ",
         },
         {
           icon: "🚑",
           title: "Emergency Care",
           content:
-            "24/7 emergency medical services and ambulance facility for urgent medical situations",
+            "24/7 emergency medical services and ambulance services for emergencies.",
         },
         {
           icon: "💊",
@@ -46,27 +46,27 @@ export default function HealthFacilities() {
           icon: "🔬",
           title: "Diagnostic Services",
           content:
-            "Basic diagnostic facilities including pathology and radiology services",
+            "Basic diagnostics services with pathological and radiological services.",
         },
       ],
     },
     {
-      title: "Health Services Available",
+      title: "Available Health Services ",
       list: [
         "General medical consultation and treatment",
-        "First aid and emergency medical care",
-        "Health check-ups and preventive care",
-        "Vaccination and immunization programs",
-        "Minor surgical procedures",
-        "Referral services to specialist hospitals",
-        "Health awareness and wellness programs",
-        "Annual health screening for students and staff",
+        "First aid and emergency medical treatment",
+        "Health checkup services ",
+        "Vaccination services",
+        "Surgery services",
+        "Referral services for specialist hospitals",
+        "Health awareness programmes",
+        "Health screening programmes for students and faculty members",
       ],
     },
     {
       title: "Mental Health & Counseling",
       content:
-        "Understanding the importance of mental well-being, MIU provides professional counseling services to help students cope with academic stress, personal issues, and emotional challenges. Our trained counselors offer confidential support in a safe and non-judgmental environment.",
+        "Realizing the significance of good mental well being, MIU has professional counselling services to assist students to deal with academic pressures, personal problems and emotional issues. Our counselors are always ready to assist you in a confidential manner.",
     },
     {
       title: "Fitness & Wellness",
@@ -75,37 +75,42 @@ export default function HealthFacilities() {
           icon: "💪",
           title: "Gymnasium",
           content:
-            "Modern gym facility with fitness equipment and trained instructors",
+            "Modern gym equipped with all sorts of fitness equipment and professional trainers.",
         },
         {
           icon: "🧘",
           title: "Yoga & Meditation",
           content:
-            "Regular yoga and meditation sessions for stress management and wellness",
+            "Yoga and Meditation classes to combat stress and stay healthy.",
         },
         {
           icon: "🏃",
           title: "Sports Facilities",
           content:
-            "Access to sports grounds and indoor sports facilities for physical fitness",
+            "Sports ground and indoor sports facilities to keep physically fit.",
         },
         {
           icon: "🥗",
           title: "Nutrition Guidance",
           content:
-            "Dietary counseling and nutrition awareness programs for healthy living",
+            "Counselling and nutrition awareness program to maintain good health.",
         },
       ],
     },
     {
       title: "Health Insurance",
       content:
-        "All students are covered under a comprehensive health insurance scheme that provides coverage for hospitalization, accidents, and major illnesses. The insurance ensures that students receive quality medical care without financial burden.",
+        "All our students are provided with complete health insurance coverage, which is inclusive of all cases including hospitalisation, accident and serious illnesses. Our health insurance makes sure students get proper healthcare without having to worry about expenses.",
     },
     {
       title: "COVID-19 Protocols",
       content:
         "MIU maintains strict health and safety protocols to prevent the spread of infectious diseases. Regular sanitization, health monitoring, and adherence to government guidelines ensure a safe campus environment.",
+    },
+    {
+      title: "Infectious Diseases",
+      content:
+        "MIU follows strict health and safety regulations to prevent any outbreak of any infectious disease.",
     },
   ];
 

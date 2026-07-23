@@ -38,7 +38,7 @@ export default function AntiRaggingPage() {
           <span className="ar-badge">STUDENT LIFE</span>
           <h1>Anti-Ragging Cell</h1>
           <p className="ar-hero-subtitle">
-            MIU maintains a zero-tolerance policy against ragging in any form.
+            MIU follows a strict “no ragging” policy at all times.
           </p>
         </div>
       </div>
@@ -47,11 +47,11 @@ export default function AntiRaggingPage() {
         <div className="container">
           <div className="ar-commitment-card">
             <span className="ar-commitment-icon">🛡️</span>
-            <h2>Our Commitment</h2>
+            <h2>Our Stand</h2>
             <p>
-              Manipur International University is firmly committed to providing
-              a ragging-free campus. Ragging in any form — physical, verbal,
-              psychological, or cyber — is strictly prohibited.
+              Manipur International University remains determined to offer a
+              ragging free university. Ragging in all forms-physics, verbal,
+              psychological, cyber is strictly forbidden. Penalties
             </p>
           </div>
 
@@ -59,17 +59,17 @@ export default function AntiRaggingPage() {
             <span className="ar-consequences-icon">⚠️</span>
             <h2>Consequences</h2>
             <p>
-              Students found guilty of ragging face severe consequences
-              including suspension, expulsion, withholding of results, and
-              criminal prosecution as per the law.
+              Students who are guilty of ragging will have to face penalties
+              like suspension, expulsion, withholding of results, and even legal
+              actions.
             </p>
           </div>
 
           <div className="ar-report-section">
             <h2 className="ar-section-title">Report Ragging</h2>
             <p className="ar-section-subtitle">
-              If you witness or experience ragging, report immediately through
-              any of these channels:
+              If you become a victim of ragging, please report instantly through
+              the following means
             </p>
 
             <div className="ar-helplines-grid">

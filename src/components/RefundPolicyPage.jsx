@@ -68,19 +68,17 @@ export default function RefundPolicyPage() {
               <div className="overview-icon">📋</div>
               <h2>Policy Overview</h2>
               <p>
-                This policy outlines the guidelines and procedures for fee
-                refunds in case of admission withdrawal. It ensures
-                transparency, consistency, and fairness in handling refund
-                requests while aligning with institutional norms and regulatory
-                expectations.
+                Clear and consistent policies regarding refund of fees in case
+                of admission withdrawal. It guarantees transparency,
+                consistency, and equity in processing refund applications while
+                considering the norms of the institution.
               </p>
               <p>
-                The refund amount is determined based on the timing of the
-                withdrawal request relative to the officially notified admission
-                schedule. All refund requests must be submitted in writing
-                through the prescribed process. Approved refunds are processed
-                within a defined timeframe, subject to verification of documents
-                and clearance of any outstanding dues.
+                The refund will depend on the time when the request is made in
+                comparison with the scheduled admission notification. All
+                applications for refund should be in writing. The approvals of
+                refunds involve some timelines which are dependent on documents
+                verification and clearance of any pending dues.
               </p>
             </div>
 
@@ -132,8 +130,8 @@ export default function RefundPolicyPage() {
                   <div className="consideration-icon">🚫</div>
                   <h3>Non-Refundable Fees</h3>
                   <p>
-                    Application, entrance, and prospectus fees are generally
-                    non-refundable under any circumstances.
+                    Application, entrance and prospectus fees are normally not
+                    refundable irrespective of the reasons.
                   </p>
                 </div>
 
@@ -141,8 +139,8 @@ export default function RefundPolicyPage() {
                   <div className="consideration-icon">⚠️</div>
                   <h3>Disciplinary Action</h3>
                   <p>
-                    If admission is cancelled due to misconduct or submission of
-                    false documents, fees are usually forfeited.
+                    When admission is revoked owing to misconduct or use of fake
+                    documents, the applicant forfeits his/her fees.
                   </p>
                 </div>
 
@@ -150,8 +148,17 @@ export default function RefundPolicyPage() {
                   <div className="consideration-icon">⏱️</div>
                   <h3>Processing Timeframe</h3>
                   <p>
-                    Refunds are generally processed within 15 days of receiving
-                    a written application with all required documents.
+                    Normally, refunds are completed within 15 days from receipts
+                    of application containing necessary documents in writing.
+                  </p>
+                </div>
+
+                <div className="consideration-card">
+                  <div className="consideration-icon">🌟</div>
+                  <h3>Additional Points:</h3>
+                  <p>
+                    All refund requests need to be made in writing through the
+                    designated process.
                   </p>
                 </div>
               </div>
@@ -163,24 +170,24 @@ export default function RefundPolicyPage() {
               <h3>Important Notes</h3>
               <ul className="notes-list">
                 <li>
-                  All refund requests must be submitted in writing through the
-                  official channels
+                  All refund request need to be made in writing through the
+                  designated process
                 </li>
                 <li>
-                  Refund processing is subject to verification of documents and
-                  clearance of outstanding dues
+                  Refunds are dependent on clearing of dues and verification of
+                  the documents.
                 </li>
                 <li>
-                  The refund percentage is calculated on the total fee paid,
-                  excluding non-refundable components
+                  The percentage for refund depends on the total amount of fee
+                  paid less the non refundable fee.
                 </li>
                 <li>
-                  The date of receipt of the withdrawal notice determines the
-                  applicable refund percentage
+                  The date of the receipts of the notice for withdrawal
+                  determines the percentage of refund.
                 </li>
                 <li>
-                  Refunds will be processed to the original payment source or as
-                  per university guidelines
+                  Refunds will be credited back to the same account from where
+                  the fee was collected.
                 </li>
               </ul>
             </div>
@@ -191,28 +198,29 @@ export default function RefundPolicyPage() {
               <div className="steps-container">
                 <div className="step-card">
                   <div className="step-number">1</div>
-                  <h4>Submit Written Request</h4>
+                  <h4>Formal application submission</h4>
                   <p>
-                    Submit a formal written application for withdrawal and
-                    refund to the Admissions Office
+                    Submit a formal application for withdrawal and refund in
+                    writing to the admission office.
                   </p>
                 </div>
                 <div className="step-arrow">→</div>
                 <div className="step-card">
                   <div className="step-number">2</div>
-                  <h4>Document Verification</h4>
+
+                  <h4>Documentation Verification</h4>
                   <p>
-                    University verifies submitted documents and checks for any
-                    outstanding dues
+                    University verifies documentation and checks for any
+                    outstanding dues.
                   </p>
                 </div>
                 <div className="step-arrow">→</div>
                 <div className="step-card">
                   <div className="step-number">3</div>
-                  <h4>Approval & Processing</h4>
+                  <h4>Approvement and Refund Process</h4>
                   <p>
-                    Once approved, refund is processed within 15 days to the
-                    original payment source
+                    On approval, the refund process will be completed within 15
+                    days from the original payments source.
                   </p>
                 </div>
               </div>

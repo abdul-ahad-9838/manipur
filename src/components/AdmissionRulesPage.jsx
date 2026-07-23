@@ -6,25 +6,25 @@ export default function AdmissionRulesPage() {
     {
       icon: "📌",
       title: "Eligibility",
-      desc: "Candidates must meet the minimum eligibility criteria specified for each program.",
+      desc: "Applicants must meet the minimum eligibility requirements as prescribed for different programs.",
       color: "orange",
     },
     {
       icon: "📄",
       title: "Document Verification",
-      desc: "All original documents must be produced at the time of admission for verification.",
+      desc: "Original documents will have to be presented at the time of admission for documents verification.",
       color: "blue",
     },
     {
       icon: "⏳",
       title: "Provisional Admission",
-      desc: "Admission is provisional until all documents are verified and fees are paid.",
+      desc: "Admission is provisional till the complete process of verification of documents & payments of fees.",
       color: "green",
     },
     {
       icon: "⚠️",
       title: "Cancellation",
-      desc: "Admission may be cancelled if any information provided is found to be false or misleading.",
+      desc: "Admission can be canceled if found that any of the information furnished is misleading or false.",
       color: "red",
     },
   ];
@@ -70,8 +70,7 @@ export default function AdmissionRulesPage() {
           <span className="admission-rules-badge">ADMISSIONS</span>
           <h1>Rules for Admission</h1>
           <p className="admission-rules-hero-subtitle">
-            Guidelines and regulations governing the admission process at
-            Manipur International University.
+            Admission rules and regulations of Manipur International University.
           </p>
         </div>
       </div>
@@ -85,7 +84,7 @@ export default function AdmissionRulesPage() {
               <div>
                 <h2>General Rules</h2>
                 <p className="admission-rules-section-subtitle">
-                  Essential Guidelines for All Applicants
+                  Important Guidelines for Candidates
                 </p>
               </div>
             </div>
@@ -141,11 +140,11 @@ export default function AdmissionRulesPage() {
               <h2>Code of Conduct</h2>
             </div>
             <p>
-              All admitted students are expected to abide by the university's
-              code of conduct, maintain academic integrity, and respect the
-              rights and dignity of fellow students and faculty. Violation of
-              the code of conduct may result in disciplinary action including
-              suspension or expulsion.
+              All admitted students are expected to follow the university code
+              of conduct, uphold academic integrity and treat fellow students,
+              faculty and staff with respect. Any violation of these standards
+              may result in disciplinary action, including suspension or
+              expulsion.
             </p>
           </div>
 
@@ -155,9 +154,9 @@ export default function AdmissionRulesPage() {
             <div className="admission-notice-content">
               <h3>Important Notice</h3>
               <p>
-                The university reserves the right to modify admission rules and
-                regulations as per regulatory requirements. For the most
-                up-to-date information, please contact the Admissions Office at{" "}
+                The University reserves the right to revise its admission rules
+                and regulation as pre the requirements. For updated information,
+                please get in touch with the university at
                 <a href="mailto:admission@miu.edu.in">admission@miu.edu.in</a>
               </p>
             </div>

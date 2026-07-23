@@ -57,8 +57,8 @@ export default function ReservationRosterPage() {
           <span className="reservation-badge">ADMISSIONS</span>
           <h1>Reservation Roster</h1>
           <p className="reservation-hero-subtitle">
-            Ensuring fairness, equal opportunity, and inclusive growth for all
-            students and staff.
+            Guaranteeing fairness, equality and inclusive development for all
+            students and employees.
           </p>
         </div>
       </div>
@@ -72,16 +72,12 @@ export default function ReservationRosterPage() {
               <div className="overview-icon">🎓</div>
               <h2>Overview</h2>
               <p>
-                <strong>Manipur International University (MIU)</strong> is
-                committed to ensuring fairness, equal opportunity, and inclusive
-                growth for all students and staff. The University follows
-                reservation policies as prescribed by the Government of India
-                and relevant regulatory authorities.
-              </p>
-              <p>
-                To maintain transparency and consistency in admissions, faculty
-                recruitment, and institutional processes, MIU implements a
-                structured <strong>Reservation Roster system</strong>.
+                Maipur International University (MIU) adheres to principles of
+                fairness, equality and inclusive developments of all students
+                and employees. It complies with reservation rules set forth by
+                the Government of India. In order to ensure transparency and
+                consistency in the admission process and hiring process, MIU
+                adopts a structured system of Reservation Rosters.
               </p>
             </div>
 
@@ -89,8 +85,8 @@ export default function ReservationRosterPage() {
             <div className="reservation-policy-section">
               <h2>Reservation Policy at MIU</h2>
               <p className="section-intro">
-                The University follows reservation guidelines for the following
-                categories:
+                The university follow the guidelines of the reservation policy
+                for the following groups:
               </p>
 
               <div className="categories-grid">
@@ -136,22 +132,21 @@ export default function ReservationRosterPage() {
                 <div className="feature-card">
                   <div className="feature-icon">⚖️</div>
                   <h3>Fair Allocation</h3>
-                  <p>
-                    Promotes fair and balanced allocation of seats and positions
-                  </p>
+                  <p>It ensures a fair distribution of seats and positions.</p>
                 </div>
 
                 <div className="feature-card">
                   <div className="feature-icon">🔄</div>
-                  <h3>Regular Updates</h3>
-                  <p>Updated regularly as per the latest government policies</p>
+                  <h3>Updating:</h3>
+                  <p> Regularly updated according to governments rules.</p>
                 </div>
 
                 <div className="feature-card">
                   <div className="feature-icon">🔍</div>
                   <h3>Transparency</h3>
                   <p>
-                    Ensures transparency in admissions and recruitment processes
+                    It ensures transparency in the process of admission and
+                    hiring.
                   </p>
                 </div>
 
@@ -159,8 +154,8 @@ export default function ReservationRosterPage() {
                   <div className="feature-icon">✅</div>
                   <h3>Compliance</h3>
                   <p>
-                    Supports compliance with national and state reservation
-                    guidelines
+                    It helps to comply with national and regional reservation
+                    policy guidelines.
                   </p>
                 </div>
               </div>
@@ -171,9 +166,12 @@ export default function ReservationRosterPage() {
               <div className="system-icon">💯</div>
               <h2>100-Point Roster System</h2>
               <p>
-                MIU follows the <strong>100-point roster system</strong>, which
-                is a standard method used to allocate seats and positions across
-                different categories.
+                The MIU implements the <strong>100-point roster system</strong>.
+                This is a well known system that is normally applied when
+                allocating position within various categories. One point in the
+                roaster system represents one seat or position. Categories are
+                divided according to their reservation percentage. It ensures
+                systematic application of the reservation policy.
               </p>
 
               <ul className="system-points">

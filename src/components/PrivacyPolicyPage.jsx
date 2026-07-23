@@ -15,8 +15,8 @@ export default function PrivacyPolicyPage() {
           <span className="privacy-badge">LEGAL</span>
           <h1>Privacy Policy</h1>
           <p className="privacy-hero-subtitle">
-            Your privacy matters to us. Learn how we collect, use, and protect
-            your information.
+            Respecting your privacy is important to us. Find out more about
+            collecting and handling your personal information.
           </p>
         </div>
       </div>
@@ -32,49 +32,48 @@ export default function PrivacyPolicyPage() {
 
             <div className="privacy-intro">
               <p>
-                While accessing or using the official website of{" "}
-                <strong>Manipur International University (MIU)</strong>,
-                visitors/users may provide certain personal information,
-                including but not limited to personal profiles and related data.
-                Such information may be collected, processed, and used by the
-                University for academic, administrative, and operational
-                purposes.
+                Visitors/Users while accessing or browsing the official website
+                of <strong>Manipur International University (MIU)</strong> may
+                supply some personal information that include but is not limited
+                to personal profile along with other relevant information. The
+                university will collect, process and use such information for
+                academic and operational purposes.
               </p>
             </div>
 
             {/* Section 1 */}
             <div className="privacy-section">
               <div className="section-icon">🔒</div>
-              <h2>Information Collection and Use</h2>
+              <h2>Collection and use of information</h2>
               <p>
-                The University may collect personal information provided by
-                visitors and users during their interaction with this website.
-                This information may be shared with authorized third parties, as
-                deemed appropriate. By using this website, the user provides
-                unconditional consent for such collection, use, and sharing of
-                information.
+                The university collects some personal information from the
+                users/visitors of this website. The collected information can be
+                disclosed to authorized third parties when it seems fit to the
+                university. While browning this website, the user gives
+                unconditional permission for the same.
               </p>
             </div>
 
             {/* Section 2 */}
             <div className="privacy-section">
               <div className="section-icon">🖥️</div>
-              <h2>Automatic Information Collection</h2>
+              <h2>Automatic Data Collection</h2>
               <p>
-                The University's web server may automatically record technical
-                information such as:
+                Data can be automatically collected by the university web server
+                and many include, but not be limited to, the following technical
+                information.
               </p>
+
               <ul className="privacy-list">
-                <li>Internet Protocol (IP) address of the user's device</li>
+                <li>IP address of the user’s devices</li>
                 <li>Browser type and version</li>
                 <li>Operating system</li>
                 <li>Date and time of access</li>
                 <li>Referring website</li>
               </ul>
               <p>
-                This information is used for website administration, performance
-                improvement, security monitoring, and generating statistical
-                reports.
+                This information is used for administration, development,
+                security monitoring and creation of statistics.
               </p>
             </div>
 
@@ -83,11 +82,10 @@ export default function PrivacyPolicyPage() {
               <div className="section-icon">🍪</div>
               <h2>Cookies and Tracking Technologies</h2>
               <p>
-                MIU may use cookies, pixels, or similar technologies to track
-                user sessions, enhance user experience, and deliver personalized
-                content and services. These technologies help us understand how
-                visitors interact with our website and improve our services
-                accordingly.
+                The MIU may employ cookies, pixels and other tracking
+                technologies to collect information about a user session,
+                increase user experience and provide personalized content and
+                service.
               </p>
             </div>
 
@@ -96,47 +94,43 @@ export default function PrivacyPolicyPage() {
               <div className="section-icon">⚖️</div>
               <h2>Information Disclosure</h2>
               <p>
-                Information collected from users may be disclosed, if required,
-                to:
+                Information obtained from the user may be disclosed, when
+                necessary to:
               </p>
               <ul className="privacy-list">
                 <li>Government authorities</li>
-                <li>Regulatory bodies</li>
-                <li>Courts or statutory agencies</li>
+                <li>Regulatory authorities</li>
+                <li>Statutory agencies/courts</li>
               </ul>
               <p>
-                Such disclosure will be made in accordance with applicable laws,
-                regulations, or legal processes. Information may also be used
-                for maintaining network security, improving website
-                functionality, or for other legitimate purposes as determined by
-                the University.
+                Such disclosure will be carried out as per the requirements of
+                applicable laws and regulations.
               </p>
             </div>
 
             {/* Section 5 */}
             <div className="privacy-section">
               <div className="section-icon">🔗</div>
-              <h2>Third-Party Links</h2>
+              <h2>Links to Third Party Website</h2>
               <p>
-                This website may contain links to third-party or external
-                websites. These websites operate independently and are not
-                governed by MIU's privacy policy. The University is not
-                responsible for the privacy practices, security, or content of
-                such external sites. We encourage users to review the privacy
-                policies of any third-party sites they visit.
+                This site may include links to other websites that are neither
+                owned nor controlled by MIU. Such sites are operated on their
+                own terms and are not subject to MIU privacy policy. The
+                university is not responsible for the privacy policy or the
+                content of any external website.
               </p>
             </div>
 
             {/* Section 6 */}
             <div className="privacy-section">
               <div className="section-icon">📝</div>
-              <h2>Policy Updates</h2>
+              <h2>Privacy Policy Updates</h2>
               <p>
-                MIU reserves the right to revise, modify, or update this Privacy
-                Policy at any time without prior notice. Users are encouraged to
-                review this page periodically to stay informed of any changes.
-                Continued use of the website after any modifications constitutes
-                acceptance of the updated policy.
+                MIU has the right to change, amend or add to this privacy policy
+                at any time and without giving prior notice. Users are advised
+                to check this page from time to time for any updates. Use of
+                this site after any changes will mean your acceptance of the new
+                privacy policy.
               </p>
             </div>
 

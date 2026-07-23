@@ -6,31 +6,31 @@ export default function SportsPage() {
     {
       icon: "🏏",
       title: "Cricket Ground",
-      desc: "Full-size cricket ground with practice nets.",
+      desc: "A full cricket ground along with a net for practice purposes. ",
       color: "orange",
     },
     {
       icon: "⚽",
       title: "Football Field",
-      desc: "Standard football field for matches and practice.",
+      desc: " A standard football ground for practices as well as playing the matches. ",
       color: "green",
     },
     {
       icon: "🏸",
       title: "Badminton Courts",
-      desc: "Indoor badminton courts with professional flooring.",
+      desc: " Professional indoor badminton courts.",
       color: "blue",
     },
     {
       icon: "🏀",
       title: "Basketball Court",
-      desc: "Outdoor basketball court for recreational and competitive play.",
+      desc: "An outdoor basketball court.",
       color: "purple",
     },
     {
       icon: "🏋️",
       title: "Gymnasium",
-      desc: "Well-equipped gymnasium for fitness training.",
+      desc: "A fully equipped gymnasium.",
       color: "red",
     },
   ];
@@ -49,8 +49,8 @@ export default function SportsPage() {
           <span className="sports-badge">STUDENT LIFE</span>
           <h1>Sports & Athletics</h1>
           <p className="sports-hero-subtitle">
-            MIU promotes a healthy and active lifestyle through a wide range of
-            sports and physical activities.
+            The MIU encourages an active lifestyle through various types of
+            sports and exercise programs.
           </p>
         </div>
       </div>
@@ -78,8 +78,8 @@ export default function SportsPage() {
               <h2>Sports Programs</h2>
             </div>
             <p>
-              MIU organizes annual sports meets, inter-department tournaments,
-              and participates in inter-university competitions.
+              MIU arranges annual sports meet and competitions among departments
+              and also takes part in inter university sports.
             </p>
           </div>
         </div>

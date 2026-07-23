@@ -6,60 +6,60 @@ export default function AdmissionProcess() {
     {
       num: "01",
       title: "Check Eligibility",
-      desc: "Review the eligibility criteria for your desired program on our Programs page.",
+      desc: "Check the eligibility criteria of your program from our Programs page.",
     },
     {
       num: "02",
-      title: "Fill Application Form",
-      desc: "Complete the online application form with accurate personal and academic details.",
+      title: "Application Form",
+      desc: "Submit the online application form.",
     },
     {
       num: "03",
-      title: "Submit Documents",
-      desc: "Upload required documents: 10th & 12th marksheets, ID proof, passport photo, and category certificate if applicable.",
+      title: "Document Upload",
+      desc: "Upload the necessary documents including mark sheets of 10th & 12th, identification proof, passport-size photo and certificate for category if any.",
     },
     {
       num: "04",
       title: "Entrance Test / Merit",
-      desc: "Appear for the entrance test (if applicable) or qualify on merit basis as per program requirements.",
+      desc: "Clear the entrance test (if required) or merit yourself based on the criteria for your course.",
     },
     {
       num: "05",
       title: "Counselling & Seat Allotment",
-      desc: "Attend counselling session and receive seat allotment based on merit and preference.",
+      desc: "Participate in the counseling process and receive your seat allotment.",
     },
     {
       num: "06",
       title: "Fee Payment",
-      desc: "Pay the admission fee within the stipulated time to confirm your seat.",
+      desc: "Make payment of admission fee in the stipulated time.",
     },
     {
       num: "07",
-      title: "Enrollment",
-      desc: "Complete enrollment formalities and receive your student ID and academic schedule.",
+      title: "Registration",
+      desc: "Proceed with your registration and obtain your student ID. Documents to be Submitted",
     },
   ];
 
   const documents = [
     {
       icon: "📋",
-      title: "10th & 12th Marksheets",
-      desc: "Original and self-attested copies of your academic certificates.",
+      title: "Marksheet of 10th & 12th",
+      desc: "Your original and attested copies of marksheets.",
     },
     {
       icon: "🪪",
-      title: "Identity Proof",
-      desc: "Valid government ID - Aadhaar Card, Passport, or Voter ID.",
+      title: "Identitification Proof",
+      desc: "A valid government-issued ID either the Aadhar card, Passport, or voter ID.",
     },
     {
       icon: "📸",
-      title: "Passport Photographs",
-      desc: "Four recent passport size color photographs with white background.",
+      title: "Passport Size Photographs",
+      desc: "Four recent colored passport size photographs on a white background.",
     },
     {
       icon: "📄",
       title: "Category Certificate",
-      desc: "SC/ST/OBC/EWS certificate if applicable for reservation benefits.",
+      desc: "If you come under any reserved category.",
     },
   ];
 
@@ -78,8 +78,8 @@ export default function AdmissionProcess() {
           <span className="ap-badge">ADMISSIONS 2026</span>
           <h1>Your Journey Starts Here</h1>
           <p className="ap-hero-subtitle">
-            A transparent, student-friendly admission process designed to make
-            your enrollment seamless and stress-free.
+            An open and transparent admission procedure aimed at making your
+            admission a smooth sailing process.
           </p>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function AdmissionProcess() {
             <span className="ap-section-badge">STEP BY STEP</span>
             <h2 className="ap-section-title">Admission Process</h2>
             <p className="ap-section-subtitle">
-              Follow these simple steps to secure your seat at MIU
+              The following steps will get you admission in MIU.
             </p>
           </div>
 
