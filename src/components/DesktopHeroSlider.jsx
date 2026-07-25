@@ -26,6 +26,7 @@ function DesktopHeroSlider({ images, title }) {
           fill
           priority={index === 0}
           quality={75}
+          fetchPriority={index === 0 ? "high" : "low"}
           sizes="100vw"
           className={`hero-image ${
             index === currentImageIndex ? "active" : ""

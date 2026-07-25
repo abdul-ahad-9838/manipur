@@ -135,7 +135,7 @@ a {
 
 .apply-blink-btn {
   background-color: var(--lpu-orange);
-  color: white !important;
+  color: var(--lpu-dark-gray);
   padding: 5px 15px;
 }
 

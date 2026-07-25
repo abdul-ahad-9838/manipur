@@ -95,6 +95,7 @@
 .cta-button-text {
   position: relative;
   z-index: 2;
+  color: var(--lpu-black);
 }
 
 .cta-button-icon {
