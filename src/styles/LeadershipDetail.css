@@ -72,8 +72,9 @@
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 6px;
+  text-align: center;
 }
 
 .leader-role {
