@@ -318,7 +318,7 @@ a {
 }
 .other-page-header .sticky-nav .search-btn,
 .other-page-header .sticky-nav .hamburger-btn {
-  color: var(--lpu-black) !important;
+  color: var(--lpu-white) !important;
 }
 
 /* ===== Nav actions / dropdown menus ===== */
@@ -846,7 +846,7 @@ a {
     color: white !important;
   }
   .lpu-header:has(.sticky-nav) .hamburger-btn {
-    color: var(--lpu-black) !important;
+    color: white !important;
   }
 }
 

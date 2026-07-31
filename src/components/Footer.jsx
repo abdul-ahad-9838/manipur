@@ -67,8 +67,9 @@ const Footer = async () => {
               />
             </Link>
             <p className="footer-about-text">{d.aboutText}</p>
+
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.496306177151!2d93.90589182670674!3d24.778453448531593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3749261e475627a5%3A0x4387a785b093521a!2sManipur%20International%20University!5e0!3m2!1sen!2sin!4v1780304912783!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4454.09730766418!2d93.92157227537118!3d24.869388377923443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDUyJzA5LjgiTiA5M8KwNTUnMjYuOSJF!5e1!3m2!1sen!2sin!4v1785473316167!5m2!1sen!2sin"
               width="100%"
               height="200"
               style={{ border: 0, marginBottom: "1rem" }}
