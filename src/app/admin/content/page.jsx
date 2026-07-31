@@ -513,7 +513,8 @@ export default function ContentManager() {
   // Footer
   const [footerData, setFooterData] = useState({
     aboutText: "Transforming education with a globally recognized curriculum.",
-    address: "Luwangsangbam Makha Leikai,Luwangsangbam, Imphal, Manipur 795002",
+    address:
+      "MIU Palace, Luwangsangbam Makha Leikai,Luwangsangbam, Imphal East, Imphal, Manipur - 795002",
     phone: "+91 9319727766",
     email: "admission@miu.edu.in",
     facebook:

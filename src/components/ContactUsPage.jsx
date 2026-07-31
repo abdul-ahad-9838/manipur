@@ -137,7 +137,7 @@ export default function ContactUsPage() {
       ),
       title: "Visit Us",
       primary:
-        "Luwangsangbam Makha Leikai,Luwangsangbam, Imphal, Manipur 795002",
+        "MIU Palace, Luwangsangbam Makha Leikai,Luwangsangbam, Imphal East, Imphal, Manipur - 795002",
       secondary: pc.address || "",
       color: "#EA4335",
       bgColor: "#FFEBEE",
@@ -394,7 +394,7 @@ export default function ContactUsPage() {
                 <div className="map-address">
                   <p>
                     {pc.address ||
-                      "Luwangsangbam Makha Leikai,Luwangsangbam, Imphal, Manipur 795002"}
+                      "MIU Palace, Luwangsangbam Makha Leikai,Luwangsangbam, Imphal East, Imphal, Manipur - 795002"}
                   </p>
                 </div>
               </div>
