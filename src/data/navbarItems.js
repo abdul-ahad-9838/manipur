@@ -151,7 +151,10 @@ const navbarItems = [
   },
   {
     label: "Examination",
-    subItems: [{ label: "Results", href: "/examination/results" }],
+    subItems: [
+      { label: "Results", href: "/examination/results" },
+      { label: "Apply for Examinations", href: "https://exam.miu.edu.in/" },
+    ],
   },
   {
     label: "Admissions",
