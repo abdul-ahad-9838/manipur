@@ -34,15 +34,18 @@
 
 .lpu-hero-overlay {
   position: absolute;
-  inset: 0;
-  z-index: 2;
-
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
   background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.82) 0%,
-    rgba(0, 0, 0, 0.5) 45%,
-    rgba(0, 0, 0, 0.18) 100%
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.25) 45%,
+    rgba(0, 0, 0, 0) 100%
   );
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* ---------- Layout ---------- */
@@ -1233,6 +1236,10 @@
     width: 33.333vw;
     height: 250px;
   }
+
+  .lpu-hero-overlay {
+    display: none;
+  }
   .ps-stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
@@ -1371,11 +1378,7 @@
   }
 
   .lpu-hero-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.72) 0%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
+    display: none;
   }
   /* spotlight */
   .spotlight-title {

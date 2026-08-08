@@ -96,6 +96,7 @@ const MobileSubAccordion = ({ label, subItems = [], onClose }) => {
   );
 };
 
+
 const renderMenuItem = (item) => {
   if (item.subItems) {
     return (
@@ -199,9 +200,8 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`main-navbar ${isSticky ? "sticky-nav" : ""} ${
-          !isLandingPage && !isSticky ? "other-page-nav" : ""
-        }`}
+        className={`main-navbar ${isSticky ? "sticky-nav" : ""} ${!isLandingPage && !isSticky ? "other-page-nav" : ""
+          }`}
       >
         <div className="nav-flex">
           <Link

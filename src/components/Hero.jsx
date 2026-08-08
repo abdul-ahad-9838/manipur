@@ -1,64 +1,229 @@
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import { memo, useMemo } from "react";
-import DateClient from "./DateClient";
+"use client";
 
-const DesktopHeroSlider = dynamic(() => import("./DesktopHeroSlider"));
+import Image from "next/image";
+import { memo, useEffect, useMemo, useState } from "react";
 
 const DEFAULT_CONTENT = {
   title: "Shaping The Leaders of Tomorrow",
   subtitle:
     "An institution committed to intellectual rigor, industry integration, and transformative learning experiences that shape global professionals.",
   images: [
-    "/api/images/6a34cb48446374637b2f4caa",
-    "/api/images/6a34cb4c446374637b2f4cab",
-    "/api/images/6a34cb4f446374637b2f4cac",
-    "/api/images/6a34cb52446374637b2f4cad",
-    "/api/images/6a34cb55446374637b2f4cae",
+    {
+      src: "/hero/banner_02.webp",
+      url: "https://admission.miu.edu.in/",
+    },
+    {
+      src: "/hero/banner_04.webp",
+      url: "https://admission.miu.edu.in/",
+    },
+    {
+      src: "/hero/banner_02.webp",
+      url: "https://admission.miu.edu.in/",
+    },
+    {
+      src: "/hero/banner_04.webp",
+      url: "https://admission.miu.edu.in/",
+    },
   ],
 };
 
-function Hero({ data }) {
-  const heroData = useMemo(() => data ?? DEFAULT_CONTENT, [data]);
-  const { title, subtitle, images } = heroData;
+function Hero() {
+  const heroData = DEFAULT_CONTENT;
+  const { images } = heroData;
+
   const heroImages = images?.length ? images : DEFAULT_CONTENT.images;
 
+  // Clone first + last slide for infinite carousel
+  const sliderImages = useMemo(() => {
+    if (!heroImages.length) return [];
+
+    return [
+      heroImages[heroImages.length - 1],
+      ...heroImages,
+      heroImages[0],
+    ];
+  }, [heroImages]);
+
+  const [index, setIndex] = useState(1);
+  const [transition, setTransition] = useState(true);
+
+  // Prevent multiple clicks during animation
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Auto Slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isAnimating) {
+        setIsAnimating(true);
+        setIndex((prev) => prev + 1);
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAnimating]);
+
+  const next = () => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
+    setTransition(true);
+    setIndex((prev) => prev + 1);
+  };
+
+  const prev = () => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
+    setTransition(true);
+    setIndex((prev) => prev - 1);
+  };
+
+  const handleTransitionEnd = () => {
+    // Reached cloned first slide
+    if (index === sliderImages.length - 1) {
+      setTransition(false);
+      setIndex(1);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setTransition(true);
+          setIsAnimating(false);
+        });
+      });
+
+      return;
+    }
+
+    // Reached cloned last slide
+    if (index === 0) {
+      setTransition(false);
+      setIndex(sliderImages.length - 2);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setTransition(true);
+          setIsAnimating(false);
+        });
+      });
+
+      return;
+    }
+
+    // Normal slide completed
+    setIsAnimating(false);
+  };
+
+  if (!sliderImages.length) return null;
+
   return (
-    <section className="lpu-hero-container">
-      {/* Desktop view handled via CSS display rules inside the component wrapper */}
-      <div className="container hero-layout">
-        <h1>{title}</h1>
-        <p className="hero-subtext">{subtitle}</p>
-        <div className="hero-buttons">
-          <a
-            href="https://admission.miu.edu.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Admissions 2026"
+    <section
+      style={{
+        position: "relative",
+        width: "100%",
+        overflow: "hidden",
+        maxHeight: "100dvh",
+      }}
+    >
+      {/* Background Slider */}
+      <div
+        onTransitionEnd={handleTransitionEnd}
+        style={{
+          display: "flex",
+          width: `${sliderImages.length * 100}% `,
+          transform: `translateX(-${index * (100 / sliderImages.length)
+            }%)`,
+          transition: transition
+            ? "transform 0.5s ease-in-out"
+            : "none",
+        }}
+      >
+        {sliderImages.map((img, i) => (
+          <div
+            key={`${img.src} -${i} `}
+            style={{
+              width: `${100 / sliderImages.length}% `,
+              flexShrink: 0,
+            }}
           >
-            Admissions <DateClient />
-          </a>
-        </div>
-      </div>
-      <div className="desktop-only-wrapper">
-        <DesktopHeroSlider images={heroImages} title={title} />
+            <a
+              href={img.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt || ""}
+                width={1600}
+                height={700}
+                priority={i === 1}
+                quality={70}
+                fetchPriority={i === 1 ? "high" : "auto"}
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+              />
+            </a>
+          </div>
+        ))}
       </div>
 
-      {/* Mobile view is now always present in HTML so 'priority' works instantly */}
-      <div className="hero-image-wrapper mobile-only-wrapper">
-        <Image
-          src={heroImages[0]}
-          alt={title}
-          fill
-          priority // Tells the browser to download this immediately
-          quality={65}
-          fetchPriority="high"
-          sizes="(max-width: 768px) 375px, 100vw"
-          className="hero-image active"
-        />
-      </div>
-
+      {/* Overlay */}
       <div className="lpu-hero-overlay" />
+
+      {/* Previous */}
+      <button
+        type="button"
+        onClick={prev}
+        disabled={isAnimating}
+        aria-label="Previous slide"
+        style={{
+          position: "absolute",
+          left: "20px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 3,
+          width: "45px",
+          height: "45px",
+          borderRadius: "50%",
+          border: "none",
+          background: "rgb(14 1 1 / 49%)",
+          color: "#fff",
+          cursor: isAnimating ? "not-allowed" : "pointer",
+          fontSize: "22px",
+          opacity: isAnimating ? 0.6 : 1,
+        }}
+      >
+        &#10094;
+      </button>
+
+      {/* Next */}
+      <button
+        type="button"
+        onClick={next}
+        disabled={isAnimating}
+        aria-label="Next slide"
+        style={{
+          position: "absolute",
+          right: "20px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 3,
+          width: "45px",
+          height: "45px",
+          borderRadius: "50%",
+          border: "none",
+          background: "rgb(14 1 1 / 49%)",
+          color: "#fff",
+          cursor: isAnimating ? "not-allowed" : "pointer",
+          fontSize: "22px",
+          opacity: isAnimating ? 0.6 : 1,
+        }}
+      >
+        &#10095;
+      </button>
     </section>
   );
 }

@@ -1,12 +1,13 @@
 /* ===== Header base ===== */
 .lpu-header {
-  position: absolute;
+  position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 9999;
+  background: transparent !important;
+  height: auto;
 }
-
 .other-page-header {
   position: fixed !important;
   top: 0;
@@ -175,7 +176,7 @@ a {
 }
 .main-navbar.sticky-nav .search-btn,
 .main-navbar.sticky-nav .hamburger-btn {
-  color: var(--lpu-black);
+  color: var(--lpu-white);
 }
 
 .other-page-header .main-navbar {
@@ -604,9 +605,6 @@ a {
   cursor: pointer;
   padding: 10px;
 }
-.hamburger-btn {
-  display: none;
-}
 
 /* ===== Mobile menu overlay ===== */
 .mobile-menu-overlay {
@@ -745,12 +743,10 @@ a {
 
 @media (max-width: 1024px) {
   .lpu-header {
-    position: fixed !important;
-    top: 0;
-    left: 0;
+    position: static !important;
     width: 100%;
-    z-index: 1000;
-    background: transparent;
+    background: white !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   }
   .lpu-header:has(.sticky-nav) {
     background: white;
@@ -767,7 +763,7 @@ a {
     color: white !important;
   }
   .other-page-header .sticky-nav .hamburger-btn {
-    color: var(--lpu-black) !important;
+    color: var(--lpu-white) !important;
   }
 
   .desktop-nav,
@@ -856,6 +852,9 @@ a {
     height: 0 !important;
     padding: 0 !important;
   }
+  .lpu-header {
+    position: static !important;
+  }
   .mobile-main-links a {
     font-size: 1.4rem;
   }
@@ -875,11 +874,23 @@ a {
   }
 }
 
-@media (min-width: 1025px) {
-  .hamburger-btn {
-    display: none !important;
+/* Mobile/Tablet: hamburger visible → static white header */
+@media (max-width: 1024px) {
+  .lpu-header {
+    position: static !important;
+    width: 100%;
+    background: rgb(82, 15, 15) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   }
-  .mobile-menu-overlay {
-    display: none !important;
+
+  .main-navbar,
+  .main-navbar.sticky-nav {
+    /* background: white !important; */
+    box-shadow: none !important;
+  }
+
+  .hamburger-btn {
+    display: flex !important;
+    color: var(--lpu-white) !important;
   }
 }

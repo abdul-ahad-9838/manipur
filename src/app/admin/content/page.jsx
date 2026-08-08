@@ -721,95 +721,95 @@ export default function ContentManager() {
       .then(({ data }) => {
         if (data?.content) setHeroData(data.content);
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/leadership")
       .then(({ data }) => {
         if (data?.content?.leaders?.length) setLeaders(data.content.leaders);
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/spotlight")
       .then(({ data }) => {
         if (data?.content?.row1?.length) setSpotRow1(data.content.row1);
         if (data?.content?.row2?.length) setSpotRow2(data.content.row2);
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/about")
       .then(({ data }) => {
         if (data?.content) setAboutData(data.content);
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/placements")
       .then(({ data }) => {
         if (data?.content)
           setPlacementsData((prev) => ({ ...prev, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/campus")
       .then(({ data }) => {
         if (data?.content)
           setCampusContent((prev) => ({ ...prev, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/ecosystem")
       .then(({ data }) => {
         if (data?.content?.cards?.length) setEcoCards(data.content.cards);
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/footer")
       .then(({ data }) => {
         if (data?.content)
           setFooterData((prev) => ({ ...prev, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/schools-section")
       .then(({ data }) => {
         if (data?.content)
           setSchoolsSection((prev) => ({ ...prev, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/recognitions")
       .then(({ data }) => {
         if (data?.content?.items?.length) setRecognitions(data.content.items);
         if (data?.content?.header)
           setAccHeader((prev) => ({ ...prev, ...data.content.header }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/page-admissions")
       .then(({ data }) => {
         if (data?.content)
           setPageAdmissions((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/page-contact")
       .then(({ data }) => {
         if (data?.content) setPageContact((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/page-exams")
       .then(({ data }) => {
         if (data?.content) setPageExams((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/page-about")
       .then(({ data }) => {
         if (data?.content) setPageAboutWho((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/academic-council")
       .then(({ data }) => {
         if (data?.content) setAcData((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/iqac")
       .then(({ data }) => {
         if (data?.content) setIqacData((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/school-details")
       .then(({ data }) => {
         if (data?.content) setSchoolDetails((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
     // Also load dynamically added schools from schools-section and add missing ones to schoolDetails
     API.get("/settings/schools-section")
       .then(({ data }) => {
@@ -837,13 +837,13 @@ export default function ContentManager() {
           }
         });
       })
-      .catch(() => {});
+      .catch(() => { });
     API.get("/settings/student-life-pages")
       .then(({ data }) => {
         if (data?.content)
           setStudentLifePages((p) => ({ ...p, ...data.content }));
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [user]);
 
   const save = async (type, content) => {
@@ -1224,11 +1224,11 @@ export default function ContentManager() {
                             leaders.map((l, i) =>
                               i === idx
                                 ? {
-                                    ...l,
-                                    message: l.message.map((p, pi) =>
-                                      pi === pIdx ? e.target.value : p,
-                                    ),
-                                  }
+                                  ...l,
+                                  message: l.message.map((p, pi) =>
+                                    pi === pIdx ? e.target.value : p,
+                                  ),
+                                }
                                 : l,
                             ),
                           )
@@ -1240,11 +1240,11 @@ export default function ContentManager() {
                             leaders.map((l, i) =>
                               i === idx
                                 ? {
-                                    ...l,
-                                    message: l.message.filter(
-                                      (_, pi) => pi !== pIdx,
-                                    ),
-                                  }
+                                  ...l,
+                                  message: l.message.filter(
+                                    (_, pi) => pi !== pIdx,
+                                  ),
+                                }
                                 : l,
                             ),
                           )
@@ -1301,12 +1301,12 @@ export default function ContentManager() {
                           leaders.map((l, i) =>
                             i === idx
                               ? {
-                                  ...l,
-                                  signature: {
-                                    ...l.signature,
-                                    name: e.target.value,
-                                  },
-                                }
+                                ...l,
+                                signature: {
+                                  ...l.signature,
+                                  name: e.target.value,
+                                },
+                              }
                               : l,
                           ),
                         )
@@ -1324,12 +1324,12 @@ export default function ContentManager() {
                           leaders.map((l, i) =>
                             i === idx
                               ? {
-                                  ...l,
-                                  signature: {
-                                    ...l.signature,
-                                    role: e.target.value,
-                                  },
-                                }
+                                ...l,
+                                signature: {
+                                  ...l.signature,
+                                  role: e.target.value,
+                                },
+                              }
                               : l,
                           ),
                         )
