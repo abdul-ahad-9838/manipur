@@ -125,7 +125,6 @@
   justify-content: flex-end;
   margin-bottom: 1rem;
   gap: 10px;
-
   margin-top: 24px;
 }
 
@@ -503,16 +502,19 @@
   /* =========================
        CONTROLS
     ========================= */
-
-  .carousel-controls {
-    margin-top: 18px;
-
-    gap: 8px;
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 9;
+    transform: translateY(-50%);
   }
 
-  .nav-btn {
-    width: 40px;
-    height: 40px;
+  .nav-btn:first-child {
+    left: -50px;
+  }
+
+  .nav-btn:last-child {
+    right: -50px;
   }
 
   /* =========================

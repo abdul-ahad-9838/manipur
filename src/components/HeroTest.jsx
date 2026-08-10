@@ -10,10 +10,9 @@ const DEFAULT_PROGRAMS = [
         title: "School of Engineering and Information Technology",
         description:
             "Explore engineering, technology, computing, and information technology programs. Find the right program for your career goals.",
-        image: "/homepage/engineering_and_technology.avif",
-        icon: "💻",
-        color: "#0a192f",
+        image: "/homepage/School of Engineering and Information Technology.webp",
         url: "/schools/school-of-engineering-and-information-technology",
+        icon: "💻",
     },
     {
         id: 2,
@@ -21,21 +20,19 @@ const DEFAULT_PROGRAMS = [
         description:
             "Build expertise in business, commerce, management, and entrepreneurship. Discover opportunities to advance your career.",
         image:
-            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
-        icon: "💼",
-        color: "#d4af37",
+            "/homepage/School of Commerce and Management.webp",
         url: "/schools/school-of-commerce-and-management",
+        icon: "💼",
     },
     {
         id: 3,
         title: "School of Science",
         description:
-            "Explore diverse science programs that build knowledge, spark curiosity, encourage discovery and prepares you for exiting opportunities in the future.",
+            "Explore diverse science programs that build knowledge, spark c`uriosity, encourage discovery and prepares you for exiting opportunities in the future.",
         image:
-            "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80",
-        icon: "🔬",
-        color: "#0a192f",
+            "/homepage/School of Science.webp",
         url: "/schools/school-of-science",
+        icon: "🔬",
     },
     {
         id: 4,
@@ -43,20 +40,18 @@ const DEFAULT_PROGRAMS = [
         description:
             "Discover inspiring programs in Arts and Humanities that encourage creative thinking, broaden perspectives, and help you understand people, culture, and society better.",
         image:
-            "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&q=80",
-        icon: "📖",
-        color: "#0a192f",
+            "/homepage/School of Arts and Humanities.webp",
         url: "/schools/school-of-arts-and-humanities",
+        icon: "🎨",
     },
     {
         id: 5,
         title: "School of Fire & Safety",
         description:
             "Explore programs in Fire and Safety that build practical skills, strengthen safety knowledge, and prepare you to protect people, property, and communities.",
-        image: "/homepage/fire_and_safety.avif",
-        icon: "🔥",
-        color: "#d4af37",
+        image: "/homepage/School of Fire & Safety.webp",
         url: "/schools/school-of-fire-&-safety",
+        icon: "🔥",
     },
     {
         id: 6,
@@ -64,10 +59,9 @@ const DEFAULT_PROGRAMS = [
         description:
             "Discover programs in Paramedical Sciences that develop practical healthcare skills, build confidence, and prepare you to support patients and healthcare professionals.",
         image:
-            "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
-        icon: "🩺",
-        color: "#0a192f",
+            "/homepage/School of Paramedical Sciences.webp",
         url: "/schools/school-of-paramedical-sciences",
+        icon: "🚑",
     },
     {
         id: 7,
@@ -75,10 +69,9 @@ const DEFAULT_PROGRAMS = [
         description:
             "Explore programs in Library and Information Science that build skills in knowledge management, digital resources, research, and modern information services.",
         image:
-            "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80",
-        icon: "📚",
-        color: "#d4af37",
+            "/homepage/School of Library and Information Science.webp",
         url: "/schools/school-of-library-and-information-science",
+        icon: "📚",
     },
     {
         id: 8,
@@ -86,10 +79,9 @@ const DEFAULT_PROGRAMS = [
         description:
             "Explore programs in Journalism and Mass Communication that build strong communication, creative storytelling, media, and reporting skills for exciting career opportunities.",
         image:
-            "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80",
-        icon: "🎙️",
-        color: "#0a192f",
+            "/homepage/School of Journalism & Mass Communication.webp",
         url: "/schools/school-of-journalism-&-mass-communication",
+        icon: "📰",
     },
 ];
 
@@ -258,28 +250,21 @@ const HeroTest = ({ programs = DEFAULT_PROGRAMS }) => {
                             display: "flex",
                             alignItems: "center",
                             gap: "12px",
-                            marginBottom: "18px",
+                            marginBottom: "20px",
+                            color: "#b8860b",
+                            fontSize: "11px",
+                            fontWeight: 800,
+                            letterSpacing: "2px",
                         }}
                     >
                         <span
                             style={{
-                                width: "40px",
+                                width: "34px",
                                 height: "2px",
                                 background: "#d4a017",
-                                display: "inline-block",
                             }}
                         />
-
-                        <span
-                            style={{
-                                fontSize: "12px",
-                                fontWeight: 700,
-                                letterSpacing: "2px",
-                                color: "#777",
-                            }}
-                        >
-                            Our Programs
-                        </span>
+                        OUR PROGRAMS
                     </div>
 
                     <h2 className="title">

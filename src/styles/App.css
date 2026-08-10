@@ -168,7 +168,7 @@ body {
   background-color: var(--lpu-dark-gray);
   z-index: 99999;
 
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
 
