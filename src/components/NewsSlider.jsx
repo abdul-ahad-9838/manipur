@@ -49,8 +49,8 @@ export default function NewsSlider({ blogs = [] }) {
   return (
     <section
       className="ns-section"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+    // onMouseEnter={() => setPaused(true)}
+    // onMouseLeave={() => setPaused(false)}
     >
       {/* Ticker */}
       <div className="ns-ticker">
@@ -124,9 +124,31 @@ export default function NewsSlider({ blogs = [] }) {
               <h3 className="ns-feat-title">{featured.title}</h3>
 
               <p className="ns-feat-excerpt">{featured.excerpt}</p>
-
-              <Link href={`/blogs/${featured.slug}`} className="btn-explore">
-                Read More →
+              <Link
+                href={`/blogs/${featured.slug}`}
+                type="button"
+                style={{
+                  width: "100%",
+                  marginTop: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "14px",
+                  padding: "14px 15px",
+                  border: "none",
+                  borderRadius: "16px",
+                  background: "#171717",
+                  cursor: "pointer", textAlign: "left", whiteSpace: "nowrap",
+                }} >
+                <span
+                  style={{
+                    flex: 1,
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    letterSpacing: "0.2px",
+                    color: "#ffffff",
+                  }} > Read More
+                </span>
+                <span style={{ color: "#d4a017", fontSize: "18px", }} > → </span>
               </Link>
             </div>
           </div>

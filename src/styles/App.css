@@ -161,13 +161,14 @@ body {
    ======================================== */
 .splash-screen {
   position: fixed;
+
   inset: 0;
   width: 100vw;
   height: 100vh;
   background-color: var(--lpu-dark-gray);
   z-index: 99999;
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 

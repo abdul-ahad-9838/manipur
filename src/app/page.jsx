@@ -2,10 +2,9 @@ import Hero from "@/components/Hero";
 import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
 import "@/styles/HomePage.css";
-import CTA from "@/components/CTA";
+import HeroTest from "@/components/HeroTest";
 
 const Stats = dynamic(() => import("@/components/Stats"));
-const Spotlight = dynamic(() => import("@/components/Spotlight"));
 const CampusLife = dynamic(() => import("@/components/CampusLife"));
 const Placements = dynamic(() => import("@/components/Placements"));
 const Ecosystem = dynamic(() => import("@/components/Ecosystem"));
@@ -55,12 +54,13 @@ export default async function Home() {
   return (
     <main>
       <Hero data={results?.hero} />
-      <Spotlight data={results?.spotlight} />
-      <CTA />
+      <HeroTest />
+      {/* <Spotlight data={results?.spotlight} /> */}
+      {/* <CTA /> */}
       <Stats />
       <CampusLife data={results?.campus} />
-      <Placements data={results?.placements} />
       <Ecosystem data={results?.ecosystem?.cards} />
+      <Placements data={results?.placements} />
       <NewsSlider blogs={results?.blogs} />
       <FAQ faqs={results?.faqs} />
       <StructuredData />

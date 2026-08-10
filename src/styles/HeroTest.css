@@ -1,0 +1,610 @@
+/* =========================================
+   PROGRAM SECTION
+========================================= */
+
+.hero-test {
+  background: #f8f7f4;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.programs-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 60px 40px;
+
+  max-width: 1440px;
+  margin: 0 auto;
+
+  gap: 40px;
+
+  overflow: hidden;
+}
+
+/* =========================================
+   LEFT HEADER - DESKTOP
+========================================= */
+
+.programs-header {
+  flex: 0 0 320px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  z-index: 5;
+}
+
+.subtitle {
+  color: #d38601;
+
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  margin-bottom: 12px;
+
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: Georgia, serif;
+
+  font-size: clamp(32px, 5vw, 58px);
+
+  line-height: 1.2;
+
+  color: #0b192c;
+
+  margin-bottom: 20px;
+
+  font-weight: 600;
+}
+
+.description {
+  color: #2c2c2c;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  margin-bottom: 30px;
+
+  max-width: 300px;
+}
+
+/* =========================================
+   CTA BUTTON
+========================================= */
+
+.cta-button {
+  background-color: var(--lpu-orange, #e06c00);
+
+  color: #ffffff;
+
+  border: none;
+
+  padding: 14px 24px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  border-radius: 2px;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+}
+
+.cta-button span {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* =========================================
+   CAROUSEL CONTROLS
+========================================= */
+
+.carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+.nav-btn {
+  background: #171717;
+
+  border: 1px solid #dcdcdc;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* =========================================
+   CAROUSEL CONTAINER
+========================================= */
+
+.carousel-container {
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+
+  position: relative;
+
+  overflow: hidden;
+
+  touch-action: pan-y;
+}
+
+.carousel-track {
+  display: flex;
+
+  width: 100%;
+
+  will-change: transform;
+}
+
+/* =========================================
+   CARD ITEM SPACING
+========================================= */
+
+.program-card-wrapper {
+  padding: 0 10px;
+
+  box-sizing: border-box;
+}
+
+/* =========================================
+   PROGRAM CARD
+========================================= */
+
+.program-card {
+  background: #ffffff;
+
+  border: 1px solid #e8e8e8;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  min-height: 390px;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================================
+   CARD IMAGE
+========================================= */
+
+.card-image-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 180px;
+
+  overflow: visible;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/* =========================================
+   ROUND ICON
+========================================= */
+
+.card-icon {
+  position: absolute;
+
+  bottom: -24px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: var(--lpu-white);
+
+  border: 3px solid var(--lpu-orange, #e06c00);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 20px;
+
+  z-index: 2;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.card-content {
+  padding: 42px 18px 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+
+  background: #ffffff;
+}
+
+.card-content h3 {
+  font-size: 1.2rem;
+
+  font-weight: 700;
+
+  color: #111111;
+
+  margin-bottom: 10px;
+
+  line-height: 1.35;
+}
+
+.card-content p {
+  font-size: 13px;
+
+  color: #666666;
+
+  line-height: 1.5;
+
+  flex-grow: 1;
+
+  margin-bottom: 16px;
+
+  max-width: 260px;
+}
+
+/* =========================================
+   EXPLORE LINK
+========================================= */
+
+.explore-link {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  color: #0b192c;
+
+  text-decoration: none;
+
+  letter-spacing: 1px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  background: var(--lpu-orange, #e06c00);
+
+  width: 100%;
+  height: 40px;
+
+  border-radius: 8px;
+
+  transition:
+    color 0.2s ease,
+    gap 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.explore-link:hover {
+  background: #d38601;
+
+  color: #ffffff;
+
+  gap: 10px;
+}
+
+.explore-link span {
+  font-size: 14px;
+
+  line-height: 1;
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width: 1200px) {
+  .programs-section {
+    padding-left: 50px;
+    padding-right: 50px;
+
+    gap: 50px;
+  }
+
+  .programs-header {
+    flex: 0 0 320px;
+  }
+
+  .carousel-container {
+    flex: 1;
+  }
+}
+
+/* =========================================
+   TABLET
+   Header moves ABOVE carousel
+========================================= */
+
+@media (max-width: 1023px) {
+  .hero-test {
+    padding: 50px 0;
+  }
+
+  .programs-section {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    padding: 50px 0;
+
+    gap: 30px;
+  }
+
+  /* Header on top */
+  .programs-header {
+    flex: none;
+
+    width: 100%;
+
+    padding: 0 20px;
+
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .description {
+    max-width: 600px;
+  }
+
+  .carousel-controls {
+    margin-top: 16px;
+  }
+
+  /* Carousel below header */
+  .carousel-container {
+    width: auto;
+
+    margin: 0 20%;
+
+    flex: none;
+    overflow: visible;
+  }
+
+  .program-card-wrapper {
+    padding: 0 8px;
+  }
+}
+
+/* =========================================
+   MOBILE
+   Header on TOP
+   Carousel BELOW
+========================================= */
+
+@media (max-width: 639px) {
+  .hero-test {
+    padding: 30px 0;
+  }
+
+  .programs-section {
+    flex-direction: column;
+
+    padding: 20px 0;
+
+    gap: 20px;
+  }
+
+  /* =========================
+       HEADER
+    ========================= */
+
+  .programs-header {
+    width: 100%;
+
+    padding: 0 20px;
+
+    align-items: flex-start;
+  }
+
+  .subtitle {
+    font-size: 12px;
+
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 13px;
+
+    max-width: 100%;
+
+    line-height: 1.6;
+
+    margin-bottom: 24px;
+  }
+
+  .cta-button {
+    padding: 13px 20px;
+  }
+
+  /* =========================
+       CONTROLS
+    ========================= */
+
+  .carousel-controls {
+    margin-top: 18px;
+
+    gap: 8px;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* =========================
+       CAROUSEL
+    ========================= */
+
+  .carousel-container {
+    width: auto;
+
+    /*
+         * 20% margin leaves room
+         * for neighboring cards to peek
+         */
+    margin: 0 20%;
+
+    flex: none;
+  }
+
+  .program-card-wrapper {
+    padding: 0 6px;
+  }
+
+  /* =========================
+       CARD
+    ========================= */
+
+  .program-card {
+    min-height: 380px;
+  }
+
+  .card-image-wrapper {
+    height: 190px;
+  }
+
+  .card-content {
+    padding: 42px 16px 22px;
+  }
+
+  .card-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-content p {
+    font-size: 12.5px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .title {
+    font-size: 29px;
+  }
+
+  .description {
+    font-size: 12.5px;
+  }
+
+  .cta-button {
+    padding: 12px 17px;
+
+    font-size: 11px;
+  }
+
+  .carousel-container {
+    margin: 0 16%;
+  }
+
+  .program-card {
+    min-height: 370px;
+  }
+
+  .card-image-wrapper {
+    height: 175px;
+  }
+}
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    transition: none !important;
+  }
+
+  .program-card,
+  .nav-btn,
+  .cta-button,
+  .explore-link {
+    transition: none;
+  }
+}

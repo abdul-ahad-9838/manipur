@@ -9,19 +9,19 @@ const DEFAULT_CONTENT = {
     "An institution committed to intellectual rigor, industry integration, and transformative learning experiences that shape global professionals.",
   images: [
     {
-      src: "/hero/banner_02.webp",
+      src: "/hero/homepage_03.webp",
       url: "https://admission.miu.edu.in/",
     },
     {
-      src: "/hero/banner_04.webp",
+      src: "/hero/homepage_01.webp",
       url: "https://admission.miu.edu.in/",
     },
     {
-      src: "/hero/banner_02.webp",
+      src: "/hero/homepage_02.webp",
       url: "https://admission.miu.edu.in/",
     },
     {
-      src: "/hero/banner_04.webp",
+      src: "/hero/homepage_01.webp",
       url: "https://admission.miu.edu.in/",
     },
   ],
