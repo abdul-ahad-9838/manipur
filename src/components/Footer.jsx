@@ -3,45 +3,27 @@ import "@/styles/Footer.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const DEFAULTS = {
-  aboutText:
-    "Transforming education with a globally recognized curriculum, industry-oriented learning, and an unwavering commitment to student success.",
-  address: "MIU Palace, Luwangsangbam Makha Leikai, Luwangsangbam, Imphal East, Imphal, Manipur-795002",
+const FOOTER_DATA = {
+  aboutText: "Transforming education with a globally recognized curriculum.",
+  address:
+    "MIU Palace, Luwangsangbam Makha Leikai, Luwangsangbam, Imphal East, Imphal, Manipur-795002",
   phone: "+91 9319727766",
-  email: "admission@miu.edu.in",
-  facebook: "https://www.facebook.com/ManipurInternationalUniversityOfficial/",
+  email: "info@miu.edu.in",
+  facebook:
+    "https://www.facebook.com/ManipurInternationalUniversityOfficial/",
   twitter: "https://x.com/MIU_India",
   linkedin:
     "https://www.linkedin.com/company/manipur-international-university-official/",
-  instagram: "https://www.instagram.com/miu.india",
-  youtube: "",
-  pinterest: "",
-  tumblr: "",
+  instagram: "https://www.instagram.com/manipurinternationaluniversity",
+  youtube: "https://www.youtube.com/@ManipurInternationalUniversity",
+  pinterest:
+    "https://in.pinterest.com/manipurinternationaluniversity",
+  tumblr: "https://www.tumblr.com/manipurinternationaluniversity",
   copyright: "Manipur International University. All Rights Reserved.",
 };
 
-async function getFooterData() {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    const res = await fetch(`${baseUrl}/api/settings/footer`);
-
-    if (!res.ok) return DEFAULTS;
-
-    const data = await res.json();
-    if (data?.content) {
-      return { ...DEFAULTS, ...data.content };
-    }
-  } catch {
-    // fall through to defaults on any error
-  }
-
-  return DEFAULTS;
-}
-
-const Footer = async () => {
-  const d = await getFooterData();
-
-
+const Footer = () => {
+  const d = FOOTER_DATA;
 
   const schools =
     navbarItems.find((item) => item.label === "Schools")?.subItems ?? [];
@@ -66,6 +48,7 @@ const Footer = async () => {
                 }}
               />
             </Link>
+
             <p className="footer-about-text">{d.aboutText}</p>
 
             <iframe
@@ -82,19 +65,22 @@ const Footer = async () => {
 
           <div className="footer-col">
             <h3 className="footer-heading">Quick Links</h3>
+
             <ul className="footer-links">
               <li>
                 <Link href="/about">About MIU</Link>
               </li>
+
               <li>
                 <Link href="/blogs">Blogs</Link>
               </li>
-              {/* Notices and Announcements */}
+
               <li>
                 <Link href="/notices-and-announcements">
                   Notices and Announcements
                 </Link>
               </li>
+
               <li className="ugc-performa-link">
                 <Link href="/about/ugc-proforma">UGC Proforma</Link>
               </li>
@@ -102,6 +88,7 @@ const Footer = async () => {
               <li>
                 <Link href="#">Placement Cell</Link>
               </li>
+
               <li>
                 <Link href="#">Alumni Network</Link>
               </li>
@@ -110,6 +97,7 @@ const Footer = async () => {
 
           <div className="footer-col">
             <h3 className="footer-heading">Schools &amp; Institutes</h3>
+
             <ul className="footer-links">
               {schools.map((school) => (
                 <li key={school.href}>
@@ -121,30 +109,38 @@ const Footer = async () => {
 
           <div className="footer-col">
             <h3 className="footer-heading">Useful Links</h3>
+
             <ul className="footer-links">
               <li>
                 <Link href="/academics/brochure">Brochure Download</Link>
               </li>
+
               <li>
                 <Link href="/admissions/process">Admissions 2026</Link>
               </li>
+
               <li>
                 <Link href="/jobs">Jobs &amp; Careers</Link>
               </li>
             </ul>
           </div>
+
           <div className="footer-col">
             <h3 className="footer-heading">Contact Us</h3>
+
             <ul className="footer-contact-info">
               <li>
                 <span>📍</span> {d.address}
               </li>
+
               <li>
                 <span>📞</span> {d.phone}
               </li>
+
               <li>
                 <span>✉️</span> {d.email}
               </li>
+
               <li className="social-links">
                 {d.facebook && (
                   <a
@@ -165,6 +161,7 @@ const Footer = async () => {
                     </svg>
                   </a>
                 )}
+
                 {d.twitter && (
                   <a
                     href={d.twitter}
@@ -184,6 +181,7 @@ const Footer = async () => {
                     </svg>
                   </a>
                 )}
+
                 {d.linkedin && (
                   <a
                     href={d.linkedin}
@@ -203,6 +201,7 @@ const Footer = async () => {
                     </svg>
                   </a>
                 )}
+
                 {d.instagram && (
                   <a
                     href={d.instagram}
@@ -222,12 +221,25 @@ const Footer = async () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
-                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                      <rect
+                        width="20"
+                        height="20"
+                        x="2"
+                        y="2"
+                        rx="5"
+                        ry="5"
+                      />
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                      <line
+                        x1="17.5"
+                        y1="6.5"
+                        x2="17.51"
+                        y2="6.5"
+                      />
                     </svg>
                   </a>
                 )}
+
                 {d.youtube && (
                   <a
                     href={d.youtube}
@@ -247,6 +259,7 @@ const Footer = async () => {
                     </svg>
                   </a>
                 )}
+
                 {d.pinterest && (
                   <a
                     href={d.pinterest}
@@ -266,6 +279,7 @@ const Footer = async () => {
                     </svg>
                   </a>
                 )}
+
                 {d.tumblr && (
                   <a
                     href={d.tumblr}
@@ -294,6 +308,7 @@ const Footer = async () => {
           <p>
             &copy; {new Date().getFullYear()} {d.copyright}
           </p>
+
           <div className="bottom-links">
             <Link href="/reservation-roster">Reservation Roster</Link>
             <Link href="/refund-policy">Refund Policy</Link>
