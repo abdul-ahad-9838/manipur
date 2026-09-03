@@ -36,8 +36,7 @@ export default function GrievanceCell() {
                     <span className="option-icon">✉️</span>
                     <strong>Written Submission</strong>
                     <p>
-                      MIU Administrative office, Ghari, Airport road, Imphal
-                      West, Manipur - 795140
+                      MIU Administrative office, MIU Palace, Luwangsangbam Makha Leikai, Luwangsangbam, Imphal East, Imphal, Manipur-795002
                     </p>
                     <p>
                       <strong>Email:</strong> miugrievance@miu.edu.in
