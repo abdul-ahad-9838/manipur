@@ -119,7 +119,7 @@ export default function CoursesManager() {
             setSchools([...dbNames]);
           }
         })
-        .catch(() => {});
+        .catch(() => { });
     }
   }, [user]);
 
@@ -128,7 +128,7 @@ export default function CoursesManager() {
       const { data } = await API.get("/courses");
 
       setCourses(data);
-    } catch {}
+    } catch { }
   };
 
   const autoSlug = (t) =>
@@ -291,9 +291,9 @@ export default function CoursesManager() {
       const formData = new FormData();
       formData.append("file", file);
 
-      // Attach auth token from localStorage
+      // Attach auth token from sessionStorage
       const headers = {};
-      const userInfo = JSON.parse(localStorage.getItem("userInfo") || "null");
+      const userInfo = JSON.parse(sessionStorage.getItem("userInfo") || "null");
       if (userInfo?.token)
         headers["Authorization"] = `Bearer ${userInfo.token}`;
 

@@ -89,7 +89,7 @@ export default function ImageUploader({
       fd.append("file", file);
 
       const headers = {};
-      const userInfo = JSON.parse(localStorage.getItem("userInfo") || "null");
+      const userInfo = JSON.parse(sessionStorage.getItem("userInfo") || "null");
 
       if (userInfo?.token) {
         headers["Authorization"] = `Bearer ${userInfo.token}`;

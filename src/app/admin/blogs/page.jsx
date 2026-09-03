@@ -57,7 +57,7 @@ const emptyForm = {
 
 /* ---------------------------------------------------------
    Shared fetch helper
-   - Reads token from localStorage
+   - Reads token from sessionStorage
    - Sets JSON headers
    - Normalizes error handling
    - Returns parsed JSON (or null for empty responses)
@@ -66,7 +66,7 @@ function getAuthHeaders() {
   if (typeof window === "undefined") return {};
 
   try {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
     return userInfo?.token ? { Authorization: `Bearer ${userInfo.token}` } : {};
   } catch {
     return {};

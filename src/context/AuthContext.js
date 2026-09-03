@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
     if (userInfo) {
       setUser(userInfo);
     }
@@ -17,12 +17,12 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (userInfo) => {
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
     setUser(userInfo);
   };
 
   const logout = () => {
-    localStorage.removeItem('userInfo');
+    sessionStorage.removeItem("userInfo");
     setUser(null);
   };
 
