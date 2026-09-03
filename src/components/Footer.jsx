@@ -6,7 +6,7 @@ import Link from "next/link";
 const DEFAULTS = {
   aboutText:
     "Transforming education with a globally recognized curriculum, industry-oriented learning, and an unwavering commitment to student success.",
-  address: "MIU Palace, Airport Road, Ghari, Imphal, Manipur 795140",
+  address: "MIU Palace, Luwangsangbam Makha Leikai, Luwangsangbam, Imphal East, Imphal, Manipur-795002",
   phone: "+91 9319727766",
   email: "admission@miu.edu.in",
   facebook: "https://www.facebook.com/ManipurInternationalUniversityOfficial/",
