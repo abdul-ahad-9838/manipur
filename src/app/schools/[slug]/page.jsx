@@ -591,7 +591,9 @@ export default function SchoolPage() {
           "school-of-allied-health-science": [
             "school of allied health science",
           ],
+          "school-of-design": ["school of design"],
         };
+
 
         const matchNames =
           slugToDBNames[slug] ||
@@ -603,6 +605,8 @@ export default function SchoolPage() {
           const cSchool = (c.school || "").toLowerCase().trim();
           return matchNames.some((n) => cSchool === n) && c.isActive !== false;
         });
+
+        console.log("Filtered courses for name:", filtered);
 
         filtered.sort((a, b) => (a.order || 0) - (b.order || 0));
         setApiCourses(filtered);

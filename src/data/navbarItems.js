@@ -96,6 +96,10 @@ const navbarItems = [
         label: "School of Journalism & Mass Communication",
         href: "/schools/school-of-journalism-&-mass-communication",
       },
+      {
+        label: "School of Design",
+        href: "/schools/school-of-design",
+      },
     ],
   },
   // {
