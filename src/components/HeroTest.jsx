@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "@/styles/HeroTest.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const DEFAULT_PROGRAMS = [
     {
@@ -49,7 +50,7 @@ const DEFAULT_PROGRAMS = [
         title: "School of Fire & Safety",
         description:
             "Explore programs in Fire and Safety that build practical skills, strengthen safety knowledge, and prepare you to protect people, property, and communities.",
-        image: "/homepage/School of Fire & Safety.webp",
+        image: "/homepage/school-of-fire-safety.webp",
         url: "/schools/school-of-fire-&-safety",
         icon: "🔥",
     },
@@ -79,7 +80,7 @@ const DEFAULT_PROGRAMS = [
         description:
             "Explore programs in Journalism and Mass Communication that build strong communication, creative storytelling, media, and reporting skills for exciting career opportunities.",
         image:
-            "/homepage/School of Journalism & Mass Communication.webp",
+            "/homepage/school-of-journalism-mass-communication.webp",
         url: "/schools/school-of-journalism-&-mass-communication",
         icon: "📰",
     },
@@ -359,10 +360,13 @@ const HeroTest = ({ programs = DEFAULT_PROGRAMS }) => {
                             >
                                 <article className="program-card">
                                     <div className="card-image-wrapper">
-                                        <img
+                                        <Image
                                             src={program.image}
                                             alt={program.title}
                                             className="card-image"
+                                            width={400}
+                                            height={300}
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                             loading={i < itemsPerView + 1 ? "eager" : "lazy"}
                                         />
 
