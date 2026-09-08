@@ -1,13 +1,22 @@
 import LeadershipDetail from "@/components/LeadershipDetail";
 
-export const metadata = {
-  title: "Chancellor's Message | Manipur International University",
-  description:
-    "Message from the Chancellor of Manipur International University.",
-  alternates: {
-    canonical: "https://miu.edu.in/about/leadership/chancellor",
-  },
-};
+// export const metadata = {
+//   title: "Chancellor's Message | Manipur International University",
+//   description:
+//     "Message from the Chancellor of Manipur International University.",
+//   alternates: {
+//     canonical: "https://miu.edu.in/about/leadership/chancellor",
+//   },
+// };
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  return {
+    alternates: {
+      canonical: `/about/leadership/${slug}`,
+    },
+  };
+}
 
 export default async function Page({ params }) {
   const { slug } = await params;

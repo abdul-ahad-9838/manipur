@@ -17,6 +17,14 @@ async function getBlogs() {
   }
 }
 
+export async function generateMetadata() {
+  return {
+    alternates: {
+      canonical: `/blogs`,
+    },
+  };
+}
+
 export default async function BlogPage() {
   const blogs = await getBlogs();
 

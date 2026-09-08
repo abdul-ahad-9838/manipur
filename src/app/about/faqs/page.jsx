@@ -16,7 +16,13 @@ async function getFaqs() {
     return null;
   }
 }
-
+export async function generateMetadata() {
+  return {
+    alternates: {
+      canonical: `/faqs`,
+    },
+  };
+}
 const Page = async () => {
   const faqsData = await getFaqs();
 

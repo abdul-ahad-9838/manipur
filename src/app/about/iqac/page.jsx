@@ -160,6 +160,14 @@ async function getIQACData() {
   }
 }
 
+export async function generateMetadata() {
+  return {
+    alternates: {
+      canonical: `/about/iqac`,
+    },
+  };
+}
+
 export default async function IQACPage() {
   const iqacData = await getIQACData();
   const d = iqacData?.content ? { ...DEFAULT, ...iqacData.content } : DEFAULT;
