@@ -141,8 +141,12 @@ const MobileBottomNav = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="nav-item apply-btn-mobile"
+          aria-label="Apply Now"
+          style={{ display: "flex", alignItems: "center", gap: "2px" }}
         >
-          Apply
+          Apply <span style={{ fontSize: "8px", fontWeight: "bold" }}>
+            (UG/PG)
+          </span>
         </a>
 
         <a

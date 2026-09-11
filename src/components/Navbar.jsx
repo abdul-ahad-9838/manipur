@@ -42,6 +42,15 @@ const MobileAccordion = ({ label, items = [], onClose }) => {
                   subItems={item.subItems}
                   onClose={onClose}
                 />
+              ) : item.target === "_blank" ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                >
+                  {item.label}
+                </a>
               ) : (
                 <Link href={item.href} onClick={onClose}>
                   {item.label}
@@ -51,6 +60,7 @@ const MobileAccordion = ({ label, items = [], onClose }) => {
           ))}
         </ul>
       )}
+
     </li>
   );
 };
@@ -115,7 +125,13 @@ const renderMenuItem = (item) => {
 
   return (
     <li key={item.href}>
-      <Link href={item.href}>{item.label}</Link>
+      {item.target === "_blank" ? (
+        <a href={item.href} target="_blank" rel="noopener noreferrer">
+          {item.label}
+        </a>
+      ) : (
+        <Link href={item.href}>{item.label}</Link>
+      )}
     </li>
   );
 };
@@ -269,8 +285,13 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="apply-blink-btn main-nav-apply"
+              aria-label="Apply Now"
+              style={{ display: "flex", alignItems: "center", gap: "2px" }}
             >
               APPLY NOW
+              <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                (UG/PG)
+              </span>
             </a>
             <button
               className="hamburger-btn"
