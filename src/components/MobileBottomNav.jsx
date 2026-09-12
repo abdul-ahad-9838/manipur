@@ -144,9 +144,7 @@ const MobileBottomNav = () => {
           aria-label="Apply Now"
           style={{ display: "flex", alignItems: "center", gap: "2px" }}
         >
-          Apply <span style={{ fontSize: "8px", fontWeight: "bold" }}>
-            (UG/PG)
-          </span>
+          Apply (UG/PG)
         </a>
 
         <a

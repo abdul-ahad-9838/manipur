@@ -8,7 +8,7 @@ const FOOTER_DATA = {
   address:
     "MIU Palace, Luwangsangbam Makha Leikai, Luwangsangbam, Imphal East, Imphal, Manipur-795002",
   phone: "+91 9319727766",
-  email: "info@miu.edu.in",
+  // email: "info@miu.edu.in",
   facebook:
     "https://www.facebook.com/ManipurInternationalUniversityOfficial/",
   twitter: "https://x.com/MIU_India",
@@ -136,10 +136,10 @@ const Footer = () => {
               <li>
                 <span>📞</span> {d.phone}
               </li>
-
+{/* 
               <li>
                 <span>✉️</span> {d.email}
-              </li>
+              </li> */}
 
               <li className="social-links">
                 {d.facebook && (

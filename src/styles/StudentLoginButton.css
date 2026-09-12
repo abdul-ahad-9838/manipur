@@ -1,24 +1,40 @@
-.student-login-wrapper {
+.floating-buttons-wrapper {
   position: fixed;
-  right: -52px;
-  top: 70%;
-  transform: translateY(-50%);
-  z-index: 9;
+  right: -110px;
+  top: 60%;
+
+  display: flex;
+  gap: 8px;
+
+  transform: translateY(-50%) rotate(-90deg);
+  z-index: 9999;
 }
 
-.student-login-button {
-  transform: rotate(-90deg);
-  padding: 10px 20px;
-  border-radius: 4px 4px 0 0;
-  font-weight: 600;
-  border-color: var(--lpu-dark-gray);
-  border-width: 1px;
-  border-style: solid;
-  border-bottom: none;
-  font-size: 0.7rem;
-  background: var(--lpu-orange);
 
-  color: var(--lpu-dark-gray);
+/* Common button */
+.floating-buttons-wrapper button {
+  cursor: pointer;
+  border: 1px solid var(--lpu-dark-gray);
   font-weight: 700;
   font-size: 0.9rem;
+  padding: 8px 15px;
+
+  color: var(--lpu-dark-gray);
+  background: var(--lpu-orange);
+
+  white-space: nowrap;
+ }
+
+/* Apply Now */
+.apply-now-button {
+  border-radius: 4px 4px 0 0;
+}
+
+/* Student Login */
+.student-login-button {
+  border-radius: 4px 4px 0 0;
+}
+
+.apply-now-button span {
+  font-size: 0.9em;
 }

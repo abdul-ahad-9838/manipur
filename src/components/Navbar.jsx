@@ -288,7 +288,7 @@ const Navbar = () => {
               aria-label="Apply Now"
               style={{ display: "flex", alignItems: "center", gap: "2px" }}
             >
-              APPLY NOW
+              APPLY
               <span style={{ fontSize: "10px", fontWeight: "bold" }}>
                 (UG/PG)
               </span>
