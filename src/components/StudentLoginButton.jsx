@@ -18,14 +18,12 @@ const StudentLoginButton = () => {
       {/* Apply Now */}
       <div className="apply-now-wrapper">
         <a
-          href="https://admission.miu.edu.in/"
+          href="https://research.miu.edu.in/"
           target="_blank"
           rel="noopener noreferrer"
         >
           <button className="apply-now-button">
-            Apply <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                (UG/PG)
-              </span>
+            Apply for PhD
           </button>
         </a>
       </div>

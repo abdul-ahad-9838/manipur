@@ -1,6 +1,6 @@
 .floating-buttons-wrapper {
   position: fixed;
-  right: -110px;
+  right: -118px;
   top: 60%;
 
   display: flex;
@@ -9,7 +9,6 @@
   transform: translateY(-50%) rotate(-90deg);
   z-index: 9999;
 }
-
 
 /* Common button */
 .floating-buttons-wrapper button {
@@ -23,7 +22,7 @@
   background: var(--lpu-orange);
 
   white-space: nowrap;
- }
+}
 
 /* Apply Now */
 .apply-now-button {
