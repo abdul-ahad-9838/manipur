@@ -173,6 +173,30 @@ export default function NewsSlider({ blogs = [] }) {
                   <span className="ns-side-cat">{post.category}</span>
 
                   <h4 className="ns-side-title">{post.title}</h4>
+                  <Link
+                    href={`/blogs/${post.slug}`}
+                    onClick={e => e.stopPropagation()}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      marginTop: "4px",
+                      fontSize: "12px",
+                      fontWeight: 600,
+                      color: "#ffffff",
+                      backgroundColor: "#171717",
+                      padding: "4px 8px",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                      transition: "background-color 0.2s ease",
+                    }}
+                    // Optional hover effect if using standard CSS/Tailwind, or inline:
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#333333"}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#171717"}
+                  >
+                    Read More →
+                  </Link>
+
                 </div>
               </div>
             ))}
