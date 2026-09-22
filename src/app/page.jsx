@@ -3,6 +3,7 @@ import StructuredData from "@/components/StructuredData";
 import dynamic from "next/dynamic";
 import "@/styles/HomePage.css";
 import HeroTest from "@/components/HeroTest";
+import Marquee from "@/components/Marquee";
 
 const Stats = dynamic(() => import("@/components/Stats"));
 const CampusLife = dynamic(() => import("@/components/CampusLife"));
@@ -54,6 +55,7 @@ export default async function Home() {
   return (
     <main>
       <Hero data={results?.hero} />
+      <Marquee />
       <HeroTest />
       {/* <Spotlight data={results?.spotlight} /> */}
       {/* <CTA /> */}

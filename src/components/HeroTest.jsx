@@ -388,13 +388,12 @@ const HeroTest = ({ programs = DEFAULT_PROGRAMS }) => {
                                             style={{
                                                 position: "relative",
                                                 width: "100%",
-                                                marginTop: "14px",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 gap: "14px",
                                                 padding: "14px 15px",
                                                 border: "none",
-                                                borderRadius: "16px",
+                                                borderRadius: "10px",
                                                 background: "#171717",
                                                 cursor: "pointer", textAlign: "left", whiteSpace: "nowrap",
                                             }} >

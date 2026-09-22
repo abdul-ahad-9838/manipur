@@ -1,0 +1,92 @@
+.miu-news-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #8b0000;
+  color: #ffffff;
+  padding: 12px 0;
+  white-space: nowrap;
+  box-sizing: border-box;
+  /* height: 40px; */
+}
+
+.miu-news-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: miu-news-marquee-scroll 15s linear infinite;
+}
+
+.miu-news-marquee-track > a {
+  color: yellow;
+  text-decoration: underline;
+}
+
+/* Each announcement */
+.miu-news-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+
+  margin: 0;
+  padding: 0 100px 0 0;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+
+  box-sizing: border-box;
+}
+
+/* Only linked announcements get hover styling */
+a.miu-news-marquee-item:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+/* Pause marquee on hover */
+.miu-news-marquee:hover .miu-news-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Marquee animation */
+@keyframes miu-news-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .miu-news-marquee {
+    padding: 8px 0;
+  }
+
+  .miu-news-marquee-item {
+    font-size: 14px;
+    padding-right: 60px;
+  }
+
+  .miu-news-marquee-track {
+    animation-duration: 25s;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .miu-news-marquee-item {
+    font-size: 13px;
+    padding-right: 45px;
+  }
+
+  .miu-news-marquee-track {
+    animation-duration: 20s;
+  }
+}
