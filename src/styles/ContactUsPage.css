@@ -323,7 +323,7 @@
 .form-group-new textarea {
   padding: 16px 18px;
   border: 2px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 6px;
   font-size: 1rem;
   font-family: var(--font-body);
   outline: none;
@@ -362,7 +362,7 @@
   background: linear-gradient(135deg, var(--lpu-orange) 0%, #ffd700 100%);
   color: var(--lpu-black);
   border: none;
-  border-radius: 50px;
+  border-radius: 6px;
   font-size: 1.1rem;
   font-weight: 900;
   cursor: pointer;
@@ -386,10 +386,6 @@
   background: linear-gradient(135deg, #ffd700 0%, var(--lpu-orange) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
-}
-
-.btn-submit-new:hover::before {
-  opacity: 1;
 }
 
 .btn-submit-new:hover {
@@ -656,11 +652,13 @@
 
 .department-card {
   background: #f8f9fa;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 35px 28px;
   text-align: center;
   transition: all 0.4s ease;
   border: 2px solid transparent;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .department-card:hover {
@@ -674,6 +672,14 @@
   font-size: 3.5rem;
   margin-bottom: 20px;
   line-height: 1;
+}
+
+.department-card p {
+  font-size: 0.95rem;
+  color: #666;
+  font-family: var(--font-body);
+  line-height: 1.4;
+  margin-bottom: 20px;
 }
 
 .department-card h3 {
@@ -811,6 +817,12 @@
   transform: translateX(5px);
 }
 
+.department-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 /* ========================================
    RESPONSIVE DESIGN
    ======================================== */
@@ -827,6 +839,9 @@
 }
 
 @media (max-width: 768px) {
+  .department-container {
+    flex-direction: column-reverse;
+  }
   .contact-methods-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -849,6 +864,7 @@
     padding: 35px 25px;
   }
 
+  /* reverse the departments grid for mobile */
   .departments-grid {
     grid-template-columns: 1fr;
   }
@@ -877,5 +893,98 @@
 
   .faq-cta-section {
     padding: 60px 15px;
+  }
+}
+
+/* verification fee for contact */
+
+.fee-card {
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.fee-card:hover {
+  background: white;
+  border-color: var(--lpu-orange);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 50px rgba(232, 185, 25, 0.15);
+}
+
+.fee-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.fee-card-icon {
+  padding-bottom: 10px;
+  font-size: 4rem;
+  margin: 0 auto 16px;
+}
+
+.fee-card h3 {
+  margin: 0 0 12px;
+  color: #1f2937;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.fee-card p {
+  margin: 0 0 20px;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Pay Fee Button */
+.fee-pay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background: linear-gradient(135deg, #ffd700 0%, var(--lpu-orange) 100%);
+  color: #000000;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.fee-pay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232, 185, 25, 0.25);
+}
+
+/* Keep these class names unchanged */
+.hide-on-desktop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hide-on-desktop {
+    display: block;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .fee-card {
+    padding: 18px;
+  }
+
+  .fee-card p {
+    font-size: 14px;
+  }
+
+  .fee-pay-btn {
+    width: 100%;
   }
 }

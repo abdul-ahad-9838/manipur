@@ -23,7 +23,7 @@ export default function ContactUsPage() {
       .then((d) => {
         if (d?.content) setPc(d.content);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -122,11 +122,39 @@ export default function ContactUsPage() {
   ];
 
   const departments = [
-    { icon: "🎓", name: "Admissions", email: "admission@miu.edu.in" },
-    { icon: "📝", name: "Grievance", email: "grievance@miu.edu.in" },
-    { icon: "📋", name: "Verification", email: "verification@miu.edu.in" },
-    { icon: "💬", name: "General Enquiry", email: "info@miu.edu.in" },
-    { icon: "🛠️", name: "Technical Support", email: "support@miu.edu.in" },
+    {
+      icon: "🎓",
+      name: "Admissions",
+      email: "admission@miu.edu.in",
+    },
+    {
+      icon: "📝",
+      name: "Grievance",
+      email: "grievance@miu.edu.in",
+    },
+    {
+      type: "fee",
+      icon: "💳",
+      name: "Verification Fee",
+      description: " Free for Government Organisations; ₹10,000 for Third-Party Organisations. For third-party verification, please make the payment and email the payment receipt to the designated email ID for processing.",
+      Link:
+        "/payfee",
+    },
+    {
+      icon: "📋",
+      name: "Verification",
+      email: "verification@miu.edu.in",
+    },
+    {
+      icon: "💬",
+      name: "General Enquiry",
+      email: "info@miu.edu.in",
+    },
+    {
+      icon: "🛠️",
+      name: "Technical Support",
+      email: "support@miu.edu.in",
+    },
   ];
 
   return (
@@ -137,10 +165,10 @@ export default function ContactUsPage() {
         style={
           pc.heroImage
             ? {
-                backgroundImage: `url(${pc.heroImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }
+              backgroundImage: `url(${pc.heroImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }
             : {}
         }
       >
@@ -406,26 +434,75 @@ export default function ContactUsPage() {
             <h2>Contact by Department</h2>
             <p>Reach out to the specific department for faster assistance</p>
           </div>
+          <div className="department-container">
 
-          <div className="departments-grid">
-            {departments.map((dept, idx) => (
-              <div key={idx} className="department-card">
-                <div className="dept-icon">{dept.icon}</div>
-                <h3>{dept.name}</h3>
-                <div className="dept-contacts">
-                  <a
-                    href={`mailto:${dept.email}`}
-                    className="dept-contact-item"
+            <div className="departments-grid">
+
+              {departments.map((dept, idx) => (
+                <div
+                  key={idx}
+                  className={
+                    dept.type === "fee"
+                      ? "department-card hide-on-desktop"
+                      : "department-card"
+                  }
+                >
+
+                  <div
+                    className="dept-icon"
                   >
-                    <span className="dept-contact-icon">✉️</span>
-                    {dept.email}
-                  </a>
+                    {dept.icon}
+                  </div>
+
+                  <h3>{dept.name}</h3>
+
+                  {dept.type === "fee" ? (
+                    <>
+                      <p>{dept.description}</p>
+
+                      <Link href="/payfee" className="fee-pay-btn">
+                        Pay Verification Fee →
+                      </Link>
+                    </>
+                  ) : (
+                    <div className="dept-contacts">
+                      <a
+                        href={`mailto:${dept.email}`}
+                        className="dept-contact-item"
+                      >
+                        <span className="dept-contact-icon">✉️</span>
+                        {dept.email}
+                      </a>
+                    </div>
+                  )}
                 </div>
+              ))}
+            </div>
+            <div className="fee-card hide-on-mobile">
+              <div className="fee-card-link">
+                <div className="fee-card-icon">💳</div>
+
+                <h3>
+                  Verification Fee: Free for Government Organisations; ₹10,000 for
+                  Third-Party Organisations.
+                </h3>
+
+                <p>
+                  For third-party verification, please make the payment and email the
+                  payment receipt to the designated email ID for processing.
+                </p>
+
+                <Link href="/payfee" className="fee-pay-btn">
+                  Pay Verification Fee →
+                </Link>
               </div>
-            ))}
+            </div>
+
           </div>
         </div>
+
       </div>
+
 
       {/* FAQ CTA Section */}
       <div className="faq-cta-section">
