@@ -14,7 +14,7 @@
   align-items: center;
   width: max-content;
   will-change: transform;
-  animation: miu-news-marquee-scroll 15s linear infinite;
+  animation: miu-news-marquee-scroll 25s linear infinite;
 }
 
 .miu-news-marquee-track > a {
