@@ -24,6 +24,10 @@ const DEFAULT_CONTENT = {
       src: "/hero/homepage_01.webp",
       url: "https://admission.miu.edu.in/",
     },
+    {
+      src: "/hero/homepage_04.webp",
+      url: "https://research.miu.edu.in/",
+    },
   ],
 };
 

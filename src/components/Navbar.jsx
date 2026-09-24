@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Marquee from "./Marquee";
 
 const AccordionArrow = ({ open }) => (
   <span className={`mobile-accordion-arrow ${open ? "open" : ""}`}>+</span>
@@ -204,6 +205,7 @@ const Navbar = () => {
     <header
       className={`lpu-header ${!isLandingPage ? "other-page-header" : ""}`}
     >
+      <Marquee />
       <div className="top-strip">
         <div className="strip-flex">
           <TopLinks />

@@ -1,7 +1,7 @@
 /* ===== Header base ===== */
 .lpu-header {
   position: fixed !important;
-  top: 0;
+  top: 48;
   left: 0;
   width: 100%;
   z-index: 10;
@@ -10,7 +10,7 @@
 }
 .other-page-header {
   position: fixed !important;
-  top: 0;
+  top: 48;
   left: 0;
   width: 100%;
   z-index: 10;
@@ -152,7 +152,7 @@ a {
 
 .main-navbar.sticky-nav {
   position: fixed;
-  top: 0;
+  top: 48;
   left: 0;
   z-index: 9;
   background-color: white;
@@ -861,6 +861,9 @@ a {
   }
   .mobile-main-links li {
     margin-bottom: 18px;
+  }
+  .main-navbar {
+    margin-top: 36px;
   }
   .nav-actions {
     gap: 8px;
