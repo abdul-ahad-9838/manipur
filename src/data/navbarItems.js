@@ -196,6 +196,10 @@ const navbarItems = [
     href: "/notices-and-announcements",
   },
   {
+    label: "Pay Online",
+    href: "/payonline",
+  },
+  {
     label: "Contact Us",
     href: "/contact",
   },
