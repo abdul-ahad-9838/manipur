@@ -4,7 +4,7 @@ import Link from "next/link";
 async function getResults() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/results`, {
-      revalidate: 60, // or use revalidate for caching
+      cache: "no-store"
     });
 
     if (!res.ok) {

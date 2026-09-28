@@ -43,9 +43,6 @@ export default function PayOnlinePage() {
     { name: "Alumni Fee", amount: 5000 },
     // old fee structure
     { name: "Registration Fee", amount: null },
-    { name: "Examination Fee", amount: null },
-    { name: "Hostel Fee", amount: null },
-    { name: "Library Fee", amount: null },
     { name: "Authorization Fee", amount: null },
     { name: "Others", amount: null },
   ];
