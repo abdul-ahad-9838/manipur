@@ -1,3 +1,4 @@
+"use client";
 import "@/styles/SimplePage.css";
 import Link from "next/link";
 
@@ -19,7 +20,8 @@ async function getPageData(settingsKey) {
   }
 }
 
-export default async function DynamicPage({
+// export default async function DynamicPage({
+export default function DynamicPage({
   settingsKey,
   badge,
   title,
@@ -46,7 +48,7 @@ export default async function DynamicPage({
     try {
       const parsed = JSON.parse(c.sections);
       if (Array.isArray(parsed)) sections = parsed;
-    } catch {}
+    } catch { }
   }
 
   return (
@@ -56,10 +58,10 @@ export default async function DynamicPage({
         style={
           heroImage
             ? {
-                backgroundImage: `url(${heroImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }
+              backgroundImage: `url(${heroImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }
             : {}
         }
       >
@@ -129,14 +131,29 @@ export default async function DynamicPage({
                           }}
                         >
                           {item.uriLink ? (
+                            // <a
+                            //   target="_blank"
+                            //   rel="noopener noreferrer"
+                            //   style={{ textDecoration: "underline" }}
+                            //   href={item.uriLink}
+                            // >
+                            //   {item.title}
+                            // </a>
+                            // click to show alert that file does not exist
                             <a
                               target="_blank"
                               rel="noopener noreferrer"
-                              style={{ textDecoration: "underline" }}
-                              href={item.uriLink}
+                              style={{ textDecoration: "underline", cursor: "pointer" }}
+                              // href={item.uriLink}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                alert("File does not exist");
+                              }}
+
                             >
                               {item.title}
                             </a>
+
                           ) : (
                             <strong>{item.title} </strong>
                           )}
