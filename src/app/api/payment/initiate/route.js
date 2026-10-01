@@ -27,18 +27,22 @@ export async function POST(request) {
       Date.now() +
       Math.random().toString(36).substring(2, 7).toUpperCase();
     const formattedAmount = parseFloat(amount).toFixed(1);
-    const productinfo = purpose.trim();
+    const productinfo = purpose
+      .trim()
+      .replace(/[^a-zA-Z0-9 ]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
     const firstname = name.trim();
     const emailTrimmed = email.trim();
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://miu.edu.in";
 
     const formdata = new FormData();
-    formdata.append("name", name);
-    formdata.append("email", email);
+    formdata.append("name", firstname);
+    formdata.append("email", emailTrimmed);
     formdata.append("phone", phone);
-    formdata.append("amount", amount);
-    formdata.append("purpose", purpose);
+    formdata.append("amount", formattedAmount);
+    formdata.append("purpose", productinfo);
     formdata.append("successurl", `${baseUrl}/payonline/success`);
     formdata.append("failedurl", `${baseUrl}/payonline/failed`);
     formdata.append("transaction_id", txnid);
@@ -57,10 +61,10 @@ export async function POST(request) {
           success: false,
           message: result.message || "Payment initiation failed",
         },
-        { status: response.status }
+        { status: response.status },
       );
     }
-    
+
     return NextResponse.json({
       success: true,
       redirectUrl: `https://pay.easebuzz.in/pay/${result.data}`,
