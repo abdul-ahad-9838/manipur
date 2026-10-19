@@ -133,10 +133,10 @@ const Footer = () => {
                 <span>📍</span> {d.address}
               </li>
 
-              <li>
+              {/* <li>
                 <span>📞</span> {d.phone}
-              </li>
-{/* 
+              </li> */}
+              {/* 
               <li>
                 <span>✉️</span> {d.email}
               </li> */}

@@ -41,7 +41,7 @@ export default function ClientShell({ children }) {
         <main>{children}</main>
 
         {/* Deferred, non-critical UI — rendered after main content */}
-        <WhatsAppButton />
+        {/* <WhatsAppButton /> */}
         <StudentLoginButton />
         {/* <EnquiryPopup /> */}
         <MobileBottomNav />

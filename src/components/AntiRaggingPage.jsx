@@ -12,7 +12,7 @@ export default function AntiRaggingPage() {
     {
       icon: "📞",
       title: "MIU Anti-Ragging Helpline",
-      desc: "+91 9319727766",
+      // desc: "+91 9319727766",
       color: "orange",
     },
     { icon: "✉️", title: "Email", desc: "support@miu.edu.in", color: "blue" },

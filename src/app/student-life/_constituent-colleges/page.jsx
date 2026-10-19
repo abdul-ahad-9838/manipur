@@ -46,7 +46,7 @@ export default function ConstituentColleges() {
         title: 'Affiliation Inquiries',
         description: 'For information about constituent colleges or affiliation process, please contact us.',
         email: 'affiliation@miu.edu.in',
-        phone: '+91 9319727766'
+        // phone: '+91 9319727766'
       }}
     />
   );

@@ -29,7 +29,7 @@ export default function StructuredData() {
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-9319727766",
+      // telephone: "+91-9319727766",
       contactType: "admissions",
       email: "admissions@miu.edu.in",
       availableLanguage: ["English", "Hindi", "Manipuri"],

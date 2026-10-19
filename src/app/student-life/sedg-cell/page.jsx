@@ -85,7 +85,7 @@ export default function SEDGCell() {
         description:
           "Contact us for financial aid, mentorship, or any support related to socio-economic challenges.",
         email: "support@miu.edu.in",
-        phone: "+91 9319727766",
+        // phone: "+91 9319727766",
       }}
     />
   );

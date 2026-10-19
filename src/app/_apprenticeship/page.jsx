@@ -100,8 +100,10 @@ export default function ApprenticeshipPage() {
         },
         {
           title: "Contact",
+          // content:
+          //   "For more information about the Apprenticeship Program, contact the Placement & Training Cell at MIU. Email: placements@miu.edu.in | Phone: +91 9319727766",
           content:
-            "For more information about the Apprenticeship Program, contact the Placement & Training Cell at MIU. Email: placements@miu.edu.in | Phone: +91 9319727766",
+            "For more information about the Apprenticeship Program, contact the Placement & Training Cell at MIU. Email: placements@miu.edu.in",
         },
       ]}
     />

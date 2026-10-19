@@ -92,7 +92,7 @@ export default function Ombudsperson() {
         description:
           "For student grievances and complaints under UGC Regulations 2023.",
         email: "ombudsperson@miu.edu.in",
-        phone: "+91 9319727766",
+        // phone: "+91 9319727766",
       }}
     />
   );
