@@ -149,7 +149,7 @@ export default function AdmissionRulesPage() {
           </div>
 
           {/* Important Notice */}
-          <div className="admission-notice-card">
+          {/* <div className="admission-notice-card">
             <div className="admission-notice-icon">ℹ️</div>
             <div className="admission-notice-content">
               <h3>Important Notice</h3>
@@ -160,7 +160,7 @@ export default function AdmissionRulesPage() {
                 <a href="mailto:admission@miu.edu.in">admission@miu.edu.in</a>
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

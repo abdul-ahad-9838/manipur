@@ -33,12 +33,12 @@ export default function CPIO() {
         {
           icon: "📧",
           title: "Registrar Office",
-          content: "Email: registrar@miu.edu.in",
+          // content: "Email: registrar@miu.edu.in",
         },
         {
           icon: "📞",
           title: "Pro-Vice Chancellor Office",
-          content: "Email: provc@miu.edu.in",
+          // content: "Email: provc@miu.edu.in",
         },
         {
           icon: "📍",
@@ -74,7 +74,7 @@ export default function CPIO() {
         title: "RTI Inquiries",
         description:
           "For information requests under the Right to Information Act, 2005.",
-        email: "registrar@miu.edu.in",
+        // email: "registrar@miu.edu.in",
         phone: "",
       }}
     />

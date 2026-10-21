@@ -15,7 +15,7 @@ export default function AntiRaggingPage() {
       // desc: "+91 9319727766",
       color: "orange",
     },
-    { icon: "✉️", title: "Email", desc: "support@miu.edu.in", color: "blue" },
+    // { icon: "✉️", title: "Email", desc: "support@miu.edu.in", color: "blue" },
     {
       icon: "🌐",
       title: "Online Portal",

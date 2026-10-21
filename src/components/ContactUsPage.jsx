@@ -121,41 +121,41 @@ export default function ContactUsPage() {
     },
   ];
 
-  const departments = [
-    {
-      icon: "🎓",
-      name: "Admissions",
-      email: "admission@miu.edu.in",
-    },
-    {
-      icon: "📝",
-      name: "Grievance",
-      email: "grievance@miu.edu.in",
-    },
-    {
-      type: "fee",
-      icon: "💳",
-      name: "Verification Fee",
-      description: " Free for Government Organisations; ₹10,000 for Third-Party Organisations. For third-party verification, please make the payment and email the payment receipt to the designated email ID for processing.",
-      Link:
-        "/payfee",
-    },
-    {
-      icon: "📋",
-      name: "Verification",
-      email: "verification@miu.edu.in",
-    },
-    {
-      icon: "💬",
-      name: "General Enquiry",
-      email: "info@miu.edu.in",
-    },
-    {
-      icon: "🛠️",
-      name: "Technical Support",
-      email: "support@miu.edu.in",
-    },
-  ];
+  // const departments = [
+  //   {
+  //     icon: "🎓",
+  //     name: "Admissions",
+  //     email: "admission@miu.edu.in",
+  //   },
+  //   {
+  //     icon: "📝",
+  //     name: "Grievance",
+  //     email: "grievance@miu.edu.in",
+  //   },
+  //   {
+  //     type: "fee",
+  //     icon: "💳",
+  //     name: "Verification Fee",
+  //     description: " Free for Government Organisations; ₹10,000 for Third-Party Organisations. For third-party verification, please make the payment and email the payment receipt to the designated email ID for processing.",
+  //     Link:
+  //       "/payfee",
+  //   },
+  //   {
+  //     icon: "📋",
+  //     name: "Verification",
+  //     email: "verification@miu.edu.in",
+  //   },
+  //   {
+  //     icon: "💬",
+  //     name: "General Enquiry",
+  //     email: "info@miu.edu.in",
+  //   },
+  //   {
+  //     icon: "🛠️",
+  //     name: "Technical Support",
+  //     email: "support@miu.edu.in",
+  //   },
+  // ];
 
   return (
     <div className="contact-page-new">
@@ -428,7 +428,7 @@ export default function ContactUsPage() {
       </div>
 
       {/* Departments Section */}
-      <div className="departments-section">
+      {/* <div className="departments-section">
         <div className="container">
           <div className="section-header-new">
             <h2>Contact by Department</h2>
@@ -501,7 +501,7 @@ export default function ContactUsPage() {
           </div>
         </div>
 
-      </div>
+      </div> */}
 
 
       {/* FAQ CTA Section */}

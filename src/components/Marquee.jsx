@@ -7,10 +7,10 @@ const announcements = [
         link: "https://research.miu.edu.in/",
         external: true,
     },
-    {
-        text: "Beware of Fake Websites & Emails! Official website: miu.edu.in | Official email domain: @miu.edu.in Please stay alert!",
-        link: "",
-    },
+    // {
+    //     text: "Beware of Fake Websites & Emails! Official website: miu.edu.in | Official email domain: @miu.edu.in Please stay alert!",
+    //     link: "",
+    // },
     {
         text: "LL.D., D.Sc. & D.Litt. (Post-Doctoral) Courses Discontinued from 2026 Onwards",
         link: "",

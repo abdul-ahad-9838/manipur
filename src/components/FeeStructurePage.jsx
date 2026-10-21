@@ -194,11 +194,11 @@ export default function FeeStructurePage() {
               assistance to deserving students. We believe that financial
               constraints should not hinder quality education.
             </p>
-            <div className="fee-scholarship-actions">
+            {/* <div className="fee-scholarship-actions">
               <a href="mailto:admission@miu.edu.in" className="btn btn-primary">
                 Contact for Details
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Contact Note */}
@@ -206,11 +206,11 @@ export default function FeeStructurePage() {
             <div className="fee-contact-icon">📞</div>
             <div className="fee-contact-content">
               <h3>Need More Information?</h3>
-              <p>
+              {/* <p>
                 For detailed fee structure and payment plans, please contact the
                 Admissions Office at{" "}
                 <a href="mailto:admission@miu.edu.in">admission@miu.edu.in</a>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

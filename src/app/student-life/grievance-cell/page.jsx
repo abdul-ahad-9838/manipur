@@ -38,9 +38,9 @@ export default function GrievanceCell() {
                     <p>
                       MIU Administrative office, MIU Palace, Luwangsangbam Makha Leikai, Luwangsangbam, Imphal East, Imphal, Manipur-795002
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>Email:</strong> miugrievance@miu.edu.in
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function GrievanceCell() {
         title: "File a Grievance",
         description:
           "For submitting grievances or queries about the redressal process.",
-        email: "miugrievance@miu.edu.in",
+        // email: "miugrievance@miu.edu.in",
         // phone: "+91 9319727766",
       }}
     />

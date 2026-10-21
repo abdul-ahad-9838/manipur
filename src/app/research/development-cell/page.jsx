@@ -446,7 +446,7 @@ export default function ResearchDevelopmentCell() {
         </div>
 
         {/* Contact */}
-        <div
+        {/* <div
           className="simple-section"
           style={{ background: "var(--lpu-black)", color: "white" }}
         >
@@ -473,7 +473,7 @@ export default function ResearchDevelopmentCell() {
               research@miu.edu.in
             </a>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

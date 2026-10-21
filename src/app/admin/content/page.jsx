@@ -516,7 +516,7 @@ export default function ContentManager() {
     address:
       "MIU Palace, Luwangsangbam Makha Leikai, Luwangsangbam, Imphal East, Imphal, Manipur - 795002",
     phone: "+91 9319727766",
-    email: "admission@miu.edu.in",
+    // email: "admission@miu.edu.in",
     facebook:
       "https://www.facebook.com/ManipurInternationalUniversityOfficial/",
     twitter: "https://x.com/MIU_India",

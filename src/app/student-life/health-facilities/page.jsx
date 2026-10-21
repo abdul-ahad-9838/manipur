@@ -128,7 +128,7 @@ export default function HealthFacilities() {
         title: "Medical Emergency",
         description:
           "For medical emergencies or to schedule an appointment at the health center.",
-        email: "support@miu.edu.in",
+        // email: "support@miu.edu.in",
         // phone: "+91 9319727766",
       }}
     />

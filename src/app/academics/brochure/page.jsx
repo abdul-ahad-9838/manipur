@@ -81,13 +81,13 @@ export default function Page() {
             },
           ],
         },
-        {
-          title: "Request a Brochure",
-          // content:
-          //   "To receive a physical copy or for any queries, contact our admissions office at admission@miu.edu.in or call +91 9319727766.",
-          content:
-            "To receive a physical copy or for any queries, contact our admissions office at admission@miu.edu.in.",
-        },
+        // {
+        //   title: "Request a Brochure",
+        //   // content:
+        //   //   "To receive a physical copy or for any queries, contact our admissions office at admission@miu.edu.in or call +91 9319727766.",
+        //   content:
+        //     "To receive a physical copy or for any queries, contact our admissions office at admission@miu.edu.in.",
+        // },
       ]}
     />
   );

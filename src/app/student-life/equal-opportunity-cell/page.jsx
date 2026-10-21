@@ -111,7 +111,7 @@ export default function EqualOpportunityCell() {
         title: "Need Support?",
         description:
           "Contact us for any concerns related to equal opportunity, discrimination, or accessibility. All communications are confidential.",
-        email: "info@miu.edu.in",
+        // email: "info@miu.edu.in",
         // phone: "+91 9319727766",
       }}
     />

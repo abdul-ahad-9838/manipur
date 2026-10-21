@@ -39,9 +39,9 @@ export default function PaymentFailed() {
           </div>
         )}
 
-        <p className="pay-result-note">
+        {/* <p className="pay-result-note">
           If any amount was deducted, it will be refunded within 5–7 business days. Please contact us at <a href="mailto:admission@miu.edu.in">admission@miu.edu.in</a> for assistance.
-        </p>
+        </p> */}
 
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/payonline" className="pay-result-btn">Try Again</Link>

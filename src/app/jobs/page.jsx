@@ -328,10 +328,10 @@ function ApplyModal({ job, onClose }) {
                   placeholder="Tell us why you're a great fit..."
                 />
               </div>
-              <p className="job-form-note">
+              {/* <p className="job-form-note">
                 📎 Please email your CV to <strong>hr@miu.edu.in</strong> with
                 subject: "Application – {job.title}"
-              </p>
+              </p> */}
               <button type="submit" className="btn btn-orange job-submit-btn">
                 Submit Application →
               </button>
@@ -467,7 +467,7 @@ export default function JobsPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="jobs-cta-box">
+        {/* <div className="jobs-cta-box">
           <h3>Don't see a suitable opening?</h3>
           <p>
             Send your CV to <a href="mailto:hr@miu.edu.in">hr@miu.edu.in</a> and
@@ -476,7 +476,7 @@ export default function JobsPage() {
           <a href="mailto:hr@miu.edu.in" className="btn btn-orange">
             Send Your CV →
           </a>
-        </div>
+        </div> */}
       </div>
 
       {selectedJob && (

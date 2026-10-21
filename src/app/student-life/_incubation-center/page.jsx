@@ -65,7 +65,7 @@ export default function IncubationCenter() {
       contactInfo={{
         title: 'Ready to Partner With Us?',
         description: 'Join us in building the entrepreneurial ecosystem of Northeast India. Together, we can create lasting impact and foster innovation.',
-        email: 'incubation@miu.edu.in',
+        // email: 'incubation@miu.edu.in',
         // phone: '+91 9319727766'
       }}
     />
