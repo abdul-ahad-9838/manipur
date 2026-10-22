@@ -23,7 +23,7 @@ import "@/styles/App.css";
 // });
 
 export const metadata = {
-  metadataBase: new URL("https://miu.edu.in"),
+  metadataBase: new URL("https://miu.co.in"),
   title: {
     default: "Manipur International University | Excellence in Education",
   },
@@ -32,7 +32,7 @@ export const metadata = {
   keywords:
     "Manipur International University, MIU, MIU Imphal, university in Manipur, higher education Manipur, UGC recognized university, engineering college Manipur, management college Imphal, admissions 2026",
   authors: [
-    { name: "Manipur International University", url: "https://miu.edu.in" },
+    { name: "Manipur International University", url: "https://miu.co.in" },
   ],
   creator: "Manipur International University",
   publisher: "Manipur International University",
@@ -49,7 +49,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://miu.edu.in",
+    url: "https://miu.co.in",
     siteName: "Manipur International University",
     title: "Manipur International University | MIU Imphal",
     description:
@@ -72,7 +72,7 @@ export const metadata = {
     images: ["/images/MIU_Logo.webp"],
   },
   alternates: {
-    canonical: "https://miu.edu.in",
+    canonical: "https://miu.co.in",
   },
   verification: {
     google: "XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns",

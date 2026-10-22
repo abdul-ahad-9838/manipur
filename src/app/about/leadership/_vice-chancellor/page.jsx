@@ -5,7 +5,7 @@ export const metadata = {
   description:
     "Message from the Vice-Chancellor of Manipur International University, Imphal. Our academic vision and student commitment.",
   alternates: {
-    canonical: "https://miu.edu.in/about/leadership/vice-chancellor",
+    canonical: "https://miu.co.in/about/leadership/vice-chancellor",
   },
 };
 

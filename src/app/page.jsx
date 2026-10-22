@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import HeroTest from "@/components/HeroTest";
 import StructuredData from "@/components/StructuredData";
+import { getHomepageData } from "@/lib/getHomepageData";
 import "@/styles/HomePage.css";
 import dynamic from "next/dynamic";
 
@@ -18,35 +19,35 @@ export const metadata = {
   keywords:
     "Manipur International University, MIU Imphal, university in Manipur, MIU India, engineering college Manipur, management college Imphal",
   alternates: {
-    canonical: "https://miu.edu.in/",
+    canonical: "https://miu.co.in/",
   },
   openGraph: {
     title: "Manipur International University | MIU Imphal",
     description:
       "Premier university in Imphal, Manipur offering quality higher education",
-    url: "https://miu.edu.in/",
+    url: "https://miu.co.in/",
     siteName: "Manipur International University",
     type: "website",
   },
 };
 
-async function getHomepageData() {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage`,
-      {
-        next: { revalidate: 300 },
-      },
-    );
+// async function getHomepageData() {
+//   try {
+//     const res = await fetch(
+//       `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage`,
+//       {
+//         next: { revalidate: 300 },
+//       },
+//     );
 
-    if (!res.ok) return null;
+//     if (!res.ok) return null;
 
-    return res.json();
-  } catch (error) {
-    console.error("Homepage data fetch failed:", error);
-    return null;
-  }
-}
+//     return res.json();
+//   } catch (error) {
+//     console.error("Homepage data fetch failed:", error);
+//     return null;
+//   }
+// }
 
 export default async function Home() {
   const results = await getHomepageData();

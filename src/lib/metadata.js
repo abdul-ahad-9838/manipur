@@ -1,7 +1,7 @@
-const BASE_URL = 'https://miu.edu.in';
-const SITE_NAME = 'Manipur International University';
+const BASE_URL = "https://miu.co.in";
+const SITE_NAME = "Manipur International University";
 
-export function createMetadata({ title, description, path, keywords = '' }) {
+export function createMetadata({ title, description, path, keywords = "" }) {
   return {
     title,
     description,
@@ -12,10 +12,10 @@ export function createMetadata({ title, description, path, keywords = '' }) {
       description,
       url: `${BASE_URL}${path}`,
       siteName: SITE_NAME,
-      type: 'website',
+      type: "website",
     },
     twitter: {
-      card: 'summary',
+      card: "summary",
       title: `${title} | ${SITE_NAME}`,
       description,
     },

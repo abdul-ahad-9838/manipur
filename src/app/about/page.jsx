@@ -6,12 +6,12 @@ export const metadata = {
   title: "About MIU | Manipur International University, Imphal",
   description:
     "Learn about Manipur International University — our vision, UGC 2(f) & Section 22 recognition, leadership, and academic philosophy",
-  alternates: { canonical: "https://miu.edu.in/about" },
+  alternates: { canonical: "https://miu.co.in/about" },
   openGraph: {
     title: "About MIU | Manipur International University",
     description:
       "Discover MIU's history, vision, and leadership in higher education.",
-    url: "https://miu.edu.in/about",
+    url: "https://miu.co.in/about",
   },
 };
 

@@ -7,7 +7,7 @@ export default function robots() {
         disallow: ["/admin/", "/api/", "/student-login"],
       },
     ],
-    sitemap: "https://miu.edu.in/sitemap.xml",
-    host: "https://miu.edu.in",
+    sitemap: "https://miu.co.in/sitemap.xml",
+    host: "https://miu.co.in",
   };
 }

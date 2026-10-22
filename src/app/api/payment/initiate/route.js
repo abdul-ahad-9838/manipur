@@ -35,7 +35,7 @@ export async function POST(request) {
     const firstname = name.trim();
     const emailTrimmed = email.trim();
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://miu.edu.in";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://miu.co.in";
 
     const formdata = new FormData();
     formdata.append("name", firstname);

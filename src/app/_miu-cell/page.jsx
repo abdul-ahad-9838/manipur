@@ -5,7 +5,7 @@ export const metadata = {
   description:
     "Information about Incubation Center, Anti Ragging, and other specialized university cells at MIU.",
   alternates: {
-    canonical: "https://miu.edu.in/miu-cell",
+    canonical: "https://miu.co.in/miu-cell",
   },
 };
 

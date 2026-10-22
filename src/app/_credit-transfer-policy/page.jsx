@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Credit Transfer Policy | Manipur International University',
   description: 'Credit Transfer Policy of Manipur International University in alignment with NEP 2020 and UGC regulations.',
   alternates: {
-    canonical: 'https://miu.edu.in/credit-transfer-policy',
+    canonical: 'https://miu.co.in/credit-transfer-policy',
   },
 };
 
@@ -151,9 +151,9 @@ Accordingly, MIU shall establish a well-defined mechanism to review, evaluate, a
             {/* Final step with link */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'var(--lpu-black)', color: 'var(--lpu-orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '1rem', flexShrink: 0, fontFamily: 'var(--font-heading)' }}>5</div>
-              <a 
-                href="https://miu.co.in/student/login" 
-                target="_blank" 
+              <a
+                href="https://miu.co.in/student/login"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="verify-details-link"
                 style={{ background: 'var(--lpu-orange)', border: '1.5px solid var(--lpu-orange)', borderRadius: '10px', padding: '12px 20px', fontWeight: '700', fontSize: '0.92rem', color: 'white', fontFamily: 'var(--font-heading)', textDecoration: 'none', transition: '0.3s', display: 'inline-block' }}
@@ -162,7 +162,8 @@ Accordingly, MIU shall establish a well-defined mechanism to review, evaluate, a
               </a>
             </div>
           </div>
-          <style dangerouslySetInnerHTML={{__html: `
+          <style dangerouslySetInnerHTML={{
+            __html: `
             .verify-details-link:hover {
               background: var(--lpu-black) !important;
               border-color: var(--lpu-black) !important;

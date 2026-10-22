@@ -6,12 +6,12 @@
 //     "Apply online to MIU Imphal. Check eligibility, application dates, documents, and fees for UG, PG and PhD admissions 2026–27.",
 //   keywords:
 //     "MIU admissions, Manipur university admissions 2026, MIU Imphal admission, engineering admission Manipur, MBA admission Imphal",
-//   alternates: { canonical: "https://miu.edu.in/admissions" },
+//   alternates: { canonical: "https://miu.co.in/admissions" },
 //   openGraph: {
 //     title: "Admissions 2026 | MIU Imphal",
 //     description:
 //       "Apply now for admissions at Manipur International University. Multiple programs available.",
-//     url: "https://miu.edu.in/admissions",
+//     url: "https://miu.co.in/admissions",
 //   },
 // };
 
@@ -33,7 +33,7 @@ export const metadata = {
   description:
     "Step-by-step guide to the admission process at MIU. Simple, transparent, and student-friendly.",
   alternates: {
-    canonical: "https://miu.edu.in/admissions/process",
+    canonical: "https://miu.co.in/admissions/process",
   },
 };
 

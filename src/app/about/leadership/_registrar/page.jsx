@@ -4,7 +4,7 @@ export const metadata = {
   title: "Registrar's Message | Manipur International University",
   description: "Message from the Registrar of Manipur International University.",
   alternates: {
-    canonical: 'https://miu.edu.in/about/leadership/registrar',
+    canonical: 'https://miu.co.in/about/leadership/registrar',
   },
 };
 

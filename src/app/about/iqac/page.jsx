@@ -353,7 +353,7 @@ export default async function IQACPage() {
             <br />
             Website:{" "}
             <a
-              href="https://miu.edu.in"
+              href="https://miu.co.in"
               target="_blank"
               rel="noopener noreferrer"
             >

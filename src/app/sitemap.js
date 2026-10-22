@@ -1,4 +1,4 @@
-const BASE_URL = "https://miu.edu.in";
+const BASE_URL = "https://miu.co.in";
 
 // Revalidate the sitemap route itself at most once per hour.
 // This is a route segment config (App Router), separate from the

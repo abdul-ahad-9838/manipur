@@ -4,7 +4,7 @@ export const metadata = {
   title: "Controller of Examinations' Message | Manipur International University",
   description: "Message from the Controller of Examinations of Manipur International University.",
   alternates: {
-    canonical: 'https://miu.edu.in/about/leadership/controller-of-examinations',
+    canonical: 'https://miu.co.in/about/leadership/controller-of-examinations',
   },
 };
 

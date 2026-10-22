@@ -4,7 +4,7 @@ export const metadata = {
   title: "Pro Vice Chancellor's Message | Manipur International University",
   description: "Message from the Pro Vice Chancellor of Manipur International University.",
   alternates: {
-    canonical: 'https://miu.edu.in/about/leadership/pro-vice-chancellor',
+    canonical: 'https://miu.co.in/about/leadership/pro-vice-chancellor',
   },
 };
 
