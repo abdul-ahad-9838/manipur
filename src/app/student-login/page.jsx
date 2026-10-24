@@ -1,8 +1,12 @@
+
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function StudentLogin() {
+  const router = useRouter();
+
   const [form, setForm] = useState({
     enrollmentNo: '',
     dob: '',
@@ -13,6 +17,7 @@ export default function StudentLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setError('');
     setLoading(true);
 
@@ -32,7 +37,8 @@ export default function StudentLogin() {
         return;
       }
 
-      window.location.href = '/student/dashboard';
+      // Navigate to dashboard without a full page reload
+      router.replace('/student/dashboard');
     } catch {
       setError('Unable to connect. Please try again.');
     } finally {
@@ -48,7 +54,7 @@ export default function StudentLogin() {
         alignItems: 'center',
         justifyContent: 'center',
         background: '#f4f4f4',
-        padding: 'clamp(80px,15vw,120px) 20px 40px',
+        padding: 'clamp(80px, 15vw, 120px) 20px 40px',
       }}
     >
       <div
@@ -59,6 +65,7 @@ export default function StudentLogin() {
           boxShadow: '0 4px 30px rgba(0,0,0,0.1)',
           width: '100%',
           maxWidth: '420px',
+          boxSizing: 'border-box',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
@@ -81,6 +88,7 @@ export default function StudentLogin() {
               fontSize: '1.6rem',
               fontWeight: '900',
               color: 'var(--lpu-black)',
+              margin: 0,
             }}
           >
             Login
@@ -89,6 +97,7 @@ export default function StudentLogin() {
 
         {error && (
           <div
+            role="alert"
             style={{
               background: '#fff3cd',
               border: '1px solid #ffc107',
@@ -116,6 +125,7 @@ export default function StudentLogin() {
         >
           <div>
             <label
+              htmlFor="enrollmentNo"
               style={{
                 display: 'block',
                 fontWeight: '700',
@@ -127,13 +137,16 @@ export default function StudentLogin() {
             </label>
 
             <input
+              id="enrollmentNo"
               type="text"
               value={form.enrollmentNo}
               onChange={(e) =>
                 setForm({ ...form, enrollmentNo: e.target.value })
               }
               placeholder="e.g. MIU2024001"
+              autoComplete="username"
               required
+              disabled={loading}
               style={{
                 width: '100%',
                 padding: '12px 14px',
@@ -148,6 +161,7 @@ export default function StudentLogin() {
 
           <div>
             <label
+              htmlFor="dob"
               style={{
                 display: 'block',
                 fontWeight: '700',
@@ -159,6 +173,7 @@ export default function StudentLogin() {
             </label>
 
             <input
+              id="dob"
               type="date"
               value={
                 form.dob
@@ -182,7 +197,9 @@ export default function StudentLogin() {
                   setForm({ ...form, dob: '' });
                 }
               }}
+              autoComplete="bday"
               required
+              disabled={loading}
               style={{
                 width: '100%',
                 padding: '12px 14px',
@@ -204,6 +221,8 @@ export default function StudentLogin() {
               fontSize: '1rem',
               borderRadius: '10px',
               marginTop: '4px',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              opacity: loading ? 0.7 : 1,
             }}
             disabled={loading}
           >

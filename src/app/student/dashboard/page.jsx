@@ -48,7 +48,6 @@ export default async function StudentDashboard() {
     const fields = [
         { label: "Student Name", value: student.name },
         { label: "Enrollment Number", value: student.enrollmentNo },
-        { label: "Roll Number", value: student.rollNumber },
         { label: "Admission Session", value: student.admissionSession },
         { label: "Date of Birth", value: formatDate(student.dob) },
         { label: "Course", value: student.course },
