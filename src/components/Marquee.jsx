@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
 import "@/styles/Marquee.css";
-import PdfCompareModal from "@/components/PdfCompareModal";
 import ImportantNoticePopup from "./ImportantNoticePopup";
 
 const announcements = [
