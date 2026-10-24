@@ -1,28 +1,35 @@
-import FAQ from "@/components/FAQ";
+import FAQ from "@/components/FAQ"; // Adjust path
+import dbConnect from "@/lib/mongodb";
+import Faq from "@/models/Faq";
 
 async function getFaqs() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/faqs`, {
-      next: { revalidate: 300 },
-    });
+    await dbConnect();
 
-    if (!res.ok) {
-      return null;
-    }
+    const faqs = await Faq.find({ published: true })
+      .sort({ createdAt: -1 })
+      .lean();
 
-    return await res.json();
+    return faqs.map((faq) => ({
+      ...faq,
+      _id: faq._id.toString(),
+      createdAt: faq.createdAt?.toISOString(),
+      updatedAt: faq.updatedAt?.toISOString(),
+    }));
   } catch (error) {
     console.error("Error fetching FAQs:", error);
-    return null;
+    return [];
   }
 }
+
 export async function generateMetadata() {
   return {
     alternates: {
-      canonical: `/faqs`,
+      canonical: "/faqs",
     },
   };
 }
+
 const Page = async () => {
   const faqsData = await getFaqs();
 

@@ -1,21 +1,28 @@
 // app/courses/[slug]/page.jsx
 
 import BannerSection from "@/components/BannerSection";
+import dbConnect from "@/lib/mongodb";
+import Course from "@/models/Course";
 import "@/styles/CourseDetail.css";
 import Link from "next/link";
 
 async function getCourse(slug) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/${slug}`,
-      {
-        next: { revalidate: 300 },
-      },
-    );
+    await dbConnect();
 
-    if (!res.ok) return null;
+    const course = await Course.findOne({
+      slug,
+      isActive: { $ne: false },
+    }).lean();
 
-    return res.json();
+    if (!course) return null;
+
+    return {
+      ...course,
+      _id: course._id.toString(),
+      createdAt: course.createdAt?.toISOString(),
+      updatedAt: course.updatedAt?.toISOString(),
+    };
   } catch (error) {
     console.error(`Error fetching ${slug}:`, error);
     return null;

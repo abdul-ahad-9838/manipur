@@ -2,7 +2,7 @@ import "@/styles/AcademicCouncil.css";
 import "@/styles/IQAC.css";
 import Link from "next/link";
 
-const DEFAULT = {
+const d = {
   title: "Internal Quality Assurance Cell (IQAC)",
   subtitle: "Manipur International University",
   established: "8th May 2021",
@@ -142,23 +142,6 @@ const DEFAULT = {
   ],
 };
 
-async function getIQACData() {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/settings/iqac`,
-      {
-        next: { revalidate: 300 },
-      },
-    );
-
-    if (!res.ok) return null;
-
-    return res.json();
-  } catch (error) {
-    console.error(`IQAC fetch failed:`, error);
-    return null;
-  }
-}
 
 export async function generateMetadata() {
   return {
@@ -169,8 +152,6 @@ export async function generateMetadata() {
 }
 
 export default async function IQACPage() {
-  const iqacData = await getIQACData();
-  const d = iqacData?.content ? { ...DEFAULT, ...iqacData.content } : DEFAULT;
   return (
     <div className="ac-page">
       {/* Hero */}

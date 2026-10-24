@@ -1,28 +1,34 @@
 import "@/styles/Blog.css";
 import Image from "next/image";
 import Link from "next/link";
-
-async function getBlogs() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) return null;
-
-    return res.json();
-  } catch (error) {
-    console.error("Blogs fetch failed:", error);
-    return null;
-  }
-}
+import Blog from "@/models/Blog"; // Adjust path
+import dbConnect from "@/lib/mongodb";
 
 export async function generateMetadata() {
   return {
     alternates: {
-      canonical: `/blogs`,
+      canonical: "/blogs",
     },
   };
+}
+
+async function getBlogs() {
+  try {
+    await dbConnect();
+
+    const blogs = await Blog.find({ published: true })
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return blogs.map((blog) => ({
+      ...blog,
+      _id: blog._id.toString(),
+      createdAt: blog.createdAt?.toISOString(),
+    }));
+  } catch (error) {
+    console.error("Blogs fetch failed:", error);
+    return [];
+  }
 }
 
 export default async function BlogPage() {
@@ -42,14 +48,14 @@ export default async function BlogPage() {
       </div>
 
       <div className="container blog-container">
-        {blogs?.length === 0 && (
+        {blogs.length === 0 && (
           <div className="blog-empty">
             <p>No blog posts yet. Check back soon.</p>
           </div>
         )}
 
         <div className="blog-grid">
-          {blogs?.map((blog) => (
+          {blogs.map((blog) => (
             <Link
               href={`/blogs/${blog.slug}`}
               key={blog._id}
@@ -85,11 +91,13 @@ export default async function BlogPage() {
                   <span>{blog.author}</span>
 
                   <span>
-                    {new Date(blog.createdAt).toLocaleDateString("en-IN", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
+                    {blog.createdAt
+                      ? new Date(blog.createdAt).toLocaleDateString("en-IN", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : ""}
                   </span>
                 </div>
               </div>
