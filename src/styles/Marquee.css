@@ -14,6 +14,7 @@
 .miu-news-marquee-track {
   display: flex;
   align-items: center;
+  gap: 100px; /* Each element ke beech gap */
   width: max-content;
   will-change: transform;
   animation: miu-news-marquee-scroll 25s linear infinite;
@@ -24,22 +25,27 @@
   text-decoration: underline;
 }
 
+.miu-news-marquee-track .miu-notice-button {
+  all: unset;
+  display: inline-block;
+  color: yellow !important;
+  text-decoration: underline !important;
+  cursor: pointer;
+  font: inherit;
+}
+
 /* Each announcement */
 .miu-news-marquee-item {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
-
   margin: 0;
-  padding: 0 100px 0 0;
-
+  padding: 0; /* Remove old spacing */
   color: #ffffff;
   text-decoration: none;
-
   font-size: 16px;
   line-height: 1.5;
   font-weight: 600;
-
   box-sizing: border-box;
 }
 
@@ -67,28 +73,21 @@ a.miu-news-marquee-item:hover {
 
 /* Mobile */
 @media (max-width: 768px) {
-  .miu-news-marquee {
-    padding: 8px 0;
+  .miu-news-marquee-track {
+    gap: 60px;
   }
 
   .miu-news-marquee-item {
     font-size: 14px;
-    padding-right: 60px;
-  }
-
-  .miu-news-marquee-track {
-    animation-duration: 25s;
   }
 }
 
-/* Very small screens */
 @media (max-width: 480px) {
-  .miu-news-marquee-item {
-    font-size: 13px;
-    padding-right: 45px;
+  .miu-news-marquee-track {
+    gap: 45px;
   }
 
-  .miu-news-marquee-track {
-    animation-duration: 20s;
+  .miu-news-marquee-item {
+    font-size: 13px;
   }
 }

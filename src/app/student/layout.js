@@ -1,7 +1,17 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
 import Sidebar from "@/components/student/Sidebar";
 import "@/styles/StudentLayout.css";
 
-export default function StudentLayout({ children }) {
+export default async function StudentLayout({ children }) {
+  const cookieStore = await cookies();
+  const studentAuth = cookieStore.get("student_auth");
+
+  if (!studentAuth?.value) {
+    redirect("/student-login");
+  }
+
   return (
     <div
       style={{
@@ -10,10 +20,8 @@ export default function StudentLayout({ children }) {
       }}
       className="student-layout"
     >
-      {/* Left Sidebar */}
       <Sidebar />
 
-      {/* Right Content */}
       <main
         style={{
           flex: 1,

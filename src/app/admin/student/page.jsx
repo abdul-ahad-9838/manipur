@@ -5,6 +5,7 @@ import API from "@/lib/api";
 import toast from "react-hot-toast";
 import "@/styles/AdminStudent.css";
 import * as XLSX from "xlsx";
+import AdminStudentsTable from "@/components/admin/AdminStudentsTable";
 
 
 const emptyForm = {
@@ -525,128 +526,20 @@ export default function AdminStudents() {
                         )}
                     </div>
 
-                    {students.length === 0 ? (
-                        <div className="admin-students-empty">
-                            <h3>No students found</h3>
-                            <p>Add your first student to get started.</p>
-
-                            {!showForm && (
-                                <button
-                                    type="button"
-                                    className="admin-students-btn admin-students-btn-primary"
-                                    onClick={() => {
-                                        setForm(emptyForm);
-                                        setEditId(null);
-                                        setShowForm(true);
-                                    }}
-                                >
-                                    + Add First Student
-                                </button>
-                            )}
-                        </div>
-                    ) : filteredStudents.length === 0 ? (
-                        <div className="admin-students-empty">
-                            <h3>No matching students</h3>
-                            <p>Try adjusting your search or course filter.</p>
-                        </div>
-                    ) : (
-                        <div className="admin-students-table-wrapper">
-                            <table className="admin-students-table">
-                                <thead>
-                                    <tr>
-                                        <th>S.No.</th>
-                                        <th>Enrollment No.</th>
-                                        <th>Student Name</th>
-                                        <th>Admission Session</th>
-                                        <th>Date of Birth</th>
-                                        <th>Course</th>
-                                        <th>Sub Course</th>
-                                        <th>Father Name</th>
-                                        <th>Email Address</th>
-                                        <th>Phone</th>
-                                        <th className="admin-students-actions-heading">
-                                            Actions
-                                        </th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    {filteredStudents.map((student, index) => (
-                                        <tr key={student._id}>
-                                            <td className="admin-students-serial">
-                                                {index + 1}
-                                            </td>
-
-                                            <td>
-                                                <span className="admin-students-enrollment">
-                                                    {student.enrollmentNo || "-"}
-                                                </span>
-                                            </td>
-
-                                            <td className="admin-students-name">
-                                                {student.name || "-"}
-                                            </td>
-
-                                            <td>
-                                                {student.admissionSession || "-"}
-                                            </td>
-
-                                            <td>
-                                                {student.dob
-                                                    ? new Date(
-                                                        student.dob
-                                                    ).toLocaleDateString()
-                                                    : "-"}
-                                            </td>
+                    <AdminStudentsTable
+                        students={students}
+                        filteredStudents={filteredStudents}
+                        showForm={showForm}
+                        onAddStudent={() => {
+                            setForm(emptyForm);
+                            setEditId(null);
+                            setShowForm(true);
+                        }}
+                        onEdit={handleEdit}
+                        onDelete={handleDelete}
+                    />
 
 
-
-                                            <td>{student.course || "-"}</td>
-
-                                            <td>{student.subCourse || "-"}</td>
-
-                                            <td>{student.fatherName || "-"}</td>
-
-                                            <td className="admin-students-email">
-                                                {student.emailAddress || "-"}
-                                            </td>
-
-                                            <td className="admin-students-phone">
-                                                {student.phone || "-"}
-                                            </td>
-
-                                            <td>
-                                                <div className="admin-students-row-actions">
-                                                    <button
-                                                        type="button"
-                                                        className="admin-students-action-btn admin-students-edit-btn"
-                                                        onClick={() =>
-                                                            handleEdit(student)
-                                                        }
-                                                    >
-                                                        Edit
-                                                    </button>
-
-                                                    <button
-                                                        type="button"
-                                                        className="admin-students-action-btn admin-students-delete-btn"
-                                                        onClick={() =>
-                                                            handleDelete(student._id)
-                                                        }
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
-
-
-                    {console.log(students)}
                     {filteredStudents.length > 0 && (
                         <div className="admin-students-list-footer">
                             Showing <strong>{filteredStudents.length}</strong>{" "}

@@ -1,47 +1,62 @@
+
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import studentLoginData from "@/data/studentLoginData";
+
+import connectDB from "@/lib/mongodb";
+import Student from "@/models/Student";
 
 export default async function StudentDashboard() {
     const cookieStore = await cookies();
-    const authCookie = cookieStore.get("student_auth")?.value;
+    const enrollmentNo = cookieStore.get("student_auth")?.value;
 
-    const student = studentLoginData.find(
-        (item) =>
-            String(item.enrollmentNumber) === authCookie
-    );
-
-    if (!student) {
-        redirect("/student/login");
+    // Login cookie missing hai
+    if (!enrollmentNo) {
+        redirect("/student-login");
     }
 
-    const studentDetails = student.data;
+    await connectDB();
+
+    // Logged-in student ka record fetch karein
+    const student = await Student.findOne({
+        enrollmentNo,
+    })
+        .select(
+            "enrollmentNo rollNumber admissionSession name dob course subCourse fatherName motherName emailAddress phone"
+        )
+        .lean();
+
+    // Cookie mein enrollment number hai, lekin record nahi mila
+    if (!student) {
+        redirect("/student-login");
+    }
+
+    // MongoDB Date ko timezone-safe format mein display karein
+    const formatDate = (date) => {
+        if (!date) return "";
+
+        const value = new Date(date);
+
+        if (Number.isNaN(value.getTime())) return "";
+
+        const day = String(value.getUTCDate()).padStart(2, "0");
+        const month = String(value.getUTCMonth() + 1).padStart(2, "0");
+        const year = value.getUTCFullYear();
+
+        return `${day}-${month}-${year}`;
+    };
 
     const fields = [
-        {
-            label: "Registration Number",
-            value: studentDetails.registrationNumber,
-        },
-        {
-            label: "Enrollment Number",
-            value: student.enrollmentNumber,
-        },
-        {
-            label: "Student Name",
-            value: studentDetails.name,
-        },
-        {
-            label: "Course Name",
-            value: studentDetails.courseName,
-        },
-        {
-            label: "Specialization",
-            value: studentDetails.specialization,
-        },
-        {
-            label: "Father Name",
-            value: studentDetails.fatherName,
-        },
+        { label: "Student Name", value: student.name },
+        { label: "Enrollment Number", value: student.enrollmentNo },
+        { label: "Roll Number", value: student.rollNumber },
+        { label: "Admission Session", value: student.admissionSession },
+        { label: "Date of Birth", value: formatDate(student.dob) },
+        { label: "Course", value: student.course },
+        { label: "Sub Course", value: student.subCourse },
+        { label: "Father Name", value: student.fatherName },
+        { label: "Mother Name", value: student.motherName },
+        { label: "Email Address", value: student.emailAddress },
+        { label: "Contact Number", value: student.phone },
     ];
 
     return (
@@ -53,16 +68,14 @@ export default async function StudentDashboard() {
             }}
         >
             {/* Header */}
-            <div
-            >
+            <div>
                 <h1
                     style={{
-                        margin: "0 0 8px 0",
+                        margin: "0 0 8px",
                         fontSize: "28px",
                         fontWeight: "700",
                     }}
                 >
-
                     Dashboard
                 </h1>
 
@@ -72,7 +85,7 @@ export default async function StudentDashboard() {
                         fontSize: "14px",
                     }}
                 >
-                    Student Dashboard
+                    Welcome, {student.name}
                 </p>
             </div>
 
@@ -87,7 +100,6 @@ export default async function StudentDashboard() {
                     boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
                 }}
             >
-                {/* Form Header */}
                 <div
                     style={{
                         padding: "18px 20px",
@@ -105,11 +117,8 @@ export default async function StudentDashboard() {
                     >
                         Student Details
                     </h2>
-
                 </div>
 
-
-                {/* Student Details Fields */}
                 <div
                     style={{
                         padding: "10px 20px",
@@ -119,7 +128,7 @@ export default async function StudentDashboard() {
                 >
                     {fields.map((field, index) => (
                         <div
-                            key={index}
+                            key={field.label}
                             style={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -147,7 +156,6 @@ export default async function StudentDashboard() {
                                     fontWeight: "600",
                                     color: "#0f172a",
                                     overflowWrap: "anywhere",
-
                                 }}
                             >
                                 {field.value || "Not Available"}
@@ -155,9 +163,7 @@ export default async function StudentDashboard() {
                         </div>
                     ))}
                 </div>
-
             </section>
-
         </main>
     );
 }

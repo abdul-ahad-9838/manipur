@@ -113,7 +113,7 @@ const Sidebar = () => {
           borderTop: "1px solid #e5e7eb",
         }}
       >
-        <form action="/api/student/logout" method="POST">
+        <form action="/api/students/logout" method="POST">
           <button
             type="submit"
             style={{

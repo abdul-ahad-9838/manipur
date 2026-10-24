@@ -3,6 +3,79 @@ import Student from "@/models/Student";
 import dbConnect from "@/lib/mongodb";
 import { protect } from "@/lib/auth";
 
+function parseExcelDate(value) {
+  if (value === undefined || value === null || value === "") {
+    return null;
+  }
+
+  if (value instanceof Date) {
+    return Number.isNaN(value.getTime()) ? null : value;
+  }
+
+  // Excel serial date
+  if (typeof value === "number" && Number.isFinite(value)) {
+    const excelEpoch = Date.UTC(1899, 11, 30);
+    const date = new Date(excelEpoch + value * 86400000);
+
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+
+  if (typeof value === "string") {
+    const input = value.trim();
+
+    if (!input) return null;
+
+    // DD/MM/YYYY or DD-MM-YYYY
+    const match = input.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
+
+    if (match) {
+      const day = Number(match[1]);
+      const month = Number(match[2]);
+      const year = Number(match[3]);
+
+      const date = new Date(Date.UTC(year, month - 1, day));
+
+      if (
+        date.getUTCFullYear() !== year ||
+        date.getUTCMonth() !== month - 1 ||
+        date.getUTCDate() !== day
+      ) {
+        return null;
+      }
+
+      return date;
+    }
+
+    // YYYY-MM-DD
+    const isoMatch = input.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+    if (isoMatch) {
+      const year = Number(isoMatch[1]);
+      const month = Number(isoMatch[2]);
+      const day = Number(isoMatch[3]);
+
+      const date = new Date(Date.UTC(year, month - 1, day));
+
+      if (
+        date.getUTCFullYear() !== year ||
+        date.getUTCMonth() !== month - 1 ||
+        date.getUTCDate() !== day
+      ) {
+        return null;
+      }
+
+      return date;
+    }
+
+    // Other date formats
+    const date = new Date(input);
+
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+
+  return null;
+}
+
 export async function POST(request) {
   try {
     const user = await protect(request);
@@ -23,12 +96,10 @@ export async function POST(request) {
       );
     }
 
-    // Required fields (rollNumber is optional)
     const requiredFields = [
       "enrollmentNo",
       "admissionSession",
       "name",
-      "dob",
       "course",
       "subCourse",
       "fatherName",
@@ -51,7 +122,6 @@ export async function POST(request) {
         );
       }
 
-      // Normalize fields
       const normalized = {
         enrollmentNo: student.enrollmentNo,
         admissionSession: student.admissionSession,
@@ -87,7 +157,7 @@ export async function POST(request) {
         normalized[field] = String(value).trim();
       }
 
-      // Roll number: convert NULL, "NULL", and empty values to null
+      // Normalize roll number
       const rollNumber = normalized.rollNumber;
 
       if (
@@ -110,76 +180,24 @@ export async function POST(request) {
         }
       }
 
-      // Normalize email casing (duplicate emails are allowed)
+      // Normalize email
       normalized.emailAddress = normalized.emailAddress.toLowerCase();
 
-      // Validate email format
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized.emailAddress)) {
-        return NextResponse.json(
-          { message: `Invalid email at Excel row ${row}.` },
-          { status: 400 },
-        );
-      }
+      // Parse and validate DOB
+      const parsedDob = parseExcelDate(normalized.dob);
 
-      // Validate and normalize DOB
-      // Supports DD/MM/YYYY, DD-MM-YYYY, YYYY-MM-DD,
-      // and other JavaScript-supported date strings.
-      const dobValue = String(normalized.dob).trim();
-      let dob;
-
-      const dateMatch = dobValue.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
-
-      if (dateMatch) {
-        // Excel date format: DD/MM/YYYY or DD-MM-YYYY
-        const day = Number(dateMatch[1]);
-        const month = Number(dateMatch[2]);
-        const year = Number(dateMatch[3]);
-
-        dob = new Date(Date.UTC(year, month - 1, day));
-
-        // Reject invalid calendar dates
-        if (
-          dob.getUTCFullYear() !== year ||
-          dob.getUTCMonth() !== month - 1 ||
-          dob.getUTCDate() !== day
-        ) {
-          return NextResponse.json(
-            {
-              message: `Invalid date of birth at Excel row ${row}.`,
-            },
-            { status: 400 },
-          );
-        }
-      } else {
-        // Handle ISO dates and other supported date strings
-        dob = new Date(dobValue);
-
-        if (Number.isNaN(dob.getTime())) {
-          return NextResponse.json(
-            {
-              message: `Invalid date of birth at Excel row ${row}.`,
-            },
-            { status: 400 },
-          );
-        }
-      }
-
-      // Reject future DOBs
-      const today = new Date();
-      today.setUTCHours(0, 0, 0, 0);
-
-      if (dob.getTime() > today.getTime()) {
+      if (parsedDob === null) {
         return NextResponse.json(
           {
-            message: `Date of birth cannot be in the future at Excel row ${row}.`,
+            message: `Invalid or missing DOB at Excel row ${row}. Expected DD/MM/YYYY format.`,
           },
           { status: 400 },
         );
       }
 
-      normalized.dob = dob;
+      normalized.dob = parsedDob;
 
-      // Check duplicate enrollment numbers within Excel
+      // Check duplicate enrollment numbers in Excel
       if (enrollmentSet.has(normalized.enrollmentNo)) {
         return NextResponse.json(
           {
@@ -189,7 +207,7 @@ export async function POST(request) {
         );
       }
 
-      // Check duplicate roll numbers only when provided
+      // Check duplicate roll numbers in Excel
       if (
         normalized.rollNumber !== null &&
         rollNumberSet.has(normalized.rollNumber)
@@ -211,7 +229,7 @@ export async function POST(request) {
       normalizedStudents.push(normalized);
     }
 
-    // Find existing students by enrollment number or provided roll number
+    // Find existing students
     const conditions = [{ enrollmentNo: { $in: [...enrollmentSet] } }];
 
     if (rollNumberSet.size > 0) {
@@ -238,7 +256,7 @@ export async function POST(request) {
         ),
     );
 
-    // Skip records conflicting with existing unique fields
+    // Skip records that already exist
     const newStudents = normalizedStudents.filter((student) => {
       const enrollmentExists = existingEnrollmentSet.has(student.enrollmentNo);
 

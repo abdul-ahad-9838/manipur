@@ -5,6 +5,7 @@ import AdminTopBar from "@/components/AdminTopBar";
 import Navbar from "@/components/Navbar";
 import { AuthProvider } from "@/context/AuthContext";
 import { EnquiryProvider } from "@/context/EnquiryContext";
+import PdfCompareModal from "./PdfCompareModal";
 
 // ── Lazy client-only components ──────────────────────────────────────────────
 // Each gets a no-op fallback so the shell never blocks on these chunks.
@@ -35,6 +36,8 @@ export default function ClientShell({ children }) {
     <AuthProvider>
       <EnquiryProvider>
         <AdminTopBar />
+
+        <PdfCompareModal />
 
         <Navbar />
 
