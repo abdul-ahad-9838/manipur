@@ -23,18 +23,11 @@ export async function POST(request) {
       );
     }
 
-    if (students.length > 1000) {
-      return NextResponse.json(
-        { message: "Maximum 1000 students can be imported at once." },
-        { status: 400 },
-      );
-    }
-
+    // Required fields (rollNumber is optional)
     const requiredFields = [
       "enrollmentNo",
       "admissionSession",
       "name",
-      "rollNumber",
       "dob",
       "course",
       "subCourse",
@@ -45,7 +38,6 @@ export async function POST(request) {
 
     const enrollmentSet = new Set();
     const rollNumberSet = new Set();
-    const emailSet = new Set();
     const normalizedStudents = [];
 
     for (let i = 0; i < students.length; i++) {
@@ -59,7 +51,7 @@ export async function POST(request) {
         );
       }
 
-      // Use field names exactly as defined in Student model
+      // Normalize fields
       const normalized = {
         enrollmentNo: student.enrollmentNo,
         admissionSession: student.admissionSession,
@@ -75,7 +67,7 @@ export async function POST(request) {
         aadharNumber: student.aadharNumber,
       };
 
-      // Validate and normalize required fields
+      // Validate required fields
       for (const field of requiredFields) {
         const value = normalized[field];
 
@@ -85,12 +77,28 @@ export async function POST(request) {
           String(value).trim() === ""
         ) {
           return NextResponse.json(
-            { message: `Missing ${field} at Excel row ${row}.` },
+            {
+              message: `Missing ${field} at Excel row ${row}.`,
+            },
             { status: 400 },
           );
         }
 
         normalized[field] = String(value).trim();
+      }
+
+      // Roll number: convert NULL, "NULL", and empty values to null
+      const rollNumber = normalized.rollNumber;
+
+      if (
+        rollNumber === undefined ||
+        rollNumber === null ||
+        String(rollNumber).trim() === "" ||
+        String(rollNumber).trim().toUpperCase() === "NULL"
+      ) {
+        normalized.rollNumber = null;
+      } else {
+        normalized.rollNumber = String(rollNumber).trim();
       }
 
       // Normalize optional fields
@@ -102,7 +110,10 @@ export async function POST(request) {
         }
       }
 
-      // Validate email
+      // Normalize email casing (duplicate emails are allowed)
+      normalized.emailAddress = normalized.emailAddress.toLowerCase();
+
+      // Validate email format
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized.emailAddress)) {
         return NextResponse.json(
           { message: `Invalid email at Excel row ${row}.` },
@@ -110,17 +121,54 @@ export async function POST(request) {
         );
       }
 
-      // Validate DOB
-      const dob = new Date(normalized.dob);
+      // Validate and normalize DOB
+      // Supports DD/MM/YYYY, DD-MM-YYYY, YYYY-MM-DD,
+      // and other JavaScript-supported date strings.
+      const dobValue = String(normalized.dob).trim();
+      let dob;
 
-      if (Number.isNaN(dob.getTime())) {
-        return NextResponse.json(
-          { message: `Invalid date of birth at Excel row ${row}.` },
-          { status: 400 },
-        );
+      const dateMatch = dobValue.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
+
+      if (dateMatch) {
+        // Excel date format: DD/MM/YYYY or DD-MM-YYYY
+        const day = Number(dateMatch[1]);
+        const month = Number(dateMatch[2]);
+        const year = Number(dateMatch[3]);
+
+        dob = new Date(Date.UTC(year, month - 1, day));
+
+        // Reject invalid calendar dates
+        if (
+          dob.getUTCFullYear() !== year ||
+          dob.getUTCMonth() !== month - 1 ||
+          dob.getUTCDate() !== day
+        ) {
+          return NextResponse.json(
+            {
+              message: `Invalid date of birth at Excel row ${row}.`,
+            },
+            { status: 400 },
+          );
+        }
+      } else {
+        // Handle ISO dates and other supported date strings
+        dob = new Date(dobValue);
+
+        if (Number.isNaN(dob.getTime())) {
+          return NextResponse.json(
+            {
+              message: `Invalid date of birth at Excel row ${row}.`,
+            },
+            { status: 400 },
+          );
+        }
       }
 
-      if (dob > new Date()) {
+      // Reject future DOBs
+      const today = new Date();
+      today.setUTCHours(0, 0, 0, 0);
+
+      if (dob.getTime() > today.getTime()) {
         return NextResponse.json(
           {
             message: `Date of birth cannot be in the future at Excel row ${row}.`,
@@ -131,7 +179,7 @@ export async function POST(request) {
 
       normalized.dob = dob;
 
-      // Check duplicates within uploaded Excel
+      // Check duplicate enrollment numbers within Excel
       if (enrollmentSet.has(normalized.enrollmentNo)) {
         return NextResponse.json(
           {
@@ -141,7 +189,11 @@ export async function POST(request) {
         );
       }
 
-      if (rollNumberSet.has(normalized.rollNumber)) {
+      // Check duplicate roll numbers only when provided
+      if (
+        normalized.rollNumber !== null &&
+        rollNumberSet.has(normalized.rollNumber)
+      ) {
         return NextResponse.json(
           {
             message: `Duplicate roll number in Excel: ${normalized.rollNumber}`,
@@ -150,50 +202,50 @@ export async function POST(request) {
         );
       }
 
-      if (emailSet.has(normalized.emailAddress.toLowerCase())) {
-        return NextResponse.json(
-          {
-            message: `Duplicate email in Excel: ${normalized.emailAddress}`,
-          },
-          { status: 400 },
-        );
-      }
-
       enrollmentSet.add(normalized.enrollmentNo);
-      rollNumberSet.add(normalized.rollNumber);
-      emailSet.add(normalized.emailAddress.toLowerCase());
+
+      if (normalized.rollNumber !== null) {
+        rollNumberSet.add(normalized.rollNumber);
+      }
 
       normalizedStudents.push(normalized);
     }
 
-    // Find existing students by unique fields
+    // Find existing students by enrollment number or provided roll number
+    const conditions = [{ enrollmentNo: { $in: [...enrollmentSet] } }];
+
+    if (rollNumberSet.size > 0) {
+      conditions.push({
+        rollNumber: { $in: [...rollNumberSet] },
+      });
+    }
+
     const existingStudents = await Student.find({
-      $or: [
-        { enrollmentNo: { $in: [...enrollmentSet] } },
-        { rollNumber: { $in: [...rollNumberSet] } },
-        { emailAddress: { $in: [...emailSet] } },
-      ],
+      $or: conditions,
     })
-      .select("enrollmentNo rollNumber emailAddress")
+      .select("enrollmentNo rollNumber")
       .lean();
 
     const existingEnrollmentSet = new Set(
-      existingStudents.map((s) => s.enrollmentNo),
+      existingStudents.map((student) => student.enrollmentNo),
     );
 
-    const existingRollSet = new Set(existingStudents.map((s) => s.rollNumber));
-
-    const existingEmailSet = new Set(
-      existingStudents.map((s) => s.emailAddress.toLowerCase()),
+    const existingRollSet = new Set(
+      existingStudents
+        .map((student) => student.rollNumber)
+        .filter(
+          (rollNumber) => rollNumber !== undefined && rollNumber !== null,
+        ),
     );
 
-    // Skip records that conflict with any existing unique field
+    // Skip records conflicting with existing unique fields
     const newStudents = normalizedStudents.filter((student) => {
-      return (
-        !existingEnrollmentSet.has(student.enrollmentNo) &&
-        !existingRollSet.has(student.rollNumber) &&
-        !existingEmailSet.has(student.emailAddress.toLowerCase())
-      );
+      const enrollmentExists = existingEnrollmentSet.has(student.enrollmentNo);
+
+      const rollNumberExists =
+        student.rollNumber !== null && existingRollSet.has(student.rollNumber);
+
+      return !enrollmentExists && !rollNumberExists;
     });
 
     const skipped = normalizedStudents.length - newStudents.length;
@@ -210,6 +262,7 @@ export async function POST(request) {
       );
     }
 
+    // Insert new students
     const createdStudents = await Student.insertMany(newStudents, {
       ordered: true,
     });
