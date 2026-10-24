@@ -1,19 +1,20 @@
 import "@/styles/StudentLoginButton.css";
+import Link from "next/link";
 
 const StudentLoginButton = () => {
   return (
     <div className="floating-buttons-wrapper">
       {/* Student Login */}
       <div className="student-login-wrapper">
-        <a
-          href="https://student.miu.edu.in/"
+        <Link
+          href="/student-login"
           target="_blank"
           rel="noopener noreferrer"
         >
           <button className="student-login-button">
             Student Login
           </button>
-        </a>
+        </Link>
       </div>
       {/* Apply Now */}
       <div className="apply-now-wrapper">
