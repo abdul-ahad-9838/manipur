@@ -35,11 +35,10 @@ export default function PdfCompareModal({ isOpen, onClose, pdfList = [] }) {
                 <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
                     {/* Header */}
                     <div style={styles.header}>
-                        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        <div style={{ display: "flex", width: "100%", justifyContent: "center", alignItems: "center !important", gap: "12px" }}>
                             <div style={styles.headerIcon}>📄</div>
                             <div>
-                                <h2 style={styles.headerTitle}>Important Documents Comparison</h2>
-                                <span style={styles.headerSubtitle}>Please review both documents side-by-side</span>
+                                <h2 style={styles.headerTitle}>Important Notice</h2>
                             </div>
                         </div>
                         <button
@@ -74,7 +73,7 @@ export default function PdfCompareModal({ isOpen, onClose, pdfList = [] }) {
                         Both documents are displayed securely within the same popup.
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }
