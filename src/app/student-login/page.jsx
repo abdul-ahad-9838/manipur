@@ -13,31 +13,31 @@ export default function StudentLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setLoading(true);
+    // setError('');
+    // setLoading(true);
 
-    try {
-      const response = await fetch('/api/student/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
+    // try {
+    //   const response = await fetch('/api/student/login', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(form),
+    //   });
 
-      const data = await response.json();
+    //   const data = await response.json();
 
-      if (!response.ok) {
-        setError(data.message || 'Login failed');
-        return;
-      }
+    //   if (!response.ok) {
+    //     setError(data.message || 'Login failed');
+    //     return;
+    //   }
 
-      window.location.href = '/student/dashboard';
-    } catch {
-      setError('Unable to connect. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    //   window.location.href = '/student/dashboard';
+    // } catch {
+    //   setError('Unable to connect. Please try again.');
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   return (
