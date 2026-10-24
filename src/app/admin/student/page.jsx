@@ -4,17 +4,22 @@ import { Activity, useEffect, useState } from "react";
 import API from "@/lib/api";
 import toast from "react-hot-toast";
 import "@/styles/AdminStudent.css";
+import * as XLSX from "xlsx";
+
 
 const emptyForm = {
     enrollmentNo: "",
+    rollNumber: "",
     admissionSession: "",
     name: "",
     dob: "",
-    courseName: "",
-    specialization: "",
+    course: "",
+    subCourse: "",
     fatherName: "",
+    motherName: "",
     emailAddress: "",
     phone: "",
+    aadharNumber: "",
 };
 
 export default function AdminStudents() {
@@ -23,6 +28,7 @@ export default function AdminStudents() {
     const [editId, setEditId] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [saving, setSaving] = useState(false);
+    const [importing, setImporting] = useState(false);
 
     // Filtering states
     const [searchTerm, setSearchTerm] = useState("");
@@ -93,19 +99,26 @@ export default function AdminStudents() {
     const handleEdit = (student) => {
         setForm({
             enrollmentNo: student.enrollmentNo || "",
+            rollNumber: student.rollNumber || "",
             admissionSession: student.admissionSession || "",
             name: student.name || "",
             dob: student.dob ? student.dob.slice(0, 10) : "",
-            courseName: student.courseName || "",
-            specialization: student.specialization || "",
+            course: student.course || "",
+            subCourse: student.subCourse || "",
             fatherName: student.fatherName || "",
+            motherName: student.motherName || "",
             emailAddress: student.emailAddress || "",
             phone: student.phone || "",
+            aadharNumber: student.aadharNumber || "",
         });
 
         setEditId(student._id);
         setShowForm(true);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     };
 
     const handleDelete = async (id) => {
@@ -129,32 +142,220 @@ export default function AdminStudents() {
     };
 
     // Filter logic for searching
+    // Filter logic for searching
     const filteredStudents = students.filter((student) => {
-        const matchesSearch =
-            (student.name && student.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
-            (student.enrollmentNo && student.enrollmentNo.toLowerCase().includes(searchTerm.toLowerCase())) ||
-            (student.emailAddress && student.emailAddress.toLowerCase().includes(searchTerm.toLowerCase())) ||
-            (student.phone && student.phone.includes(searchTerm));
+        const search = searchTerm.toLowerCase();
 
-        const matchesCourse = filterCourse ? student.courseName === filterCourse : true;
+        const matchesSearch =
+            (student.name || "").toLowerCase().includes(search) ||
+            (student.enrollmentNo || "").toLowerCase().includes(search) ||
+            (student.emailAddress || "").toLowerCase().includes(search) ||
+            (student.phone || "").includes(search);
+
+        const matchesCourse = filterCourse
+            ? student.course === filterCourse
+            : true;
 
         return matchesSearch && matchesCourse;
     });
 
     // Unique courses list for the course filter dropdown
-    const uniqueCourses = [...new Set(students.map(s => s.courseName).filter(Boolean))];
+    const uniqueCourses = [
+        ...new Set(students.map((student) => student.course).filter(Boolean)),
+    ];
 
     const fields = [
         { name: "enrollmentNo", label: "Enrollment No", type: "text" },
-        { name: "admissionSession", label: "Admission Session", type: "text", placeholder: "2026-27" },
+        { name: "rollNumber", label: "Roll Number", type: "text" },
+        {
+            name: "admissionSession",
+            label: "Admission Session",
+            type: "text",
+            placeholder: "2026-27",
+        },
         { name: "name", label: "Student Name", type: "text" },
-        { name: "dob", label: "Date of Birth", type: "date" },
-        { name: "courseName", label: "Course Name", type: "text" },
-        { name: "specialization", label: "Specialization", type: "text" },
         { name: "fatherName", label: "Father Name", type: "text" },
+        { name: "motherName", label: "Mother Name", type: "text" },
+        { name: "dob", label: "Date of Birth", type: "date" },
+        { name: "course", label: "Course", type: "text" },
+        { name: "subCourse", label: "Sub Course", type: "text" },
         { name: "emailAddress", label: "Email Address", type: "email" },
-        { name: "phone", label: "Phone Number", type: "tel" },
+        { name: "phone", label: "Contact Number", type: "tel" },
+        { name: "aadharNumber", label: "Aadhar Number", type: "text" },
     ];
+
+
+
+    const handleExcelImport = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setImporting(true);
+
+        try {
+            const buffer = await file.arrayBuffer();
+
+            const workbook = XLSX.read(buffer, {
+                type: "array",
+                cellDates: true,
+            });
+
+            const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+            if (!sheet) {
+                toast.error("Excel sheet not found.");
+                return;
+            }
+
+            const rows = XLSX.utils.sheet_to_json(sheet, {
+                defval: "",
+                raw: false,
+            });
+
+            if (!rows.length) {
+                toast.error("Excel file is empty.");
+                return;
+            }
+
+            // Normalize Excel headers
+            const normalizeHeader = (value) =>
+                String(value ?? "")
+                    .replace(/^\uFEFF/, "")
+                    .trim()
+                    .toLowerCase()
+                    .replace(/[\s_-]+/g, "");
+
+            // Normalize dates
+            const normalizeDate = (value) => {
+                if (!value) return "";
+
+                if (
+                    value instanceof Date &&
+                    !Number.isNaN(value.getTime())
+                ) {
+                    const year = value.getFullYear();
+                    const month = String(value.getMonth() + 1).padStart(2, "0");
+                    const day = String(value.getDate()).padStart(2, "0");
+
+                    return `${year}-${month}-${day}`;
+                }
+
+                const text = String(value).trim();
+
+                // YYYY-MM-DD
+                if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+                    const [year, month, day] = text.split("-").map(Number);
+                    const date = new Date(year, month - 1, day);
+
+                    if (
+                        date.getFullYear() === year &&
+                        date.getMonth() === month - 1 &&
+                        date.getDate() === day
+                    ) {
+                        return text;
+                    }
+
+                    return "";
+                }
+
+                // DD/MM/YYYY or DD-MM-YYYY
+                const match = text.match(
+                    /^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/
+                );
+
+                if (match) {
+                    const [, dd, mm, yyyy] = match;
+                    const day = Number(dd);
+                    const month = Number(mm);
+                    const year = Number(yyyy);
+
+                    const date = new Date(year, month - 1, day);
+
+                    if (
+                        date.getFullYear() === year &&
+                        date.getMonth() === month - 1 &&
+                        date.getDate() === day
+                    ) {
+                        return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+                    }
+                }
+
+                return "";
+            };
+
+            // Map Excel columns to model fields
+            const payload = rows
+                .map((row) => {
+                    const normalizedRow = {};
+
+                    Object.keys(row).forEach((key) => {
+                        normalizedRow[normalizeHeader(key)] = row[key];
+                    });
+
+                    const get = (...keys) => {
+                        for (const key of keys) {
+                            const normalizedKey = normalizeHeader(key);
+
+                            if (
+                                Object.prototype.hasOwnProperty.call(
+                                    normalizedRow,
+                                    normalizedKey
+                                )
+                            ) {
+                                return normalizedRow[normalizedKey];
+                            }
+                        }
+
+                        return "";
+                    };
+
+                    return {
+                        enrollmentNo: String(get("Enrollment No") ?? "").trim(),
+                        admissionSession: String(
+                            get("Adm Session", "Admission Session") ?? ""
+                        ).trim(),
+                        name: String(get("Student Name") ?? "").trim(),
+                        rollNumber: String(get("Roll Number") ?? "").trim(),
+                        dob: get("DOB") ?? normalizeDate(get("DOB")),
+                        course: String(get("Course") ?? "").trim(),
+                        subCourse: String(get("Sub Course") ?? "").trim(),
+                        fatherName: String(get("Father Name") ?? "").trim(),
+                        motherName: String(get("Mother Name") ?? "").trim(),
+                        emailAddress: String(get("Email") ?? "").trim(),
+                        phone: String(get("Contact") ?? "").trim(),
+                        aadharNumber: String(get("Aadhar Number") ?? "").trim(),
+                    };
+                })
+                .filter((student) =>
+                    Object.values(student).some(
+                        (value) => String(value ?? "").trim() !== ""
+                    )
+                );;
+
+
+            // Import students
+            const { data } = await API.post("/students/import", {
+                students: payload,
+            });
+
+            toast.success(
+                data.message || "Students imported successfully."
+            );
+
+            await fetchStudents();
+        } catch (err) {
+            console.error("Excel import error:", err);
+
+            toast.error(
+                err.response?.data?.message ||
+                "Excel import failed."
+            );
+        } finally {
+            setImporting(false);
+            e.target.value = "";
+        }
+    };
+
 
     return (
         <div className="admin-students-page">
@@ -189,6 +390,17 @@ export default function AdminStudents() {
                         >
                             ← Back
                         </button>
+                        <label className="admin-students-btn admin-students-btn-outline">
+                            {importing ? "Importing..." : "📥 Import Excel"}
+
+                            <input
+                                type="file"
+                                accept=".xlsx,.xls"
+                                onChange={handleExcelImport}
+                                disabled={importing}
+                                hidden
+                            />
+                        </label>
                     </div>
                 </div>
 
@@ -348,7 +560,7 @@ export default function AdminStudents() {
                                         <th>Admission Session</th>
                                         <th>Date of Birth</th>
                                         <th>Course</th>
-                                        <th>Specialization</th>
+                                        <th>Sub Course</th>
                                         <th>Father Name</th>
                                         <th>Email Address</th>
                                         <th>Phone</th>
@@ -359,7 +571,7 @@ export default function AdminStudents() {
                                 </thead>
 
                                 <tbody>
-                                    {filteredStudents.widgets || filteredStudents.map((student, index) => (
+                                    {filteredStudents.map((student, index) => (
                                         <tr key={student._id}>
                                             <td className="admin-students-serial">
                                                 {index + 1}
@@ -387,11 +599,11 @@ export default function AdminStudents() {
                                                     : "-"}
                                             </td>
 
-                                            <td>{student.courseName || "-"}</td>
 
-                                            <td>
-                                                {student.specialization || "-"}
-                                            </td>
+
+                                            <td>{student.course || "-"}</td>
+
+                                            <td>{student.subCourse || "-"}</td>
 
                                             <td>{student.fatherName || "-"}</td>
 
@@ -433,6 +645,8 @@ export default function AdminStudents() {
                         </div>
                     )}
 
+
+                    {console.log(students)}
                     {filteredStudents.length > 0 && (
                         <div className="admin-students-list-footer">
                             Showing <strong>{filteredStudents.length}</strong>{" "}

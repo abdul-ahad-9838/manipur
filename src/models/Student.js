@@ -16,21 +16,30 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    rollNumber: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
     dob: {
       type: Date,
       required: true,
     },
-    courseName: {
+    course: {
       type: String,
       required: true,
     },
-    specialization: {
+    subCourse: {
       type: String,
       required: true,
     },
     fatherName: {
       type: String,
       required: true,
+    },
+    motherName: {
+      type: String,
     },
     emailAddress: {
       type: String,
@@ -40,6 +49,10 @@ const studentSchema = new mongoose.Schema(
     phone: {
       type: String,
       required: true,
+    },
+    aadharNumber: {
+      type: String,
+      trim: true,
     },
   },
   { timestamps: true },
