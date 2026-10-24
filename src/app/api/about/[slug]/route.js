@@ -41,3 +41,4 @@ export async function GET(request, { params }) {
     return NextResponse.json({ message: "Server error" }, { status: 500 });
   }
 }
+

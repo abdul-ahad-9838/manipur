@@ -1,22 +1,22 @@
-import Link from "next/link";
-import "@/styles/LeadershipDetail.css";
-import navbarItems from "@/data/navbarItems";
-import { notFound } from "next/navigation";
 
-export default async function LeadershipDetail({ leader }) {
-  const LEADERS_DATA =
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import navbarItems from "@/data/navbarItems";
+import "@/styles/LeadershipDetail.css";
+
+export default function LeadershipDetail({ leader }) {
+  const leaders =
     navbarItems
       .find((item) => item.label === "About Us")
-      ?.subItems?.find((item) => item.label === "Leadership")?.subItems || [];
+      ?.subItems?.find((item) => item.label === "Leadership")
+      ?.subItems || [];
 
-  if (!leader) {
-    notFound();
-  }
+  if (!leader) notFound();
 
   if (!leader.active) {
     return (
-      <div className="coming-soon-wrapper">
-        <h1 className="coming-soon">Coming Soon</h1>
+      <div className="coming-soon">
+        <h1>Coming Soon</h1>
       </div>
     );
   }
@@ -26,59 +26,44 @@ export default async function LeadershipDetail({ leader }) {
       <div className="leader-container">
         <div className="leader-card">
           {leader.image && (
-            <div className="leader-image-side">
-              <img
-                src={leader.image}
-                alt={leader.name}
-                className="leader-image"
-              />
+            <aside className="leader-sidebar">
+              <img src={leader.image ?? "/images/leader-placeholder.jpg"} alt={leader.name} />
 
-              <div className="leader-info">
-                <p className="leader-name">{leader.signature?.name}</p>
-                <p className="leader-role">{leader.role}</p>
-                <p className="leader-university">
-                  Manipur International University
-                </p>
-              </div>
-            </div>
+              <h3>{leader.signature?.name}</h3>
+              <p>{leader.role}</p>
+              <small>Manipur International University</small>
+            </aside>
           )}
 
           <div className="leader-content">
-            {!leader.image && (
-              <span className="leader-role-badge">{leader.role}</span>
-            )}
+            {!leader.image && <span>{leader.role}</span>}
 
-            <h2 className="leader-title">{leader.title}</h2>
-
-            <div className="leader-message">
-              {(leader.message || []).map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </div>
+            <h2>{leader.title}</h2>
+            
+            {(leader.message || []).map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </div>
 
         <div className="other-leaders">
           <h3>Other Leadership Messages</h3>
 
-          <div className="other-leaders-grid">
-            {LEADERS_DATA.map((l) => (
+          <div className="leaders-grid">
+            {leaders.map((item) => (
               <Link
-                key={l.href}
-                href={l.href || l.slug}
+                key={item.href || item.slug}
+                href={item.href || item.slug}
                 className="leader-link"
               >
                 <img
-                  src={
-                    l.image ||
-                    "https://i.pinimg.com/564x/57/00/c0/5700c04197ee9a4372a35ef16eb78f4e.jpg"
-                  }
-                  alt={l.label}
+                  src={item.image || "/images/leader-placeholder.jpg"}
+                  alt={item.label}
                 />
 
                 <div>
-                  <p className="leader-link-title">{l.label}</p>
-                  <p className="leader-link-text">Read message →</p>
+                  <strong>{item.label}</strong>
+                  <p>Read message →</p>
                 </div>
               </Link>
             ))}
