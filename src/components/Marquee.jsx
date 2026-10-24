@@ -83,12 +83,12 @@ const Marquee = () => {
             </div>
 
             {/* PDF comparison modal */}
-            <PdfCompareModal
+            {/* <PdfCompareModal
                 isOpen={isPdfOpen}
                 onClose={() => setIsPdfOpen(false)}
                 pdfList={pdfNotices}
                 selectedIndex={selectedPdfIndex}
-            />
+            /> */}
         </>
     );
 };
