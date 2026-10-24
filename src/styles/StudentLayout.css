@@ -1,0 +1,9 @@
+.student-layout {
+  margin-top: 180px;
+}
+
+@media (max-width: 1024px) {
+  .student-layout {
+    margin-top: 0;
+  }
+}

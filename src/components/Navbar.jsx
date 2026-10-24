@@ -164,14 +164,14 @@ const TopLinks = () => (
       <button className="login-dropdown-trigger">LOGIN ▾</button>
       <ul className="login-dropdown-menu">
         <li>
-          <a
-            href="https://student.miu.edu.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Student Portal"
+          <Link
+            href="/student-login"
+          // target="_blank"
+          // rel="noopener noreferrer"
+          // aria-label="Student Portal"
           >
             🎓 Student Login
-          </a>
+          </Link>
         </li>
         <li>
           <Link href="/admin/login" aria-label="Admin Portal">
