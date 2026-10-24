@@ -20,10 +20,14 @@ const navbarItems = [
             href: "/about/leadership/vice-chancellor",
             image: "/api/images/6a1e7e4cdcc1280cb214b4f5",
           },
-          { label: "Registrar", href: "/about/leadership/registrar" },
+          { label: "Registrar", 
+            // href: "/about/leadership/registrar" 
+            href: "#" 
+          },
           {
             label: "Controller of Examinations",
-            href: "/about/leadership/controller-of-examinations",
+            // href: "/about/leadership/controller-of-examinations",
+            href: "#",
           },
         ],
       },
