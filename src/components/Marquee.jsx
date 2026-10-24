@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import "@/styles/Marquee.css";
 import PdfCompareModal from "@/components/PdfCompareModal";
+import ImportantNoticePopup from "./ImportantNoticePopup";
 
 const announcements = [
     {
@@ -16,30 +17,18 @@ const announcements = [
     },
     {
         text: "SECURITY NOTIFICATION",
-        fileUrl: "/notice/Notice_24 Oct 2026 _2.pdf",
+        link: "/notices-and-announcements",
     },
     {
         text: "IMPORTANT NOTICE TO ALL ASSOCIATES",
-        fileUrl: "/notice/Notice_24 Oct 2026_1.pdf",
+        link: "/notices-and-announcements",
     },
 ];
 
 const Marquee = () => {
-    // Page load hote hi modal khula rakhne ke liye initial state true ki hai
-    const [isPdfOpen, setIsPdfOpen] = useState(true);
-    const [selectedPdfIndex, setSelectedPdfIndex] = useState(0);
 
     const marqueeItems = [...announcements, ...announcements];
-    const pdfNotices = announcements.filter((item) => item.fileUrl);
 
-    const handleNoticeClick = (item) => {
-        const index = pdfNotices.findIndex(
-            (notice) => notice.fileUrl === item.fileUrl
-        );
-
-        setSelectedPdfIndex(index >= 0 ? index : 0);
-        setIsPdfOpen(true);
-    };
 
     return (
         <>
@@ -81,6 +70,8 @@ const Marquee = () => {
                     })}
                 </div>
             </div>
+
+            <ImportantNoticePopup />
 
             {/* PDF comparison modal */}
             {/* <PdfCompareModal
