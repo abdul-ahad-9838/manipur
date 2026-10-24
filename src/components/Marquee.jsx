@@ -1,7 +1,6 @@
 "use client";
 
 import "@/styles/Marquee.css";
-import ImportantNoticePopup from "./ImportantNoticePopup";
 
 const announcements = [
     {
@@ -69,7 +68,6 @@ const Marquee = () => {
                 </div>
             </div>
 
-            <ImportantNoticePopup />
 
             {/* PDF comparison modal */}
             {/* <PdfCompareModal
