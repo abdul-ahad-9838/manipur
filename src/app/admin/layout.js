@@ -10,5 +10,5 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default function AdminLayout({ children }) {
-  return <>{children}</>;
+  return <main className="layout-margin">{children}</main>;
 }

@@ -1,9 +1,73 @@
+
 "use client";
 
 import React, { useContext, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
+
+const adminCards = [
+  {
+    href: "/admin/courses",
+    icon: "🎓",
+    title: "Manage Courses",
+    description: "Add, edit, or delete university programs and disciplines.",
+  },
+  {
+    href: "/admin/results",
+    icon: "📊",
+    title: "Manage Results",
+    description: "Add, edit, or delete examination results and links.",
+  },
+  {
+    href: "/admin/academic-calendar",
+    icon: "📅",
+    title: "Academic Calendar",
+    description: "Update academic calendar and semester schedules.",
+  },
+  {
+    href: "/admin/content",
+    icon: "🖼️",
+    title: "Site Content",
+    description: "Update Hero text, images, and other website sections.",
+  },
+  {
+    href: "/admin/blogs",
+    icon: "📝",
+    title: "Manage Blogs",
+    description: "Create, edit, publish or delete blog posts.",
+  },
+  {
+    href: "/admin/enquiries",
+    icon: "📋",
+    title: "Enquiries",
+    description: "View and manage student admission enquiries.",
+  },
+  {
+    href: "/admin/job-applications",
+    icon: "💼",
+    title: "Job Applications",
+    description: "Review, shortlist and manage career applications.",
+  },
+  {
+    href: "/admin/student",
+    icon: "👨‍🎓",
+    title: "Manage Students",
+    description: "View and manage student profiles and details.",
+  },
+];
+
+const cardStyle = {
+  background: "white",
+  padding: "40px",
+  borderRadius: "12px",
+  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+  textDecoration: "none",
+  color: "inherit",
+  textAlign: "center",
+  transition: "transform 0.3s ease",
+  display: "block",
+};
 
 const Dashboard = () => {
   const { user, logout, loading: authLoading } = useContext(AuthContext);
@@ -20,12 +84,14 @@ const Dashboard = () => {
     router.push("/admin/login");
   };
 
-  if (authLoading)
+  if (authLoading) {
     return (
       <div style={{ padding: "160px 20px", textAlign: "center" }}>
         Authenticating...
       </div>
     );
+  }
+
   if (!user) return null;
 
   return (
@@ -47,8 +113,9 @@ const Dashboard = () => {
           }}
         >
           <h1 style={{ fontSize: "2.5rem", fontWeight: "900" }}>
-            Welcome, {user?.name}
+            Welcome, {user.name}
           </h1>
+
           <button
             onClick={handleLogout}
             className="btn btn-black"
@@ -66,87 +133,25 @@ const Dashboard = () => {
             gap: "30px",
           }}
         >
-          <Link href="/admin/courses" className="admin-card" style={cardStyle}>
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>🎓</div>
-            <h3>Manage Courses</h3>
-            <p>Add, edit, or delete university programs and disciplines.</p>
-          </Link>
+          {adminCards.map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="admin-card"
+              style={cardStyle}
+            >
+              <div style={{ fontSize: "3rem", marginBottom: "15px" }}>
+                {card.icon}
+              </div>
 
-          <Link href="/admin/results" className="admin-card" style={cardStyle}>
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>📊</div>
-            <h3>Manage Results</h3>
-            <p>Add, edit, or delete examination results and links.</p>
-          </Link>
-
-          <Link
-            href="/admin/academic-calendar"
-            className="admin-card"
-            style={cardStyle}
-          >
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>📅</div>
-            <h3>Academic Calendar</h3>
-            <p>Update academic calendar and semester schedules.</p>
-          </Link>
-
-          <Link href="/admin/content" className="admin-card" style={cardStyle}>
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>🖼️</div>
-            <h3>Site Content</h3>
-            <p>Update Hero text, images, and other website sections.</p>
-          </Link>
-
-          <Link href="/admin/blogs" className="admin-card" style={cardStyle}>
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>📝</div>
-            <h3>Manage Blogs</h3>
-            <p>Create, edit, publish or delete blog posts.</p>
-          </Link>
-
-          <Link
-            href="/admin/enquiries"
-            className="admin-card"
-            style={cardStyle}
-          >
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>📋</div>
-            <h3>Enquiries</h3>
-            <p>View and manage student admission enquiries.</p>
-          </Link>
-
-          <Link
-            href="/admin/job-applications"
-            className="admin-card"
-            style={cardStyle}
-          >
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>💼</div>
-            <h3>Job Applications</h3>
-            <p>Review, shortlist and manage career applications.</p>
-          </Link>
-
-          {/* <Link href="/admin/pages" className="admin-card" style={cardStyle}>
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>📄</div>
-            <h3>Page Content</h3>
-            <p>Edit text, stats, and content for all website pages.</p>
-          </Link>
-
-          <Link href="/admin/seo" className="admin-card" style={cardStyle}>
-            <div style={{ fontSize: "3rem", marginBottom: "15px" }}>🔍</div>
-            <h3>SEO & Meta</h3>
-            <p>Optimize page titles, descriptions and metadata.</p>
-          </Link> */}
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
   );
-};
-
-const cardStyle = {
-  background: "white",
-  padding: "40px",
-  borderRadius: "12px",
-  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-  textDecoration: "none",
-  color: "inherit",
-  textAlign: "center",
-  transition: "transform 0.3s ease",
-  display: "block",
 };
 
 export default Dashboard;

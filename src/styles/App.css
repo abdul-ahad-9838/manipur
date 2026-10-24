@@ -363,6 +363,22 @@ body {
   .section-padding {
     padding: 50px 0 !important;
   }
+  .layout-margin-fix {
+    margin-top: 62px;
+  }
+  .splash-screen {
+    display: none;
+  }
+}
+
+.layout-margin {
+  margin-top: 180px;
+}
+
+@media (max-width: 1024px) {
+  .layout-margin {
+    margin-top: 0;
+  }
 }
 
 /* Merged: standalone @media (max-width: 480px) block + mobile overrides */
@@ -374,13 +390,4 @@ body {
 
 .layout-margin-fix {
   margin-top: 125px;
-}
-
-@media (max-width: 768px) {
-  .layout-margin-fix {
-    margin-top: 62px;
-  }
-  .splash-screen {
-    display: none;
-  }
 }
