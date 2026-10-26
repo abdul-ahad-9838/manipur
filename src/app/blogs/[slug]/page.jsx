@@ -1,19 +1,23 @@
+import dbConnect from "@/lib/mongodb";
+import Blog from "@/models/Blog";
 import "@/styles/Blog.css";
 import Image from "next/image";
 import Link from "next/link";
 
 async function getBlog(slug) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${slug}`,
-      {
-        next: { revalidate: 300 },
-      },
-    );
+    await dbConnect();
 
-    if (!res.ok) return null;
+    const blog = await Blog.findOne({ slug, published: true }).lean();
 
-    return res.json();
+    if (!blog) return null;
+
+    return {
+      ...blog,
+      _id: blog._id.toString(),
+      createdAt: blog.createdAt?.toISOString(),
+      updatedAt: blog.updatedAt?.toISOString(),
+    };
   } catch (error) {
     console.error(`Blog fetch failed: ${slug}:`, error);
     return null;
@@ -76,7 +80,7 @@ export default async function BlogPage({ params }) {
       <div className="blog-detail-loading">
         <p>Post not found.</p>
         <Link
-          href="/blog"
+          href="/blogs"
           className="btn btn-orange"
           style={{ marginTop: "20px", display: "inline-block" }}
         >
