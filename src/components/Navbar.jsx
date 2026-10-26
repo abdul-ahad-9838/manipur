@@ -282,10 +282,10 @@ const Navbar = () => {
           </nav>
 
           <div className="nav-actions">
-            <a
+            <Link
               href="#"
-              target="_blank"
-              rel="noopener noreferrer"
+              // target="_blank"
+              // rel="noopener noreferrer"
               className="apply-blink-btn main-nav-apply"
               aria-label="Apply Now"
               style={{ display: "flex", alignItems: "center", gap: "2px" }}
@@ -294,7 +294,7 @@ const Navbar = () => {
               <span style={{ fontSize: "10px", fontWeight: "bold" }}>
                 (UG/PG)
               </span>
-            </a>
+            </Link>
             <button
               className="hamburger-btn"
               onClick={() => setIsMenuOpen(!isMenuOpen)}

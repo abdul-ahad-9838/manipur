@@ -39,7 +39,7 @@ export default function LeadershipDetail({ leader }) {
             {!leader.image && <span>{leader.role}</span>}
 
             <h2>{leader.title}</h2>
-            
+
             {(leader.message || []).map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}

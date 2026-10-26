@@ -20,8 +20,8 @@ const StudentLoginButton = () => {
       <div className="apply-now-wrapper">
         <a
           href="#"
-          target="_blank"
-          rel="noopener noreferrer"
+        // target="_blank"
+        // rel="noopener noreferrer"
         >
           <button className="apply-now-button">
             Apply for PhD
