@@ -75,6 +75,7 @@ export default function AdminStudents() {
                 dob: form.dob,
             };
 
+
             if (editId) {
                 await API.put(`/students/${editId}`, payload);
                 toast.success("Student updated successfully.");
@@ -120,6 +121,27 @@ export default function AdminStudents() {
             top: 0,
             behavior: "smooth",
         });
+    };
+
+    const handleToggleActive = async (student) => {
+        const next = student.isActive === false; // false/missing-check: false tha to true, warna false
+
+        try {
+            const { data } = await API.patch(`/students/${student._id}`, {
+                isActive: next,
+            });
+
+
+            setStudents((prev) =>
+                prev.map((s) =>
+                    s._id === student._id ? { ...s, isActive: data.isActive } : s
+                )
+            );
+
+            toast.success(next ? "Student activated." : "Student deactivated.");
+        } catch (err) {
+            toast.error(err.response?.data?.message || "Error updating status.");
+        }
     };
 
     const handleDelete = async (id) => {
@@ -537,6 +559,7 @@ export default function AdminStudents() {
                         }}
                         onEdit={handleEdit}
                         onDelete={handleDelete}
+                        onToggleActive={handleToggleActive}
                     />
 
 

@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function StudentLogin() {
   const router = useRouter();
@@ -12,13 +13,11 @@ export default function StudentLogin() {
     dob: '',
   });
 
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setError('');
     setLoading(true);
 
     try {
@@ -33,14 +32,14 @@ export default function StudentLogin() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.message || 'Login failed');
+        toast.error(data.message || 'Login failed');
         return;
       }
 
       // Navigate to dashboard without a full page reload
       router.replace('/student/dashboard');
     } catch {
-      setError('Unable to connect. Please try again.');
+      toast.error('Unable to connect. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -95,25 +94,7 @@ export default function StudentLogin() {
           </h2>
         </div>
 
-        {error && (
-          <div
-            role="alert"
-            style={{
-              background: '#fff3cd',
-              border: '1px solid #ffc107',
-              borderRadius: '8px',
-              padding: '12px 16px',
-              marginBottom: '20px',
-              color: '#856404',
-              fontSize: '0.88rem',
-              fontFamily: 'var(--font-body)',
-              fontWeight: 400,
-              textTransform: 'none',
-            }}
-          >
-            {error}
-          </div>
-        )}
+
 
         <form
           onSubmit={handleSubmit}

@@ -14,9 +14,12 @@ export default function AdminStudentsTable({
     onAddStudent,
     onEdit,
     onDelete,
+    onToggleActive
 }) {
     const containerRef = useRef(null);
     const [scrollTop, setScrollTop] = useState(0);
+
+
 
     const totalRows = filteredStudents.length;
 
@@ -178,9 +181,11 @@ export default function AdminStudentsTable({
 
                             <td>
                                 {student.dob
-                                    ? new Date(
-                                        student.dob
-                                    ).toLocaleDateString()
+                                    ? new Date(student.dob).toLocaleDateString("en-GB", {
+                                        day: "2-digit",
+                                        month: "2-digit",
+                                        year: "numeric",
+                                    })
                                     : "-"}
                             </td>
 
@@ -196,25 +201,34 @@ export default function AdminStudentsTable({
                                 {student.phone || "-"}
                             </td>
 
-                            <td>
-                                <div className="admin-students-row-actions">
-                                    <button
-                                        type="button"
-                                        className="admin-students-action-btn admin-students-edit-btn"
-                                        onClick={() => onEdit(student)}
-                                    >
-                                        Edit
-                                    </button>
+                            <div className="admin-students-row-actions">
 
-                                    <button
-                                        type="button"
-                                        className="admin-students-action-btn admin-students-delete-btn"
-                                        onClick={() => onDelete(student._id)}
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-                            </td>
+                                <label className="admin-students-toggle">
+                                    <input
+                                        type="checkbox"
+                                        checked={student.isActive !== false}
+                                        onChange={() => onToggleActive(student)}
+                                        aria-label="Toggle active status"
+                                    />
+                                    <span className="admin-students-slider"></span>
+                                </label>
+
+                                <button
+                                    type="button"
+                                    className="admin-students-action-btn admin-students-edit-btn"
+                                    onClick={() => onEdit(student)}
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    type="button"
+                                    className="admin-students-action-btn admin-students-delete-btn"
+                                    onClick={() => onDelete(student._id)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
                         </tr>
                     ))}
 

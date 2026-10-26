@@ -35,28 +35,32 @@ export async function POST(request) {
 
     const {
       enrollmentNo,
+      rollNumber,
       admissionSession,
       name,
       dob,
-      courseName,
-      specialization,
+      course,
+      subCourse,
       fatherName,
+      motherName,
       emailAddress,
       phone,
+      aadharNumber,
     } = await request.json();
-
-    console.log(phone);
 
     const student = new Student({
       enrollmentNo,
+      rollNumber,
       admissionSession,
       name,
       dob,
-      courseName,
-      specialization,
+      course,
+      subCourse,
       fatherName,
+      motherName,
       emailAddress,
       phone,
+      aadharNumber,
     });
 
     const created = await student.save();

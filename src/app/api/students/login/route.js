@@ -9,6 +9,7 @@ export async function POST(request) {
     console.log("Enrollment:", enrollmentNo);
     console.log("DOB from frontend:", dob);
 
+    // Validate required fields
     if (
       typeof enrollmentNo !== "string" ||
       typeof dob !== "string" ||
@@ -35,7 +36,7 @@ export async function POST(request) {
     const month = Number(dobMatch[2]);
     const year = Number(dobMatch[3]);
 
-    // Build a UTC date and validate the calendar date.
+    // Validate calendar date using UTC
     const dobStart = new Date(Date.UTC(year, month - 1, day));
 
     if (
@@ -53,30 +54,46 @@ export async function POST(request) {
 
     await connectDB();
 
+    // Find student by enrollment number and DOB
     const student = await Student.findOne({
       enrollmentNo: enrollmentNo.trim(),
       dob: {
         $gte: dobStart,
         $lt: dobEnd,
       },
-    }).select("_id enrollmentNo name dob");
+    }).select("_id enrollmentNo name dob isActive");
 
-    console.log("Student found:", Boolean(student));
-
+    // Student not found
     if (!student) {
       return NextResponse.json(
         {
+          success: false,
           message: "Invalid enrollment number or date of birth",
         },
         { status: 401 },
       );
     }
 
+    // Block only students whose isActive is explicitly false.
+    // Missing isActive field is treated as active.
+    if (student.isActive === false) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "Your account is inactive. Please contact the administration.",
+        },
+        { status: 403 },
+      );
+    }
+
+    // Login successful
     const response = NextResponse.json({
       success: true,
       message: "Login successful",
     });
 
+    // Set authentication cookie
     response.cookies.set("student_auth", String(student.enrollmentNo), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
