@@ -17,13 +17,16 @@ export async function getHomepageData() {
       FAQ.find().lean(),
     ]);
 
-  return {
+  const data = {
     hero: hero?.content ?? {},
     spotlight: spotlight?.content ?? {},
     campus: campus?.content ?? {},
     placements: placements?.content ?? {},
     ecosystem: ecosystem?.content ?? {},
-    blogs,
-    faqs,
+    blogs: blogs ?? [],
+    faqs: faqs ?? [],
   };
+
+  // Convert MongoDB values into plain JSON-compatible values
+  return JSON.parse(JSON.stringify(data));
 }

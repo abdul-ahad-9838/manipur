@@ -10,23 +10,23 @@ const DEFAULT_CONTENT = {
   images: [
     {
       src: "/hero/homepage_03.webp",
-      url: "https://admission.miu.edu.in/",
+      // url: "https://admission.miu.edu.in/",
     },
     {
       src: "/hero/homepage_01.webp",
-      url: "https://admission.miu.edu.in/",
+      // url: "https://admission.miu.edu.in/",
     },
     {
       src: "/hero/homepage_02.webp",
-      url: "https://admission.miu.edu.in/",
+      // url: "https://admission.miu.edu.in/",
     },
     {
       src: "/hero/homepage_01.webp",
-      url: "https://admission.miu.edu.in/",
+      // url: "https://admission.miu.edu.in/",
     },
     {
       src: "/hero/homepage_04.webp",
-      url: "https://research.miu.edu.in/",
+      // url: "https://research.miu.edu.in/",
     },
   ],
 };

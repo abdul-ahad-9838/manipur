@@ -41,7 +41,7 @@ export default function TermsOfUsePage() {
                 These Terms and Conditions govern your use of the official
                 website of{" "}
                 <strong>Manipur International University (MIU)</strong>{" "}
-                (www.miu.edu.in). By accessing or using this website, you agree
+                (www.miu.co.in). By accessing or using this website, you agree
                 to be bound by these Terms and Conditions. If you do not agree
                 with any part of these terms, you are advised not to use the
                 website.

@@ -8,8 +8,8 @@ const StudentLoginButton = () => {
       <div className="student-login-wrapper">
         <Link
           href="/student-login"
-          target="_blank"
-          rel="noopener noreferrer"
+        // target="_blank"
+        // rel="noopener noreferrer"
         >
           <button className="student-login-button">
             Student Login
@@ -19,7 +19,7 @@ const StudentLoginButton = () => {
       {/* Apply Now */}
       <div className="apply-now-wrapper">
         <a
-          href="https://research.miu.edu.in/"
+          href="#"
           target="_blank"
           rel="noopener noreferrer"
         >

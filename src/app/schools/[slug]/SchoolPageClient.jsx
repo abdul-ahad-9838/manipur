@@ -658,7 +658,9 @@ export default function SchoolPage() {
 
     return (
         <div className="school-page">
-            <BannerSection data={schoolData} url="https://admission.miu.edu.in" />
+            <BannerSection data={schoolData}
+            //  url="https://admission.miu.edu.in"
+            />
 
             {/* Highlights */}
             <section className="sp-section sp-section-alt">
@@ -816,7 +818,7 @@ export default function SchoolPage() {
                         </p>
                     </div>
                     <div className="sp-cta-btns">
-                        <a
+                        {/* <a
                             href="https://admission.miu.edu.in"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -824,7 +826,7 @@ export default function SchoolPage() {
                             style={{ background: "white", color: schoolData.color }}
                         >
                             Apply Now
-                        </a>
+                        </a> */}
                         <Link
                             href="/contact"
                             className="btn"

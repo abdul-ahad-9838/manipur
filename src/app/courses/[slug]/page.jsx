@@ -103,7 +103,9 @@ export default async function CourseDetail({ params }) {
 
   return (
     <div className="cd-page">
-      <BannerSection data={course} url="https://admission.miu.edu.in" />
+      <BannerSection data={course}
+      // url="https://admission.miu.edu.in" 
+      />
 
       <div className="container cd-body">
         <div className="cd-main">
@@ -238,7 +240,7 @@ export default async function CourseDetail({ params }) {
               )}
             </ul>
 
-            <a
+            {/* <a
               href="https://admission.miu.edu.in"
               target="_blank"
               rel="noopener noreferrer"
@@ -250,7 +252,7 @@ export default async function CourseDetail({ params }) {
               }}
             >
               Apply Now
-            </a>
+            </a> */}
           </div>
         </aside>
       </div>

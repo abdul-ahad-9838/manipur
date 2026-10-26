@@ -20,9 +20,10 @@ const navbarItems = [
             href: "/about/leadership/vice-chancellor",
             image: "/api/images/6a1e7e4cdcc1280cb214b4f5",
           },
-          { label: "Registrar", 
-            // href: "/about/leadership/registrar" 
-            href: "#" 
+          {
+            label: "Registrar",
+            // href: "/about/leadership/registrar"
+            href: "#",
           },
           {
             label: "Controller of Examinations",
@@ -155,18 +156,13 @@ const navbarItems = [
       { label: "Development Cell", href: "/research/development-cell" },
       { label: "Projects", href: "/research/projects" },
       { label: "Publications", href: "/research/publications" },
-      {
-        label: "Apply for PhD",
-        href: "https://research.miu.edu.in/",
-        target: "_blank",
-      },
     ],
   },
   {
     label: "Examination",
     subItems: [
       { label: "Results", href: "/examination/results" },
-      { label: "Apply for Examinations", href: "https://exam.miu.edu.in/" },
+      { label: "Apply for Examinations", href: "#" },
     ],
   },
   {

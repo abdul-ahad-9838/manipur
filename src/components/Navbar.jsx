@@ -283,7 +283,7 @@ const Navbar = () => {
 
           <div className="nav-actions">
             <a
-              href="https://admission.miu.edu.in"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="apply-blink-btn main-nav-apply"
@@ -339,13 +339,13 @@ const Navbar = () => {
             <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
               BLOGS
             </Link>
-            <a
-              href="https://student.miu.edu.in"
+            <Link
+              href="/student-login"
               target="_blank"
               rel="noopener noreferrer"
             >
               STUDENT LOGIN
-            </a>
+            </Link>
             <Link href="/admin/login" onClick={() => setIsMenuOpen(false)}>
               STAFF LOGIN
             </Link>

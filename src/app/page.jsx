@@ -31,23 +31,6 @@ export const metadata = {
   },
 };
 
-// async function getHomepageData() {
-//   try {
-//     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage`,
-//       {
-//         next: { revalidate: 300 },
-//       },
-//     );
-
-//     if (!res.ok) return null;
-
-//     return res.json();
-//   } catch (error) {
-//     console.error("Homepage data fetch failed:", error);
-//     return null;
-//   }
-// }
 
 export default async function Home() {
   const results = await getHomepageData();

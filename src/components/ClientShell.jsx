@@ -37,7 +37,7 @@ export default function ClientShell({ children }) {
       <EnquiryProvider>
         <AdminTopBar />
 
-      
+
         <ImportantNoticePopup />
 
 
@@ -49,7 +49,7 @@ export default function ClientShell({ children }) {
         {/* <WhatsAppButton /> */}
         <StudentLoginButton />
         {/* <EnquiryPopup /> */}
-        <MobileBottomNav />
+        {/* <MobileBottomNav /> */}
       </EnquiryProvider>
     </AuthProvider>
   );

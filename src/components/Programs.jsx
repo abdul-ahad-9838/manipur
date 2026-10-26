@@ -135,7 +135,7 @@ export default async function Programs() {
 
                 <div className="program-footer">
                   {school.externalUrl ||
-                  school.slug === "school-of-vocational-studies" ? (
+                    school.slug === "school-of-vocational-studies" ? (
                     <a
                       href={
                         school.externalUrl || "https://vocational.miu.edu.in/"

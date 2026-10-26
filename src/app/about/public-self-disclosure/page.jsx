@@ -310,11 +310,11 @@ export default function PublicSelfDisclosurePage() {
             <br />
             Website:{" "}
             <a
-              href="https://www.miu.edu.in"
+              href="https://www.miu.co.in"
               target="_blank"
               rel="noopener noreferrer"
             >
-              www.miu.edu.in
+              www.miu.co.in
             </a>
           </p>
         </div>

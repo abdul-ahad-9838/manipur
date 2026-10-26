@@ -49,8 +49,8 @@ export default function NewsSlider({ blogs = [] }) {
   return (
     <section
       className="ns-section"
-    // onMouseEnter={() => setPaused(true)}
-    // onMouseLeave={() => setPaused(false)}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
       {/* Ticker */}
       <div className="ns-ticker">
