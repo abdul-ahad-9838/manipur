@@ -201,7 +201,7 @@ export default function AdminStudentsTable({
                                 {student.phone || "-"}
                             </td>
 
-                            <div className="admin-students-row-actions">
+                            <td className="admin-students-row-actions">
 
                                 <label className="admin-students-toggle">
                                     <input
@@ -228,7 +228,7 @@ export default function AdminStudentsTable({
                                 >
                                     Delete
                                 </button>
-                            </div>
+                            </td>
                         </tr>
                     ))}
 
