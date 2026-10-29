@@ -257,7 +257,6 @@ export default function AdminBlogs() {
   return (
     <div
       style={{
-        padding: "clamp(100px,15vw,160px) 20px 60px",
         minHeight: "80vh",
         background: "#f8f9fa",
       }}

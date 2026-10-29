@@ -6,10 +6,10 @@ import { AuthContext } from '@/context/AuthContext';
 import API from '@/lib/api';
 
 const STATUS_COLORS = {
-  new:         { bg: '#fff3cd', color: '#856404' },
-  reviewing:   { bg: '#cce5ff', color: '#004085' },
+  new: { bg: '#fff3cd', color: '#856404' },
+  reviewing: { bg: '#cce5ff', color: '#004085' },
   shortlisted: { bg: '#d4edda', color: '#155724' },
-  rejected:    { bg: '#f8d7da', color: '#721c24' },
+  rejected: { bg: '#f8d7da', color: '#721c24' },
 };
 
 export default function AdminJobApplications() {
@@ -59,7 +59,7 @@ export default function AdminJobApplications() {
   if (authLoading || !user) return <div style={{ padding: '160px 20px', textAlign: 'center' }}>Loading...</div>;
 
   return (
-    <div style={{ padding: 'clamp(100px,15vw,160px) 20px 60px', minHeight: '80vh', background: '#f8f9fa' }}>
+    <div style={{ minHeight: '80vh' }}>
       <div className="container">
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap', gap: '15px' }}>
@@ -96,7 +96,7 @@ export default function AdminJobApplications() {
               background: jobFilter === j ? 'var(--lpu-black)' : 'white',
               color: jobFilter === j ? 'white' : '#555',
             }}>
-              {j === 'all' ? 'All Positions' : j.replace('Assistant Professor – ', 'Asst. Prof – ')}
+              {j === 'all' ? 'All Positions' : j?.replace('Assistant Professor – ', 'Asst. Prof – ')}
             </button>
           ))}
         </div>

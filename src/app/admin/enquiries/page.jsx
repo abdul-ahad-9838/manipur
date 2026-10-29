@@ -6,9 +6,9 @@ import { AuthContext } from '@/context/AuthContext';
 import API from '@/lib/api';
 
 const STATUS_COLORS = {
-  new:       { bg: '#fff3cd', color: '#856404' },
+  new: { bg: '#fff3cd', color: '#856404' },
   contacted: { bg: '#cce5ff', color: '#004085' },
-  closed:    { bg: '#d4edda', color: '#155724' },
+  closed: { bg: '#d4edda', color: '#155724' },
 };
 
 export default function AdminEnquiries() {
@@ -52,7 +52,7 @@ export default function AdminEnquiries() {
   if (authLoading || !user) return <div style={{ padding: '160px 20px', textAlign: 'center' }}>Loading...</div>;
 
   return (
-    <div style={{ padding: 'clamp(100px,15vw,160px) 20px 60px', minHeight: '80vh', background: '#f8f9fa' }}>
+    <div style={{ minHeight: '80vh' }}>
       <div className="container">
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap', gap: '15px' }}>

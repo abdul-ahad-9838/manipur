@@ -150,11 +150,7 @@ export default function AdminNoticesPage() {
 
   return (
     <div
-      style={{
-        padding: "clamp(100px,15vw,160px) 20px 60px",
-        minHeight: "80vh",
-        background: "#f8f9fa",
-      }}
+      style={{ minHeight: "80vh" }}
     >
       <div className="container">
         {/* HEADER */}

@@ -94,7 +94,7 @@ export default function AdminFAQ() {
 
   return (
     <div className="faq-page">
-      <div className="container faq-container">
+      <div className="container">
         <div className="faq-top-row">
           <h1>❓ Manage FAQs</h1>
           <div className="faq-actions-top">

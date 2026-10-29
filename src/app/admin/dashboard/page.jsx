@@ -96,11 +96,8 @@ const Dashboard = () => {
 
   return (
     <div
-      className="admin-dashboard"
       style={{
-        padding: "160px 20px",
         minHeight: "80vh",
-        background: "#f8f9fa",
       }}
     >
       <div className="container">

@@ -389,9 +389,7 @@ export default function CoursesManager() {
   return (
     <div
       style={{
-        padding: "clamp(100px,15vw,160px) 20px 60px",
         minHeight: "100vh",
-        background: "#f8f9fa",
       }}
     >
       <div className="container">
