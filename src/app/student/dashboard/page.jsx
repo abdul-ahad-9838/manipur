@@ -45,10 +45,11 @@ export default async function StudentDashboard() {
         return `${day}-${month}-${year}`;
     };
 
+
     const fields = [
         { label: "Student Name", value: student.name },
         { label: "Enrollment Number", value: student.enrollmentNo },
-        { label: "Admission Session", value: student.admissionSession },
+        { label: "Admission Session", value: student.admissionSession.split('(CT)')[0] },
         { label: "Date of Birth", value: formatDate(student.dob) },
         { label: "Course", value: student.course },
         { label: "Sub Course", value: student.subCourse },

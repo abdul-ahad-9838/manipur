@@ -195,7 +195,7 @@ function Hero() {
           border: "none",
           background: "rgb(14 1 1 / 49%)",
           color: "#fff",
-          cursor: isAnimating ? "not-allowed" : "pointer",
+          cursor: "pointer",
           fontSize: "22px",
           opacity: isAnimating ? 0.6 : 1,
         }}
@@ -221,7 +221,7 @@ function Hero() {
           border: "none",
           background: "rgb(14 1 1 / 49%)",
           color: "#fff",
-          cursor: isAnimating ? "not-allowed" : "pointer",
+          cursor: "pointer",
           fontSize: "22px",
           opacity: isAnimating ? 0.6 : 1,
         }}

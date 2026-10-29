@@ -188,25 +188,25 @@ export default function AdminStudents() {
     ];
 
     const fields = [
-        { name: "enrollmentNo", label: "Enrollment No", type: "text" },
+        { name: "enrollmentNo", label: "Enrollment No", type: "text", required: true },
         { name: "rollNumber", label: "Roll Number", type: "text" },
         {
             name: "admissionSession",
             label: "Admission Session",
             type: "text",
             placeholder: "2026-27",
+            required: true,
         },
-        { name: "name", label: "Student Name", type: "text" },
-        { name: "fatherName", label: "Father Name", type: "text" },
+        { name: "name", label: "Student Name", type: "text", required: true },
+        { name: "fatherName", label: "Father Name", type: "text", required: true },
         { name: "motherName", label: "Mother Name", type: "text" },
-        { name: "dob", label: "Date of Birth", type: "date" },
-        { name: "course", label: "Course", type: "text" },
-        { name: "subCourse", label: "Sub Course", type: "text" },
-        { name: "emailAddress", label: "Email Address", type: "email" },
-        { name: "phone", label: "Contact Number", type: "tel" },
+        { name: "dob", label: "Date of Birth", type: "date", required: true },
+        { name: "course", label: "Course", type: "text", required: true },
+        { name: "subCourse", label: "Sub Course", type: "text", required: true },
+        { name: "emailAddress", label: "Email Address", type: "email", required: true },
+        { name: "phone", label: "Contact Number", type: "tel", required: true },
         { name: "aadharNumber", label: "Aadhar Number", type: "text" },
     ];
-
 
 
     const handleExcelImport = async (e) => {
@@ -452,9 +452,11 @@ export default function AdminStudents() {
                                 >
                                     <label htmlFor={`student-${field.name}`}>
                                         {field.label}
-                                        <span className="admin-students-required">
-                                            *
-                                        </span>
+                                        {field.required && (
+                                            <span className="admin-students-required">
+                                                *
+                                            </span>
+                                        )}
                                     </label>
 
                                     <input
@@ -467,7 +469,7 @@ export default function AdminStudents() {
                                             field.placeholder ||
                                             `Enter ${field.label}`
                                         }
-                                        required
+                                        required={field.required}
                                     />
                                 </div>
                             ))}
