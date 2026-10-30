@@ -323,7 +323,7 @@ export default function ContactUsPage() {
                         value={form.phone}
                         onChange={handleChange}
                         required
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 XXXXX XXXXX"
                       />
                     </div>
                     <div className="form-group-new">
