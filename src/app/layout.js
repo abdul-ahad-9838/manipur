@@ -6,22 +6,6 @@ import { Toaster } from "react-hot-toast";
 
 import "@/styles/App.css";
 
-// // ✅ Next.js fonts (CWV optimized)
-// import { Oswald, Roboto } from "next/font/google";
-
-// const roboto = Roboto({
-//   subsets: ["latin"],
-//   weight: ["300", "400", "500", "700", "900"],
-//   display: "swap",
-// });
-
-// const oswald = Oswald({
-//   subsets: ["latin"],
-//   weight: ["400", "500", "700"],
-//   display: "swap",
-//   variable: "--font-oswald",
-// });
-
 export const metadata = {
   metadataBase: new URL("https://miu.co.in"),
   title: {
@@ -75,7 +59,7 @@ export const metadata = {
     canonical: "https://miu.co.in",
   },
   verification: {
-    google: "XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns",
+    google: "bvdiZM5I8TrPsH3J2EUvlurPMXBSV1r0dXXPpiNQUg",
   },
 };
 
@@ -91,7 +75,7 @@ export default function RootLayout({ children }) {
 
         <meta
           name="google-site-verification"
-          content="XP8pdLn7lfNrv5b-6sttVAeGaD4bWavSjhrBWYEGVns"
+          content="bvdiZM5I8TrPsH3J2EUvlurPMXBSV1r0dXXPpiNQUg"
         />
 
         <meta
@@ -121,7 +105,7 @@ export default function RootLayout({ children }) {
 
         {/* ✅ Proper Next.js Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-5XNC75T6EH"
+          src="https://www.googletagmanager.com/gtag/js?id=G-8NCEF885M0"
           strategy="afterInteractive"
         />
 
@@ -130,7 +114,7 @@ export default function RootLayout({ children }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-5XNC75T6EH');
+            gtag('config', 'G-8NCEF885M0');
           `}
         </Script>
       </body>
