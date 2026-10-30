@@ -42,11 +42,11 @@ export default function AdminJobApplications() {
     setApps(prev => prev.map(a => a._id === id ? { ...a, status } : a));
   };
 
-  const deleteApp = async (id) => {
-    if (!confirm('Delete this application?')) return;
-    await API.delete(`/job-applications/${id}`);
-    setApps(prev => prev.filter(a => a._id !== id));
-  };
+  // const deleteApp = async (id) => {
+  //   if (!confirm('Delete this application?')) return;
+  //   await API.delete(`/job-applications/${id}`);
+  //   setApps(prev => prev.filter(a => a._id !== id));
+  // };
 
   const jobs = ['all', ...new Set(apps.map(a => a.jobTitle))];
 
@@ -150,7 +150,7 @@ export default function AdminJobApplications() {
                   <button onClick={() => setExpanded(expanded === app._id ? null : app._id)} className="btn btn-black" style={{ padding: '7px 14px', fontSize: '0.82rem' }}>
                     {expanded === app._id ? 'Less' : 'More'}
                   </button>
-                  <button onClick={() => deleteApp(app._id)} style={{ padding: '7px 12px', background: '#fee', border: '1px solid #fcc', borderRadius: '8px', cursor: 'pointer', fontSize: '0.82rem', color: '#c00', fontWeight: '700' }}>✕</button>
+                  {/* <button onClick={() => deleteApp(app._id)} style={{ padding: '7px 12px', background: '#fee', border: '1px solid #fcc', borderRadius: '8px', cursor: 'pointer', fontSize: '0.82rem', color: '#c00', fontWeight: '700' }}>✕</button> */}
                 </div>
               </div>
 

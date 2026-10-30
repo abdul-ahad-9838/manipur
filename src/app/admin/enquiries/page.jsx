@@ -41,11 +41,11 @@ export default function AdminEnquiries() {
     setEnquiries(prev => prev.map(e => e._id === id ? { ...e, status } : e));
   };
 
-  const deleteEnquiry = async (id) => {
-    if (!confirm('Delete this enquiry?')) return;
-    await API.delete(`/enquiries/${id}`);
-    setEnquiries(prev => prev.filter(e => e._id !== id));
-  };
+  // const deleteEnquiry = async (id) => {
+  //   if (!confirm('Delete this enquiry?')) return;
+  //   await API.delete(`/enquiries/${id}`);
+  //   setEnquiries(prev => prev.filter(e => e._id !== id));
+  // };
 
   const filtered = filter === 'all' ? enquiries : enquiries.filter(e => e.status === filter);
 
@@ -129,7 +129,7 @@ export default function AdminEnquiries() {
                   <option value="closed">Closed</option>
                 </select>
                 <a href={`tel:${enq.phone}`} className="btn btn-orange" style={{ padding: '7px 14px', fontSize: '0.82rem' }}>Call</a>
-                <button onClick={() => deleteEnquiry(enq._id)} className="btn btn-black" style={{ padding: '7px 14px', fontSize: '0.82rem' }}>Delete</button>
+                {/* <button onClick={() => deleteEnquiry(enq._id)} className="btn btn-black" style={{ padding: '7px 14px', fontSize: '0.82rem' }}>Delete</button> */}
               </div>
             </div>
           ))}
