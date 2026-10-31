@@ -58,9 +58,6 @@ export const metadata = {
   alternates: {
     canonical: "https://miu.co.in",
   },
-  verification: {
-    google: "bvdiZM5I8TrPsH3J2EUvlurPMXBSV1r0dXXPpiNQUg",
-  },
 };
 
 export default function RootLayout({ children }) {
