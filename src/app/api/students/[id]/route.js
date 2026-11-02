@@ -28,14 +28,17 @@ export async function PUT(request, { params }) {
 
     const allowedFields = [
       "enrollmentNo",
+      "rollNumber",
       "admissionSession",
       "name",
       "dob",
-      "courseName",
-      "specialization",
+      "course",
+      "subCourse",
       "fatherName",
+      "motherName",
       "emailAddress",
       "phone",
+      "aadharNumber",
     ];
 
     const updateData = {};
@@ -50,7 +53,7 @@ export async function PUT(request, { params }) {
       id,
       { $set: updateData },
       {
-        new: true,
+        returnDocument: "after",
         runValidators: true,
       },
     );

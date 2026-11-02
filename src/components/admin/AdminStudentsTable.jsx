@@ -93,6 +93,7 @@ export default function AdminStudentsTable({
         "Course",
         "Sub Course",
         "Father Name",
+        "Mother Name",
         "Email Address",
         "Phone",
         "Actions",
@@ -192,6 +193,7 @@ export default function AdminStudentsTable({
                             <td>{student.course || "-"}</td>
                             <td>{student.subCourse || "-"}</td>
                             <td>{student.fatherName || "-"}</td>
+                            <td>{student.motherName || "-"}</td>
 
                             <td className="admin-students-email">
                                 {student.emailAddress || "-"}
