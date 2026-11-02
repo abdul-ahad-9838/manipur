@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import ProgramsExplorer from "@/components/programs-filter/ProgramsExplorer";
 import "@/styles/programs-filter.css";
+import dbConnect from "@/lib/mongodb";
+import Course from "@/models/Course";
 
 const page = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`, {
-    cache: "no-store",
-  });
-  const result = await res.json();
+  await dbConnect();
+  const result = await Course.find({}, { _id: 0, __v: 0 }).lean().exec();
 
   // Handles either a raw array response or a { data: [...] } wrapper.
   const programs = (Array.isArray(result) ? result : result?.data || []).filter(
@@ -14,13 +14,7 @@ const page = async () => {
   );
 
   return (
-    <main className="layout-margin-fix">
-      {/* Suspense is required here: ProgramsExplorer reads the URL via
-          useSearchParams() to restore filters on load/refresh/shared
-          links, and Next.js requires that hook's nearest client
-          boundary to be wrapped in Suspense. This is also what makes a
-          direct visit like /schools-test?level=Bachelor%27s apply that
-          filter immediately on load — see the note below. */}
+    <main className="layout-margin">
       <Suspense fallback={<ProgramsLoadingFallback />}>
         <ProgramsExplorer programs={programs} />
       </Suspense>
