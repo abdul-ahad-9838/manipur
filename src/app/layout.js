@@ -72,7 +72,7 @@ export default function RootLayout({ children }) {
 
         <meta
           name="google-site-verification"
-          content="bvdiZM5I8TrPsH3J2EUvlurPMXBSV1r0dXXPpiNQUg"
+          content="1bvdiZM5I8TrPsH3J2EUvlurPMXBSV1r0dXXPpiNQUg"
         />
 
         <meta
