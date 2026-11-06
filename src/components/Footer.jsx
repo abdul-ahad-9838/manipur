@@ -14,7 +14,7 @@ const FOOTER_DATA = {
   // twitter: "https://x.com/MIU_India",
   // linkedin:
   //   "https://www.linkedin.com/company/manipur-international-university-official/",
-  instagram: "https://www.instagram.com/miuindiaofficial",
+  instagram: "https://www.instagram.com/manipurinternationaluniversity?exln=MTM1dGhzZmE5a2Vzbg==",
   // youtube: "https://www.youtube.com/@ManipurInternationalUniversity",
   // pinterest:
   //   "https://in.pinterest.com/manipurinternationaluniversity",
