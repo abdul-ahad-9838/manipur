@@ -1,9 +1,9 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import "@/styles/ImportantNoticePopup.css";
+import Image from "next/image";
 
 const IS_ACTIVE = true;
 
@@ -22,9 +22,7 @@ export default function ImportantNoticePopup() {
   return (
     <div
       className="notice-overlay"
-      onClick={(e) =>
-        e.target === e.currentTarget && handleClose()
-      }
+      onClick={(e) => e.target === e.currentTarget && handleClose()}
     >
       <div
         className="notice-modal"
@@ -41,9 +39,8 @@ export default function ImportantNoticePopup() {
         </button>
 
         <div className="notice-body">
-
           {/* NOTICE 1: SECURITY NOTIFICATION */}
-          <section className="notice-section">
+          {/* <section className="notice-section">
             <div className="notice-header">
               <div className="notice-badge">
                 ⚠️ OFFICIAL SECURITY NOTIFICATION
@@ -116,8 +113,19 @@ export default function ImportantNoticePopup() {
               <br />
               Manipur International University
             </div>
-          </section>
+          </section> */}
 
+          <Image
+            src="/notice/webinar.webp"
+            alt="Webinar"
+            width={1200}
+            height={675}
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+            }}
+          />
         </div>
       </div>
     </div>
