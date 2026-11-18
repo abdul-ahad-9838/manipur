@@ -6,9 +6,6 @@ export async function POST(request) {
   try {
     const { enrollmentNo, dob } = await request.json();
 
-    console.log("Enrollment:", enrollmentNo);
-    console.log("DOB from frontend:", dob);
-
     // Validate required fields
     if (
       typeof enrollmentNo !== "string" ||
