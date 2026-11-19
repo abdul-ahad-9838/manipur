@@ -195,10 +195,10 @@ const navbarItems = [
     label: "Notices",
     href: "/notices-and-announcements",
   },
-  {
-    label: "Pay Online",
-    href: "/payonline",
-  },
+  // {
+  //   label: "Pay Online",
+  //   href: "/payonline",
+  // },
   {
     label: "Contact Us",
     href: "/contact",
