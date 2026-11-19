@@ -20,6 +20,7 @@ const StudentLoginButton = () => {
       <div className="apply-now-wrapper">
         <a
           href="#"
+        // href="https://research.miu.edu.in/"
         // target="_blank"
         // rel="noopener noreferrer"
         >

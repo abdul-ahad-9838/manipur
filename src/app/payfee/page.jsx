@@ -3,19 +3,49 @@
 import React, { useState } from "react";
 import "@/styles/PayOnline.css";
 
-const PAYMENT_AMOUNT = 10000;
-const PAYMENT_PURPOSE = "Verification Fee";
-
 export default function PayOnlinePage() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
     email: "",
+    amount: "",
+    purpose: "",
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
+
+  // Purpose and amount
+  // amount: null means user can enter the amount manually
+  const purposes = [
+    { name: "Tution Fee", amount: null },
+    { name: "Exam Fee", amount: 1000 },
+    { name: "Degree (UG/PG)", amount: 3000 },
+    { name: "Degree (UG/PG) (Urgent)", amount: 6000 },
+    { name: "Degree (Ph.D)", amount: 5000 },
+    { name: "Degree (Ph.D) (Urgent)", amount: 10000 },
+    { name: "Provisional Certificate (UG/PG)", amount: 1500 },
+    { name: "Provisional Certificate (UG/PG) (Urgent)", amount: 3000 },
+    { name: "Provisional Certificate (Ph.D)", amount: 2000 },
+    { name: "Migration Certificate", amount: 1000 },
+    { name: "Migration Certificate (Urgent)", amount: 3000 },
+    { name: "Character Certificate", amount: 1000 },
+    { name: "Transcript", amount: 1000 },
+    { name: "Transcript (Urgent)", amount: 3000 },
+    { name: "LOR/MOI/Backlog", amount: 1000 },
+    { name: "WES", amount: 10000 },
+    { name: "Verification", amount: 10000 },
+    { name: "Notification Ph.D", amount: 2000 },
+    { name: "Pre-Submission Fee", amount: 25000 },
+    { name: "Duplicate ID Card", amount: 200 },
+    { name: "Bonafide Certificate", amount: 1000 },
+    { name: "Alumni Fee", amount: 5000 },
+    // old fee structure
+    { name: "Registration Fee", amount: null },
+    { name: "Authorization Fee", amount: null },
+    { name: "Others", amount: null },
+  ];
 
   const validate = () => {
     const e = {};
@@ -32,8 +62,21 @@ export default function PayOnlinePage() {
 
     if (!form.email.trim()) {
       e.email = "Email ID is required";
-    } else if (!/\S+@\S+\.\S+/.test(form.email.trim())) {
+    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
       e.email = "Enter a valid email address";
+    }
+
+    if (!form.amount.trim()) {
+      e.amount = "Amount is required";
+    } else if (
+      isNaN(form.amount) ||
+      parseFloat(form.amount) <= 0
+    ) {
+      e.amount = "Enter a valid amount";
+    }
+
+    if (!form.purpose.trim()) {
+      e.purpose = "Purpose is required";
     }
 
     return e;
@@ -55,12 +98,46 @@ export default function PayOnlinePage() {
     setServerError("");
   };
 
+  const handlePurposeChange = (e) => {
+    const purpose = e.target.value;
+
+    const selectedPurpose = purposes.find(
+      (item) => item.name === purpose
+    );
+
+    setForm((prev) => ({
+      ...prev,
+      purpose,
+      amount:
+        selectedPurpose?.amount !== null &&
+          selectedPurpose?.amount !== undefined
+          ? selectedPurpose.amount.toString()
+          : "",
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      purpose: "",
+      amount: "",
+    }));
+
+    setServerError("");
+  };
+
+  const selectedPurpose = purposes.find(
+    (item) => item.name === form.purpose
+  );
+
+  const isAmountFixed =
+    selectedPurpose?.amount !== null &&
+    selectedPurpose?.amount !== undefined;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errs = validate();
 
-    if (Object.keys(errs).length > 0) {
+    if (Object.keys(errs).length) {
       setErrors(errs);
       return;
     }
@@ -69,18 +146,12 @@ export default function PayOnlinePage() {
     setServerError("");
 
     try {
-      const res = await fetch("/api/payment/initiate", {
+      const res = await fetch("/api/payment/initiate2", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          phone: form.phone.trim(),
-          email: form.email.trim(),
-          amount: PAYMENT_AMOUNT,
-          purpose: PAYMENT_PURPOSE,
-        }),
+        body: JSON.stringify(form),
       });
 
       const data = await res.json();
@@ -94,7 +165,7 @@ export default function PayOnlinePage() {
       }
 
       window.location.href = data.redirectUrl;
-    } catch (error) {
+    } catch {
       setServerError("Network error. Please try again.");
       setLoading(false);
     }
@@ -103,6 +174,7 @@ export default function PayOnlinePage() {
   return (
     <div className="pay-page">
       <div className="pay-card">
+
         {/* Header */}
         <div className="pay-header">
           <div className="pay-logo-wrap">
@@ -113,7 +185,9 @@ export default function PayOnlinePage() {
             />
           </div>
 
-          <h1 className="pay-title">Online Payment</h1>
+          <h1 className="pay-title">
+            Online Payment
+          </h1>
 
           <p className="pay-subtitle">
             Manipur International University
@@ -126,7 +200,7 @@ export default function PayOnlinePage() {
           onSubmit={handleSubmit}
           noValidate
         >
-          {/* Full Name */}
+          {/* Name */}
           <div className="pay-field">
             <label htmlFor="name">
               Full Name <span className="pay-req">*</span>
@@ -140,7 +214,6 @@ export default function PayOnlinePage() {
               value={form.name}
               onChange={handleChange}
               className={errors.name ? "error" : ""}
-              autoComplete="name"
             />
 
             {errors.name && (
@@ -150,7 +223,7 @@ export default function PayOnlinePage() {
             )}
           </div>
 
-          {/* Mobile Number */}
+          {/* Phone */}
           <div className="pay-field">
             <label htmlFor="phone">
               Mobile Number <span className="pay-req">*</span>
@@ -164,8 +237,6 @@ export default function PayOnlinePage() {
               value={form.phone}
               onChange={handleChange}
               maxLength={10}
-              inputMode="numeric"
-              autoComplete="tel"
               className={errors.phone ? "error" : ""}
             />
 
@@ -189,7 +260,6 @@ export default function PayOnlinePage() {
               placeholder="Enter your email address"
               value={form.email}
               onChange={handleChange}
-              autoComplete="email"
               className={errors.email ? "error" : ""}
             />
 
@@ -200,7 +270,41 @@ export default function PayOnlinePage() {
             )}
           </div>
 
-          {/* Fixed Amount */}
+          {/* Purpose */}
+          <div className="pay-field">
+            <label htmlFor="purpose">
+              Purpose <span className="pay-req">*</span>
+            </label>
+
+            <select
+              id="purpose"
+              name="purpose"
+              value={form.purpose}
+              onChange={handlePurposeChange}
+              className={errors.purpose ? "error" : ""}
+            >
+              <option value="">
+                -- Select Purpose --
+              </option>
+
+              {purposes.map((item) => (
+                <option
+                  key={item.name}
+                  value={item.name}
+                >
+                  {item.name}
+                </option>
+              ))}
+            </select>
+
+            {errors.purpose && (
+              <span className="pay-error">
+                {errors.purpose}
+              </span>
+            )}
+          </div>
+
+          {/* Amount */}
           <div className="pay-field">
             <label htmlFor="amount">
               Amount (₹) <span className="pay-req">*</span>
@@ -210,36 +314,28 @@ export default function PayOnlinePage() {
               id="amount"
               name="amount"
               type="number"
-              value={PAYMENT_AMOUNT}
-              readOnly
+              placeholder={
+                isAmountFixed
+                  ? "Amount automatically selected"
+                  : "Enter amount in INR"
+              }
+              value={form.amount}
+              onChange={handleChange}
+              min="1"
+              step="1"
+              readOnly={isAmountFixed}
               className={errors.amount ? "error" : ""}
             />
+
+            {isAmountFixed && (
+              <small className="pay-amount-note">
+                Amount is fixed for the selected purpose.
+              </small>
+            )}
 
             {errors.amount && (
               <span className="pay-error">
                 {errors.amount}
-              </span>
-            )}
-          </div>
-
-          {/* Fixed Purpose */}
-          <div className="pay-field">
-            <label htmlFor="purpose">
-              Purpose <span className="pay-req">*</span>
-            </label>
-
-            <input
-              id="purpose"
-              name="purpose"
-              type="text"
-              value={PAYMENT_PURPOSE}
-              readOnly
-              className={errors.purpose ? "error" : ""}
-            />
-
-            {errors.purpose && (
-              <span className="pay-error">
-                {errors.purpose}
               </span>
             )}
           </div>
@@ -264,12 +360,13 @@ export default function PayOnlinePage() {
             ) : (
               <>
                 🔒 Pay ₹
-                {PAYMENT_AMOUNT.toLocaleString("en-IN")}
+                {form.amount
+                  ? parseFloat(form.amount).toLocaleString("en-IN")
+                  : "0"}
               </>
             )}
           </button>
 
-          {/* Security Note */}
           <p className="pay-secure-note">
             🔐 Secured by <strong>Easebuzz</strong> Payment Gateway.
             Your payment information is encrypted and secure.
