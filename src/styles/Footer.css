@@ -93,6 +93,18 @@
   color: white;
 }
 
+/* LinkedIn - Gradient */
+.social-icon:nth-child(3) {
+  background: rgba(10, 102, 194, 0.1);
+  border-color: rgba(10, 102, 194, 0.3);
+}
+
+.social-icon:nth-child(3):hover {
+  background: linear-gradient(45deg, #0a66c2, #0077b5, #00a0dc);
+  border-color: #0a66c2;
+  color: white;
+}
+
 .footer-heading {
   color: white;
   letter-spacing: -0.02em;
