@@ -93,10 +93,10 @@ export default async function BlogPage() {
                   <span>
                     {blog.createdAt
                       ? new Date(blog.createdAt).toLocaleDateString("en-IN", {
-                          day: "numeric",
-                          month: "short",
-                          year: "numeric",
-                        })
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })
                       : ""}
                   </span>
                 </div>
