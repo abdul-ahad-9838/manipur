@@ -1,8 +1,5 @@
 import "@/styles/Blog.css";
-import Image from "next/image";
 import Link from "next/link";
-import Blog from "@/models/Blog"; // Adjust path
-import dbConnect from "@/lib/mongodb";
 
 export async function generateMetadata() {
   return {
@@ -14,17 +11,16 @@ export async function generateMetadata() {
 
 async function getBlogs() {
   try {
-    await dbConnect();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs`, {
+      next: { revalidate: 300 },
+    });
 
-    const blogs = await Blog.find({ published: true })
-      .sort({ createdAt: -1 })
-      .lean();
+    if (!res.ok) {
+      throw new Error("Failed to fetch blogs");
+    }
 
-    return blogs.map((blog) => ({
-      ...blog,
-      _id: blog._id.toString(),
-      createdAt: blog.createdAt?.toISOString(),
-    }));
+    const blogs = await res.json();
+    return blogs;
   } catch (error) {
     console.error("Blogs fetch failed:", error);
     return [];
