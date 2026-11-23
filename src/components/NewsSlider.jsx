@@ -109,13 +109,17 @@ export default function NewsSlider({ blogs = [] }) {
           {/* Featured */}
           <div className="ns-featured">
             <div className="ns-feat-img-wrap">
-              <Image
+              <img
                 src={featured.coverImage}
                 alt={featured.title}
-                fill
-                sizes="25vw"
                 className="ns-feat-img"
-                placeholder="empty"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  position: "absolute",
+                  inset: 0,
+                }}
               />
               <span className="ns-feat-cat">{featured.category}</span>
             </div>
@@ -161,14 +165,13 @@ export default function NewsSlider({ blogs = [] }) {
                 className="ns-side-card"
                 onClick={() => goTo(i)}
               >
-                <Image
+                <img
                   src={post.coverImage}
                   alt={post.title}
                   width={75}
                   height={75}
                   className="ns-side-img"
                 />
-
                 <div className="ns-side-body">
                   <span className="ns-side-cat">{post.category}</span>
 

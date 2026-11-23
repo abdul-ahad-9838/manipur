@@ -113,14 +113,16 @@ export default function Ecosystem({ data }) {
                 background: "#f5f4f1",
               }}
             >
-              <Image
+              <img
                 src={card.image}
                 alt={card.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
                 style={{
+                  width: "100%",
+                  height: "100%",
                   objectFit: "cover",
                   transition: "transform 0.6s ease",
+                  position: "absolute",
+                  inset: 0,
                 }}
               />
 

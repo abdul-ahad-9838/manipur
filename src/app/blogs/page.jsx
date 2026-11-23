@@ -63,7 +63,7 @@ export default async function BlogPage() {
             >
               <div className="blog-card-img">
                 {blog.coverImage ? (
-                  <Image
+                  <img
                     src={blog.coverImage}
                     alt={blog.title}
                     width={400}

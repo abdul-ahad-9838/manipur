@@ -20,12 +20,15 @@ export default function ProgramCard({ program }) {
         {/* Cover */}
         <div className="sp-program-cover">
           {program.cardImage ? (
-            <Image
+            <img
               src={program.cardImage}
               alt={program.title}
-              fill
               className="sp-program-cover-image"
-              sizes="(max-width: 768px) 100vw, 350px"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
               onError={(e) => {
                 e.currentTarget.style.display = "none";
                 e.currentTarget.parentElement.classList.add("image-error");

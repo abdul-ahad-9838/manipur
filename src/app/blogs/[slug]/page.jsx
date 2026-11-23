@@ -125,7 +125,7 @@ export default async function BlogPage({ params }) {
 
         {blog.coverImage && (
           <div className="blog-detail-image">
-            <Image
+            <img
               src={blog.coverImage}
               alt={blog.title}
               width={800}
