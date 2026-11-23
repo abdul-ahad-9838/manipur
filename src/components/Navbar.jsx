@@ -228,24 +228,24 @@ const Navbar = () => {
             className={`absolute-logo-wrapper ${isSticky ? "logo-sticky" : ""}`}
           >
             {!isSticky ? (
-              <Image
+              <img
                 src="/images/MIU_Logo.webp"
                 alt="Manipur International University"
                 className="landing-logo"
                 width={200}
                 height={200}
-                priority
+                loading="eager"
                 fetchPriority="high"
               />
             ) : (
               <>
-                <Image
+                <img
                   src="/emblem.webp"
                   alt="MIU Crest"
                   className="abs-emblem"
                   width={50}
                   height={50}
-                  priority
+                  loading="eager"
                 />
                 <div className="abs-miu-blocks">
                   <span>M</span>

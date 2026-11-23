@@ -33,11 +33,12 @@ export default function AdvisoryPopup({ fileUrl, fileType, onClose }) {
               title="Document preview"
             />
           ) : (
-            <Image
+            <img
               src={fileUrl}
               alt="Document"
               width={800}
               height={1000}
+              loading="lazy"
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
               style={{

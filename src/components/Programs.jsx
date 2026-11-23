@@ -116,7 +116,7 @@ export default async function Programs() {
           {schools.map((school, i) => (
             <div className="program-card" key={i}>
               <div className="program-card-img">
-                <Image
+                <img
                   src={
                     school.image ||
                     "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600"
@@ -125,6 +125,7 @@ export default async function Programs() {
                   className="program-img"
                   width={600}
                   height={400}
+                  loading="lazy"
                 />
                 <div className="program-card-img-overlay" />
               </div>

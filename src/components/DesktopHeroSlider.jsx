@@ -19,18 +19,14 @@ function DesktopHeroSlider({ images, title }) {
   return (
     <div className="hero-image-wrapper desktop-only">
       {images.map((img, index) => (
-        <Image
+        <img
           key={img}
           src={img}
           alt={title}
-          fill
-          priority={index === 0}
-          quality={75}
+          loading={index === 0 ? "eager" : "lazy"}
           fetchPriority={index === 0 ? "high" : "low"}
-          sizes="100vw"
-          className={`hero-image ${
-            index === currentImageIndex ? "active" : ""
-          }`}
+          className={`hero-image ${index === currentImageIndex ? "active" : ""
+            }`}
         />
       ))}
     </div>

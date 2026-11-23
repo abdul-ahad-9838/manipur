@@ -115,11 +115,12 @@ export default function ImportantNoticePopup() {
             </div>
           </section> */}
 
-          <Image
+          <img
             src="/notice/webinar.webp"
             alt="Webinar"
             width={1200}
             height={675}
+            loading="lazy"
             style={{
               width: "100%",
               height: "auto",

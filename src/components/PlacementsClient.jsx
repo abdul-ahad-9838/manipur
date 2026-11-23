@@ -631,15 +631,13 @@ export default function PlacementsClient({ data }) {
                       }}
                     >
                       {company.logo ? (
-                        <Image
+                        <img
                           src={company.logo}
-                          alt={
-                            company.name ||
-                            "Company logo"
-                          }
-                          fill
-                          sizes="190px"
+                          alt={company.name || "Company logo"}
+                          loading="lazy"
                           style={{
+                            width: "100%",
+                            height: "100%",
                             objectFit: "contain",
                             padding: "25px",
                           }}

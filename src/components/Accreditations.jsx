@@ -98,11 +98,16 @@ export default async function Accreditations() {
               <div className="acc-card-logo-box">
                 {item.logo ? (
                   <div className="acc-logo-wrapper">
-                    <Image
+                    <img
                       src={item.logo}
                       alt={item.name}
-                      fill
                       className="acc-logo-img"
+                      loading="lazy"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
                 ) : (

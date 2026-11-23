@@ -360,13 +360,12 @@ const HeroTest = ({ programs = DEFAULT_PROGRAMS }) => {
                             >
                                 <article className="program-card">
                                     <div className="card-image-wrapper">
-                                        <Image
+                                        <img
                                             src={program.image}
                                             alt={program.title}
                                             className="card-image"
                                             width={400}
                                             height={300}
-                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                             loading={i < itemsPerView + 1 ? "eager" : "lazy"}
                                         />
 

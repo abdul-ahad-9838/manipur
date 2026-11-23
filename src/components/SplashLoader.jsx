@@ -5,12 +5,12 @@ export default function SplashLoader() {
     <div className="splash-screen">
       <div className="splash-content">
         <div className="splash-logo">
-          <Image
+          <img
             src="/emblem.webp"
             alt="MIU Logo"
             width={150}
             height={150}
-            priority
+            loading="eager"
           />
         </div>
 

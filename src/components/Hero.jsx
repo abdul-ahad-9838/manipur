@@ -154,15 +154,13 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image
+              <img
                 src={img.src}
                 alt={img.alt || ""}
                 width={1600}
                 height={700}
-                priority={i === 1}
-                quality={70}
+                loading={i === 1 ? "eager" : "lazy"}
                 fetchPriority={i === 1 ? "high" : "auto"}
-                sizes="100vw"
                 style={{
                   width: "100%",
                   height: "auto",

@@ -6,14 +6,15 @@ const BannerSection = ({ data, url }) => {
     <div className="school-hero" style={{ "--school-color": data.color }}>
       <div className="school-hero-bg">
         {(data?.image || data?.coverImage) && (
-          <Image
+          <img
             src={data?.image || data?.coverImage}
             alt={data?.name || "Banner"}
-            fill
-            priority
-            sizes="100vw"
             className="school-hero-image"
-            unoptimized
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
           />
         )}
       </div>

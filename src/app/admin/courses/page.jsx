@@ -1070,7 +1070,7 @@ export default function CoursesManager() {
                         >
                           {course.cardImage ? (
                             <>
-                              <Image
+                              <img
                                 src={course.cardImage}
                                 alt={course.title}
                                 width={80}
