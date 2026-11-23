@@ -208,6 +208,7 @@ function CampusLifeClient({ tabs, content }) {
                   key={tab.id}
                   src={tab.img}
                   alt={tab.name}
+                  loading="lazy"
                   style={{
                     width: "100%",
                     height: "100%",

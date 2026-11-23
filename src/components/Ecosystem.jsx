@@ -116,9 +116,11 @@ export default function Ecosystem({ data }) {
               <img
                 src={card.image}
                 alt={card.title}
+                loading="lazy"
                 style={{
                   width: "100%",
                   height: "100%",
+
                   objectFit: "cover",
                   transition: "transform 0.6s ease",
                   position: "absolute",

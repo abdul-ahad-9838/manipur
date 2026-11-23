@@ -112,6 +112,7 @@ export default function NewsSlider({ blogs = [] }) {
               <img
                 src={featured.coverImage}
                 alt={featured.title}
+                loading="lazy"
                 className="ns-feat-img"
                 style={{
                   width: "100%",
@@ -170,6 +171,7 @@ export default function NewsSlider({ blogs = [] }) {
                   alt={post.title}
                   width={75}
                   height={75}
+                  loading="lazy"
                   className="ns-side-img"
                 />
                 <div className="ns-side-body">

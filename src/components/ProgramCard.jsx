@@ -23,6 +23,7 @@ export default function ProgramCard({ program }) {
             <img
               src={program.cardImage}
               alt={program.title}
+              loading="lazy"
               className="sp-program-cover-image"
               style={{
                 width: "100%",

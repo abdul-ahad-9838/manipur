@@ -66,6 +66,7 @@ export default async function BlogPage() {
                   <img
                     src={blog.coverImage}
                     alt={blog.title}
+                    loading="lazy"
                     width={400}
                     height={300}
                   />
