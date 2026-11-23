@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
 import "@/styles/Jobs.css";
 import Image from "next/image";
+import { useState } from "react";
 
 const JOBS = [
   {
@@ -229,7 +228,7 @@ function ApplyModal({ job, onClose }) {
           message: form.message,
         }),
       });
-    } catch {}
+    } catch { }
     setSubmitted(true);
     setTimeout(onClose, 2500);
   };
@@ -426,7 +425,7 @@ export default function JobsPage() {
             Join a team of passionate educators and professionals shaping the
             future of higher education in Northeast India.
           </p>
-          <div className="jobs-hero-stats">
+          {/* <div className="jobs-hero-stats">
             <div>
               <strong>7+</strong>
               <span>Open Positions</span>
@@ -439,7 +438,14 @@ export default function JobsPage() {
               <strong>₹ 18K–75K</strong>
               <span>Salary Range</span>
             </div>
-          </div>
+          </div> */}
+          <a
+            href="/careers/Format_of_Application.docx"
+            download="Format_of_Application.docx"
+            className="download-btn"
+          >
+            Download Application Form
+          </a>
         </div>
       </div>
 

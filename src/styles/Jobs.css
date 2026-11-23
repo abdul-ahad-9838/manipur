@@ -19,6 +19,23 @@
     rgba(20, 20, 40, 0.75) 100%
   );
 }
+
+.download-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background: var(--lpu-orange);
+  color: var(--lpu-black);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background: var(--lpu-orange);
+  opacity: 0.9;
+}
+
 .jobs-hero-content {
   position: relative;
   z-index: 1;
@@ -65,7 +82,11 @@
 
 /* Body */
 .jobs-body {
-  padding: 50px 0 80px;
+  padding: 50px 10px 0 !important;
+}
+
+.section-badge {
+  color: #e0e0e0;
 }
 
 /* Filter bar */
