@@ -204,26 +204,23 @@ function CampusLifeClient({ tabs, content }) {
             >
               {/* Images */}
               {tabs.map((tab, index) => (
-                <Image
+                <img
                   key={tab.id}
                   src={tab.img}
                   alt={tab.name}
-                  fill
-                  sizes="(max-width: 600px) 100vw, 1200px"
-                  quality={80}
-                  priority={index === 0}
                   style={{
+                    width: "100%",
+                    height: "100%",
                     objectFit: "cover",
-                    opacity:
-                      activeIndex === index ? 1 : 0,
+                    opacity: activeIndex === index ? 1 : 0,
                     transform:
                       activeIndex === index
                         ? "scale(1)"
                         : "scale(1.06)",
-                    transition:
-                      "opacity 0.8s ease, transform 1.2s ease",
-                    zIndex:
-                      activeIndex === index ? 1 : 0,
+                    transition: "opacity 0.8s ease, transform 1.2s ease",
+                    zIndex: activeIndex === index ? 1 : 0,
+                    position: "absolute",
+                    inset: 0,
                   }}
                 />
               ))}
