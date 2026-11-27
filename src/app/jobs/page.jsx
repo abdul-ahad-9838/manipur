@@ -415,6 +415,7 @@ export default function JobsPage() {
 
   return (
     <div className="jobs-page">
+
       {/* Hero */}
       <div className="jobs-hero">
         <div className="jobs-hero-overlay" />
@@ -425,23 +426,9 @@ export default function JobsPage() {
             Join a team of passionate educators and professionals shaping the
             future of higher education in Northeast India.
           </p>
-          {/* <div className="jobs-hero-stats">
-            <div>
-              <strong>7+</strong>
-              <span>Open Positions</span>
-            </div>
-            <div>
-              <strong>6</strong>
-              <span>Departments</span>
-            </div>
-            <div>
-              <strong>₹ 18K–75K</strong>
-              <span>Salary Range</span>
-            </div>
-          </div> */}
           <a
-            href="/careers/Format_of_Application.docx"
-            download="Format_of_Application.docx"
+            href="/careers/Format_of_Application.pdf"
+            download="Format_of_Application.pdf"
             className="download-btn"
           >
             Download Application Form
@@ -449,7 +436,101 @@ export default function JobsPage() {
         </div>
       </div>
 
-      <div className="container jobs-body">
+      {/* Why Join MIU */}
+      <section className="why-join-miu">
+        <div className="container">
+          <div className="why-join-heading">
+            <span className="job-section-badge">CAREER OPPORTUNITIES</span>
+            <h2>Why Join Manipur International University?</h2>
+            <p>
+              At Manipur International University, we believe great institutions are built by people who bring passion, integrity, and fresh perspectives to their work. When you join MIU, you become part of a collaborative, forward thinking team dedicated to academic excellence and practical innovation. Whether in the classroom, the research lab, or campus administration, you will find meaningful opportunities to grow your career while shaping the future of higher education.
+            </p>
+          </div>
+
+          <div className="why-join-grid">
+            <div className="why-join-card">
+              <div className="why-icon">🚀</div>
+              <h3>Career Opportunities</h3>
+              <p>
+                Discover diverse career opportunities across academic
+                and administrative departments that match your skills,
+                experience, and aspirations.
+              </p>
+            </div>
+
+            <div className="why-join-card">
+              <div className="why-icon">📈</div>
+              <h3>Professional Growth</h3>
+              <p>
+                Enhance your knowledge, develop new skills, and unlock
+                your professional potential through continuous learning
+                and development opportunities.
+              </p>
+            </div>
+
+            <div className="why-join-card">
+              <div className="why-icon">🤝</div>
+              <h3>Supportive Work Culture</h3>
+              <p>
+                Work in an inclusive and collaborative environment
+                that values teamwork, mutual respect, and individual
+                contributions.
+              </p>
+            </div>
+
+            <div className="why-join-card">
+              <div className="why-icon">🌟</div>
+              <h3>Make a Difference</h3>
+              <p>
+                Be part of an institution dedicated to excellence in
+                education and contribute your expertise towards
+                creating a positive impact on future generations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="job-body">
+        {/* Recruitment Process Section */}
+        <div className="job-section">
+          <div className="job-section-header">
+            <span className="job-section-badge">JOIN OUR TEAM</span>
+
+            <h2 className="job-section-title">
+              Recruitment Process
+            </h2>
+
+            <p className="job-section-subtitle">
+              Follow these simple steps to explore career opportunities
+              and become a part of MIU's academic and professional community.
+            </p>
+          </div>
+
+          <div className="job-timeline">
+            {/* {steps.map((step, i) => (
+              <div key={i} className="job-timeline-item">
+                <div className="job-timeline-marker">
+                  <span className="job-step-number">{step.num}</span>
+                </div>
+
+                <div className="job-timeline-content">
+                  <h3 className="job-timeline-title">
+                    {step.title}
+                  </h3>
+
+                  <p className="job-timeline-desc">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))} */}
+            <img src="/careers/recruitment-process.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
         {/* Filter tabs */}
         <div className="jobs-filter-bar">
           {departments.map((d) => (
@@ -473,7 +554,7 @@ export default function JobsPage() {
         </div>
 
         {/* Bottom CTA */}
-        {/* <div className="jobs-cta-box">
+        <div className="jobs-cta-box">
           <h3>Don't see a suitable opening?</h3>
           <p>
             Send your CV to <a href="mailto:hr@miu.edu.in">hr@miu.edu.in</a> and
@@ -482,12 +563,15 @@ export default function JobsPage() {
           <a href="mailto:hr@miu.edu.in" className="btn btn-orange">
             Send Your CV →
           </a>
-        </div> */}
+        </div>
       </div>
+
 
       {selectedJob && (
         <ApplyModal job={selectedJob} onClose={() => setSelectedJob(null)} />
       )}
+
+
     </div>
   );
 }

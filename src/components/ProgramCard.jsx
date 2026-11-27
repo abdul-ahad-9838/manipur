@@ -1,7 +1,8 @@
+
 import Link from "next/link";
-import Image from "next/image";
 import "@/styles/ProgramCard.css";
 import { detectProgramLevel } from "@/lib/filterUtils";
+import ProgramCardImage from "./ProgramCardImage";
 
 export default function ProgramCard({ program }) {
   const level = detectProgramLevel(program.title);
@@ -9,53 +10,54 @@ export default function ProgramCard({ program }) {
   // Split title into program + specialization
   const titleMatch = program.title?.match(/^(.*?)\s*\((.*?)\)$/);
 
-  const programName = titleMatch ? titleMatch[1].trim() : program.title;
+  const programName = titleMatch
+    ? titleMatch[1].trim()
+    : program.title;
 
   const specialization =
-    program.specialisation || (titleMatch ? titleMatch[2].trim() : "");
+    program.specialisation ||
+    (titleMatch ? titleMatch[2].trim() : "");
 
   return (
     <div className="sp-program-card">
       <div className="sp-program-link">
+
         {/* Cover */}
         <div className="sp-program-cover">
-          {program.cardImage ? (
-            <img
-              src={program.cardImage}
-              alt={program.title}
-              loading="lazy"
-              className="sp-program-cover-image"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-                e.currentTarget.parentElement.classList.add("image-error");
-              }}
-            />
-          ) : null}
 
-          <div className="sp-cover-fallback">
-            <span>{program.icon || "🎓"}</span>
-          </div>
+          <ProgramCardImage
+            src={program.cardImage}
+            alt={program.title}
+            icon={program.icon}
+          />
 
-          <span className="sp-program-badge">{level}</span>
+          <span className="sp-program-badge">
+            {level}
+          </span>
+
         </div>
 
         {/* Body */}
         <div className="sp-program-body">
+
           <div className="sp-program-title-wrapper">
-            <h3 className="sp-program-name">{programName}</h3>
+
+            <h3 className="sp-program-name">
+              {programName}
+            </h3>
 
             {specialization && (
-              <p className="sp-program-specialization">({specialization})</p>
+              <p className="sp-program-specialization">
+                ({specialization})
+              </p>
             )}
 
             {program.school && (
-              <p className="sp-program-school">{program.school}</p>
+              <p className="sp-program-school">
+                {program.school}
+              </p>
             )}
+
           </div>
 
           {program.description && (
@@ -67,25 +69,48 @@ export default function ProgramCard({ program }) {
           )}
 
           <div className="sp-program-footer">
+
             <div className="sp-program-meta">
+
               {program.duration && (
                 <div>
-                  <span className="sp-meta-label">DURATION</span>
-                  <span className="sp-meta-val">{program.duration}</span>
+                  <span className="sp-meta-label">
+                    DURATION
+                  </span>
+
+                  <span className="sp-meta-val">
+                    {program.duration}
+                  </span>
                 </div>
               )}
 
               {program.eligibility && (
                 <div>
-                  <span className="sp-meta-label">ELIGIBILITY</span>
-                  <span className="sp-meta-val">{program.eligibility}</span>
+                  <span className="sp-meta-label">
+                    ELIGIBILITY
+                  </span>
+
+                  <span className="sp-meta-val">
+                    {program.eligibility}
+                  </span>
                 </div>
               )}
+
             </div>
+
           </div>
-          <Link href={`/courses/${program.slug}`} className="sp-apply-btn">
+
+          <Link
+            href={
+              program.slug
+                ? `/courses/${program.slug}`
+                : "/courses"
+            }
+            className="sp-apply-btn"
+          >
             View Details
           </Link>
+
         </div>
       </div>
     </div>
