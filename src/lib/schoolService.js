@@ -66,6 +66,7 @@ export async function getSchoolAndCourses(slug) {
   const [details, allCourses] = await Promise.all([
     getCachedSettings("school-details"),
     getCachedCourses(),
+    getCachedSettings("schools-section"),
   ]);
 
   const school = details?.content?.[slug] || null;

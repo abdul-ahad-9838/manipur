@@ -63,6 +63,8 @@ export default async function Page({ params }) {
     notFound();
   }
 
+  const highlights = school?.highlights || [];
+
   if (!school) {
     notFound();
   }
@@ -96,8 +98,51 @@ export default async function Page({ params }) {
 
       <BannerSection data={school} />
 
-      {/* Programs Section */}
 
+      {highlights.length &&
+        <section className="sp-section sp-section-alt">
+          <div className="container">
+            <div className="sp-section-header">
+              <span className="section-badge">WHY CHOOSE US</span>
+              <h2 className="sp-section-title">School Highlights</h2>
+            </div>
+            <div className="sp-highlights-grid">
+              {highlights.map((h, i) => (
+                <div
+                  key={i}
+                  className="sp-highlight-card"
+                >
+                  <div className="sp-highlight-image">
+                    {h.image ? (
+                      <img
+                        src={h.image}
+                        alt={h.title}
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                          e.target.nextSibling.style.display = "flex";
+                        }}
+                      />
+                    ) : null}
+                    <div
+                      className="sp-highlight-icon-fallback"
+                      style={{ display: h.image ? "none" : "flex" }}
+                    >
+                      {h.icon}
+                    </div>
+                  </div>
+                  <div className="sp-highlight-content">
+                    <h3>{h.title}</h3>
+                    <p>{h.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      }
+
+
+      {/* Programs Section */}
       <section className="sp-section">
         <div className="container">
 
